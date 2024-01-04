@@ -1,11 +1,11 @@
 import "../styles/App.scss"
 
+import React, { Suspense } from "react"
 import { Canvas, useThree, useFrame } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 
 import { motion } from "framer-motion"
-
-import { Link } from "react-router-dom"
+import { Loader } from "../components/Loader"
 
 function Scene() {
 
@@ -34,10 +34,12 @@ function App() {
       transition={{ duration: 1, ease: "easeInOut" }}
     >
     <Canvas camera={{ fov: 75, position: [3,3,5]}}>
-      <OrbitControls />
-      <ambientLight />
-      <directionalLight position={[10, 10, 5]} intensity={1} />
-      <Scene />
+      <Suspense fallback={<Loader/>}>
+        <OrbitControls />
+        <ambientLight />
+        <directionalLight position={[10, 10, 5]} intensity={1} />
+        <Scene />
+      </Suspense>
     </Canvas>
     </motion.div>
   )
