@@ -1,29 +1,12 @@
 import "../styles/App.scss"
 
 import React, { Suspense } from "react"
-import { Canvas, useThree, useFrame } from "@react-three/fiber"
+import { Canvas } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 
 import { motion } from "framer-motion"
-import { Loader } from "../components/Loader"
-
-function Scene() {
-
-  const {camera} = useThree()
-
-  camera.lookAt(0,0,0)
-
-  useFrame((state, delta) => {
-    // console.log(camera.position)
-  })
-
-  return (
-    <mesh>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="hotpink" />
-    </mesh>
-  )
-}
+import { Loader } from "@components/Loader"
+import { Scene } from "@components/Landing/Scene"
 
 function App() {
   return (

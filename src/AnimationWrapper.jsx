@@ -1,7 +1,7 @@
 import React from "react";
 
-import App from "./routes/App.jsx";
-import Register from "./routes/Register.jsx";
+import App from "@routes/App.jsx";
+import Register from "@routes/Register.jsx";
 
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
