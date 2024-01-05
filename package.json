@@ -21,7 +21,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "sort-by": "^1.2.0",
-    "three": "^0.160.0"
+    "three": "^0.160.0",
+    "valtio": "^1.12.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

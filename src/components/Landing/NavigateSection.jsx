@@ -1,5 +1,3 @@
-import React from "react";
-
 import * as styles from "@styles/HUD.module.scss";
 
 export default function NavigateSection() {

@@ -1,4 +1,3 @@
-import React from "react";
 import * as styles from "@styles/HUD.module.scss";
 import NavigateSection from "./NavigateSection";
 import Countdown from "./Countdown";
