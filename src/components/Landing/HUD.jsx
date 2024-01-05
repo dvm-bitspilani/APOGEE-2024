@@ -28,6 +28,7 @@ export function Hud() {
         <span>Menu</span>
       </div>
       <NavigateSection />
+      <img src="/images/crosshair.png" alt="crosshair"  className={styles.crosshair}/>
     </div>
   );
 }
