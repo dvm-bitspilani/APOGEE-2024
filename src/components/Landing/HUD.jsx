@@ -1,8 +1,11 @@
 import React from 'react'
-import "@styles/HUD.scss"
+import * as styles from "@styles/HUD.module.scss"
 
-export default function HUD() {
+export function Hud() {
   return (
-    <div>HUD</div>
+    <div className={styles.wrapper}>
+      <img className={styles.lefthelm} src="/images/Left helm.png" alt="left helm" />
+      <img className={styles.righthelm} src="/images/Right helm.png" alt="right helm" />
+    </div>
   )
 }

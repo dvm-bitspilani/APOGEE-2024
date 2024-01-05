@@ -2,10 +2,15 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar{
+    display: none;
 }
 
 body{
-    background-color: white;
+    background-color: black;
 }
 
 canvas{

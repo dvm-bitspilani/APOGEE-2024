@@ -2,11 +2,12 @@ import "../styles/App.scss"
 
 import React, { Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei"
+import { OrbitControls, Stars } from "@react-three/drei"
 
 import { motion } from "framer-motion"
 import { Loader } from "@components/Loader"
 import { Scene } from "@components/Landing/Scene"
+import { Hud } from "@components/Landing/HUD"
 
 function App() {
   return (
@@ -14,16 +15,18 @@ function App() {
       initial={{ opacity: 0, y: 100}}
       animate={{ opacity: 1, y : 0 }}
       exit={{ opacity: 0, y: -100 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      transition={{ duration: 2, ease: "easeInOut" }}
     >
     <Canvas camera={{ fov: 75, position: [3,3,5]}}>
       <Suspense fallback={<Loader/>}>
+        <Stars radius={15} depth={50} count={3000} factor={4} saturation={0} fade speed={0}/>
         <OrbitControls />
         <ambientLight />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <Scene />
       </Suspense>
     </Canvas>
+    <Hud />
     </motion.div>
   )
 }

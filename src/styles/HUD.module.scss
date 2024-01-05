@@ -1,0 +1,21 @@
+.wrapper{
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+}
+
+.lefthelm{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: contain;
+}
+
+.righthelm{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    object-fit: contain;
+}
