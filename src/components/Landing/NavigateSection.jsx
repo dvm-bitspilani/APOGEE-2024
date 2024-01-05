@@ -35,7 +35,7 @@ export function Line() {
         <path
           d="M37.2497 39.1387L40 41.889L42.7503 39.1387L40 36.3884L37.2497 39.1387ZM299.75 39.1387L297 36.3884L294.25 39.1387L297 41.889L299.75 39.1387ZM40 39.615L297 39.615V38.6623L40 38.6623V39.615Z"
           fill="#94F2F6"
-          fill-opacity="0.72"
+          fillOpacity="0.72"
         />
       </g>
       <defs>
@@ -46,9 +46,9 @@ export function Line() {
           width="335.194"
           height="78.1942"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

@@ -1,6 +1,7 @@
 import React from "react";
 import * as styles from "@styles/HUD.module.scss";
 import NavigateSection from "./NavigateSection";
+import Countdown from "./Countdown";
 
 export function Hud() {
   return (
@@ -23,12 +24,20 @@ export function Hud() {
         src="/images/Top HUD.svg"
         alt="top hud"
       />
+      <Countdown />
+      <img
+        className={styles.crosshair}
+        src="/images/crosshair.png"
+        alt="crosshair"
+      />
       <div className={styles.hamMenuButton}>
         <HamIcon />
         <span>Menu</span>
       </div>
+
       <NavigateSection />
-      <img src="/images/crosshair.png" alt="crosshair"  className={styles.crosshair}/>
+    
+
     </div>
   );
 }
@@ -46,9 +55,9 @@ export function HamIcon() {
         <path
           d="M12 20.8889H38.6667M12 12H38.6667M12 29.7778H29.7778"
           stroke="#9AF0F4"
-          stroke-width="2.96332"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2.96332"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -59,9 +68,9 @@ export function HamIcon() {
           width="50.5584"
           height="41.6694"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

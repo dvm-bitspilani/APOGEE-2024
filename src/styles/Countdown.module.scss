@@ -1,0 +1,58 @@
+.countdown {
+  display: flex;
+  gap: 0.2rem;
+  width: 100%;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  color: #54aeff;
+
+  position: absolute;
+}
+
+.label {
+  gap: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0.8rem 0.4rem;
+  align-items: center;
+}
+
+.numbers {
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+  font-family: "Audiowide";
+  text-shadow: 0px 0px 8px rgba(154, 240, 244, 0.7);
+}
+
+.card-flip {
+  animation: card-flip 0.6s;
+}
+
+.labels {
+  font-size: 0.7rem;
+  font-family: "Alacrity Sans", sans-serif;
+}
+
+@keyframes card-flip {
+  0% {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: rotateX(0deg);
+  }
+
+  50% {
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    transform: rotateX(180deg);
+  }
+
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+    transform: rotateX(360deg);
+  }
+}
