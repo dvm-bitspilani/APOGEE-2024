@@ -1,12 +1,30 @@
+@font-face {
+    font-family: Alacrity Sans;
+    src: url("/fonts/Alacrity Sans Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     scrollbar-width: none;
+    font-family: Alacrity Sans;
+    color: var(--primary);
+
 }
 
 *::-webkit-scrollbar{
     display: none;
+}
+
+:root{
+    --primary: #9AF0F4;
+    --primary-link: rgba(148, 242, 246, 0.72);
+    --hover-link: rgba(245, 162, 165, 0.72);
 }
 
 body{

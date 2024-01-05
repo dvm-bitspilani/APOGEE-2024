@@ -1,7 +1,10 @@
 .wrapper{
     position: fixed;
     inset: 0;
-    z-index: 2;
+    // z-index: -1;
+
+    // background-image: url("/images/cockpit.png");
+    background-size: cover;
 }
 
 .lefthelm{
@@ -18,4 +21,114 @@
     right: 0;
     height: 100%;
     object-fit: contain;
+}
+
+.tophud{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: max(10vw, 80px);
+    object-fit: contain;
+}
+
+.hamMenuButton{
+    width: max(12vw, 94px);
+    aspect-ratio: 3/1;
+    border: var(--primary) 2px solid;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: max(calc(10vw - 7px), 76px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span{
+        font-size: max(1rem, 1.5vw);
+        font-weight: 200;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.70);
+
+        padding-inline: 0.5rem;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.navigatorWrapper{
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 10%;
+    width: 20%;
+
+
+    // border: 2px solid var(--primary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    h1{
+        text-shadow: 0px 0px 27.68px rgba(136, 196, 200, 0.70), 0px 0px 4.471px rgba(134, 244, 232, 0.80);
+        text-align: center;
+    }
+
+    .navigator{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        flex-grow: 1;
+
+        svg{
+            width: 100%;
+            height: auto;
+        }
+
+        .navigatorLinks{
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            flex-grow: 1;
+            align-items: center;
+            justify-content: center;
+
+            button{
+                background-color: transparent;
+                border: none;
+                outline: none;
+                flex-shrink: 0;
+                height: 20%;
+                font-size: 1.5rem;
+                text-align: left;
+                width: 70%;
+
+                color: var(--primary-link);
+                font-family: "Space Grotesk", sans-serif;
+                text-shadow: 0px 0px 30.591px rgba(136, 196, 200, 0.70), 0px 0px 4.942px rgba(134, 244, 232, 0.80);
+                font-weight: 700;
+
+                transition: all 0.2s ease-in-out;
+
+                &:hover{
+                    cursor: pointer;
+                text-shadow: 0px 0px 30.591px #B16060, 0px 0px 4.706px rgba(251, 186, 188, 0.80);
+                color: var(--hover-link);
+
+                }
+            }
+        }
+    }
 }
