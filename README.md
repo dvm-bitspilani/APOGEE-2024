@@ -13,3 +13,5 @@ Dependencies installed:
 4. GSAP
 5. Framer-motion
 6. React router dom
+
+edit
