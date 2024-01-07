@@ -1,6 +1,59 @@
+import React, { useState } from "react";
 import * as styles from "@styles/HUD.module.scss";
 
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+const Button = ({ value, handleMouseOver, handleMouseOut }) => {
+  return (
+    <button data-value={value} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+      {value}
+    </button>
+  );
+};
+
 export default function NavigateSection() {
+  const [hoveredButton, setHoveredButton] = useState(null);
+
+  const handleMouseOver = (event) => {
+    const { target } = event;
+    let iteration = 0;
+
+    clearInterval(target.interval);
+
+    target.interval = setInterval(() => {
+      target.innerText = target.innerText.split("").map((letter, index) => {
+        if (index < iteration) {
+          return target.dataset.value[index];
+        }
+        return letters[Math.floor(Math.random() * 26)];
+      }).join("");
+
+      if (iteration >= target.dataset.value.length) {
+        clearInterval(target.interval);
+      }
+
+      iteration += 1 / 3;
+    }, 30);
+
+    setHoveredButton(target);
+  };
+
+  const handleMouseOut = () => {
+    if (hoveredButton) {
+      clearInterval(hoveredButton.interval);
+      hoveredButton.innerText = hoveredButton.dataset.value;
+      setHoveredButton(null);
+    }
+  };
+
+  const buttonData = [
+    "1 | HOME",
+    "2 | ABOUT",
+    "3 | EVENTS",
+    "4 | SPEAKERS",
+    "5 | CONTACT",
+  ];
+
   return (
     <div className={styles.navigatorWrapper}>
       <img src="/images/spaceship-landing.png" alt="spaceship" />
@@ -9,11 +62,14 @@ export default function NavigateSection() {
         <h1>SECTIONS</h1>
         <Line />
         <div className={styles.navigatorLinks}>
-          <button>1 | HOME</button>
-          <button>2 | ABOUT</button>
-          <button>3 | EVENTS</button>
-          <button>4 | SPEAKERS</button>
-          <button>5 | CONTACT</button>
+          {buttonData.map((value, index) => (
+            <Button
+              key={index}
+              value={value}
+              handleMouseOver={handleMouseOver}
+              handleMouseOut={handleMouseOut}
+            />
+          ))}
         </div>
       </div>
     </div>
