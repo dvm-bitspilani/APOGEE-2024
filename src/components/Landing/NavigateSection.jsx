@@ -22,7 +22,7 @@ export default function NavigateSection() {
 
     target.interval = setInterval(() => {
       target.innerText = target.innerText.split("").map((letter, index) => {
-        if (index < iteration) {
+        if (index < iteration + 4) {
           return target.dataset.value[index];
         }
         return letters[Math.floor(Math.random() * 26)];
