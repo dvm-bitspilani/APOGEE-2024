@@ -3,19 +3,13 @@ import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
 
-import gsap from "gsap";
-
-import state from "@components/state";
-// import { useSnapshot, subscribe } from "valtio";
-
 // Styles
-import * as navigatorStyles from "@styles/HUD.module.scss";
-
+import { gsapOnRender } from "./gsapOnRender";
 
 export function Scene() {
   const { camera } = useThree();
-  camera.lookAt(0, 0, 0);
-  const { position, rotation } = useControls("Camera", {
+
+  const { position } = useControls("Camera", {
     position: {
       value: [0, 0, 0],
       step: 10,
@@ -34,53 +28,40 @@ export function Scene() {
     camera.position.set(...position);
   });
 
+  function rotationUpdateOnMouseMove(e) {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const center = {
+      x: innerWidth / 2,
+      y: innerHeight / 2,
+    };
+    const maxRotate = Math.PI / 8;
+    // const { innerWidth, innerHeight } = window;
+
+    const y = (center.x - clientX) / innerWidth;
+    const x = (center.y - clientY) / innerHeight;
+
+    camera.rotation.x = maxRotate * x;
+    camera.rotation.y = maxRotate * y;
+  }
+
   // const snap = useSnapshot(state);
 
   useEffect(() => {
     setInterval(() => {
-      console.log(state.count);
+      // console.log(state.count);
     }, 1000);
   }, []);
 
   useEffect(() => {
-    gsap.set("#landing-hud-overlay", { opacity: 0 });
-    gsap.set(camera.rotation, { x: 0, y: 0, z: 0 });
+    gsapOnRender(camera, rotationUpdateOnMouseMove);
 
-    const tl = gsap.timeline();
+    return () => {
+      window?.removeEventListener("mousemove", rotationUpdateOnMouseMove);
+    };
 
-    tl.to(camera.rotation, {
-      x: Math.PI / 2,
-      y: Math.PI,
-      z: Math.PI / 4,
-      duration: 2,
-      delay: 2.5,
-      ease: "power2.inOut",
-    })
-    .to(
-      '#landing-hud-overlay',
-      {
-        opacity: 1,
-        duration: 1,
-        ease: "power2.inOut",
-      },
-      ">"
-    )
-    .fromTo(
-      `.${navigatorStyles.navigatorLinks} button`,
-      {
-        x: -100,
-        opacity: 0,
-      }, 
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.in",
-        stagger: 0.2,
-      },
-      "-=1"
-    )
-  }, [camera.rotation]);
+  }, [camera]);
 
-  return <></>;
+  return <>
+  </>;
 }
