@@ -9,11 +9,12 @@ Aliases :
 Dependencies installed:
 1. R3F
 2. Drei
-3. Leva
-4. GSAP
-5. Framer-motion
-6. React router dom
-7. Valtio
+3. Post-processing
+4. Leva
+5. GSAP
+6. Framer-motion
+7. React router dom
+8. Valtio
 
 To use state management:
 1. Add the global variable to the state.js file in the components folder.

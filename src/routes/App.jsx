@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { Loader } from "@components/Loader";
 import { Scene } from "@components/Landing/Scene";
 import { Hud } from "@components/Landing/HUD";
+import EffectComposerLayer from "../components/EffectComposer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Canvas
         camera={{ fov: 75, position: [3, 3, 5] }}
       >
+        <EffectComposerLayer />
         <Suspense fallback={null}>
           <Stars
             radius={15}

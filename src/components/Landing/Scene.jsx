@@ -7,6 +7,8 @@ import { useControls } from "leva";
 import { gsapOnRender } from "./gsapOnRender";
 import Earth from "./Earth";
 
+import gsap from "gsap/gsap-core";
+
 export function Scene() {
   const { camera } = useThree();
 
@@ -36,14 +38,17 @@ export function Scene() {
       x: innerWidth / 2,
       y: innerHeight / 2,
     };
-    const maxRotate = Math.PI / 8;
+    const maxRotate = Math.PI / 16;
     // const { innerWidth, innerHeight } = window;
 
     const y = (center.x - clientX) / innerWidth;
     const x = (center.y - clientY) / innerHeight;
 
-    camera.rotation.x = maxRotate * x;
-    camera.rotation.y = maxRotate * y;
+    gsap.to(camera.rotation, {
+      x: x * maxRotate,
+      y: y * maxRotate,
+      ease: "power2.out",
+    });
   }
 
   // const snap = useSnapshot(state);
