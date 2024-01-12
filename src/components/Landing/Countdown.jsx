@@ -4,7 +4,7 @@ import * as styles from "@styles/Countdown.module.scss";
 const Countdown = () => {
   let count = useRef(null);
 
-  const APOGEE = new Date("April 02, 2024 18:59:59").getTime(),
+  const APOGEE = new Date("April 04, 2024 18:59:59").getTime(),
     [curr, setCurr] = useState(new Date().getTime());
 
   const [prevDay, setPrevDay] = useState(0),

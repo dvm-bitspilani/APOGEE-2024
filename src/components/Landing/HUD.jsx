@@ -1,10 +1,22 @@
 import * as styles from "@styles/HUD.module.scss";
 import NavigateSection from "./NavigateSection";
 import Countdown from "./Countdown";
+// import { useSnapshot } from "valtio";
+
+import state from "@components/state";
+import { useEffect, useRef } from "react";
 
 export function Hud() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      state.count = state.count + 1;
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className={styles.wrapper}>
+    <>
       <img
         draggable={false}
         className={styles.lefthelm}
@@ -17,27 +29,27 @@ export function Hud() {
         src="/images/Right helm.png"
         alt="right helm"
       />
-      <img
-        draggable={false}
-        className={styles.tophud}
-        src="/images/Top HUD.svg"
-        alt="top hud"
-      />
-      <Countdown />
-      <img
-        className={styles.crosshair}
-        src="/images/crosshair.png"
-        alt="crosshair"
-      />
-      <div className={styles.hamMenuButton}>
-        <HamIcon />
-        <span>Menu</span>
+      <div id="landing-hud-overlay" className={styles.wrapper}>
+        <img
+          draggable={false}
+          className={styles.tophud}
+          src="/images/Top HUD.svg"
+          alt="top hud"
+        />
+        <Countdown />
+        <img
+          className={styles.crosshair}
+          src="/images/crosshair.png"
+          alt="crosshair"
+        />
+        <div className={styles.hamMenuButton}>
+          <HamIcon />
+          <span>Menu</span>
+        </div>
+
+        <NavigateSection />
       </div>
-
-      <NavigateSection />
-    
-
-    </div>
+    </>
   );
 }
 

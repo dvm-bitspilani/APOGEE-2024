@@ -8,6 +8,7 @@ import { Scene } from "@components/Landing/Scene"
 import { Hud } from "@components/Landing/HUD"
 
 function App() {
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 100}}
