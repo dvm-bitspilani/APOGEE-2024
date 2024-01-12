@@ -1,4 +1,4 @@
-# APOGEE-2024 Frontend code and setups
+# APOGEE-2024 Frontend code and setup
 
 Aliases : 
 1. @components
