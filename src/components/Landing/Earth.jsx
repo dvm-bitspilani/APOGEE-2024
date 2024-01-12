@@ -3,13 +3,19 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import earthImg from "/images/earth.jpg";
 import * as THREE from "three";
 import { useControls } from "leva";
-import { Float } from "@react-three/drei";
+import { Float, useHelper } from "@react-three/drei";
 
 export default function Earth() {
   const earthRef = useRef();
+  const hemisphereLightRef = useRef(null);
+  const directionalLightRef = useRef(null);
+
+  useHelper(hemisphereLightRef, THREE.HemisphereLightHelper, 2, "red");
+  useHelper(directionalLightRef, THREE.DirectionalLightHelper, 2, "green");
+
   const [earthTexture] = useLoader(THREE.TextureLoader, [earthImg]);
 
-  // const {position, rotation} = useControls('Earth', {
+  // const {position, rotation, color} = useControls('Earth', {
   //     position: {
   //         value: [2,-1,-2],
   //         step: 1,
@@ -21,6 +27,13 @@ export default function Earth() {
   //         step: 0.1,
   //         min: -Math.PI,
   //         max: Math.PI
+  //     },
+  //     color: {
+  //         value: '#ffffff',
+  //         label: 'Color',
+  //         onChange: (color) => {
+  //             console.log(color)
+  //         }
   //     }
   // })
 
@@ -35,16 +48,19 @@ export default function Earth() {
       floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
       floatingRange={[-1, 0.4]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
     >
-      <mesh
-        ref={earthRef}
-        position={[3, -1.5, -6]}
-        rotation={[0, 0, 0]}
-        scale={0.45}
-      >
-        
-        <sphereGeometry args={[5, 64, 64]} />
-        <meshStandardMaterial map={earthTexture} roughness={1} fog={false} />
-      </mesh>
+      <group>
+        {/* <hemisphereLight skyColor={new THREE.Color(0x226ea3)} groundColor={new THREE.Color(0x226ea3)} intensity={1} position={[3,-1.5,-6]} ref={hemisphereLightRef}/> */}
+        <directionalLight ref={directionalLightRef} intensity={4} rotation={[Math.PI, 0, 0]} position={[3, -1.5, -6]} color={new THREE.Color(0x226ea3)}/>
+        <mesh
+          ref={earthRef}
+          position={[3, -1.5, -6]}
+          rotation={[0, 0, 0]}
+          scale={0.45}
+        >
+          <sphereGeometry args={[5, 64, 64]} />
+          <meshStandardMaterial map={earthTexture} roughness={1} fog={true} />
+        </mesh>
+      </group>
     </Float>
   );
 }

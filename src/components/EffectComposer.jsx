@@ -2,6 +2,7 @@ import {
   Bloom,
   DepthOfField,
   EffectComposer,
+  ToneMapping,
   Vignette,
 } from "@react-three/postprocessing";
 
