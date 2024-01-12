@@ -5,6 +5,7 @@ import { useControls } from "leva";
 
 // Styles
 import { gsapOnRender } from "./gsapOnRender";
+import Earth from "./Earth";
 
 export function Scene() {
   const { camera } = useThree();
@@ -63,5 +64,7 @@ export function Scene() {
   }, [camera]);
 
   return <>
+    <axesHelper args={[5]} />
+    <Earth />
   </>;
 }

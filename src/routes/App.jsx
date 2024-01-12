@@ -21,7 +21,7 @@ function App() {
       <Canvas
         camera={{ fov: 75, position: [3, 3, 5] }}
       >
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={null}>
           <Stars
             radius={15}
             depth={50}
