@@ -40,18 +40,18 @@
     left: 50%;
     transform: translateX(-50%);
     width: auto;
-    height: max(10vw, 80px);
+    height: max(10vw, 100px);
     object-fit: contain;
 }
 
 .hamMenuButton{
-    width: max(12vw, 94px);
+    width: max(12vw, 120px);
     aspect-ratio: 3/1;
     border: var(--primary) 2px solid;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: max(calc(10vw - 7px), 76px);
+    top: max(calc(10vw - 7px), 92px);
 
     display: flex;
     align-items: center;

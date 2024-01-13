@@ -19,7 +19,6 @@
   font-size: 1.1rem;
   min-width: 50px;
   min-height: 50px;
-  padding: 0.8rem 0.4rem;
   align-items: center;
 }
 
@@ -37,6 +36,23 @@
 .labels {
   font-size: 0.7rem;
   font-family: "Alacrity Sans", sans-serif;
+}
+
+@media screen and (max-width: 1300px) {
+  .countdown {
+    height: 50px;
+  }
+  .numbers {
+    font-size: 1.2rem;
+  }
+  .label {
+    font-size: 0.8rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .labels {
+    font-size: 0.5rem;
+  }
 }
 
 @keyframes card-flip {
