@@ -32,7 +32,7 @@ function App() {
           <ambientLight />
           <directionalLight position={[10, 10, 5]} intensity={1} />
           <Scene />
-          <axesHelper args={[5]} />
+          {/* <axesHelper args={[5]} /> */}
         </Suspense>
         <Stats />
       </Canvas>
