@@ -3,7 +3,7 @@ import * as navigatorStyles from "@styles/HUD.module.scss";
 
 export function gsapOnRender(camera, rotationUpdateOnMouseMove) {
   gsap.set("#landing-hud-overlay", { opacity: 0 });
-  gsap.set(camera.rotation, { x: -Math.PI / 2, y: 0, z: 0 });
+  gsap.set(camera.rotation, { x: -Math.PI / 2, y: Math.PI/2, z: 0 });
 
   const tl = gsap.timeline({
     onComplete: () => {

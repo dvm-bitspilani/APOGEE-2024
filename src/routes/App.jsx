@@ -1,12 +1,9 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  Stars,
-  Stats,
-} from "@react-three/drei";
+import { Stars, Stats } from "@react-three/drei";
 
 import { motion } from "framer-motion";
-import { Loader } from "@components/Loader";
+import Loader from "@components/Loader";
 import { Scene } from "@components/Landing/Scene";
 import { Hud } from "@components/Landing/HUD";
 import EffectComposerLayer from "../components/EffectComposer";
@@ -19,11 +16,9 @@ function App() {
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 2, ease: "easeInOut" }}
     >
-      <Canvas
-        camera={{ fov: 75, position: [3, 3, 5] }}
-      >
+      <Canvas camera={{ fov: 75, position: [0, 0, 0] }}>
         <EffectComposerLayer />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <Stars
             radius={15}
             depth={50}
@@ -37,11 +32,11 @@ function App() {
           <ambientLight />
           <directionalLight position={[10, 10, 5]} intensity={1} />
           <Scene />
+          <axesHelper args={[5]} />
         </Suspense>
-        <axesHelper args={[5]} />
         <Stats />
       </Canvas>
-      <Hud />
+        <Hud />
     </motion.div>
   );
 }

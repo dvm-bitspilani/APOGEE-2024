@@ -6,6 +6,8 @@ import { useControls } from "leva";
 // Styles
 import { gsapOnRender } from "./gsapOnRender";
 import Earth from "./Earth";
+import AlienPlanet from "./AlienPlanet";
+import {AlienPlanetGLB} from "./AlienPlanet";
 
 import gsap from "gsap/gsap-core";
 
@@ -28,7 +30,8 @@ export function Scene() {
   });
 
   useFrame((state, delta) => {
-    camera.position.set(...position);
+    // camera.position.set(...position);
+    // camera.position.y = Math.sin(state.clock.getElapsedTime() / 2) * 2;
   });
 
   function rotationUpdateOnMouseMove(e) {
@@ -70,6 +73,8 @@ export function Scene() {
 
   return <>
     <axesHelper args={[5]} />
-    <Earth />
+    {/* <Earth /> */}
+    {/* <AlienPlanet /> */}
+    <AlienPlanetGLB />
   </>;
 }

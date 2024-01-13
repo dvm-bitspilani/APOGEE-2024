@@ -58,7 +58,7 @@ export default function Earth() {
           scale={0.45}
         >
           <sphereGeometry args={[5, 64, 64]} />
-          <meshStandardMaterial map={earthTexture} roughness={1} fog={true} />
+          <meshStandardMaterial map={earthTexture} roughness={1} fog={true}/>
         </mesh>
       </group>
     </Float>

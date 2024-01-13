@@ -1,9 +1,7 @@
-import React from "react";
+import { Html, useProgress } from "@react-three/drei";
 
-export function Loader() {
-  return (
-    <div className="loader">
-      <div>Loading</div>
-    </div>
-  );
+export default function Loader() {
+  const { progress } = useProgress();
+  console.log(progress);
+  return <Html center>{progress} % loaded</Html>;
 }
