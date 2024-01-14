@@ -5,6 +5,7 @@ import Countdown from "./Countdown";
 
 import state from "@components/state";
 import { useEffect, useRef } from "react";
+import RegEventsSection from "./RegEventsSection";
 
 export function Hud() {
   useEffect(() => {
@@ -46,8 +47,8 @@ export function Hud() {
           <HamIcon />
           <span>Menu</span>
         </div>
-
         <NavigateSection />
+        <RegEventsSection />
       </div>
     </>
   );

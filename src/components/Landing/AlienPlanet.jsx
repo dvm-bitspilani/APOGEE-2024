@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 
 import * as THREE from "three";
@@ -10,6 +10,8 @@ import { Float, useHelper } from "@react-three/drei";
 
 import alienImg from "/models/alien_planet/textures/Planet_baseColor.png";
 import alienRoughnessImg from "/models/alien_planet/textures/Planet_metallicRoughness.png";
+
+import gsap from "gsap/gsap-core";
 
 export default function AlienPlanet() {
   const planetRef = useRef();
@@ -73,11 +75,33 @@ export function AlienPlanetGLB() {
     }
   );
 
+  let alienPlanetMaterial;
+
+  if (alienPlanet) {
+    alienPlanet.traverse((child) => {
+      if (child.isMesh) {
+        alienPlanetMaterial = child.material;
+      }
+    });
+  }
+
+  useEffect(() => {
+    if (alienPlanetMaterial) {
+      alienPlanetMaterial.transparent = true;
+      alienPlanetMaterial.opacity = 0;
+
+      gsap.to(alienPlanetMaterial, {
+        opacity: 1,
+        duration: 2, // Duration of the fade-in in seconds
+        ease: 'power2.inOut',
+      });
+    }
+  }, [alienPlanetMaterial]);
+
   const alienPlanetRef = useRef();
-  const hemisphereLightRef = useRef(null);
   const directionalLightRef = useRef(null);
 
-  useHelper(hemisphereLightRef, THREE.HemisphereLightHelper, 2, "red");
+  // useHelper(hemisphereLightRef, THREE.HemisphereLightHelper, 2, "red");
   // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 2, "green");
 
   const { intensity, rotation, position } = useControls(
