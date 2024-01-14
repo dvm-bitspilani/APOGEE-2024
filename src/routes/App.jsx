@@ -22,19 +22,11 @@ function App() {
       <Canvas>
         {/* <EffectComposerLayer /> */}
         <Suspense fallback={<Loader />}>
-        <Stars
-            radius={15}
-            depth={50}
-            count={3000}
-            factor={4}
-            saturation={5}
-            fade
-            speed={0}
-          />
+        
         {/* <OrbitControls /> */}
         {/* <ambientLight /> */}
         {/* <directionalLight position={[10, 10, 5]} intensity={1} /> */}
-        <Scene />
+        {/* <Scene /> */}
         {/* <axesHelper args={[5]} /> */}
         <Experience />
         </Suspense>
