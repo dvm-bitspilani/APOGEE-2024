@@ -56,7 +56,7 @@ export default function NavigateSection() {
 
   return (
     <div className={styles.navigatorWrapper}>
-      <img src="/images/spaceship-landing.png" alt="spaceship" />
+      <img draggable={false} src="/images/spaceship-landing.png" alt="spaceship" />
       <div className={styles.navigator}>
         <Line />
         <h1>SECTIONS</h1>

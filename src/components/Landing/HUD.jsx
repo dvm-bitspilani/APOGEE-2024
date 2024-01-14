@@ -42,6 +42,7 @@ export function Hud() {
           className={styles.crosshair}
           src="/images/crosshair.png"
           alt="crosshair"
+          draggable={false}
         />
         <div className={styles.hamMenuButton}>
           <HamIcon />
