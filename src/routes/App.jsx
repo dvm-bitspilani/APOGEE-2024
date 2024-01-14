@@ -40,7 +40,7 @@ function App() {
         </Suspense>
         <Stats />
       </Canvas>
-      {/* <Hud /> */}
+      <Hud />
       {/* </motion.div> */}
     </>
   );
