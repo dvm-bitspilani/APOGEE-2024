@@ -126,9 +126,9 @@ export function AlienPlanetGLB() {
         />
         <primitive
           ref={alienPlanetRef}
-          position={[1, -1, -3]}
+          position={[50, -10, 50]}
           rotation={[0, 0, 0]}
-          scale={1.2}
+          scale={50}
           object={alienPlanet.scene}
         />
       </group>

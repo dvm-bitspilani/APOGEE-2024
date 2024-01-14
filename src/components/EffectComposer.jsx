@@ -13,7 +13,7 @@ export default function EffectComposerLayer() {
         luminanceThreshold={0}
         mipmapBlur
         luminanceSmoothing={0.0}
-        intensity={6}
+        intensity={2}
       />
     </EffectComposer>
   );

@@ -7,19 +7,22 @@ import Loader from "@components/Loader";
 import { Scene } from "@components/Landing/Scene";
 import { Hud } from "@components/Landing/HUD";
 import EffectComposerLayer from "../components/EffectComposer";
+import Background from "../components/Landing/Background";
+import Experience from "../components/Landing/Experience"
 
 function App() {
   return (
-    <motion.div
+    <>
+      {/* <motion.div
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 2, ease: "easeInOut" }}
-    >
-      <Canvas camera={{ fov: 75, position: [0, 0, 0] }}>
-        <EffectComposerLayer />
+    > */}
+      <Canvas>
+        {/* <EffectComposerLayer /> */}
         <Suspense fallback={<Loader />}>
-          <Stars
+        <Stars
             radius={15}
             depth={50}
             count={3000}
@@ -28,16 +31,18 @@ function App() {
             fade
             speed={0}
           />
-          {/* <OrbitControls /> */}
-          <ambientLight />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
-          <Scene />
-          {/* <axesHelper args={[5]} /> */}
+        {/* <OrbitControls /> */}
+        {/* <ambientLight /> */}
+        {/* <directionalLight position={[10, 10, 5]} intensity={1} /> */}
+        <Scene />
+        {/* <axesHelper args={[5]} /> */}
+        <Experience />
         </Suspense>
         <Stats />
       </Canvas>
-      <Hud />
-    </motion.div>
+      {/* <Hud /> */}
+      {/* </motion.div> */}
+    </>
   );
 }
 
