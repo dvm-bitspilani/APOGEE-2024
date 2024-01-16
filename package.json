@@ -16,6 +16,7 @@
     "@vercel/speed-insights": "^1.0.2",
     "framer-motion": "^10.17.6",
     "gsap": "^3.12.4",
+    "lamina": "^1.1.23",
     "leva": "^0.9.35",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -23,6 +24,7 @@
     "react-dom": "^18.2.0",
     "react-powerglitch": "^1.0.3",
     "react-router-dom": "^6.21.1",
+    "simplex-noise": "^4.0.1",
     "sort-by": "^1.2.0",
     "three": "^0.160.0",
     "valtio": "^1.12.1"
