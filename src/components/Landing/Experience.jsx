@@ -8,7 +8,7 @@ function Experience() {
   return (
     <>
       {/* <OrbitControls /> */}
-      <PerspectiveCamera position={[0, 0, 0]} rotation={[0, Math.PI, 0]} zoom={1} fov={75} makeDefault />
+      <PerspectiveCamera position={[0, 0, 0]} rotation={[0, Math.PI, 0]} zoom={0.5} fov={50} makeDefault />
       {/* <Sphere scale={[100, 100, 100]}>
         <meshBasicMaterial
           side={THREE.BackSide} // Render the material on the back side of the geometry (inside)
