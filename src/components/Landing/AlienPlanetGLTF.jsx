@@ -72,13 +72,16 @@ export default function AlienPlanetGLTF(props) {
     // }
   });
 
-  // const { color } = useControls("Alien Planet", {
-  //   color: {
-  //     value: "#40dbad",
-  //     label: "Color",
-  //   },
-  // });
-  const color = "#40dbad";
+  const { color, float } = useControls("Alien Planet", {
+    color: {
+      value: "#40dbad",
+      label: "Color",
+    },
+    float:{
+      value: true,
+      label: "Float",
+    }
+  });
 
 
   return (
@@ -90,7 +93,7 @@ export default function AlienPlanetGLTF(props) {
         color={new THREE.Color(Number("0x" + color.replace("#", "")))}
       />
       <Float
-        speed={0.35} // Animation speed, defaults to 1
+        speed={float?0.35:0} // Animation speed, defaults to 1
         rotationIntensity={1} // XYZ rotation intensity, defaults to 1
         floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[-0.4, 0.4]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
