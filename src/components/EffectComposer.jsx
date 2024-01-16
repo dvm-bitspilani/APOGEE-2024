@@ -12,8 +12,8 @@ export default function EffectComposerLayer() {
       <Bloom
         luminanceThreshold={0}
         mipmapBlur
-        luminanceSmoothing={0.0}
-        intensity={2}
+        luminanceSmoothing={0.2}
+        intensity={3}
       />
     </EffectComposer>
   );

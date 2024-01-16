@@ -41,6 +41,13 @@ export function gsapOnMenu(
           duration: 1,
           ease: "power2.inOut",
         }, "<"
+    ).to(
+      `.${hudStyles.crosshair}`,
+      {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      }, "<"
     )
       .to(
         camera.position,
@@ -51,7 +58,7 @@ export function gsapOnMenu(
           duration: 1,
           ease: "power2.inOut",
         },
-        ">"
+        "-=0.5"
       )
       .to(
         camera.rotation,
@@ -100,7 +107,7 @@ export function gsapOnMenu(
           duration: 1,
           ease: "power2.inOut",
         },
-        ">"
+        "-=0.5"
       ).to(
         `.${hudStyles.regEventsWrapper}`,
         {
@@ -108,6 +115,13 @@ export function gsapOnMenu(
           duration: 1,
           ease: "power2.inOut",
         }, "<"
+    ).to(
+      `.${hudStyles.crosshair}`,
+      {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      }, "<"
     );
   }
 }

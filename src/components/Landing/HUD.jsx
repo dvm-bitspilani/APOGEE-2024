@@ -6,12 +6,9 @@ import Countdown from "./Countdown";
 import { useSnapshot } from "valtio";
 
 import state from "@components/state";
-import { useControls } from "leva";
 import RegEventsSection from "./RegEventsSection";
-import { useFrame, useThree } from "@react-three/fiber";
 
 export function Hud() {
-  const snap = useSnapshot(state);
 
   return (
     <>

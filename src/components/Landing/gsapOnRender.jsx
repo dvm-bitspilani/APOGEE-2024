@@ -1,9 +1,9 @@
-import gsap from "gsap";
+import gsap from "gsap/gsap-core";
 import * as navigatorStyles from "@styles/HUD.module.scss";
 
 export function gsapOnRender(camera, rotationUpdateOnMouseMoveHandler) {
   // gsap.set("#landing-hud-overlay", { opacity: 0 });
-  gsap.set(camera.rotation, { x: -Math.PI / 2, y: Math.PI/2, z: 0 });
+  gsap.set(camera.rotation, { x: -Math.PI / 2, y: Math.PI / 2, z: 0 });
   // gsap.set(camera.rotation, { x: 0, y: 0, z: 0 });
 
   const tl = gsap.timeline({
@@ -12,7 +12,7 @@ export function gsapOnRender(camera, rotationUpdateOnMouseMoveHandler) {
     },
   });
 
-  tl.to(camera.rotation, {
+  tl.to(camera.position, {
     x: 0,
     y: 0,
     z: 0,
@@ -44,4 +44,7 @@ export function gsapOnRender(camera, rotationUpdateOnMouseMoveHandler) {
       },
       "-=1"
     );
+
+  // Start the timeline
+  tl.play();
 }

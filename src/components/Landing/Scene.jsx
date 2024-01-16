@@ -17,6 +17,7 @@ import { gsapOnMenu } from "./gsapOnMenu";
 
 import state from "../state";
 import { useSnapshot } from "valtio";
+import { useCamera } from "@react-three/drei";
 
 export function Scene() {
   const { camera } = useThree();
@@ -24,25 +25,25 @@ export function Scene() {
   const menuPos = [-1, -1.5, -0.5];
   const menuRot = [0, -1.9, 0];
 
-  // const { position, rotation } = useControls("Camera", {
-  //   position: {
-  //     value: [0, 0, 0],
-  //     step: 10,
-  //     min: -1000,
-  //     max: 1000,
-  //   },
-  //   rotation: {
-  //     value: [0, 0, 0],
-  //     step: 0.1,
-  //     min: -Math.PI * 2,
-  //     max: Math.PI * 2,
-  //   },
-  // });
+  const { position, rotation } = useControls("Camera", {
+    position: {
+      value: [0, 0, 0],
+      step: 10,
+      min: -1000,
+      max: 1000,
+    },
+    rotation: {
+      value: [0, 0, 0],
+      step: 0.1,
+      min: -Math.PI * 2,
+      max: Math.PI * 2,
+    },
+  });
 
   useFrame(() => {
     // camera.position.set(...position);
     // camera.rotation.set(...rotation);
-    // console.log(camera.rotation);
+    // console.log(camera);
   });
 
   function rotationUpdateOnMouseMove(e, cameraPos) {
@@ -70,14 +71,21 @@ export function Scene() {
   const snap = useSnapshot(state);
 
   const rotationUpdateOnMouseMoveHandler = (e) =>
-    rotationUpdateOnMouseMove(e, [0, 0, 0]) ;
+    rotationUpdateOnMouseMove(e, [0, 0, 0]);
   const rotationUpdateOnMouseMoveHandler2 = (e) =>
     rotationUpdateOnMouseMove(e, menuRot);
 
   useEffect(() => {
     gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
 
-    console.log("hello"); 
+    gsap.to(camera.rotation, {
+      x: 0,
+      y: 0,
+      z: 0,
+      duration: 2,
+      delay: 2,
+      ease: "power2.inOut",
+    });
 
     return () => {
       window?.removeEventListener(
@@ -85,24 +93,24 @@ export function Scene() {
         rotationUpdateOnMouseMoveHandler
       );
     };
-  }, []);
+  }, [camera]);
 
   const hamMenuButton = document.querySelector("#ham-menu-button");
 
-  const gsapOnMenuHandler = () => gsapOnMenu(
-    camera,
-    menuPos,
-    menuRot,
-    state.isHamOpen,
-    rotationUpdateOnMouseMoveHandler
-  );
+  const gsapOnMenuHandler = () =>
+    gsapOnMenu(
+      camera,
+      menuPos,
+      menuRot,
+      state.isHamOpen,
+      rotationUpdateOnMouseMoveHandler
+    );
 
   // console.log("hello");
 
   hamMenuButton.addEventListener("click", gsapOnMenuHandler);
 
   useEffect(() => {
-
     return () => {
       window?.removeEventListener(
         "mousemove",
