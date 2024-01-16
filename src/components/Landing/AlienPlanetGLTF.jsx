@@ -72,12 +72,14 @@ export default function AlienPlanetGLTF(props) {
     // }
   });
 
-  const { color } = useControls("Alien Planet", {
-    color: {
-      value: "#40dbad",
-      label: "Color",
-    },
-  });
+  // const { color } = useControls("Alien Planet", {
+  //   color: {
+  //     value: "#40dbad",
+  //     label: "Color",
+  //   },
+  // });
+  const color = "#40dbad";
+
 
   return (
     <>
@@ -95,7 +97,7 @@ export default function AlienPlanetGLTF(props) {
       >
         <group
           {...props}
-          position={[1, -1, -3]}
+          position={[0.75, -1.5, -2]}
           rotation={[0, 0, 0]}
           scale={1.2}
           dispose={null}

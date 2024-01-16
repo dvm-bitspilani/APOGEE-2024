@@ -15,20 +15,20 @@ import gsap from "gsap/gsap-core";
 export function Scene() {
   const { camera } = useThree();
 
-  const { position } = useControls("Camera", {
-    position: {
-      value: [0, 0, 0],
-      step: 10,
-      min: -1000,
-      max: 1000,
-    },
-    rotation: {
-      value: [0, 0, 0],
-      step: 0.1,
-      min: -10,
-      max: 10,
-    },
-  });
+  // const { position } = useControls("Camera", {
+  //   position: {
+  //     value: [0, 0, 0],
+  //     step: 10,
+  //     min: -1000,
+  //     max: 1000,
+  //   },
+  //   rotation: {
+  //     value: [0, 0, 0],
+  //     step: 0.1,
+  //     min: -10,
+  //     max: 10,
+  //   },
+  // });
 
   function rotationUpdateOnMouseMove(e) {
     const { clientX, clientY } = e;
