@@ -48,6 +48,7 @@
   width: max(12vw, 120px);
   aspect-ratio: 3/1;
   border-color: var(--secondary);
+  background-color: transparent;
   border-width: 1px;
   border-style: solid;
   position: absolute;
@@ -61,7 +62,7 @@
 
   transition: border-color 0.2s ease-in-out;
 
-  svg * {
+  & * {
     transition: all 0.2s ease-in-out;
   }
 
@@ -80,13 +81,12 @@
     text-shadow: 0px 0px 14.815px var(--hover-link);
     color: var(--hover-link);
 
-    svg {
-      g {
-        filter: none;
-      }
-      path {
-        stroke: var(--hover-link);
-      }
+    div div{
+      background-color: var(--hover-link);
+    }
+
+    span{
+      text-shadow: 0px 0px 14.815px var(--hover-link);
     }
   }
 }

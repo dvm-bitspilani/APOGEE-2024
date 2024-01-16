@@ -1,13 +1,17 @@
 import * as styles from "@styles/HUD.module.scss";
+import * as ham from "@styles/Ham.module.scss";
+
 import NavigateSection from "./NavigateSection";
 import Countdown from "./Countdown";
-// import { useSnapshot } from "valtio";
+import { useSnapshot } from "valtio";
 
 import state from "@components/state";
-import { useEffect, useRef } from "react";
+import { useControls } from "leva";
 import RegEventsSection from "./RegEventsSection";
+import { useFrame, useThree } from "@react-three/fiber";
 
 export function Hud() {
+  const snap = useSnapshot(state);
 
   return (
     <>
@@ -37,10 +41,14 @@ export function Hud() {
           alt="crosshair"
           draggable={false}
         />
-        <div className={styles.hamMenuButton} onClick={()=>state.isHamOpen = true}>
+        <button
+        id="ham-menu-button"
+          className={styles.hamMenuButton}
+          onClick={() => (state.isHamOpen = !state.isHamOpen)}
+        >
           <HamIcon />
           <span>Menu</span>
-        </div>
+        </button>
         <NavigateSection />
         <RegEventsSection />
       </div>
@@ -49,60 +57,27 @@ export function Hud() {
 }
 
 export function HamIcon() {
+  const snap = useSnapshot(state);
+
+  const l1 = document.querySelector(`.${ham.hamIconLine1}`);
+  const l2 = document.querySelector(`.${ham.hamIconLine2}`);
+  const l3 = document.querySelector(`.${ham.hamIconLine3}`);
+
+  if (snap.isHamOpen) {
+    l1?.classList.add(ham.active);
+    l2?.classList.add(ham.active);
+    l3?.classList.add(ham.active);
+  } else {
+    l1?.classList.remove(ham.active);
+    l2?.classList.remove(ham.active);
+    l3?.classList.remove(ham.active);
+  }
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="51"
-      height="42"
-      viewBox="0 0 51 42"
-      fill="none"
-    >
-      <g filter="url(#filter0_d_570_152)">
-        <path
-          d="M12 20.8889H38.6667M12 12H38.6667M12 29.7778H29.7778"
-          stroke="#9AF0F4"
-          strokeWidth="2.96332"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
-      <defs>
-        <filter
-          id="filter0_d_570_152"
-          x="0.0541353"
-          y="0.0541658"
-          width="50.5584"
-          height="41.6694"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset />
-          <feGaussianBlur stdDeviation="5.23209" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.603922 0 0 0 0 0.941176 0 0 0 0 0.956863 0 0 0 1 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_570_152"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow_570_152"
-            result="shape"
-          />
-        </filter>
-      </defs>
-    </svg>
+    <div className={ham.hamIcon}>
+      <div className={ham.hamIconLine1}></div>
+      <div className={ham.hamIconLine2}></div>
+      <div className={ham.hamIconLine3}></div>
+    </div>
   );
 }

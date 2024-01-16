@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
 
 // Styles
+// import * as hudStyles from "@styles/HUD.module.scss";
+
 import { gsapOnRender } from "./gsapOnRender";
 import Earth from "./Earth";
 import AlienPlanet from "./AlienPlanet";
@@ -11,11 +13,18 @@ import { AlienPlanetGLB } from "./AlienPlanet";
 import AlienPlanetGLTF from "./AlienPlanetGLTF";
 
 import gsap from "gsap/gsap-core";
+import { gsapOnMenu } from "./gsapOnMenu";
+
+import state from "../state";
+import { useSnapshot } from "valtio";
 
 export function Scene() {
   const { camera } = useThree();
 
-  // const { position } = useControls("Camera", {
+  const menuPos = [-1, -1.5, -0.5];
+  const menuRot = [0, -1.9, 0];
+
+  // const { position, rotation } = useControls("Camera", {
   //   position: {
   //     value: [0, 0, 0],
   //     step: 10,
@@ -25,12 +34,18 @@ export function Scene() {
   //   rotation: {
   //     value: [0, 0, 0],
   //     step: 0.1,
-  //     min: -10,
-  //     max: 10,
+  //     min: -Math.PI * 2,
+  //     max: Math.PI * 2,
   //   },
   // });
 
-  function rotationUpdateOnMouseMove(e) {
+  useFrame(() => {
+    // camera.position.set(...position);
+    // camera.rotation.set(...rotation);
+    // console.log(camera.rotation);
+  });
+
+  function rotationUpdateOnMouseMove(e, cameraPos) {
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
     const center = {
@@ -43,46 +58,62 @@ export function Scene() {
     const y = (center.x - clientX) / innerWidth;
     const x = (center.y - clientY) / innerHeight;
 
+    // console.log(cameraPos);
+
     gsap.to(camera.rotation, {
-      x: x * maxRotate,
-      y: y * maxRotate,
+      x: cameraPos[0] + x * maxRotate,
+      y: cameraPos[1] + y * maxRotate,
       ease: "power2.out",
     });
   }
 
-  // const snap = useSnapshot(state);
+  const snap = useSnapshot(state);
+
+  const rotationUpdateOnMouseMoveHandler = (e) =>
+    rotationUpdateOnMouseMove(e, [0, 0, 0]) ;
+  const rotationUpdateOnMouseMoveHandler2 = (e) =>
+    rotationUpdateOnMouseMove(e, menuRot);
 
   useEffect(() => {
-    gsapOnRender(camera, rotationUpdateOnMouseMove);
+    gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
 
-    let mouseTimer;
-
-    function startMouseDetection() {
-      document.addEventListener("mousemove", handleMouseMove);
-    }
-
-    function handleMouseMove() {
-      // Clear the previous timer if it exists
-      clearTimeout(mouseTimer);
-
-      // Set a new timer for 5 seconds
-      mouseTimer = setTimeout(function () {
-        console.log("Mouse stopped moving for 5 seconds");
-        // Add your code here to handle the mouse being stopped for 5 seconds
-      }, 5000);
-    }
-
-    // Start mouse detection when the script is loaded
-    startMouseDetection();
+    console.log("hello"); 
 
     return () => {
-      window?.removeEventListener("mousemove", rotationUpdateOnMouseMove);
+      window?.removeEventListener(
+        "mousemove",
+        rotationUpdateOnMouseMoveHandler
+      );
     };
-  }, [camera,  ]);
+  }, []);
+
+  const hamMenuButton = document.querySelector("#ham-menu-button");
+
+  const gsapOnMenuHandler = () => gsapOnMenu(
+    camera,
+    menuPos,
+    menuRot,
+    state.isHamOpen,
+    rotationUpdateOnMouseMoveHandler
+  );
+
+  // console.log("hello");
+
+  hamMenuButton.addEventListener("click", gsapOnMenuHandler);
+
+  useEffect(() => {
+
+    return () => {
+      window?.removeEventListener(
+        "mousemove",
+        rotationUpdateOnMouseMoveHandler2
+      );
+    };
+  }, [snap.isHamOpen]);
 
   return (
     <>
-      <axesHelper args={[5]} />
+      {/* <axesHelper args={[5]} /> */}
       {/* <Earth /> */}
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
