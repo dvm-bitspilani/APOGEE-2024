@@ -97,9 +97,9 @@ export function AlienPlanetGLB() {
       },
       position: {
         value: [-2, 2, -4],
-        step: 1,
-        min: -10,
-        max: 10,
+        // step: 1,
+        // min: -10,
+        // max: 10,
       },
     }
   );
@@ -122,14 +122,14 @@ export function AlienPlanetGLB() {
             ref={directionalLightRef}
             intensity={intensity}
             rotation={rotation}
-            position={position}
+            position={[-50, 50, -50]}
             color={new THREE.Color(0xffffff)}
           />
           <primitive
             ref={alienPlanetRef}
-            position={[50, -10, 50]}
+            position={[50, -75, -100]}
             rotation={[0, 0, 0]}
-            scale={50}
+            scale={75}
             object={alienPlanet.scene}
           />
         </group>
