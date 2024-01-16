@@ -1,5 +1,5 @@
 import { proxy } from "valtio";
 
-const state = proxy({ count: 0 });
+const state = proxy({ isHamOpen: false });
 
 export default state;

@@ -5,15 +5,9 @@ import Countdown from "./Countdown";
 
 import state from "@components/state";
 import { useEffect, useRef } from "react";
+import RegEventsSection from "./RegEventsSection";
 
 export function Hud() {
-  useEffect(() => {
-    const interval = setInterval(() => {
-      state.count = state.count + 1;
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
@@ -41,13 +35,14 @@ export function Hud() {
           className={styles.crosshair}
           src="/images/crosshair.png"
           alt="crosshair"
+          draggable={false}
         />
-        <div className={styles.hamMenuButton}>
+        <div className={styles.hamMenuButton} onClick={()=>state.isHamOpen = true}>
           <HamIcon />
           <span>Menu</span>
         </div>
-
         <NavigateSection />
+        <RegEventsSection />
       </div>
     </>
   );
