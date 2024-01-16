@@ -57,6 +57,7 @@
   left: 50%;
   transform: translateX(-50%);
   top: max(calc(10vw - 7px), 92px);
+  pointer-events: all;
 
   display: flex;
   align-items: center;
@@ -100,6 +101,7 @@
   bottom: 20%;
   left: 10%;
   width: 280px;
+  pointer-events: all;
 
   // border: 2px solid var(--primary);
 
@@ -175,6 +177,7 @@
   bottom: 15%;
   right: 10%;
   width: 280px;
+  pointer-events: all;
 
   // border: 2px solid var(--primary);
 
