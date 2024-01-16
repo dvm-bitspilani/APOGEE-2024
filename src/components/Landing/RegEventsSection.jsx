@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as styles from "@styles/HUD.module.scss";
 import { Link } from "react-router-dom";
 
+import placeholder from "@assets/events/placeholder.png";
+import eventsSep from "@assets/landing/events_landing_sep.svg";
+import carouselWindow from "@assets/landing/CarouselWindow.svg";
+
 import { Line } from "./NavigateSection";
 
+import { useGlitch } from "react-powerglitch";
+
+import kernel_events from "@assets/events/kernel_events";
+
 export default function RegEventsSection() {
+  const [index, setIndex] = useState(0);
   return (
     <div className={styles.regEventsWrapper}>
       <Link to="/register">
@@ -13,9 +22,57 @@ export default function RegEventsSection() {
       </Link>
       <h1>EVENTS FOR YOU</h1>
       <Line />
-      <div className={styles.eventsWrapper}></div>
+      <div className={styles.eventsWrapper}>
+        <EventsCarousel index={index} setIndex={setIndex} />
+      </div>
       <Line />
     </div>
+  );
+}
+
+export function EventsCarousel({ index, setIndex }) {
+  const { ref, startGlitch, stopGlitch } = useGlitch({
+    playMode: "manual",
+    hideOverflow: false,
+  });
+
+  function glitchEffect() {
+    startGlitch();
+    setTimeout(() => {
+      stopGlitch();
+    }, 1000);
+  }
+
+  function carouselPrev() {
+    glitchEffect();
+    setIndex((index - 1 + kernel_events.length) % kernel_events.length);
+  }
+
+  function carouselNext() {
+    glitchEffect();
+    setIndex((index + 1) % kernel_events.length);
+  }
+
+  return (
+    <>
+      <div className={styles.eventsCarousel}>
+        <div className={styles.leftArrow} onClick={carouselPrev}></div>
+        <div className={styles.carouselWindow}>
+          <img
+            ref={ref}
+            src={`/src/assets/events/${kernel_events[index].image}`}
+            alt={placeholder}
+            onError={(e) => (e.target.src = placeholder)}
+          />
+        </div>
+        <div className={styles.rightArrow} onClick={carouselNext}></div>
+      </div>
+      <img src={eventsSep} alt="separator" />
+      <div className={styles.eventsInfo}>
+        <h2>{kernel_events[index].name}</h2>
+        <p>{kernel_events[index].category}</p>
+      </div>
+    </>
   );
 }
 
@@ -214,9 +271,9 @@ export function Register_bg_svg() {
           width="315"
           height="117.696"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -248,9 +305,9 @@ export function Register_bg_svg() {
           width="315"
           height="117.696"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

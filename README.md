@@ -15,6 +15,7 @@ Dependencies installed:
 6. Framer-motion
 7. React router dom
 8. Valtio
+9. React Powerglitch
 
 To use state management:
 1. Add the global variable to the state.js file in the components folder.

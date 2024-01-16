@@ -168,8 +168,8 @@
 
 .regEventsWrapper {
   position: absolute;
-  top: 20%;
-  bottom: 20%;
+  top: 15%;
+  bottom: 15%;
   right: 10%;
   width: 280px;
 
@@ -244,5 +244,115 @@
   & > svg {
     width: 100%;
     height: auto;
+  }
+}
+
+.eventsWrapper {
+  background: url("@assets/landing/events_landing_bg.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: auto;
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  padding-block: 10%;
+
+  display: flex;
+  flex-direction: column;
+
+  .eventsCarousel {
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    margin-inline: 10%;
+
+    justify-content: space-between;
+  }
+
+  .leftArrow {
+    width: 20%;
+    height: auto;
+    background: url("@assets/landing/left-arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: scale 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.3;
+    }
+  }
+
+  .rightArrow {
+    width: 20%;
+    height: auto;
+    background: url("@assets/landing/right-arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: scale 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.3;
+    }
+  }
+
+  .carouselWindow {
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("@assets/landing/CarouselWindow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-width: 10px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      z-index: -1;
+      border-radius: 50%;
+    }
+
+    & > div > div {
+      place-items: center;
+    }
+  }
+
+  .eventsInfo {
+    height: auto;
+    width: 100%;
+
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    h2 {
+      text-align: center;
+      text-shadow: 0px 0px 36.347px rgba(136, 196, 200, 0.7),
+        0px 0px 5.871px rgba(134, 244, 232, 0.8);
+    }
+    p {
+      text-align: center;
+      color: var(--grey-text);
+      text-shadow: 0px 0px 36.347px rgba(197, 197, 197, 0.7),
+        0px 0px 5.871px rgba(197, 197, 197, 0.8);
+    }
   }
 }
