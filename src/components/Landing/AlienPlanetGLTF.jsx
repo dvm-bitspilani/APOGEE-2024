@@ -83,7 +83,7 @@ export default function AlienPlanetGLTF(props) {
       label: "Color",
     },
     float:{
-      value: true,
+      value: false,
       label: "Float",
     }
   });
@@ -92,22 +92,22 @@ export default function AlienPlanetGLTF(props) {
   return (
     <>
       <directionalLight
-        intensity={4}
+        intensity={5}
         rotation={[Math.PI, 0, 0]}
-        position={[-2, 1.5, -4]}
+        position={[-2, 5, -4]}
         color={new THREE.Color(Number("0x" + color.replace("#", "")))}
       />
-      <Float
+      {/* <Float
         speed={float?0.35:0} // Animation speed, defaults to 1
         rotationIntensity={1} // XYZ rotation intensity, defaults to 1
         floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[-0.4, 0.4]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
-      >
+      > */}
         <group
           {...props}
-          position={position}
+          position={[50, -75, -100]}
           rotation={[0, 0, 0]}
-          scale={1.2}
+          scale={75}
           dispose={null}
           ref={alienPlanetRef}
         >
@@ -115,7 +115,8 @@ export default function AlienPlanetGLTF(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_4.geometry}
-            material={isHovered ? outlineMaterial : materials.Planet}
+            // material={isHovered ? outlineMaterial : materials.Planet}
+            material={materials.Planet}
             onPointerOver={() => setIsHovered(true)}
             onPointerOut={() => setIsHovered(false)}
           />
@@ -127,7 +128,7 @@ export default function AlienPlanetGLTF(props) {
             scale={1.025}
           />
         </group>
-      </Float>
+      {/* </Float> */}
     </>
   );
 }

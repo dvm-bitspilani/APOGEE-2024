@@ -121,9 +121,9 @@ export function AlienPlanetGLB() {
       },
       position: {
         value: [-2, 2, -4],
-        step: 1,
-        min: -10,
-        max: 10,
+        // step: 1,
+        // min: -10,
+        // max: 10,
       },
     }
   );
@@ -133,29 +133,31 @@ export function AlienPlanetGLB() {
   });
 
   return (
-    <Float
-      speed={0.35} // Animation speed, defaults to 1
-      rotationIntensity={1} // XYZ rotation intensity, defaults to 1
-      floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
-      floatingRange={[-0.4, 0]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
-    >
-      <group>
-        {/* <hemisphereLight skyColor={new THREE.Color(0x226ea3)} groundColor={new THREE.Color(0x226ea3)} intensity={1} position={[3,-1.5,-6]} ref={hemisphereLightRef}/> */}
-        <directionalLight
-          ref={directionalLightRef}
-          intensity={intensity}
-          rotation={rotation}
-          position={position}
-          color={new THREE.Color(0xffffff)}
-        />
-        <primitive
-          ref={alienPlanetRef}
-          position={[1, -1, -3]}
-          rotation={[0, 0, 0]}
-          scale={1.2}
-          object={alienPlanet.scene}
-        />
-      </group>
-    </Float>
+    <>
+      {/* <Float
+        speed={0.35} // Animation speed, defaults to 1
+        rotationIntensity={1} // XYZ rotation intensity, defaults to 1
+        floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
+        floatingRange={[-0.4, 0]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
+      > */}
+        <group>
+          {/* <hemisphereLight skyColor={new THREE.Color(0x226ea3)} groundColor={new THREE.Color(0x226ea3)} intensity={1} position={[3,-1.5,-6]} ref={hemisphereLightRef}/> */}
+          <directionalLight
+            ref={directionalLightRef}
+            intensity={intensity}
+            rotation={rotation}
+            position={[-50, 50, -50]}
+            color={new THREE.Color(0xffffff)}
+          />
+          <primitive
+            ref={alienPlanetRef}
+            position={[50, -75, -100]}
+            rotation={[0, 0, 0]}
+            scale={75}
+            object={alienPlanet.scene}
+          />
+        </group>
+      {/* </Float> */}
+    </>
   );
 }
