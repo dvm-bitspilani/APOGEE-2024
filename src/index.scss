@@ -15,6 +15,7 @@
     scrollbar-width: none;
     font-family: Alacrity Sans;
     color: var(--primary);
+    user-select: none;
 }
 
 *::-webkit-scrollbar{
