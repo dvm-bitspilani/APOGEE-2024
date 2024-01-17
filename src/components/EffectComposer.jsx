@@ -14,19 +14,19 @@ export default function EffectComposerLayer() {
     "Post Processing",
     {
       bloomStrength: {
-        value: 3.5,
+        value: 2.4,
         step: 0.1,
         min: 0,
         max: 10,
       },
       bloomThreshold: {
-        value: 0.7,
+        value: 0.8,
         step: 0.1,
         min: 0,
         max: 10,
       },
       luminanceSmoothing: {
-        value: 0.2,
+        value: 0.6,
         step: 0.1,
         min: 0,
         max: 10,

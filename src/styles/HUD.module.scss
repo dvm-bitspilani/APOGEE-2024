@@ -258,7 +258,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: auto;
+  height: 362px;
   width: 100%;
   flex-grow: 1;
   flex-shrink: 0;
@@ -365,5 +365,13 @@
       text-shadow: 0px 0px 36.347px rgba(197, 197, 197, 0.7),
         0px 0px 5.871px rgba(197, 197, 197, 0.8);
     }
+  }
+}
+
+
+@media screen and (max-height : 700px) {
+  .navigatorWrapper , .regEventsWrapper{
+    // top: 20%;
+    bottom: 5%;
   }
 }
