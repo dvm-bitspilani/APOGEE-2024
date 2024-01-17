@@ -7,10 +7,12 @@ import Loader from "@components/Loader";
 import { Scene } from "@components/Landing/Scene";
 import { Hud } from "@components/Landing/HUD";
 import EffectComposerLayer from "../components/EffectComposer";
-import Background from "../components/Landing/Background";
+// import Background from "../components/Landing/Background";
 import Experience from "../components/Landing/Experience";
 
+
 function App() {
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}

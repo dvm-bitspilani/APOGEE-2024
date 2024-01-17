@@ -6,14 +6,41 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 
+import {useControls} from "leva";
+
 export default function EffectComposerLayer() {
+
+  const { bloomStrength, bloomThreshold, luminanceSmoothing } = useControls(
+    "Post Processing",
+    {
+      bloomStrength: {
+        value: 3.5,
+        step: 0.1,
+        min: 0,
+        max: 10,
+      },
+      bloomThreshold: {
+        value: 0.7,
+        step: 0.1,
+        min: 0,
+        max: 10,
+      },
+      luminanceSmoothing: {
+        value: 0.2,
+        step: 0.1,
+        min: 0,
+        max: 10,
+      },
+    }
+  );
+
   return (
     <EffectComposer disableNormalPass>
       <Bloom
-        luminanceThreshold={0}
-        mipmapBlur
-        luminanceSmoothing={0.2}
-        intensity={3}
+        intensity={bloomStrength}
+        luminanceThreshold={bloomThreshold}
+        luminanceSmoothing={luminanceSmoothing}
+        mipmapBlur={true}
       />
     </EffectComposer>
   );
