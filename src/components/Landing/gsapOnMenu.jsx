@@ -29,7 +29,7 @@ export function gsapOnMenu(
     tl.to(
       `.${hudStyles.navigatorWrapper}`,
       {
-        opacity: 0,
+        autoAlpha: 0,
         duration: 1,
         ease: "power2.inOut",
       },
@@ -37,14 +37,14 @@ export function gsapOnMenu(
     ) .to(
         `.${hudStyles.regEventsWrapper}`,
         {
-          opacity: 0,
+          autoAlpha: 0,
           duration: 1,
           ease: "power2.inOut",
         }, "<"
     ).to(
       `.${hudStyles.crosshair}`,
       {
-        opacity: 0,
+        autoAlpha: 0,
         duration: 1,
         ease: "power2.inOut",
       }, "<"
@@ -103,7 +103,7 @@ export function gsapOnMenu(
       .to(
         `.${hudStyles.navigatorWrapper}`,
         {
-          opacity: 1,
+          autoAlpha: 1,
           duration: 1,
           ease: "power2.inOut",
         },
@@ -111,14 +111,14 @@ export function gsapOnMenu(
       ).to(
         `.${hudStyles.regEventsWrapper}`,
         {
-          opacity: 1,
+          autoAlpha: 1,
           duration: 1,
           ease: "power2.inOut",
         }, "<"
     ).to(
       `.${hudStyles.crosshair}`,
       {
-        opacity: 1,
+        autoAlpha: 1,
         duration: 1,
         ease: "power2.inOut",
       }, "<"
