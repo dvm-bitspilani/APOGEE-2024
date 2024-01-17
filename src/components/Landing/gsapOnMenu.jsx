@@ -12,6 +12,8 @@ export function gsapOnMenu(
   // Store the function in a variable
   //   let rotationHandler = rotationUpdateOnMouseMoveHandler;
 
+  const hamMenuButton = document.getElementById("ham-menu-button");
+
   if (!isHamOpen) {
     console.log("forwards");
 
@@ -21,6 +23,10 @@ export function gsapOnMenu(
           "mousemove",
           rotationUpdateOnMouseMoveHandler
         );
+        hamMenuButton.disabled = true;
+      },
+      onComplete: () => {
+        hamMenuButton.disabled = false;
       },
     });
 
@@ -91,8 +97,12 @@ export function gsapOnMenu(
     console.log("backwards");
 
     const tl = gsap.timeline({
+      onStart: () => {
+        hamMenuButton.disabled = true;
+      },
       onComplete: () => {
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+        hamMenuButton.disabled = false;
       },
     });
 

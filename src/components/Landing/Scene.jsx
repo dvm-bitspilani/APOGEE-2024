@@ -23,7 +23,7 @@ import { DirectionalLightHelper } from "three";
 export function Scene() {
   const { camera } = useThree();
 
-  const menuPos = [-2, -1.5, -0.5];
+  const menuPos = [-2, -1.5, 0.5];
   const menuRot = [0, -1.9, 0];
 
   const { position, rotation } = useControls("Camera", {
@@ -138,7 +138,7 @@ export function Scene() {
   });
 
   const lightRef = useRef();
-  useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
+  // useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
 
   useEffect(() => {
     lightRef.current.target = state.alienPlanet;
