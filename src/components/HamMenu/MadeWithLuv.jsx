@@ -6,7 +6,7 @@ export default function ConstellationDetected() {
     <div className={`${styles.madeLuv} ${styles.menu}`}>
       <span>Made with</span>
       <img src={luv} alt="love" />
-      <span>by BITS</span>
+      <span>by DVM</span>
     </div>
   );
 }
