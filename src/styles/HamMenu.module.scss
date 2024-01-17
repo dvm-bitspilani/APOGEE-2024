@@ -1,0 +1,154 @@
+.menu {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+.constellationDetected {
+  position: absolute;
+  top: 35%;
+  right: 50px;
+
+  background: url("@assets/hamMenu/constellationDetected.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  height: 175px;
+  width: 300px;
+  padding-inline: 20px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+//   gap: 20px;
+
+  .apogeeLogo {
+    height: 40%;
+    aspect-ratio: 1/1;
+
+    background-image: url("@assets/hamMenu/apogee_bg.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 60px;
+      aspect-ratio: 1/1;
+      // Fixing the image size
+      transform: translateX(-5px);
+    }
+  }
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+
+  h1 {
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 0.8rem;
+    color: var(--primary-grey);
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+
+.socials {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  position: absolute;
+  top: calc(35% + 175px + 20px);
+  right: 50px;
+
+  width: 300px;
+  height: 100px;
+}
+
+.socials a {
+  height: 85px;
+  aspect-ratio: 1/1;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: scale 0.2s ease-in-out;
+
+  pointer-events: all;
+
+  svg{
+    height: 30%;
+    aspect-ratio: 1/1;
+  }
+}
+
+.socials a:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.socials a:nth-child(1) {
+  background-image: url("@assets/hamMenu/YT_bg.png");
+}
+
+.socials a:nth-child(2) {
+  background-image: url("@assets/hamMenu/insta_bg.png");
+}
+
+.socials a:nth-child(3) {
+  background-image: url("@assets/hamMenu/fb_bg.png");
+}
+
+.madeLuv{
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+
+    transform: translateX(50%);
+
+    width: 200px;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    span{
+        color: #fff;
+        font-family: Alacrity Sans;
+    }
+
+    img{
+        height: 30px;
+        aspect-ratio: 1/1;
+    }
+}
+
+@media screen and (max-width: 1168px) {
+    .constellationDetected {
+        transform-origin: 100% 50%;
+        transform: scale(0.8);
+    }
+    .socials{
+        top: calc(35% + 140px + 20px);
+        transform-origin: 100% 50%;
+        transform: scale(0.8);
+    }
+}

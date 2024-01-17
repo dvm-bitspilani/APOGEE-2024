@@ -24,8 +24,8 @@ function App() {
         <EffectComposerLayer />
         <Suspense fallback={<Loader />}>
           {/* <OrbitControls /> */}
-          <ambientLight />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <ambientLight intensity={0.5}/>
+          {/* <directionalLight position={[10, 10, 5]} intensity={1} /> */}
           {/* <Scene /> */}
           {/* <axesHelper args={[5]} /> */}
           <Experience />

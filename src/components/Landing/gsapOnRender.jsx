@@ -6,9 +6,15 @@ export function gsapOnRender(camera, rotationUpdateOnMouseMoveHandler) {
   gsap.set(camera.rotation, { x: -Math.PI / 2, y: Math.PI / 2, z: 0 });
   // gsap.set(camera.rotation, { x: 0, y: 0, z: 0 });
 
+  const hamMenuButton = document.getElementById("ham-menu-button");
+
   const tl = gsap.timeline({
+    onStart: () => {
+      hamMenuButton.disabled = true;
+    },
     onComplete: () => {
       window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+      hamMenuButton.disabled = false;
     },
   });
 

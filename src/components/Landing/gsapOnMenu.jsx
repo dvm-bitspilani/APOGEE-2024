@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import * as hudStyles from "@styles/HUD.module.scss";
+import * as hamStyles from "@styles/HamMenu.module.scss";
 
 export function gsapOnMenu(
   camera,
@@ -34,21 +35,25 @@ export function gsapOnMenu(
         ease: "power2.inOut",
       },
       "<"
-    ) .to(
+    )
+      .to(
         `.${hudStyles.regEventsWrapper}`,
         {
           autoAlpha: 0,
           duration: 1,
           ease: "power2.inOut",
-        }, "<"
-    ).to(
-      `.${hudStyles.crosshair}`,
-      {
-        autoAlpha: 0,
-        duration: 1,
-        ease: "power2.inOut",
-      }, "<"
-    )
+        },
+        "<"
+      )
+      .to(
+        `.${hudStyles.crosshair}`,
+        {
+          autoAlpha: 0,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
       .to(
         camera.position,
         {
@@ -70,6 +75,15 @@ export function gsapOnMenu(
           ease: "power2.inOut",
         },
         "<"
+      )
+      .to(
+        `.${hamStyles.menu}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
       );
   } else {
     // window?.removeEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, menuRot));
@@ -82,13 +96,22 @@ export function gsapOnMenu(
       },
     });
 
-    tl.to(camera.rotation, {
-      x: 0,
-      y: 0,
-      z: 0,
-      duration: 1,
-      ease: "power2.inOut",
-    })
+    tl.to(
+      `.${hamStyles.menu}`,
+      {
+        autoAlpha: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      "<"
+    )
+      .to(camera.rotation, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      }, "-=0.5")
       .to(
         camera.position,
         {
@@ -108,20 +131,24 @@ export function gsapOnMenu(
           ease: "power2.inOut",
         },
         "-=0.5"
-      ).to(
+      )
+      .to(
         `.${hudStyles.regEventsWrapper}`,
         {
           autoAlpha: 1,
           duration: 1,
           ease: "power2.inOut",
-        }, "<"
-    ).to(
-      `.${hudStyles.crosshair}`,
-      {
-        autoAlpha: 1,
-        duration: 1,
-        ease: "power2.inOut",
-      }, "<"
-    );
+        },
+        "<"
+      )
+      .to(
+        `.${hudStyles.crosshair}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "<"
+      );
   }
 }

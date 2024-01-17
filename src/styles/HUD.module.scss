@@ -1,14 +1,14 @@
-.wrapper{
-    position: fixed;
-    top: 0;
-    left: 0;
-    inset: 0;
-    // z-index: -1;
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  inset: 0;
+  // z-index: 4;
 
-    // background-image: url("/images/cockpit.png");
-    background-size: cover;
-    opacity: 0;
-    pointer-events: none;
+  // background-image: url("/images/cockpit.png");
+  background-size: cover;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .lefthelm {
@@ -17,6 +17,10 @@
   left: 0;
   height: 100%;
   object-fit: contain;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
 .righthelm {
@@ -25,6 +29,10 @@
   right: 0;
   height: 100%;
   object-fit: contain;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
 .crosshair {
@@ -85,11 +93,11 @@
     text-shadow: 0px 0px 14.815px var(--hover-link);
     color: var(--hover-link);
 
-    div div{
+    div div {
       background-color: var(--hover-link);
     }
 
-    span{
+    span {
       text-shadow: 0px 0px 14.815px var(--hover-link);
     }
   }
@@ -269,7 +277,7 @@
   flex-direction: column;
   align-items: center;
 
-  &>img{
+  & > img {
     width: 80%;
     height: auto;
   }
@@ -368,9 +376,9 @@
   }
 }
 
-
-@media screen and (max-height : 700px) {
-  .navigatorWrapper , .regEventsWrapper{
+@media screen and (max-height: 700px) {
+  .navigatorWrapper,
+  .regEventsWrapper {
     // top: 20%;
     bottom: 5%;
   }

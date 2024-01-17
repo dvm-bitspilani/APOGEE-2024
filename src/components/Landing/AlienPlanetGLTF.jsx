@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/alien-planet-bbb2e0eeb0b34247b8a70655c78
 Title: Alien Planet
 */
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 
 import { Float } from "@react-three/drei";
@@ -18,51 +18,20 @@ import { useControls } from "leva";
 
 import { ShaderMaterial } from "three";
 
+import state  from "@components/state";
+
 export default function AlienPlanetGLTF(props) {
   const { nodes, materials } = useGLTF("/models/alien_planet_1k.glb");
 
   const alienPlanetRef = useRef();
 
-  const [isHovered, setIsHovered] = useState(false);
-
-  const outlineMaterial = new ShaderMaterial({
-    side: THREE.BackSide,
-    uniforms: {
-      glowColor: { value: new THREE.Color(0xadd8e6) }, // Light blue color
-      defaultColor: { value: new THREE.Color(0x000000) },
-      alpha: { value: 0.5 }, // Slightly transparent
-      coeficient: { value: 1 },
-      power: { value: 2 },
-    },
-    vertexShader: `
-      varying vec3 vVertexWorldPosition;
-      varying vec3 vVertexNormal;
-      void main() {
-        vVertexNormal = normalize(normalMatrix * normal);
-        vVertexWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
-    `,
-    fragmentShader: `
-      uniform vec3 glowColor;
-      uniform float coeficient;
-      uniform float power;
-      uniform float alpha;
-      varying vec3 vVertexNormal;
-      varying vec3 vVertexWorldPosition;
-      void main() {
-        vec3 worldCameraToVertex = vVertexWorldPosition - cameraPosition;
-        vec3 viewCameraToVertex = (viewMatrix * vec4(worldCameraToVertex, 0.0)).xyz;
-        viewCameraToVertex = normalize(viewCameraToVertex);
-        float intensity = pow(coeficient + dot(vVertexNormal, viewCameraToVertex), power);
-        gl_FragColor = vec4(glowColor, intensity);
-      }
-    `,
-  });
-
   useFrame((state, delta) => {
     alienPlanetRef.current.rotation.y -= 0.0005;
   });
+
+  useEffect(() => {
+    state.alienPlanet = alienPlanetRef.current;
+  }, []);
 
   const { color, float, position } = useControls("Alien Planet", {
     position: {
@@ -74,12 +43,11 @@ export default function AlienPlanetGLTF(props) {
       value: "#40dbad",
       label: "Color",
     },
-    float:{
+    float: {
       value: false,
       label: "Float",
-    }
+    },
   });
-
 
   return (
     <>
@@ -90,7 +58,7 @@ export default function AlienPlanetGLTF(props) {
         color={new THREE.Color(Number("0x" + color.replace("#", "")))}
       />
       <Float
-        speed={float?0.35:0} // Animation speed, defaults to 1
+        speed={float ? 0.35 : 0} // Animation speed, defaults to 1
         rotationIntensity={1} // XYZ rotation intensity, defaults to 1
         floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[-0.4, 0.4]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
@@ -107,10 +75,7 @@ export default function AlienPlanetGLTF(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_4.geometry}
-            // material={isHovered ? outlineMaterial : materials.Planet}
             material={materials.Planet}
-            onPointerOver={() => setIsHovered(true)}
-            onPointerOut={() => setIsHovered(false)}
           />
           <mesh
             castShadow

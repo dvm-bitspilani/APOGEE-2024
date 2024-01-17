@@ -17,23 +17,24 @@ import { gsapOnMenu } from "./gsapOnMenu";
 
 import state from "../state";
 import { useSnapshot } from "valtio";
-import { useCamera } from "@react-three/drei";
+import { useCamera, useHelper } from "@react-three/drei";
+import { DirectionalLightHelper } from "three";
 
 export function Scene() {
   const { camera } = useThree();
 
-  const menuPos = [-1, -1.5, -0.5];
+  const menuPos = [-2, -1.5, -0.5];
   const menuRot = [0, -1.9, 0];
 
   const { position, rotation } = useControls("Camera", {
     position: {
-      value: [0, 0, 0],
+      value: [...menuPos],
       step: 10,
       min: -1000,
       max: 1000,
     },
     rotation: {
-      value: [0, 0, 0],
+      value: [...menuRot],
       step: 0.1,
       min: -Math.PI * 2,
       max: Math.PI * 2,
@@ -96,21 +97,20 @@ export function Scene() {
   }, [camera]);
 
   const hamMenuButton = document.querySelector("#ham-menu-button");
-
-  const gsapOnMenuHandler = () =>
-    gsapOnMenu(
-      camera,
-      menuPos,
-      menuRot,
-      state.isHamOpen,
-      rotationUpdateOnMouseMoveHandler
-    );
-
   // console.log("hello");
 
-  hamMenuButton.addEventListener("click", gsapOnMenuHandler);
-
   useEffect(() => {
+    const gsapOnMenuHandler = () =>
+      gsapOnMenu(
+        camera,
+        menuPos,
+        menuRot,
+        state.isHamOpen,
+        rotationUpdateOnMouseMoveHandler
+      );
+
+    hamMenuButton.addEventListener("click", gsapOnMenuHandler);
+
     return () => {
       window?.removeEventListener(
         "mousemove",
@@ -119,6 +119,31 @@ export function Scene() {
     };
   }, [snap.isHamOpen]);
 
+  const { lightPos, lightColor, intensity } = useControls("Light", {
+    lightPos: {
+      value: [1, -2, 2],
+      step: 1,
+      min: -1000,
+      max: 1000,
+    },
+    lightColor: {
+      value: "#2dc79f",
+    },
+    intensity: {
+      value: 1.7,
+      step: 0.1,
+      min: 0,
+      max: 10,
+    },
+  });
+
+  const lightRef = useRef();
+  useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
+
+  useEffect(() => {
+    lightRef.current.target = state.alienPlanet;
+  }, [snap.alienPlanet]);
+
   return (
     <>
       {/* <axesHelper args={[5]} /> */}
@@ -126,6 +151,12 @@ export function Scene() {
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
       <AlienPlanetGLTF />
+      <directionalLight
+        ref={lightRef}
+        position={lightPos}
+        intensity={intensity}
+        color={Number(lightColor.replace("#", "0x"))}
+      />
     </>
   );
 }
