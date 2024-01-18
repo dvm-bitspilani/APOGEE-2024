@@ -9,6 +9,7 @@ import { HamIcon } from "./HamIcon";
 import ConstellationDetected from "@components/HamMenu/ConstellationDetected";
 import Socials from "@components/HamMenu/Socials";
 import MadeWithLuv from "@components/HamMenu/MadeWithLuv";
+import Constellation from "../HamMenu/Constelation";
 
 export function Hud() {
 
@@ -53,6 +54,7 @@ export function Hud() {
         <ConstellationDetected />
         <Socials />
         <MadeWithLuv />
+        <Constellation />
       </div>
     </>
   );

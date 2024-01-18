@@ -1,122 +1,12 @@
-import React from "react";
+import { Constelation_SVG } from "./Constelation_SVG";
+
+import * as styles from "@styles/Constelation.module.scss";
+import * as hamStyles from "@styles/HamMenu.module.scss";
 
 export default function Constelation() {
-  return <div>Constelation</div>;
-}
-
-export function Constelation_SVG() {
   return (
-    <svg
-      width="675"
-      height="549"
-      viewBox="0 0 675 549"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M565 114L265.5 4"
-        stroke="url(#paint0_linear_1077_121)"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M617.5 392.5L564.815 115"
-        stroke="url(#paint1_linear_1077_121)"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M329.5 290L261.5 3.00005"
-        stroke="url(#paint2_linear_1077_121)"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M330 290.5L277 546"
-        stroke="url(#paint3_linear_1077_121)"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M277 546L18.5005 341.5"
-        stroke="url(#paint4_linear_1077_121)"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M21 340L83 91"
-        stroke="url(#paint5_linear_1077_121)"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <defs>
-        <linearGradient
-          id="paint0_linear_1077_121"
-          x1="224.016"
-          y1="49.3641"
-          x2="579.132"
-          y2="111.679"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#4AB3B8" />
-          <stop offset="1" stopColor="#4AB3B8" stopOpacity="0.2" />
-        </linearGradient>
-        <linearGradient
-          id="paint1_linear_1077_121"
-          x1="537.678"
-          y1="153.813"
-          x2="645.614"
-          y2="396.08"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#4AB3B8" />
-          <stop offset="1" stopColor="#4AB3B8" stopOpacity="0.2" />
-        </linearGradient>
-        <linearGradient
-          id="paint2_linear_1077_121"
-          x1="234.361"
-          y1="41.8141"
-          x2="342.297"
-          y2="284.081"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#4AB3B8" />
-          <stop offset="1" stopColor="#4AB3B8" stopOpacity="0.2" />
-        </linearGradient>
-        <linearGradient
-          id="paint3_linear_1077_121"
-          x1="274.497"
-          y1="558.376"
-          x2="335.146"
-          y2="265.366"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#4AB3B8" stopOpacity="0.8" />
-          <stop offset="1" stopColor="#4AB3B8" stopOpacity="0.2" />
-        </linearGradient>
-        <linearGradient
-          id="paint4_linear_1077_121"
-          x1="-105.693"
-          y1="335.299"
-          x2="274.231"
-          y2="387.522"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#4AB3B8" stopOpacity="0.8" />
-          <stop offset="1" stopColor="#4AB3B8" stopOpacity="0.3" />
-        </linearGradient>
-        <linearGradient
-          id="paint5_linear_1077_121"
-          x1="85.6385"
-          y1="79.5341"
-          x2="21.255"
-          y2="350.804"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#4AB3B8" />
-          <stop offset="1" stopColor="#4AB3B8" stopOpacity="0.2" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <div className={`${styles.constelationWrapper} ${hamStyles.menu}`}>
+      <Constelation_SVG />
+    </div>
   );
 }
