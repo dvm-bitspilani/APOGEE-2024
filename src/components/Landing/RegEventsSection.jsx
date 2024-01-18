@@ -12,7 +12,25 @@ import { useGlitch } from "react-powerglitch";
 
 import kernel_events from "@assets/events/kernel_events";
 
+import robowars from "@assets/events/robowars.jpg";
+
 export default function RegEventsSection() {
+
+  const aic = "aic.jpg";
+  const armageddon = "armageddon.jpg";
+  const sms = "sms.jpg";
+  const oht = "oht.jpg";
+  const quantuculus = "quantuculus.jpg";
+  const drone = "drone.jpg";
+  const icl = "icl.jpg";
+  const bitmun = "bitmun.jpg";
+  const finance = "finance.jpg";
+  const paper = "paper.jpg";
+  const projects = "projects.jpg";
+
+  const images = [
+    aic, armageddon, sms, oht, quantuculus, robowars, drone, icl, bitmun, finance, paper, projects]
+
   const [index, setIndex] = useState(0);
   return (
     <div className={styles.regEventsWrapper}>
@@ -23,14 +41,14 @@ export default function RegEventsSection() {
       <h1>EVENTS FOR YOU</h1>
       <Line />
       <div className={styles.eventsWrapper}>
-        <EventsCarousel index={index} setIndex={setIndex} />
+        <EventsCarousel index={index} setIndex={setIndex} images={images}/>
       </div>
       <Line />
     </div>
   );
 }
 
-export function EventsCarousel({ index, setIndex }) {
+export function EventsCarousel({ index, setIndex, images }) {
   const { ref, startGlitch, stopGlitch } = useGlitch({
     playMode: "manual",
     hideOverflow: false,
@@ -60,7 +78,7 @@ export function EventsCarousel({ index, setIndex }) {
         <div className={styles.carouselWindow}>
           <img
             ref={ref}
-            src={`/src/assets/events/${kernel_events[index].image}`}
+            src={images[index]}
             alt={placeholder}
             onError={(e) => (e.target.src = placeholder)}
           />
