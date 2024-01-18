@@ -337,10 +337,22 @@
     border-width: 10px;
     overflow: hidden;
 
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 90%;
+      aspect-ratio: 1/1;
+      position: absolute;
+      background: rgba(136, 196, 200, 0.7);
+      mix-blend-mode: color;
+      border-radius: 50%;
+    }
+
     img {
-      width: auto;
-      height: 90%;
-      object-fit: contain;
+      width: 90%;
+      aspect-ratio: 1/1;
+      // object-fit: contain;
       z-index: -1;
       border-radius: 50%;
     }
