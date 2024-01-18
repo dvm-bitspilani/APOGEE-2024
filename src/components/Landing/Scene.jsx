@@ -119,7 +119,7 @@ export function Scene() {
     };
   }, [snap.isHamOpen]);
 
-  const { lightPos, lightColor, intensity } = useControls("Light", {
+  const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
     lightPos: {
       value: [1, -2, 2],
       step: 1,
@@ -130,7 +130,7 @@ export function Scene() {
       value: "#2dc79f",
     },
     intensity: {
-      value: 1.7,
+      value: 6,
       step: 0.1,
       min: 0,
       max: 10,
