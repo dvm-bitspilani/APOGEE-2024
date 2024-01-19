@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import * as hudStyles from "@styles/HUD.module.scss";
 import * as hamStyles from "@styles/HamMenu.module.scss";
+import * as constellationStyles from "@styles/Constelation.module.scss";
 
 export function gsapOnMenu(
   camera,
@@ -13,6 +14,8 @@ export function gsapOnMenu(
   //   let rotationHandler = rotationUpdateOnMouseMoveHandler;
 
   const hamMenuButton = document.getElementById("ham-menu-button");
+  const stars = document.querySelectorAll(`.${constellationStyles.constelationWrapper}>div`);
+  console.log(stars);
 
   if (!isHamOpen) {
     console.log("forwards");
@@ -90,6 +93,18 @@ export function gsapOnMenu(
           ease: "power2.inOut",
         },
         "-=0.5"
+      ).fromTo(
+        stars,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.inOut",
+        },
+        ">"
       );
   } else {
     // window?.removeEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, menuRot));

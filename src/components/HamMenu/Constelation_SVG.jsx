@@ -21,10 +21,11 @@ export function Constelation_SVG() {
 
   useEffect(() => {
     vivus.current = new Vivus("constelation-svg", {
-      type: "oneByOne",
-      duration: 200,
+      type: "delayed",
+      duration: 300,
       start: "manual",
-      pathTimingFunction: Vivus.EASE_OUT,
+      pathTimingFunction: Vivus.EASE_IN,
+      animTimingFunction: Vivus.EASE_OUT,
     });
   }, []);
 

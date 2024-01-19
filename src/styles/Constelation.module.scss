@@ -1,8 +1,8 @@
 .constelationWrapper{
-    width: 40%;
+    width: 500px;
     aspect-ratio: 1/1;
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 50%;
 
     transform: translateX(-50%);
@@ -12,9 +12,90 @@
     background-size: contain;
     background-repeat: no-repeat;
 
-    svg{
+    *{
+        pointer-events: all;
+    }
+
+    @media screen and (max-height: 700px) {
+        top: 10%;
+        width: 450px;
+    }
+
+    &>svg{
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
+    &>div{
+        position: absolute;
+        max-width: 120px;
+        width: fit-content;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        align-items: center;
+
+        transition: scale 0.2s ease-in-out;
+
+        span{
+            font-size: 1.2rem;
+            color: #C8F2F4;
+            text-shadow: 0px 0px 12.236px rgba(210, 198, 255, 0.40);
+            transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+        }
+
+        &:hover{
+            cursor: pointer;
+            scale: 1.1;
+            svg{
+                &>path[fill="url(#a)"]{
+                    fill: url(#a1);
+                }
+                &>g[mask="url(#d)"]{
+                    mask: url(#d1);
+                }
+                path[fill="url(#e)"]{
+                    fill: url(#e1);
+                }
+            }
+            span{
+                color: #EF8F93;
+                text-shadow: 0px 0px 8px rgba(239, 143, 147, 0.70);
+            }
+        }
+    }
+}
+
+.home{
+    top: 46%;
+    left: 44%;
+}
+
+.login{
+    top: 17%;
+    left: 8%;
+}
+
+.armageddon{
+    top: 55%;
+    left: -9%;
+}
+.eventsRule{
+    top: 85%;
+    left: 29%;
+}
+.sponsors{
+    top: 5%;
+    left: 27%;
+}
+.mediaPartners{
+    top: 21%;
+    left: 72%;
+}
+.developers{
+    top: 62%;
+    left: 79%;
 }
