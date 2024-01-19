@@ -22,7 +22,7 @@ export function Constelation_SVG() {
   useEffect(() => {
     vivus.current = new Vivus("constelation-svg", {
       type: "delayed",
-      duration: 300,
+      duration: 200,
       start: "manual",
       pathTimingFunction: Vivus.EASE_IN,
       animTimingFunction: Vivus.EASE_OUT,
