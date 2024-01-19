@@ -58,6 +58,10 @@
   width: auto;
   height: max(10vw, 100px);
   object-fit: contain;
+
+  @media screen and (max-height: 700px) {
+    height: 100px;
+}
 }
 
 .hamMenuButton {
@@ -78,6 +82,10 @@
   justify-content: center;
 
   transition: border-color 0.2s ease-in-out;
+
+  @media screen and (max-height: 700px) {
+    top: 94px;
+}
 
   & * {
     transition: all 0.2s ease-in-out;

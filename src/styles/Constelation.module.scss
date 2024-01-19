@@ -17,8 +17,8 @@
     }
 
     @media screen and (max-height: 700px) {
-        top: 10%;
-        width: 450px;
+        top: 23%;
+        width: 400px;
     }
 
     &>svg{
@@ -45,6 +45,10 @@
             color: #C8F2F4;
             text-shadow: 0px 0px 12.236px rgba(210, 198, 255, 0.40);
             transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+
+            @media screen and (max-height: 700px) {
+                font-size: 1rem;
+            }
         }
 
         &:hover{
@@ -98,4 +102,35 @@
 .developers{
     top: 62%;
     left: 79%;
+}
+
+@media screen and (max-height: 700px) {
+    .home{
+        top: 46%;
+        left: 43%;
+    }
+    .login{
+        top: 16%;
+        left: 8%;
+    }
+    .armageddon{
+        top: 53%;
+        left: -11%;
+    }
+    .eventsRule{
+        top: 83%;
+        left: 27%;
+    }
+    .sponsors{
+        top: 2%;
+        left: 24%;
+    }
+    .mediaPartners{
+        top: 19%;
+        left: 68%;
+    }
+    .developers{
+        top: 60%;
+        left: 77%;
+    }
 }

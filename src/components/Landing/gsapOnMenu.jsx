@@ -69,7 +69,7 @@ export function gsapOnMenu(
           x: menuPos[0],
           y: menuPos[1],
           z: menuPos[2],
-          duration: 1,
+          duration: 2,
           ease: "power2.inOut",
         },
         "-=0.5"
@@ -80,7 +80,7 @@ export function gsapOnMenu(
           x: menuRot[0],
           y: menuRot[1],
           z: menuRot[2],
-          duration: 1,
+          duration: 2,
           ease: "power2.inOut",
         },
         "<"
@@ -134,7 +134,7 @@ export function gsapOnMenu(
         x: 0,
         y: 0,
         z: 0,
-        duration: 1,
+        duration: 2,
         ease: "power2.inOut",
       }, "-=0.5")
       .to(
@@ -143,7 +143,7 @@ export function gsapOnMenu(
           x: 0,
           y: 0,
           z: 0,
-          duration: 1,
+          duration: 2,
           ease: "power2.inOut",
         },
         "<"
