@@ -12,8 +12,8 @@ export default function Constelation() {
         <span>HOME</span>
       </div>
       <div className={styles.login}>
-        <StarSVG />
         <span>LOGIN</span>
+        <StarSVG />
       </div>
       <div className={styles.armageddon}>
         <StarSVG />

@@ -1,17 +1,17 @@
 .menu {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 
-    // opacity: 1;
-    // visibility: visible;
-    // pointer-events: all;
-// 
-    // *{
-    //   opacity: 1;
-    //   visibility: visible;
-    //   pointer-events: inherit;
-    // }
-  }
+  // opacity: 1;
+  // visibility: visible;
+  // pointer-events: all;
+
+  // * {
+  //   opacity: 1;
+  //   visibility: visible;
+  //   pointer-events: inherit;
+  // }
+}
 
 .constellationDetected {
   position: absolute;
@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-//   gap: 20px;
+  //   gap: 20px;
 
   .apogeeLogo {
     height: 40%;
@@ -101,15 +101,15 @@
 
   pointer-events: all;
 
-  svg{
+  svg {
     height: 30%;
     aspect-ratio: 1/1;
   }
 }
 
 .socials a:hover {
-    scale: 1.1;
-    cursor: pointer;
+  scale: 1.1;
+  cursor: pointer;
 }
 
 .socials a:nth-child(1) {
@@ -124,41 +124,87 @@
   background-image: url("@assets/hamMenu/fb_bg.png");
 }
 
-.madeLuv{
-    position: absolute;
-    bottom: 10px;
-    right: 50%;
+.madeLuv {
+  position: absolute;
+  bottom: 10px;
+  right: 50%;
 
-    transform: translateX(50%);
+  transform: translateX(50%);
 
-    width: 200px;
-    height: auto;
+  width: 200px;
+  height: auto;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    gap: 5px;
+  gap: 5px;
 
-    span{
-        color: #fff;
-        font-family: Alacrity Sans;
-    }
+  span {
+    color: #fff;
+    font-family: Alacrity Sans;
+  }
 
-    img{
-        height: 30px;
-        aspect-ratio: 1/1;
-    }
+  img {
+    height: 30px;
+    aspect-ratio: 1/1;
+  }
 }
 
 @media screen and (max-width: 1168px) {
-    .constellationDetected {
-        transform-origin: 100% 50%;
-        transform: scale(0.8);
-    }
-    .socials{
-        top: calc(35% + 140px + 20px);
-        transform-origin: 100% 50%;
-        transform: scale(0.8);
-    }
+  .constellationDetected {
+    transform-origin: 100% 50%;
+    transform: scale(0.8);
+  }
+  .socials {
+    top: calc(35% + 140px + 20px);
+    transform-origin: 100% 50%;
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  .constellationDetected {
+    transform-origin: 100% 50%;
+    transform: scale(0.6);
+  }
+  .socials {
+    top: calc(35% + 102px + 20px);
+    transform-origin: 100% 50%;
+    transform: scale(0.6);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .constellationDetected {
+    display: none;
+  }
+  .socials {
+    width: fit-content;
+    height: fit-content;
+    top: 50%;
+    transform-origin: center;
+    transform: translateY(-50%) scale(0.6);
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .socials {
+    transform: translateY(-50%) scale(0.6);
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .socials {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    bottom: 8%;
+    top: unset;
+    transform: translateX(50%) translateY(0) scale(0.7);
+    right: 50%;
+  }
 }
