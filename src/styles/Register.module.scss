@@ -1,0 +1,570 @@
+.pageContainer{
+    width: 100lvw;
+    height: 100dvh;
+    position: relative;
+    background-image: url(../../public/images/starsAsset.png);
+    background-size: 100lvw 100dvh;
+    position: fixed;
+    inset: 0;
+    .leftHelm{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100dvh;
+        width: auto;
+    }
+    .rightHelm{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        width: auto;
+    }
+    .pageWrapper{
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .hud{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: max(10vw, 100px);
+        }
+    }
+}
+.homeBtn {
+    width: max(12vw, 120px);
+    aspect-ratio: 3/1;
+    border-color: var(--secondary);
+    border-width: 1px;
+    border-style: solid;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: max(calc(10vw - 7px), 92px);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    transition: border-color 0.2s ease-in-out;
+    z-index: 1;
+  
+    svg * {
+      transition: all 0.2s ease-in-out;
+    }
+  
+    span {
+      font-size: max(1rem, 1.5vw);
+      font-weight: 200;
+      text-transform: uppercase;
+      text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+      color: inherit;
+      padding-inline: 0.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+    &:hover {
+      cursor: pointer;
+      border-color: #b16060;
+      text-shadow: 0px 0px 14.815px var(--hover-link);
+      color: var(--hover-link);
+  
+      svg {
+        g {
+          filter: none;
+        }
+        path {
+          stroke: var(--hover-link);
+        }
+      }
+    }
+  }
+.globeImage{
+    width: auto;
+  height: 65vh;
+
+}
+.content{
+    width: 100%;
+  height: 100%;
+  position: relative;
+  inset: 0;
+  mix-blend-mode: difference;
+}
+.imgContainer{
+    position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-inline: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading{
+    position: absolute;
+    top: max(2vw, 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: max(1rem, 1.5vw);
+      font-weight: 200;
+      text-transform: uppercase;
+      text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+      color: inherit;
+      padding-inline: 0.5rem;
+      transition: all 0.2s ease-in-out;
+}
+.formContainer{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-inline: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60%;
+  height: 65vh;
+}
+.leftSide{
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+  justify-content: space-evenly;
+}
+.rightSide{
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  justify-content: space-evenly;
+}
+input{
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+}
+input:focus{
+  outline: none;
+}
+.name{
+  position: relative;
+  right: 5%;
+  top: -5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  inset:0;
+}
+.name > input{
+  width: 51%;
+}
+.name>img{
+  width: 100%;
+}
+.name label{
+  font-size: 1.5rem;
+  position: absolute;
+  top: 35%;
+}
+.email{
+  position: relative;
+  right: 5%;
+  top: -12%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  inset:0;
+  top: -5%;
+}
+.email>img{
+  width: 100%;
+}
+.email label{
+  font-size: 1.5rem;
+  position: absolute;
+  top: 55%;
+}
+.email > input{
+  width: 56%;
+}
+.phone{
+  position: relative;
+  right: 10%;
+  top: -10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  inset:0;
+}
+.phone img{
+  width: 100%;
+}
+.phone > input{
+  width: 100%;
+}
+.phone label{
+  font-size: 1.5rem;
+  position: absolute;
+  top: 105%;
+}
+.gender
+{
+  position: relative;
+  right: 10%;
+  top: -2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  inset:0;
+  top: 7%;
+}
+.gender>img{
+  width: 100%;
+}
+.checkboxContainer{
+  position: absolute;
+  display: flex;
+  width: 65%;
+  height: 40%;
+  justify-content: space-evenly;
+  align-items: center;
+  bottom: 45%;
+}
+.gender input{
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+label{
+  text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+}
+.gender input:focus{
+  outline: none;
+}
+.checkboxItem {
+  display: flex;
+  align-items: center;
+}
+
+.customCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary);
+  // border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gender>label{
+  font-size: 1.5rem;
+  // position: absolute;
+  // top: 105%;
+}
+.checked {
+  background-color: var(--primary);
+}
+
+.checkmark {
+  color: var(--primary);
+}
+
+.genderLabel {
+  font-size: 16px;
+  color: var(--primary);
+}
+.interests{
+  position: relative;
+  right: 5%;
+  top: -10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  inset:0;
+}
+.interests>img{
+  width: 100%;
+}
+.interestsWrapper{
+  width: 45%;
+  position: absolute !important;
+  bottom: 36% !important;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  height: 30%;
+}
+.interests label{
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.events{
+  position: relative;
+  right: -5%;
+  top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 75%;
+  inset: 0;
+}
+.events img{
+  width: 100%;
+}
+.eventsWrapper{
+  width: 54%;
+  top: -32% !important;
+  position: absolute !important;
+}
+.events label{
+  position: absolute;
+  top: 22%;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.colleges{
+  position: relative;
+  right: -5%;
+  top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 75%;
+  inset: 0;
+  top: -10%;
+}
+.colleges img{
+  width: 100%;
+}
+.collegeWrapper{
+  width: 61%;
+}
+.colleges label{
+  position: absolute;
+  bottom: 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.year{
+  position: relative;
+  right: -5%;
+  top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 75%;
+  inset: 0;
+}
+.year> .checkboxContainer{
+ top: -60%;
+ bottom: 0;
+}
+.year img{
+  width: 100%;
+}
+.year label{
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+.city{
+  position: relative;
+  right: -5%;
+  top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 75%;
+  inset: 0;
+}
+.city img{
+  width: 100%;
+}
+.city label{
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+.cityWrapper{
+  width: 56%;
+  top: 20%;
+  position: absolute !important;
+}
+::placeholder{
+  // font-size: "1.2rem";
+  opacity: 1;
+  color: #A9A9A9;
+  font-family:Space Grotesk;
+  text-shadow:0px 0px 14.815px rgba(183, 255, 255, 1);
+  text-transform:uppercase;
+}
+// @media (min-width: 1000px), (max-height:650px) {
+//     .globeImage{
+//         max-height: 65vh;
+//     }
+// }
+.mobileContent{
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.leftTop, .rightTop{
+  width: 50%;
+  height: 14vh;
+  position: absolute;
+}
+.leftTop{
+  left: 0;
+}
+.rightTop{
+  right: 0;
+}
+.middleTop{
+  width: 100%;
+  height: 10vh;
+  position: absolute;
+  inset: 0;
+}
+.mobileContent{
+  display: none;
+}
+.leftTop, .rightTop, .middleTop{
+  display: none;
+}
+@media only screen and (min-width: 1200px) {
+
+}
+@media only screen and (max-width: 1200px) {
+  .gender  .checkboxContainer{
+    // bottom: 50%;
+    width: max-content;
+  gap: 10px;
+  // left: -20%;
+  top: 0;
+  } .customCheckbox{
+    margin-right: 5px;
+  } .checkboxItem{
+    margin-right: 10px;
+  }
+.interestsWrapper{
+    width: max-content;
+    right: 55%;
+    bottom: 40% !important;
+  }
+}
+@media only screen and (max-width: 1100px) {
+
+  .interestsWrapper{
+    width: max-content;
+    right: 55%;
+
+  // bottom: 50% !important;
+  }
+  .gender  .checkboxContainer{
+    // bottom: 50%;
+    width: max-content;
+  gap: 10px;
+  left: -10%;
+  top: 0;
+  }
+  .interestsWrapper{
+    bottom: 45% !important;
+  }
+  .interestsWrapper{
+    width: max-content;
+    top: 15%;
+  }
+  .cityWrapper{
+    top: 0;
+  }
+  
+}
+@media only screen and (max-width: 992px) {
+  .gender  .checkboxContainer{
+    // bottom: 50%;
+    width: max-content;
+  gap: 10px;
+  left: -20%;
+  top: 0;
+  }
+.interestsWrapper{
+  bottom: 45% !important;
+}
+.interestsWrapper{
+  width: max-content;
+  top: 15%;
+}
+.cityWrapper{
+  top: 0;
+}
+}
+@media only screen and (max-width: 810px) {
+  .gender .checkboxContainer{
+    display: flex;
+  justify-content: flex-start;
+  }
+  .gender .checkboxContainer{
+    width: min-content;
+    top: -100%;
+    flex-wrap: wrap;
+    // right: 0 !important;
+    left: 20% !important;
+  }
+  .collegeWrapper{
+  width: max-content;
+  }
+  .eventsWrapper{
+    width: max-content;
+    top: -50% !important;
+  }
+  .colleges label{
+    bottom: -30%;
+  }
+}
+@media only screen and (max-width: 809px) {
+.hud{
+  display: none;
+}
+.leftHelm{
+  display: none;
+}
+.rightHelm{
+  display: none;
+}
+.content{
+  display: none;
+}
+.homeBtn{
+  top: 13.2vh;
+}
+.heading{
+  font-size: 2rem;
+  top: 3vh;
+}
+.mobileContent{
+  display: block;
+}
+.leftTop, .rightTop, .middleTop{
+  display: block;
+}
+}
+@media only screen and (max-width: 768px) {
+
+}
+@media only screen and (max-width: 600px) {
+
+}
+@media only screen and (max-width: 600px) {
+
+}
