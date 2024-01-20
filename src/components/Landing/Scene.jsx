@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
@@ -17,8 +17,8 @@ import { gsapOnMenu } from "./gsapOnMenu";
 
 import state from "../state";
 import { useSnapshot } from "valtio";
-import { useCamera, useHelper } from "@react-three/drei";
-import { DirectionalLightHelper } from "three";
+// import { useCamera, useHelper } from "@react-three/drei";
+// import { DirectionalLightHelper } from "three";
 
 export function Scene() {
   const { camera } = useThree();
@@ -44,7 +44,7 @@ export function Scene() {
   useFrame(() => {
     // camera.position.set(...position);
     // camera.rotation.set(...rotation);
-    // console.log(camera);
+    // console.log(camera.position);
   });
 
   function rotationUpdateOnMouseMove(e, cameraPos) {
@@ -117,7 +117,7 @@ export function Scene() {
         rotationUpdateOnMouseMoveHandler2
       );
     };
-  }, [snap.isHamOpen]);
+  }, [snap.isHamOpen, camera, menuPos, menuRot]);
 
   const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
     lightPos: {
