@@ -30,7 +30,7 @@ function App() {
           {/* <axesHelper args={[5]} /> */}
           <Experience />
         </Suspense>
-        <Stats />
+        {/* <Stats /> */}
       </Canvas>
       <Hud />
     </motion.div>

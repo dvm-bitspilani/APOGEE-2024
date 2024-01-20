@@ -15,10 +15,10 @@ export function gsapOnMenu(
 
   const hamMenuButton = document.getElementById("ham-menu-button");
   const stars = document.querySelectorAll(`.${constellationStyles.constelationWrapper}>div`);
-  console.log(stars);
+  // console.log(stars);
 
   if (!isHamOpen) {
-    console.log("forwards");
+    // console.log("forwards");
 
     const tl = gsap.timeline({
       onStart: () => {
@@ -95,7 +95,7 @@ export function gsapOnMenu(
   } else {
     // window?.removeEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, menuRot));
 
-    console.log("backwards");
+    // console.log("backwards");
 
     const tl = gsap.timeline({
       onStart: () => {
