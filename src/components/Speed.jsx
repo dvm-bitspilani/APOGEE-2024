@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { AdditiveBlending, DoubleSide, MathUtils } from "three";
 
 const INSTANCES = 240;
-const MAX_OPACITY = 0.25;
+const MAX_OPACITY = 0.5;
 
 const SpeedShape = () => {
   const ref = useRef();

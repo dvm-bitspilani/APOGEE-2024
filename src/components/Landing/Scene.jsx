@@ -110,6 +110,7 @@ export function Scene() {
       );
 
     hamMenuButton.addEventListener("click", gsapOnMenuHandler);
+    console.log("hi")
 
     return () => {
       window?.removeEventListener(

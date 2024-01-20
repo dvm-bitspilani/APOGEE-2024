@@ -24,23 +24,23 @@ function Experience() {
     if (cameraRef.current) {
       const { current: camera } = cameraRef;
 
-      const amplitude = -.5;
+      const amplitude = -5;
       const frequency = 10;
 
       const newPosition = [
         amplitude * Math.sin(scroll.offset * frequency),
         0,
-        scroll.offset * -10,
+        scroll.offset * -100,
       ];
       // console.log(newPosition);
 
-      // gsap.to(camera.position, {
-      //   x: newPosition[0],
-      //   y: newPosition[1],
-      //   z: newPosition[2],
-      //   duration: 0.5,
-      //   ease: "power2.out",
-      // });
+      gsap.to(camera.position, {
+        x: newPosition[0],
+        y: newPosition[1],
+        z: newPosition[2],
+        duration: 0.5,
+        ease: "power2.out",
+      });
     }
   });
 
@@ -51,9 +51,8 @@ function Experience() {
         ref={cameraRef}
         position={[0, 0, 0]}
         // rotation={[0, Math.PI / 2, 0]}
-        // zoom={0.5}
-        // fov={50}
-        fov={75}
+        zoom={0.5}
+        fov={50}
         makeDefault
       />
       {/* <Sphere scale={[100, 100, 100]}>
@@ -63,11 +62,11 @@ function Experience() {
           <texture map={new THREE.TextureLoader().load(TextureMap)} />{" "}
         </meshBasicMaterial>{" "}
       </Sphere> */}
-      {/* <Background /> */}
+      <Background />
       <Speed />
       <Stars
         radius={15}
-        depth={50}
+        depth={75}
         count={5000}
         factor={4}
         saturation={5}

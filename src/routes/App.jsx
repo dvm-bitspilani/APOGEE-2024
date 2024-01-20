@@ -21,7 +21,7 @@ function App() {
       transition={{ duration: 2, ease: "easeInOut" }}
     >
       <Canvas camera={{ fov: 75, position: [0, 0, 0] }}>
-        <EffectComposerLayer />
+        {/* <EffectComposerLayer /> */}
         <Suspense fallback={<Loader />}>
           {/* <OrbitControls /> */}
           <ambientLight intensity={0.5} />
