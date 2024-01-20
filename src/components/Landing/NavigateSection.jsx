@@ -58,7 +58,7 @@ export default function NavigateSection() {
   ];
 
   return (
-    <div className={styles.navigatorWrapper}>
+    <div className={`${styles.navigatorWrapper} ${styles.landingElements}`}>
       <Countdown />
       <div className={styles.navigator}>
         <Line />

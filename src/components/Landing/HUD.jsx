@@ -10,9 +10,15 @@ import Socials from "@components/HamMenu/Socials";
 import MadeWithLuv from "@components/HamMenu/MadeWithLuv";
 import Constellation from "../HamMenu/Constelation";
 
+import { Link } from "react-router-dom";
+import { Register_bg_svg } from "./RegEventsSection";
+
 import apogee from "@assets/landing/apogee_logo.png";
+import Countdown from "./Countdown";
 
 export function Hud() {
+  const { innerWidth, innerHeight } = window;
+
   return (
     <>
       <img
@@ -41,7 +47,7 @@ export function Hud() {
           className={styles.logo}
         />
         <img
-          className={styles.crosshair}
+          className={`${styles.crosshair} ${styles.landingElements}`}
           src="/images/crosshair.png"
           alt="crosshair"
           draggable={false}
@@ -60,6 +66,29 @@ export function Hud() {
         <Socials />
         <MadeWithLuv />
         <Constellation />
+        <MobileHUD />
+      </div>
+    </>
+  );
+}
+
+export function MobileHUD() {
+  return (
+    <>
+      <div className={`${styles.mobileLinks} ${styles.landingElements}`}>
+        <button>Home</button>
+        <button>About</button>
+        <button>Events</button>
+        <button>Speakers</button>
+        <button>Contact</button>
+      </div>
+      <div className={`${styles.mobileBottom} ${styles.landingElements}`}>
+        <Countdown mobile={true}/>
+        <Link to="/register">
+          <Register_bg_svg />
+          <span>REGISTER</span>
+        </Link>
+        <Socials navigate={true} />
       </div>
     </>
   );

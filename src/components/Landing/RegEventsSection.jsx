@@ -33,7 +33,7 @@ export default function RegEventsSection() {
 
   const [index, setIndex] = useState(0);
   return (
-    <div className={styles.regEventsWrapper}>
+    <div className={`${styles.regEventsWrapper} ${styles.landingElements}`}>
       <Link to="/register">
         <Register_bg_svg />
         <span>REGISTER</span>

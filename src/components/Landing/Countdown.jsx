@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "@styles/Countdown.module.scss";
 
-const Countdown = () => {
+const Countdown = ({ mobile = false }) => {
   let count = useRef(null);
 
   const APOGEE = new Date("April 04, 2024 18:59:59").getTime(),
@@ -11,15 +11,15 @@ const Countdown = () => {
     [days, setDays] = useState(0);
 
   const [hrs, setHrs] = useState(
-    Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24
-  ),
+      Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24
+    ),
     [prevHr, setPrevHr] = useState(
       Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24
     );
 
   const [prevMin, setPrevMin] = useState(
-    Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60
-  ),
+      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60
+    ),
     [mins, setMins] = useState(
       Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60
     );
@@ -71,10 +71,10 @@ const Countdown = () => {
     setPrevMin(mins);
 
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [curr, mins , APOGEE]);
+  }, [curr, mins, APOGEE]);
 
   return (
-    <div ref={(el) => (count = el)} className={styles.countdown}>
+    <div ref={(el) => (count = el)} className={styles.countdown} data-ismobile={mobile}>
       <div id="days" className={styles.label}>
         <div className={styles.numbers}>{days}</div>
         <div className={styles.labels}>DAYS</div>
@@ -89,6 +89,6 @@ const Countdown = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Countdown;
