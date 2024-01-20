@@ -20,12 +20,14 @@ export function Hud() {
         className={styles.lefthelm}
         src="/images/Left helm.png"
         alt="left helm"
+        style={{position: 'fixed'}}
       />
       <img
         draggable={false}
         className={styles.righthelm}
         src="/images/Right helm.png"
         alt="right helm"
+        style={{position: 'fixed'}}
       />
       <div id="landing-hud-overlay" className={styles.wrapper}>
         <img

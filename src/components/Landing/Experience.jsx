@@ -3,13 +3,58 @@ import Background from "./Background";
 import * as THREE from "three";
 import TextureMap from "/images/texture-bg.jpg";
 import { Scene } from "./Scene";
-import { Stars } from "@react-three/drei";
+import { Stars, useScroll } from "@react-three/drei";
+import React, { useEffect, useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import gsap from "gsap";
+import { Speed } from "../Speed";
+import state from "../state";
 
 function Experience() {
+  const scroll = useScroll();
+
+  const cameraRef = useRef();
+
+  useEffect(() => {
+    state.camera = cameraRef.current;
+  }, []);
+
+
+  useFrame((_state, delta) => {
+    if (cameraRef.current) {
+      const { current: camera } = cameraRef;
+
+      const amplitude = -.5;
+      const frequency = 10;
+
+      const newPosition = [
+        amplitude * Math.sin(scroll.offset * frequency),
+        0,
+        scroll.offset * -10,
+      ];
+      // console.log(newPosition);
+
+      gsap.to(camera.position, {
+        x: newPosition[0],
+        y: newPosition[1],
+        z: newPosition[2],
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    }
+  });
+
   return (
     <>
       {/* <OrbitControls /> */}
-      {/* <PerspectiveCamera position={[0, 0, 0]} rotation={[0, Math.PI/2, 0]} zoom={0.5} fov={50} makeDefault /> */}
+      <PerspectiveCamera
+        ref={cameraRef}
+        position={[0, 0, 0]}
+        // rotation={[0, Math.PI / 2, 0]}
+        // zoom={0.5}
+        // fov={50}
+        makeDefault
+      />
       {/* <Sphere scale={[100, 100, 100]}>
         <meshBasicMaterial
           side={THREE.BackSide} // Render the material on the back side of the geometry (inside)
@@ -18,10 +63,11 @@ function Experience() {
         </meshBasicMaterial>{" "}
       </Sphere> */}
       {/* <Background /> */}
+      <Speed />
       <Stars
         radius={15}
         depth={50}
-        count={3000}
+        count={5000}
         factor={4}
         saturation={5}
         fade
