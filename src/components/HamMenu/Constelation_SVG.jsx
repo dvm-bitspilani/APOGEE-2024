@@ -13,7 +13,7 @@ export function Constelation_SVG() {
     if (snap.isHamOpen) {
       setTimeout(() => {
         vivus.current?.play();
-      }, 2000);
+      }, 2500);
     } else {
       vivus.current?.reset();
     }
@@ -22,7 +22,7 @@ export function Constelation_SVG() {
   useEffect(() => {
     vivus.current = new Vivus("constelation-svg", {
       type: "delayed",
-      duration: 200,
+      duration: 250,
       start: "manual",
       pathTimingFunction: Vivus.EASE_IN,
       animTimingFunction: Vivus.EASE_OUT,
