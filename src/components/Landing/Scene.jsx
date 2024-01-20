@@ -26,20 +26,20 @@ export function Scene() {
   const menuPos = [-2, -1.5, 0.5];
   const menuRot = [0, -1.9, 0];
 
-  const { position, rotation } = useControls("Camera", {
-    position: {
-      value: [...menuPos],
-      step: 10,
-      min: -1000,
-      max: 1000,
-    },
-    rotation: {
-      value: [...menuRot],
-      step: 0.1,
-      min: -Math.PI * 2,
-      max: Math.PI * 2,
-    },
-  });
+  // const { position, rotation } = useControls("Camera", {
+  //   position: {
+  //     value: [...menuPos],
+  //     step: 10,
+  //     min: -1000,
+  //     max: 1000,
+  //   },
+  //   rotation: {
+  //     value: [...menuRot],
+  //     step: 0.1,
+  //     min: -Math.PI * 2,
+  //     max: Math.PI * 2,
+  //   },
+  // });
 
   useFrame(() => {
     // camera.position.set(...position);
@@ -119,23 +119,23 @@ export function Scene() {
     };
   }, [snap.isHamOpen]);
 
-  const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
-    lightPos: {
-      value: [1, -2, 2],
-      step: 1,
-      min: -1000,
-      max: 1000,
-    },
-    lightColor: {
-      value: "#2dc79f",
-    },
-    intensity: {
-      value: 6,
-      step: 0.1,
-      min: 0,
-      max: 10,
-    },
-  });
+  // const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
+  //   lightPos: {
+  //     value: [1, -2, 2],
+  //     step: 1,
+  //     min: -1000,
+  //     max: 1000,
+  //   },
+  //   lightColor: {
+  //     value: "#2dc79f",
+  //   },
+  //   intensity: {
+  //     value: 6,
+  //     step: 0.1,
+  //     min: 0,
+  //     max: 10,
+  //   },
+  // });
 
   const lightRef = useRef();
   // useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
@@ -153,9 +153,9 @@ export function Scene() {
       <AlienPlanetGLTF />
       <directionalLight
         ref={lightRef}
-        position={lightPos}
-        intensity={intensity}
-        color={Number(lightColor.replace("#", "0x"))}
+        position={[1, -2, 2]}
+        intensity={6}
+        color={Number("#2dc79f".replace("#", "0x"))}
       />
     </>
   );

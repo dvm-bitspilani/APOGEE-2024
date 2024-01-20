@@ -33,21 +33,21 @@ export default function AlienPlanetGLTF(props) {
     state.alienPlanet = alienPlanetRef.current;
   }, []);
 
-  const { color, float, position } = useControls("Alien Planet", {
-    position: {
-      value: [0.75, -1.5, -2],
-      step: 0.1,
-      label: "Position",
-    },
-    color: {
-      value: "#40dbad",
-      label: "Color",
-    },
-    float: {
-      value: false,
-      label: "Float",
-    },
-  });
+  // const { color, float, position } = useControls("Alien Planet", {
+  //   position: {
+  //     value: [0.75, -1.5, -2],
+  //     step: 0.1,
+  //     label: "Position",
+  //   },
+  //   color: {
+  //     value: "#40dbad",
+  //     label: "Color",
+  //   },
+  //   float: {
+  //     value: false,
+  //     label: "Float",
+  //   },
+  // });
 
   return (
     <>
@@ -55,17 +55,17 @@ export default function AlienPlanetGLTF(props) {
         intensity={5}
         rotation={[Math.PI, 0, 0]}
         position={[-2, 1.5, -4]}
-        color={new THREE.Color(Number("0x" + color.replace("#", "")))}
+        color={new THREE.Color(Number("0x" + "#40dbad".replace("#", "")))}
       />
       <Float
-        speed={float ? 0.35 : 0} // Animation speed, defaults to 1
+        speed={0} // Animation speed, defaults to 1
         rotationIntensity={1} // XYZ rotation intensity, defaults to 1
         floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[-0.4, 0.4]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
       >
         <group
           {...props}
-          position={[...position]}
+          position={[0.75, -1.5, -2]}
           rotation={[0, 0, 0]}
           scale={1.2}
           dispose={null}

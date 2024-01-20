@@ -104,29 +104,29 @@ export function AlienPlanetGLB() {
   // useHelper(hemisphereLightRef, THREE.HemisphereLightHelper, 2, "red");
   // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 2, "green");
 
-  const { intensity, rotation, position } = useControls(
-    "Alien Planet Directional Light",
-    {
-      intensity: {
-        value: 4,
-        step: 0.1,
-        min: 0,
-        max: 10,
-      },
-      rotation: {
-        value: [Math.PI, 0, 0],
-        step: 0.1,
-        min: -Math.PI,
-        max: Math.PI,
-      },
-      position: {
-        value: [-2, 2, -4],
-        // step: 1,
-        // min: -10,
-        // max: 10,
-      },
-    }
-  );
+  // const { intensity, rotation, position } = useControls(
+  //   "Alien Planet Directional Light",
+  //   {
+  //     intensity: {
+  //       value: 4,
+  //       step: 0.1,
+  //       min: 0,
+  //       max: 10,
+  //     },
+  //     rotation: {
+  //       value: [Math.PI, 0, 0],
+  //       step: 0.1,
+  //       min: -Math.PI,
+  //       max: Math.PI,
+  //     },
+  //     position: {
+  //       value: [-2, 2, -4],
+  //       // step: 1,
+  //       // min: -10,
+  //       // max: 10,
+  //     },
+  //   }
+  // );
 
   useFrame(() => {
     alienPlanetRef.current.rotation.y -= 0.0005;
@@ -144,8 +144,8 @@ export function AlienPlanetGLB() {
           {/* <hemisphereLight skyColor={new THREE.Color(0x226ea3)} groundColor={new THREE.Color(0x226ea3)} intensity={1} position={[3,-1.5,-6]} ref={hemisphereLightRef}/> */}
           <directionalLight
             ref={directionalLightRef}
-            intensity={intensity}
-            rotation={rotation}
+            intensity={4}
+            rotation={[Math.PI, 0, 0]}
             position={[-50, 50, -50]}
             color={new THREE.Color(0xffffff)}
           />
