@@ -1,6 +1,4 @@
-
-
-.formWrapper{
+.formWrapper {
   width: 100%;
   overflow-x: hidden;
   display: flex;
@@ -9,70 +7,68 @@
   align-self: flex-end;
   right: 0;
   padding-bottom: 2rem;
-}
-.formWrapper img{
-    width: 100%;
-}
-input{
-    width: 100%;
-}
-.checkboxContainer{
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    bottom: 45%;
-  }
-  .gender input:focus{
-    outline: none;
-  }
-  .checkboxItem {
-    display: flex;
-    align-items: center;
-  }
-  
-  .customCheckbox {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--primary);
-    // border-radius: 5px;
-    margin-right: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  label{
+
+  label {
     font-size: 1.5rem;
     text-transform: uppercase;
-    // position: absolute;
-    // top: 105%;
   }
-  .checked {
-    background-color: var(--primary);
-  }
-  
-  .checkmark {
-    color: var(--primary);
-  }
-  .registerBtn
-  {
-    width: max(12vw, 120px);
-    aspect-ratio: 3/1;
-    border-color: var(--secondary);
-    border-width: 1px;
-    border-style: solid;
-    bottom: max(calc(10vw - 7px), 92px);
-  background:rgba(125, 238, 243, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-    transition: border-color 0.2s ease-in-out;
-  }
-  @media only screen and (max-width: 550px) {
-label{
-    font-size: 1rem;
 }
+.formWrapper img {
+  width: 100%;
+}
+input {
+  width: 100%;
+}
+.checkboxContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  bottom: 45%;
+}
+.gender input:focus {
+  outline: none;
+}
+.checkboxItem {
+  display: flex;
+  align-items: center;
+}
+
+.customCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary);
+  // border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checked {
+  background-color: var(--primary);
+}
+
+.checkmark {
+  color: var(--primary);
+}
+.registerBtn {
+  width: max(12vw, 120px);
+  aspect-ratio: 3/1;
+  border-color: var(--secondary);
+  border-width: 1px;
+  border-style: solid;
+  bottom: max(calc(10vw - 7px), 92px);
+  background: rgba(125, 238, 243, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  transition: border-color 0.2s ease-in-out;
+}
+@media only screen and (max-width: 550px) {
+  label {
+    font-size: 1rem;
   }
+}
