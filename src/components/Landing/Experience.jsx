@@ -53,6 +53,7 @@ function Experience() {
         // rotation={[0, Math.PI / 2, 0]}
         // zoom={0.5}
         // fov={50}
+        fov={75}
         makeDefault
       />
       {/* <Sphere scale={[100, 100, 100]}>
