@@ -85,7 +85,7 @@
   height: 100px;
 }
 
-.socials a {
+.socials a , .landingSocials a{
   height: 85px;
   aspect-ratio: 1/1;
 
@@ -101,27 +101,40 @@
 
   pointer-events: all;
 
-  svg {
-    height: 30%;
+  &>svg {
+    height: 30% !important;
     aspect-ratio: 1/1;
   }
 }
 
-.socials a:hover {
+.socials a:hover , .landingSocials a:hover{
   scale: 1.1;
   cursor: pointer;
 }
 
-.socials a:nth-child(1) {
+.socials a:nth-child(1) , .landingSocials a:nth-child(1){
   background-image: url("@assets/hamMenu/YT_bg.png");
 }
 
-.socials a:nth-child(2) {
-  background-image: url("@assets/hamMenu/insta_bg.png");
+.socials a:nth-child(2) , .landingSocials a:nth-child(2){
+  background-image: url("@assets/hamMenu/yt_bg.png");
 }
 
-.socials a:nth-child(3) {
-  background-image: url("@assets/hamMenu/fb_bg.png");
+.socials a:nth-child(3) , .landingSocials a:nth-child(3){
+  background-image: url("@assets/hamMenu/yt_bg.png");
+}
+
+.landingSocials {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 90%;
+  height: 80px;
+
+  a{
+    height: 90%;
+  }
 }
 
 .madeLuv {
@@ -163,17 +176,17 @@
   }
 }
 
-@media screen and (max-width: 1168px) {
-  .constellationDetected {
-    transform-origin: 100% 50%;
-    transform: scale(0.6);
-  }
-  .socials {
-    top: calc(35% + 102px + 20px);
-    transform-origin: 100% 50%;
-    transform: scale(0.6);
-  }
-}
+// @media screen and (max-width: 1168px) {
+//   .constellationDetected {
+//     transform-origin: 100% 50%;
+//     transform: scale(0.6);
+//   }
+//   .socials {
+//     top: calc(35% + 102px + 20px);
+//     transform-origin: 100% 50%;
+//     transform: scale(0.6);
+//   }
+// }
 
 @media screen and (max-width: 900px) {
   .constellationDetected {

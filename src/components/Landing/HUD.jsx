@@ -1,7 +1,6 @@
 import * as styles from "@styles/HUD.module.scss";
 
 import NavigateSection from "./NavigateSection";
-import Countdown from "./Countdown";
 
 import state from "@components/state";
 import RegEventsSection from "./RegEventsSection";
@@ -11,8 +10,9 @@ import Socials from "@components/HamMenu/Socials";
 import MadeWithLuv from "@components/HamMenu/MadeWithLuv";
 import Constellation from "../HamMenu/Constelation";
 
-export function Hud() {
+import apogee from "@assets/landing/apogee_logo.png";
 
+export function Hud() {
   return (
     <>
       <img
@@ -34,7 +34,12 @@ export function Hud() {
           src="/images/Top HUD.svg"
           alt="top hud"
         />
-        <Countdown />
+        <img
+          src={apogee}
+          alt="apogee"
+          draggable={false}
+          className={styles.logo}
+        />
         <img
           className={styles.crosshair}
           src="/images/crosshair.png"
@@ -42,7 +47,7 @@ export function Hud() {
           draggable={false}
         />
         <button
-        id="ham-menu-button"
+          id="ham-menu-button"
           className={styles.hamMenuButton}
           onClick={() => (state.isHamOpen = !state.isHamOpen)}
         >
@@ -59,5 +64,3 @@ export function Hud() {
     </>
   );
 }
-
-

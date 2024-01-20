@@ -64,7 +64,21 @@
 
   @media screen and (max-height: 700px) {
     height: 100px;
+  }
 }
+
+.logo {
+  position: absolute;
+  top: 1.5vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 25px;
+  object-fit: contain;
+
+  @media screen and (max-height: 700px) {
+    top: 15px;
+  }
 }
 
 .hamMenuButton {
@@ -92,20 +106,24 @@
   @media screen and (max-height: 700px) {
     top: 94px;
     width: 110px;
-}
+  }
 
   & * {
     transition: all 0.2s ease-in-out;
   }
 
   span {
-    font-size: max(1rem, 1.5vw);
+    font-size: 1.4rem;
     font-weight: 200;
     text-transform: uppercase;
     text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
     color: inherit;
     padding-inline: 0.5rem;
     transition: all 0.2s ease-in-out;
+
+    @media screen and (max-height: 700px) {
+      font-size: 1rem;
+    }
   }
   &:hover {
     cursor: pointer;
@@ -125,8 +143,8 @@
 
 .navigatorWrapper {
   position: absolute;
-  top: 20%;
-  bottom: 20%;
+  top: 25%;
+  bottom: 15%;
   left: 10%;
   width: 280px;
   pointer-events: all;
@@ -157,6 +175,7 @@
     width: 100%;
     height: auto;
     flex-grow: 1;
+    align-items: center;
 
     svg {
       width: 100%;
@@ -201,7 +220,7 @@
 
 .regEventsWrapper {
   position: absolute;
-  top: 15%;
+  top: 20%;
   bottom: 15%;
   right: 10%;
   width: 280px;
@@ -227,8 +246,11 @@
 
     height: fit-content;
 
+    display: grid;
+    place-items: center;
+
     svg {
-      width: 100%;
+      width: 85%;
       height: auto;
       // position: absolute;
     }
@@ -243,7 +265,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -40%);
+      font-size: 1.1rem;
     }
 
     &:hover {
@@ -274,6 +297,7 @@
       0px 0px 4.471px rgba(134, 244, 232, 0.8);
     text-align: center;
     font-size: 1.4rem;
+    margin-top: 20px;
   }
   & > svg {
     width: 100%;
@@ -398,6 +422,7 @@
       text-align: center;
       text-shadow: 0px 0px 36.347px rgba(136, 196, 200, 0.7),
         0px 0px 5.871px rgba(134, 244, 232, 0.8);
+      width: 80%;
     }
     p {
       text-align: center;
@@ -413,5 +438,18 @@
   .regEventsWrapper {
     // top: 20%;
     bottom: 5%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .regEventsWrapper > *:not(:first-child) {
+    display: none;
+  }
+  .regEventsWrapper {
+    width: 50%;
+    top: auto;
+    bottom: 8%;
+    right: 50%;
+    transform: translateX(50%);
   }
 }

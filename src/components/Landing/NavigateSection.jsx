@@ -1,6 +1,9 @@
 import { useState } from "react";
 import * as styles from "@styles/HUD.module.scss";
 
+import Countdown from "./Countdown";
+import Socials from "@components/HamMenu/Socials";
+
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 const Button = ({ value, handleMouseOver, handleMouseOut }) => {
@@ -56,7 +59,7 @@ export default function NavigateSection() {
 
   return (
     <div className={styles.navigatorWrapper}>
-      <img draggable={false} src="/images/spaceship-landing.png" alt="spaceship" />
+      <Countdown />
       <div className={styles.navigator}>
         <Line />
         <h1>SECTIONS</h1>
@@ -71,6 +74,8 @@ export default function NavigateSection() {
             />
           ))}
         </div>
+        <Line />
+        <Socials navigate={true}/>
       </div>
     </div>
   );
@@ -81,8 +86,8 @@ export function Line() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="337"
-      height="79"
-      viewBox="0 0 337 79"
+      height="40"
+      viewBox="0 0 337 40"
       fill="none"
     >
       <g opacity="0.8" filter="url(#filter0_dd_570_110)">
@@ -90,6 +95,7 @@ export function Line() {
           d="M37.2497 39.1387L40 41.889L42.7503 39.1387L40 36.3884L37.2497 39.1387ZM299.75 39.1387L297 36.3884L294.25 39.1387L297 41.889L299.75 39.1387ZM40 39.615L297 39.615V38.6623L40 38.6623V39.615Z"
           fill="#94F2F6"
           fillOpacity="0.72"
+          transform="translate(0, -20)"
         />
       </g>
       <defs>
