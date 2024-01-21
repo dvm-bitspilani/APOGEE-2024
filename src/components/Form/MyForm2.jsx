@@ -6,6 +6,7 @@ import axios from 'axios';
 import Select from 'react-select';
 import styles from "../../styles/Register2.module.scss"
 import citiesData from '../Form/states.json';
+import customStyles from "../../components/Form/customStyles"
 const MyForm2 = () => {
   // const [interestOptions, setInterestOptions] = useState([]);
   // const [eventsOptions, setEventsOptions] = useState([]);
@@ -34,6 +35,12 @@ const MyForm2 = () => {
     city: Yup.string().required('City is required'),
   });
 
+  function handleNumericInput(event) {
+    let inputValue = event.target.value;
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+    event.target.value = inputValue;
+  }
+
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       await axios.post('your-api-endpoint', values);
@@ -51,7 +58,19 @@ const MyForm2 = () => {
     { value: 'female', label: 'FEMALE' },
     { value: 'other', label: 'OTHER' },
   ];
-
+  // useEffect(() => {
+  //   axios.get('https://bits-apogee.org/registrations/get_event_categories')
+  //     .then(response => {setInterestOptions(response.data)
+  //     console.log(response.data)})
+  //     .catch(error => console.error('Error fetching interests:', error));
+  //   axios.get('https://bits-apogee.org/registrations/get_college')
+  //     .then(response => {setEventsOptions(response.data)
+  //     console.log(response.data)})
+  //     .catch(error => console.error('Error fetching events:', error));
+  //   axios.get('https://bits-apogee.org/registrations/get_event')
+  //     .then(response => setCollegeOptions(response.data))
+  //     .catch(error => console.error('Error fetching colleges:', error));
+  // }, []);
   const interestOptions = [
     { value: 'sports', label: 'Sports' },
     { value: 'music', label: 'Music' },
@@ -70,17 +89,6 @@ const MyForm2 = () => {
     { value: 'college2', label: 'College 2' },
     // Add more colleges as needed
   ];
-  // useEffect(() => {
-  //   axios.get('http://localhost:1369/registrations/get_event_categories')
-  //     .then(response => setInterestOptions(response.data))
-  //     .catch(error => console.error('Error fetching interests:', error));
-  //   axios.get('http://localhost:1369/registrations/get_college')
-  //     .then(response => setEventsOptions(response.data))
-  //     .catch(error => console.error('Error fetching events:', error));
-  //   axios.get('http://localhost:1369/registrations/get_event')
-  //     .then(response => setCollegeOptions(response.data))
-  //     .catch(error => console.error('Error fetching colleges:', error));
-  // }, []);
   const yearOfStudyOptions = [
     { value: '1', label: '1' },
     { value: '2', label: '2' },
@@ -94,168 +102,8 @@ const MyForm2 = () => {
     value: city.name,
     label: city.name,
   }));
-  const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      minHeight: "2rem",
-      // height: "2rem",
-      backgroundColor: "transparent",
-      border: "none",
-      borderBottom: state.isFocused ? "none" : "none",
-      "&:hover": {
-        borderColor: "#9AF0F4",
-      },
-      outline: "none",
-      boxShadow: "none",
-      borderRadius: "0px",
-      height:"100%",
-      width:"100%",
-    }),
-    indicatorSeparator: () => {},
-    valueContainer: (provided) => ({
-      ...provided,
-      // height: "1.8rem",
-      backgroundColor: "transparent",
-      paddingLeft: 0,
-
-    }),
-    valueContainer: (provided) => ({
-      ...provided,
-      // height: "1.8rem",
-      // backgroundColor: "transparent",
-      // paddingLeft: 0,
-      display:"flex",
-      maxHeight:"100%",
-      overflow:"scroll",
-      padding:"0",
-      // display:"flex",
-      // flexDirection:"row-reverse"
-    }),
-    indicatorsContainer: (provided) => ({
-      ...provided,
-      // height: "1.8rem",
-    }),
-    singleValue: (provided) => ({
-      ...provided,
-      color: "#eee",
-      fontSize: "1.5rem",
-      fontWeight: 700,
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      color: state.isSelected ? "white" : "#9AF0F4",
-      backgroundColor: state.isSelected ? "transparent" : "transparent",
-      fontSize: "1.2rem",
-      fontWeight: 500,
-      zIndex: 1002,
-      display:"flex",
-      justifyContent:"center",
-      alignItems:"center",
-      textShadow:" 0px 0px 14.815px rgba(154, 240, 244, 0.7)",
-      fontFamily:"",
-      textTransform:"uppercase",
-      "&:hover": {
-        backgroundColor: "#9AF0F4",
-        color: "black",
-        cursor:"pointer"
-      },
-    }),
-    menu: (provided) => ({
-      ...provided,
-      zIndex: 1002,
-      backgroundColor: "black",
-      color:"#9AF0F4",
-      border:"0.1px solid #9AF0F4",
-      paddingTop: "0px",
-      paddingBottom: "0px",
-      maxHeight:"500%",
-      overflow:"scroll",
-    }),
-    menuList: (provided) => ({
-      ...provided,
-      // paddingTop: "1rem",
-      paddingBottom: "1rem",
-      backgroundColor: "transparent",
-    }),
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      color: "white",
-      padding: "5px",
-    }),
-    placeholder: (provided, state) => ({
-      ...provided,
-      // fontSize: "1.2rem",
-      opacity: "1",
-      color: "#A9A9A9",
-      opacity: state.isFocused ? "0" : "1",
-      fontFamily:"Space Grotesk",
-      textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
-      textTransform:"uppercase"
-
-    }),
-    container: (provided) => ({
-      ...provided,
-      overflow: "visible",
-    }),
-    input: (provided) => ({
-      ...provided,
-      color: "#fff",
-      fontSize: "1.5rem",
-      fontWeight: 700,
-      zIndex: 1002,
-      margin: "0",
-      paddingTop: "0",
-      paddngBottom: "0",
-      marginLeft: "2px",
-    }),
-    noOptionsMessage: (provided) => ({
-      ...provided,
-      color: "#fff",
-      fontSize: "1.2rem",
-      paddingLeft: "1rem",
-      backgroundColor: "#222222",
-      paddingTop: "0px",
-      paddingBottom: "0px",
-    }),
-    multiValue: (provided) => ({
-      ...provided,
-      color: "#fff",
-      fontSize: "1.2rem",
-      fontWeight: 700,
-      backgroundColor: "transparent",
-      border: "1px solid #5db3f1",
-      // paddingLeft: ".25rem",
-      alignItems: "center",
-      // paddingRight: "3px",
-    }),
-    multiValueLabel: (provided) => ({
-      ...provided,
-      color: "#ffffff !important",
-      backgroundColor: "transparent",
-    }),
-    multiValueRemove: (provided) => ({
-      ...provided,
-      color: "#fff",
-      padding: "0",
-      paddingLeft: "0",
-      marginRIght: "3px",
-      width: "14px",
-      height: "100%",
-      "&:hover": {
-        backgroundColor: "#5db3f1",
-        color: "#000",
-      },
-    }),
-    clearIndicator: (provided) => ({
-      ...provided,
-      color: "#fff",
-      "&:hover": {
-        color: "#5db3f1",
-      },
-    }),
-  
-  };
   return (
+    <>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
@@ -280,7 +128,9 @@ const MyForm2 = () => {
           </div>
 
           <div className={styles.mobilePhone}>
-            <Field type="text" id="phone" name="phone" placeholder="Your Phone No"/>
+            <Field type="text" id="phone" name="phone" placeholder="Your Phone No" 
+            onInput={(e) => handleNumericInput(e)}
+            />
             <img src="/images/phone.png" alt="" />
             <label htmlFor="phone">PHONE</label>
             {/* <ErrorMessage name="phone" component="div" /> */}
@@ -364,7 +214,7 @@ const MyForm2 = () => {
           </div>
 
           <div className={styles.mobileYear}>
-  <div className={styles.mobileCheckboxContainer}>
+  <div className={styles.checkboxContainer}>
     {yearOfStudyOptions.map(option => (
       <div key={option.value} className={styles.checkboxItem}>
         <div
@@ -405,6 +255,10 @@ const MyForm2 = () => {
           </>
       )}
     </Formik>
+            <div className={styles.registerBtn}>
+            <span>REGISTER</span>
+            </div>
+            </>
   );
 };
 

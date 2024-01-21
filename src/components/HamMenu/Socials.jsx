@@ -1,7 +1,8 @@
 import * as styles from "@styles/HamMenu.module.scss";
 
-export default function ConstellationDetected() {
-  return <div className={`${styles.socials} ${styles.menu}`}>
+export default function ConstellationDetected({navigate = false}) {
+  console.log(navigate);
+  return <div className={!navigate ? `${styles.socials} ${styles.menu}` : styles.landingSocials}>
     <a rel="noreferrer" target="_blank" href="https://www.youtube.com/@OasisBITS" className={styles.yt}>
         <YT />
     </a>

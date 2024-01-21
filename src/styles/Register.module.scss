@@ -1,11 +1,24 @@
 .pageContainer{
+  --name-sp: 1%;
+  --email-sp: 8%;
+  --phone-sp: 8%;
+  --gender-sp: 7%;
+  --interests-sp: 3%;
+  --events-sp: 8%;
+  --colleges-sp: 10%;
+  --year-sp: 8%;
+  --city-sp: 5%;
+}
+
+.pageContainer{
     width: 100lvw;
     height: 100dvh;
     position: relative;
-    background-image: url(../../public/images/starsAsset.png);
+    background-image: url(/images/starsAsset.png);
     background-size: 100lvw 100dvh;
     position: fixed;
     inset: 0;
+    overflow-y: scroll;
     .leftHelm{
         position: absolute;
         top: 0;
@@ -48,7 +61,7 @@
     justify-content: center;
   
     transition: border-color 0.2s ease-in-out;
-    z-index: 1;
+    z-index: 2;
   
     svg * {
       transition: all 0.2s ease-in-out;
@@ -90,11 +103,32 @@
   position: relative;
   inset: 0;
   mix-blend-mode: difference;
+  .registerBtn
+  {
+    width: max(12vw, 120px);
+    aspect-ratio: 3/1;
+    border-color: var(--secondary);
+    border-width: 1px;
+    border-style: solid;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: max(calc(10vw - 7px), 92px);
+  background:rgba(125, 238, 243, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    transition: border-color 0.2s ease-in-out;
+    z-index: 2;
+    bottom: -5vh;
+  }
 }
 .imgContainer{
     position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   margin-inline: auto;
   width: 100%;
   display: flex;
@@ -117,7 +151,7 @@
 .formContainer{
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   margin-inline: auto;
   width: 100%;
   display: flex;
@@ -146,6 +180,7 @@ input{
   background: transparent;
   border: none;
   font-size: 1.1rem;
+  color: white;
 }
 input:focus{
   outline: none;
@@ -157,7 +192,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--name-sp));
+  margin-right: var(--name-sp);
   inset:0;
 }
 .name > input{
@@ -178,9 +214,10 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
   inset:0;
   top: -5%;
+  width: calc(75% - var(--email-sp));
+  margin-right: var(--email-sp);
 }
 .email>img{
   width: 100%;
@@ -200,7 +237,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--phone-sp));
+  margin-right: var(--phone-sp);
   inset:0;
 }
 .phone img{
@@ -222,7 +260,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--gender-sp));
+  margin-right: var(--gender-sp);
   inset:0;
   top: 7%;
 }
@@ -290,7 +329,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--interests-sp));
+  margin-right: var(--interests-sp);
   inset:0;
 }
 .interests>img{
@@ -316,7 +356,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--events-sp));
+  margin-left: var(--events-sp);
   inset: 0;
 }
 .events img{
@@ -340,7 +381,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--colleges-sp));
+  margin-left: var(--colleges-sp);
   inset: 0;
   top: -10%;
 }
@@ -363,7 +405,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--year-sp));
+  margin-left: var(--year-sp);
   inset: 0;
 }
 .year> .checkboxContainer{
@@ -384,7 +427,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--city-sp));
+  margin-left: var(--city-sp);
   inset: 0;
 }
 .city img{
@@ -413,11 +457,12 @@ label{
 //     }
 // }
 .mobileContent{
-  position: relative;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: auto;
   width: 100vw;
+align-items: center;
+  justify-content: center;
 }
 .leftTop, .rightTop{
   width: 50%;
@@ -442,9 +487,48 @@ label{
 .leftTop, .rightTop, .middleTop{
   display: none;
 }
-@media only screen and (min-width: 1200px) {
-
+.mobileContent{
+  display: none;
 }
+.topContainer{
+  height: 18vh;
+  display: none;
+}
+.registerBtn:hover{
+  cursor: pointer;
+  border-color: #b16060;
+  text-shadow: 0px 0px 14.815px var(--hover-link);
+  color: #b16060;
+  // background-color: #b16060;
+  
+}
+.registerBtn:hover span{
+  // color: #b16060;
+}
+@media (min-width: 1000px), (max-height: 650px) {
+  .hud{
+    height: 20vh !important;
+  }
+  .homeBtn{
+    top: 18.6vh;
+    width: max(12vh,120px);
+  }
+  .heading{
+    top: 3vh;
+  }
+}
+input:autofill {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+}
+
+input:-webkit-autofill {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+}
+
 @media only screen and (max-width: 1200px) {
   .gender  .checkboxContainer{
     // bottom: 50%;
@@ -553,6 +637,14 @@ label{
   top: 3vh;
 }
 .mobileContent{
+  display: flex ;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  display: flex;
+  overflow-y: scroll;
+}
+.topContainer{
   display: block;
 }
 .leftTop, .rightTop, .middleTop{

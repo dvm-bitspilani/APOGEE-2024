@@ -13,6 +13,7 @@ import { useGlitch } from "react-powerglitch";
 import kernel_events from "@assets/events/kernel_events";
 
 import robowars from "@assets/events/robowars.jpg";
+import drone from "@assets/events/drone.jpg";
 
 export default function RegEventsSection() {
 
@@ -21,7 +22,6 @@ export default function RegEventsSection() {
   const sms = "sms.jpg";
   const oht = "oht.jpg";
   const quantuculus = "quantuculus.jpg";
-  const drone = "drone.jpg";
   const icl = "icl.jpg";
   const bitmun = "bitmun.jpg";
   const finance = "finance.jpg";
@@ -33,7 +33,7 @@ export default function RegEventsSection() {
 
   const [index, setIndex] = useState(0);
   return (
-    <div className={styles.regEventsWrapper}>
+    <div className={`${styles.regEventsWrapper} ${styles.landingElements}`}>
       <Link to="/register">
         <Register_bg_svg />
         <span>REGISTER</span>

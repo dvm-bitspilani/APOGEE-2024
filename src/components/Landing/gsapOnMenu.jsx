@@ -28,6 +28,10 @@ export function gsapOnMenu(
       },
       onComplete: () => {
         hamMenuButton.disabled = false;
+        const socialLinks = document.querySelectorAll(`.${hamStyles.socials} a`);
+        gsap.set(socialLinks, {
+          pointerEvents: "all",
+        });
       },
     });
 
@@ -35,7 +39,7 @@ export function gsapOnMenu(
     // window?.addEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, menuRot));
 
     tl.to(
-      `.${hudStyles.navigatorWrapper}`,
+      `.${hudStyles.landingElements}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -43,24 +47,6 @@ export function gsapOnMenu(
       },
       "<"
     )
-      .to(
-        `.${hudStyles.regEventsWrapper}`,
-        {
-          autoAlpha: 0,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to(
-        `.${hudStyles.crosshair}`,
-        {
-          autoAlpha: 0,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
       .to(
         camera.position,
         {
@@ -112,6 +98,10 @@ export function gsapOnMenu(
     const tl = gsap.timeline({
       onStart: () => {
         hamMenuButton.disabled = true;
+        const socialLinks = document.querySelectorAll(`.${hamStyles.socials} a`);
+        gsap.set(socialLinks, {
+          pointerEvents: "none",
+        });
       },
       onComplete: () => {
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
@@ -147,7 +137,7 @@ export function gsapOnMenu(
         "<"
       )
       .to(
-        `.${hudStyles.navigatorWrapper}`,
+        `.${hudStyles.landingElements}`,
         {
           autoAlpha: 1,
           duration: 1,
@@ -155,23 +145,5 @@ export function gsapOnMenu(
         },
         "-=0.5"
       )
-      .to(
-        `.${hudStyles.regEventsWrapper}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to(
-        `.${hudStyles.crosshair}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "<"
-      );
   }
 }
