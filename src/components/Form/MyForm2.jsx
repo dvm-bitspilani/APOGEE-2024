@@ -35,6 +35,12 @@ const MyForm2 = () => {
     city: Yup.string().required('City is required'),
   });
 
+  function handleNumericInput(event) {
+    let inputValue = event.target.value;
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+    event.target.value = inputValue;
+  }
+
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       await axios.post('your-api-endpoint', values);
@@ -122,7 +128,9 @@ const MyForm2 = () => {
           </div>
 
           <div className={styles.mobilePhone}>
-            <Field type="text" id="phone" name="phone" placeholder="Your Phone No"/>
+            <Field type="text" id="phone" name="phone" placeholder="Your Phone No" 
+            onInput={(e) => handleNumericInput(e)}
+            />
             <img src="/images/phone.png" alt="" />
             <label htmlFor="phone">PHONE</label>
             {/* <ErrorMessage name="phone" component="div" /> */}

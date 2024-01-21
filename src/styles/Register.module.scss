@@ -1,4 +1,16 @@
 .pageContainer{
+  --name-sp: 1%;
+  --email-sp: 8%;
+  --phone-sp: 8%;
+  --gender-sp: 7%;
+  --interests-sp: 4%;
+  --events-sp: 8%;
+  --colleges-sp: 10%;
+  --year-sp: 8%;
+  --city-sp: 5%;
+}
+
+.pageContainer{
     width: 100lvw;
     height: 100dvh;
     position: relative;
@@ -180,7 +192,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--name-sp));
+  margin-right: var(--name-sp);
   inset:0;
 }
 .name > input{
@@ -201,9 +214,10 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
   inset:0;
   top: -5%;
+  width: calc(75% - var(--email-sp));
+  margin-right: var(--email-sp);
 }
 .email>img{
   width: 100%;
@@ -223,7 +237,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--phone-sp));
+  margin-right: var(--phone-sp);
   inset:0;
 }
 .phone img{
@@ -245,7 +260,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--gender-sp));
+  margin-right: var(--gender-sp);
   inset:0;
   top: 7%;
 }
@@ -313,7 +329,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--events-sp));
+  margin-right: var(--events-sp);
   inset:0;
 }
 .interests>img{
@@ -339,7 +356,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--events-sp));
+  margin-left: var(--events-sp);
   inset: 0;
 }
 .events img{
@@ -363,7 +381,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--colleges-sp));
+  margin-left: var(--colleges-sp);
   inset: 0;
   top: -10%;
 }
@@ -386,7 +405,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--year-sp));
+  margin-left: var(--year-sp);
   inset: 0;
 }
 .year> .checkboxContainer{
@@ -407,7 +427,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--city-sp));
+  margin-left: var(--city-sp);
   inset: 0;
 }
 .city img{
