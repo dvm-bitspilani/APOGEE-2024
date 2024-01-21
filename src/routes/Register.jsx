@@ -42,9 +42,11 @@ export default function Register() {
         <div className={styles.imgContainer}>
           <img src="/images/globeReg.png" alt="" className={styles.globeImage}/>
         </div>
-          <div className={styles.formContainer}>
+          {/* <div className={styles.formContainer}>
             <MyForm />
-          </div>
+          </div> */}
+          <MyForm />
+
           
       </div>
       <div className={styles.mobileContent}>
