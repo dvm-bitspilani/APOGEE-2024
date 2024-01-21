@@ -3,8 +3,8 @@ import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { AdditiveBlending, DoubleSide, MathUtils } from "three";
 
-const INSTANCES = 240;
-const MAX_OPACITY = 0.5;
+const INSTANCES = 300;
+const MAX_OPACITY = 0.75;
 
 const SpeedShape = () => {
   const ref = useRef();
@@ -19,7 +19,7 @@ const SpeedShape = () => {
     randomPosition = {
       x: MathUtils.randFloatSpread(8),
       y: MathUtils.randFloatSpread(5),
-      z: MathUtils.randFloatSpread(8),
+      z: MathUtils.randFloatSpread(80),
     };
     randomSpeed = MathUtils.randFloat(16, 20);
   };

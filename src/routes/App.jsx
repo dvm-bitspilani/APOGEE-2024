@@ -22,7 +22,7 @@ function App() {
     >
       <Canvas camera={{ fov: 75, position: [0, 0, 0] }}>
         {/* <EffectComposerLayer /> */}
-        <Suspense fallback={<Loader />}>
+        {/* <Suspense fallback={<Loader />}> */}
           {/* <OrbitControls /> */}
           <ambientLight intensity={0.5} />
           {/* <directionalLight position={[10, 10, 5]} intensity={1} /> */}
@@ -46,7 +46,7 @@ function App() {
           >
             <Experience />
           </ScrollControls>
-        </Suspense>
+        {/* </Suspense> */}
         <Stats />
       </Canvas>
       <Hud />

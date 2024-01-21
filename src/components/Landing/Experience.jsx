@@ -12,6 +12,7 @@ import state from "../state";
 
 function Experience() {
   const scroll = useScroll();
+  const lastScroll = useRef(0);
 
   const cameraRef = useRef();
 
@@ -21,16 +22,16 @@ function Experience() {
 
 
   useFrame((_state, delta) => {
-    if (cameraRef.current) {
+    if (cameraRef.current && scroll.offset - lastScroll.current > 0.0005) {
       const { current: camera } = cameraRef;
 
-      const amplitude = -5;
+      const amplitude = -0.5;
       const frequency = 10;
 
       const newPosition = [
         amplitude * Math.sin(scroll.offset * frequency),
         0,
-        scroll.offset * -100,
+        scroll.offset * -50,
       ];
       // console.log(newPosition);
 
@@ -52,7 +53,7 @@ function Experience() {
         position={[0, 0, 0]}
         // rotation={[0, Math.PI / 2, 0]}
         zoom={0.5}
-        fov={50}
+        fov={40}
         makeDefault
       />
       {/* <Sphere scale={[100, 100, 100]}>
