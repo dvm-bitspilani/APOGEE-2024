@@ -8,10 +8,10 @@ import { useControls } from "leva";
 
 import { gsapOnRender } from "./gsapOnRender";
 import Earth from "./Earth";
-import AlienPlanet from "./AlienPlanet";
-import { AlienPlanetGLB } from "./AlienPlanet";
-import AlienPlanetGLTF from "./AlienPlanetGLTF";
-import ProceduralPlanet from "./ProceduralPlanet";
+import AlienPlanet from "../Models/AlienPlanet";
+import { AlienPlanetGLB } from "../Models/AlienPlanet";
+import AlienPlanetGLTF from "../Models/AlienPlanetGLTF";
+import ProceduralPlanet from "../Models/ProceduralPlanet";
 
 import gsap from "gsap/gsap-core";
 import { gsapOnMenu } from "./gsapOnMenu";
@@ -20,6 +20,7 @@ import state from "../state";
 import { useSnapshot } from "valtio";
 import { useHelper } from "@react-three/drei";
 import { DirectionalLightHelper } from "three";
+import { Asteroid } from "../Models/Asteroid";
 
 export function Scene() {
   const { camera } = useThree();
@@ -142,7 +143,8 @@ export function Scene() {
   useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
 
   useEffect(() => {
-    lightRef.current.target = state.alienPlanet;
+    // lightRef.current.target = state.alienPlanet;
+    // console.log(state.alienPlanet);
   }, [snap.alienPlanet]);
 
   return (
@@ -151,14 +153,15 @@ export function Scene() {
       {/* <Earth /> */}
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
-      {/* <AlienPlanetGLTF /> */}
-      <ProceduralPlanet />
+      <AlienPlanetGLTF />
+      {/* <ProceduralPlanet /> */}
       <directionalLight
         ref={lightRef}
         position={lightPos}
         intensity={intensity}
         color={Number(lightColor.replace("#", "0x"))}
       />
+      <Asteroid />
     </>
   );
 }
