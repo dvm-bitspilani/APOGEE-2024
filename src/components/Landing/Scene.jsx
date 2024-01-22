@@ -118,7 +118,7 @@ export function Scene() {
         rotationUpdateOnMouseMoveHandler2
       );
     };
-  }, [snap.isHamOpen, camera, menuPos, menuRot]);
+  }, [snap.isHamOpen, camera]);
 
   const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
     lightPos: {
@@ -142,7 +142,7 @@ export function Scene() {
   useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
 
   useEffect(() => {
-    lightRef.current.target = state.alienPlanet;
+    // lightRef.current.target = state.alienPlanet;
   }, [snap.alienPlanet]);
 
   return (
@@ -151,8 +151,8 @@ export function Scene() {
       {/* <Earth /> */}
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
-      {/* <AlienPlanetGLTF /> */}
-      <ProceduralPlanet />
+      <AlienPlanetGLTF />
+      {/* <ProceduralPlanet /> */}
       <directionalLight
         ref={lightRef}
         position={lightPos}

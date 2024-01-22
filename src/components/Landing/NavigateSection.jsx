@@ -5,12 +5,11 @@ import Countdown from "./Countdown";
 import Socials from "@components/HamMenu/Socials";
 
 import state from "../state";
-import { useSnapshot } from "valtio";
+// import { useSnapshot } from "valtio";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 const Button = ({ value, handleMouseOver, handleMouseOut, isActive }) => {
-  console.log(isActive ? value : null);
   return (
     <button className={isActive ? styles.buttonActive : null} data-value={value} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       {value}
