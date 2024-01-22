@@ -2,7 +2,7 @@ import { Environment, Sphere } from "@react-three/drei";
 import { LayerMaterial } from "lamina";
 import * as THREE from "three";
 import { TextureLoader } from "three";
-import TextureMap from "/images/nebula.jpg";
+import TextureMap from "/images/nebula-v2.jpg";
 import { Stars } from "@react-three/drei";
 
 import { useControls } from "leva";
