@@ -7,6 +7,7 @@ import Select from 'react-select';
 import styles from "../../styles/Register2.module.scss"
 import citiesData from '../Form/states.json';
 import customStyles from "../../components/Form/customStyles"
+import customStyles1 from "../../components/Form/customStyles1"
 const MyForm2 = () => {
   // const [interestOptions, setInterestOptions] = useState([]);
   // const [eventsOptions, setEventsOptions] = useState([]);
@@ -170,7 +171,7 @@ const MyForm2 = () => {
                 setFieldValue('interests', selectedOptions ? selectedOptions.map((option) => option.value) : []);
               }}
               className={styles.mobileInterestsWrapper}
-              styles={customStyles}
+              styles={customStyles1}
               placeholder="Choose Interests"
             />
                         <img src="/images/phone.png" alt="" />
@@ -187,7 +188,7 @@ const MyForm2 = () => {
                 setFieldValue('events', selectedOptions ? selectedOptions.map((option) => option.value) : []);
               }}
               className={styles.mobileEventsWrapper}
-              styles={customStyles}
+              styles={customStyles1}
               placeholder="Choose Events"
             />
                                     <img src="/images/phone.png" alt="" />
@@ -205,7 +206,7 @@ const MyForm2 = () => {
                 setFieldValue('college', selectedOption ? selectedOption.value : '');
               }}
               className={styles.mobileCollegeWrapper}
-              styles={customStyles}
+              styles={customStyles1}
               placeholder="Choose Your College"
             />
                                                 <img src="/images/phone.png" alt="" />
@@ -245,7 +246,7 @@ const MyForm2 = () => {
     setFieldValue('city', selectedOption ? selectedOption.value : '');
   }}
   className={styles.mobileCityWrapper}
-  styles={customStyles}
+  styles={customStyles1}
   placeholder="Your City"
 />
 <img src="/images/phone.png" alt="" />

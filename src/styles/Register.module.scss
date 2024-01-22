@@ -534,7 +534,20 @@ input:-webkit-autofill {
   border: none;
   font-size: 1.1rem;
 }
-
+.scrollBar{
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow-y:hidden;
+  display: none;
+}
+.inScroll{
+  position: absolute;
+  left: 1px;
+  // top: 0;
+  top: 68%;
+}
 @media only screen and (max-width: 1200px) {
   .gender  .checkboxContainer{
     // bottom: 50%;
@@ -654,6 +667,9 @@ input:-webkit-autofill {
   display: block;
 }
 .leftTop, .rightTop, .middleTop{
+  display: block;
+}
+.scrollBar{
   display: block;
 }
 }

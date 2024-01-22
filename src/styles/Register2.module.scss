@@ -7,7 +7,7 @@
   align-self: flex-end;
   right: 0;
   padding-bottom: 2rem;
-
+  width: 80%;
   label {
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -66,6 +66,9 @@ input {
   letter-spacing: 2px;
   font-size: 1.2rem;
   transition: border-color 0.2s ease-in-out;
+}
+.checkboxItem > label{
+  font-size: 1rem;
 }
 @media only screen and (max-width: 550px) {
   label {
