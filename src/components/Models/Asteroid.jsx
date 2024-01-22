@@ -30,9 +30,9 @@ export function Asteroid(props) {
     asteroidRef.current.rotation.x += 0.01;
 
     asteroidRef.current.position.x =
-      10 * Math.sin(state.clock.elapsedTime * 0.2);
+      6 * Math.sin(state.clock.elapsedTime * 0.2);
     asteroidRef.current.position.y =
-      Math.sin(state.clock.elapsedTime * 0.2) * 2;
+      Math.sin(state.clock.elapsedTime * 0.35) * 2;
     asteroidRef.current.position.z =
       8 * Math.cos(state.clock.elapsedTime * 0.2);
   });
