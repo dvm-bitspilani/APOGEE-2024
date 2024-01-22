@@ -23,15 +23,15 @@ import { useSnapshot } from "valtio";
 export function Scene() {
   const { camera } = useThree();
 
-  const menuPos = [-4, -1.5, -0.5];
+  const menuPos = [-2, -1.5, -0];
   const menuRot = [0, -1.9, 0];
 
   const { position, rotation } = useControls("Camera", {
     position: {
       value: [...menuPos],
-      step: 10,
-      min: -1000,
-      max: 1000,
+      step: 0.1,
+      min: -10,
+      max: 10,
     },
     rotation: {
       value: [...menuRot],
