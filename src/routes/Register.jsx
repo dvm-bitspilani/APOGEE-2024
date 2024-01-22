@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect, useRef} from "react";
 import styles from "../styles/Register.module.scss";
 import { motion } from "framer-motion";
 import MyForm from "../components/Form/MyForm";
@@ -6,9 +6,33 @@ import MyForm2 from "../components/Form/MyForm2";
 import { useNavigate } from "react-router-dom";
 export default function Register() {
   const navigate = useNavigate();
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const mobileContentRef = useRef(null);
   const handleHomeClick = () => {
     navigate('/');
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      const mobileContent = mobileContentRef.current;
+      if (mobileContent) {
+        const scrollPercentage =
+        (mobileContent.scrollTop / (mobileContent.scrollHeight - mobileContent.clientHeight)) * 68;
+        setScrollPosition(scrollPercentage);
+      }
+    };
+
+    const mobileContent = mobileContentRef.current;
+    if (mobileContent) {
+      mobileContent.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (mobileContent) {
+        mobileContent.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
@@ -16,7 +40,12 @@ export default function Register() {
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 1, ease: "easeInOut", delay: 0 }}
       className={styles.pageContainer}
+      ref={mobileContentRef}
     >
+              <div className={styles.scrollBar}>
+          <img src="/images/outScroll.svg" alt="" className={styles.outScroll}/>
+          <img src="/images/insideScroll.svg" alt="" className={styles.inScroll} style={{ top: `${scrollPosition}%` }}/>
+        </div>
       <span className={styles.heading}>REGISTRATION</span>
       <img src="/images/Left helm.png" alt="" className={styles.leftHelm}/>
       <img src="/images/Right helm.png" alt="" className={styles.rightHelm}/>
