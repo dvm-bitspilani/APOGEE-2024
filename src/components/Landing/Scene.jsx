@@ -11,14 +11,15 @@ import Earth from "./Earth";
 import AlienPlanet from "./AlienPlanet";
 import { AlienPlanetGLB } from "./AlienPlanet";
 import AlienPlanetGLTF from "./AlienPlanetGLTF";
+import ProceduralPlanet from "./ProceduralPlanet";
 
 import gsap from "gsap/gsap-core";
 import { gsapOnMenu } from "./gsapOnMenu";
 
 import state from "../state";
 import { useSnapshot } from "valtio";
-// import { useCamera, useHelper } from "@react-three/drei";
-// import { DirectionalLightHelper } from "three";
+import { useHelper } from "@react-three/drei";
+import { DirectionalLightHelper } from "three";
 
 export function Scene() {
   const { camera } = useThree();
@@ -110,7 +111,6 @@ export function Scene() {
       );
 
     hamMenuButton.addEventListener("click", gsapOnMenuHandler);
-    console.log("hi")
 
     return () => {
       window?.removeEventListener(
@@ -122,16 +122,16 @@ export function Scene() {
 
   const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
     lightPos: {
-      value: [1, -2, 2],
+      value: [1, -1, 5],
       step: 1,
       min: -1000,
       max: 1000,
     },
     lightColor: {
-      value: "#2dc79f",
+      value: "#845cdb",
     },
     intensity: {
-      value: 6,
+      value: 5,
       step: 0.1,
       min: 0,
       max: 10,
@@ -139,7 +139,7 @@ export function Scene() {
   });
 
   const lightRef = useRef();
-  // useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
+  useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
 
   useEffect(() => {
     lightRef.current.target = state.alienPlanet;
@@ -151,7 +151,8 @@ export function Scene() {
       {/* <Earth /> */}
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
-      <AlienPlanetGLTF />
+      {/* <AlienPlanetGLTF /> */}
+      <ProceduralPlanet />
       <directionalLight
         ref={lightRef}
         position={lightPos}

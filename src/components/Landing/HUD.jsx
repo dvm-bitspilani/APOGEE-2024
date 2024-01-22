@@ -75,14 +75,27 @@ export function Hud() {
 }
 
 export function MobileHUD() {
+
+  const buttonData = [
+    "HOME",
+    "ABOUT",
+    "EVENTS",
+    "SPEAKERS",
+    "CONTACT",
+  ];
+
   return (
     <>
       <div className={`${styles.mobileLinks} ${styles.landingElements}`}>
-        <button>Home</button>
-        <button>About</button>
-        <button>Events</button>
-        <button>Speakers</button>
-        <button>Contact</button>
+        {buttonData.map((value, index) => (
+          <button
+            key={index}
+            className={state.activeSection === index ? styles.active : ""}
+            onClick={() => state.activeSection = index}
+          >
+            {value}
+          </button>
+        ))}
       </div>
       <div className={`${styles.mobileBottom} ${styles.landingElements}`}>
         <Countdown mobile={true}/>

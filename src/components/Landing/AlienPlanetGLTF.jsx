@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/alien-planet-bbb2e0eeb0b34247b8a70655c78
 Title: Alien Planet
 */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 import { Float } from "@react-three/drei";
@@ -16,9 +16,7 @@ import { useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
 
-import { ShaderMaterial } from "three";
-
-import state  from "@components/state";
+import state from "@components/state";
 
 export default function AlienPlanetGLTF(props) {
   const { nodes, materials } = useGLTF("/models/alien_planet_1k.glb");

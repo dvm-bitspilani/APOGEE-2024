@@ -191,6 +191,7 @@
       align-items: flex-start;
       justify-content: center;
       padding: 0 15%;
+      align-self: flex-start;
 
       button {
         background-color: transparent;
@@ -210,6 +211,12 @@
 
         &:hover {
           cursor: pointer;
+          text-shadow: 0px 0px 30.591px #b16060,
+            0px 0px 4.706px rgba(251, 186, 188, 0.8);
+          color: var(--hover-link);
+        }
+
+        &.buttonActive {
           text-shadow: 0px 0px 30.591px #b16060,
             0px 0px 4.706px rgba(251, 186, 188, 0.8);
           color: var(--hover-link);
@@ -457,6 +464,12 @@
     text-shadow: 0px 0px 27.356px rgba(136, 196, 200, 0.7),
       0px 0px 4.419px rgba(134, 244, 232, 0.8);
     font-size: 1.3rem;
+
+    &.active{
+      text-shadow: 0px 0px 27.356px #b16060,
+      0px 0px 4.419px rgba(251, 186, 188, 0.8);
+      color: var(--hover-link);
+    }
   }
 }
 
