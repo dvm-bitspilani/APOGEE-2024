@@ -23,7 +23,7 @@ function App() {
         {/* <EffectComposerLayer /> */}
         {/* <Suspense fallback={<Loader />}> */}
           {/* <OrbitControls /> */}
-          <ambientLight intensity={3} />
+          <ambientLight intensity={1.5} />
           {/* <directionalLight position={[10, 10, 5]} intensity={1} /> */}
           {/* <Scene /> */}
           {/* <axesHelper args={[5]} /> */}

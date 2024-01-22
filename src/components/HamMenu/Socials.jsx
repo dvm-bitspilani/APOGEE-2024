@@ -1,17 +1,38 @@
 import * as styles from "@styles/HamMenu.module.scss";
 
-export default function ConstellationDetected({navigate = false}) {
-  return <div className={!navigate ? `${styles.socials} ${styles.menu}` : styles.landingSocials}>
-    <a rel="noreferrer" target="_blank" href="https://www.youtube.com/@OasisBITS" className={styles.yt}>
+export default function ConstellationDetected({ navigate = false }) {
+  return (
+    <div
+      className={
+        !navigate ? `${styles.socials} ${styles.menu}` : styles.landingSocials
+      }
+    >
+      <a
+        rel="noreferrer"
+        target="_blank"
+        href="https://www.youtube.com/@OasisBITS"
+        className={styles.yt}
+      >
         <YT />
-    </a>
-    <a rel="noreferrer" target="_blank" href="https://www.instagram.com/bitsapogee/?hl=en" className={styles.ig}>
+      </a>
+      <a
+        rel="noreferrer"
+        target="_blank"
+        href="https://www.instagram.com/bitsapogee/?hl=en"
+        className={styles.ig}
+      >
         <IG />
-    </a>
-    <a rel="noreferrer" target="_blank" href="https://www.facebook.com/bitsapogee/" className={styles.fb}>
+      </a>
+      <a
+        rel="noreferrer"
+        target="_blank"
+        href="https://www.facebook.com/bitsapogee/"
+        className={styles.fb}
+      >
         <FB />
-    </a>
-  </div>;
+      </a>
+    </div>
+  );
 }
 
 export function YT() {

@@ -8,7 +8,7 @@ import { useControls } from "leva";
 import state from "@components/state";
 
 export default function ProceduralPlanet(props) {
-    const { nodes, materials } = useGLTF("/models/procedural_planet.glb");
+    const { nodes, materials } = useGLTF("/models/procedural2.glb");
     const alienPlanetRef = useRef();
     const directionalLightRef = useRef(null);
   
@@ -29,11 +29,11 @@ export default function ProceduralPlanet(props) {
           label: "Position",
         },
         color: {
-          value: "#b5ebdf",
+          value: "#c0cb9c",
           label: "Color",
         },
         intensity: {
-            value: 7.9,
+            value: 1.3,
             step: 0.1,
             min: 0,
             max: 10,
@@ -60,11 +60,11 @@ export default function ProceduralPlanet(props) {
             castShadow
             receiveShadow
             geometry={nodes.Sphere.geometry}
-            material={materials["Material.001"]}
+            material={materials["Material.002"]}
             scale={1.084}
           />
         </group>
       </>
     );
   }
-  useGLTF.preload("/models/procedural_planet.glb");
+  useGLTF.preload("/models/procedural2.glb");

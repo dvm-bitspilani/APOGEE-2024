@@ -122,16 +122,16 @@ export function Scene() {
 
   const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
     lightPos: {
-      value: [1, -1, 5],
+      value: [4, -1, 5],
       step: 1,
       min: -1000,
       max: 1000,
     },
     lightColor: {
-      value: "#845cdb",
+      value: "#be3d2d",
     },
     intensity: {
-      value: 5,
+      value: 0,
       step: 0.1,
       min: 0,
       max: 10,
@@ -142,7 +142,7 @@ export function Scene() {
   useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
 
   useEffect(() => {
-    // lightRef.current.target = state.alienPlanet;
+    lightRef.current.target = state.alienPlanet;
   }, [snap.alienPlanet]);
 
   return (
@@ -151,8 +151,8 @@ export function Scene() {
       {/* <Earth /> */}
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
-      <AlienPlanetGLTF />
-      {/* <ProceduralPlanet /> */}
+      {/* <AlienPlanetGLTF /> */}
+      <ProceduralPlanet />
       <directionalLight
         ref={lightRef}
         position={lightPos}
