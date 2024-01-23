@@ -4,10 +4,16 @@ import * as styles from "@styles/Constelation.module.scss";
 import * as hamStyles from "@styles/HamMenu.module.scss";
 
 export default function Constelation() {
+
+  function handleHome() {
+    const ham_menu_but = document.getElementById("ham-menu-button");
+    ham_menu_but.click();
+  }
+
   return (
     <div className={`${styles.constelationWrapper} ${hamStyles.menu}`}>
       <Constelation_SVG />
-      <div className={styles.home}>
+      <div className={styles.home} onClick={handleHome}>
         <StarSVG />
         <span>HOME</span>
       </div>
