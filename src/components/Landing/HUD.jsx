@@ -15,9 +15,9 @@ import { Register_bg_svg } from "./RegEventsSection";
 
 import apogee from "@assets/landing/apogee_logo.png";
 import Countdown from "./Countdown";
+import { CrossHairCursor } from "./CrossHairCursor";
 
 export function Hud() {
-  const { innerWidth, innerHeight } = window;
 
   return (
     <>
@@ -26,14 +26,14 @@ export function Hud() {
         className={styles.lefthelm}
         src="/images/Left helm.png"
         alt="left helm"
-        style={{position: 'fixed'}}
+        style={{ position: "fixed" }}
       />
       <img
         draggable={false}
         className={styles.righthelm}
         src="/images/Right helm.png"
         alt="right helm"
-        style={{position: 'fixed'}}
+        style={{ position: "fixed" }}
       />
       <div id="landing-hud-overlay" className={styles.wrapper}>
         <img
@@ -48,12 +48,7 @@ export function Hud() {
           draggable={false}
           className={styles.logo}
         />
-        <img
-          className={`${styles.crosshair} ${styles.landingElements}`}
-          src="/images/crosshair.png"
-          alt="crosshair"
-          draggable={false}
-        />
+        {CrossHairCursor()}
         <button
           id="ham-menu-button"
           className={styles.hamMenuButton}
@@ -75,14 +70,7 @@ export function Hud() {
 }
 
 export function MobileHUD() {
-
-  const buttonData = [
-    "HOME",
-    "ABOUT",
-    "EVENTS",
-    "SPEAKERS",
-    "CONTACT",
-  ];
+  const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
   return (
     <>
@@ -91,14 +79,14 @@ export function MobileHUD() {
           <button
             key={index}
             className={state.activeSection === index ? styles.active : ""}
-            onClick={() => state.activeSection = index}
+            onClick={() => (state.activeSection = index)}
           >
             {value}
           </button>
         ))}
       </div>
       <div className={`${styles.mobileBottom} ${styles.landingElements}`}>
-        <Countdown mobile={true}/>
+        <Countdown mobile={true} />
         <Link to="/register">
           <Register_bg_svg />
           <span>REGISTER</span>
