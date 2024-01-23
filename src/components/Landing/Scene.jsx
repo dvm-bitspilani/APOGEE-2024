@@ -140,7 +140,7 @@ export function Scene() {
   });
 
   const lightRef = useRef();
-  useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
+  // useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
 
   useEffect(() => {
     // lightRef.current.target = state.alienPlanet;

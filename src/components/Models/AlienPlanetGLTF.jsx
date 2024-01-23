@@ -24,7 +24,8 @@ export default function AlienPlanetGLTF(props) {
   const alienPlanetRef = useRef();
 
   useFrame((state, delta) => {
-    alienPlanetRef.current.rotation.y -= 0.0005;
+    alienPlanetRef.current.rotation.y -= delta * 0.1;
+    alienPlanetRef.current.rotation.x -= delta * 0.05;
   });
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function AlienPlanetGLTF(props) {
       label: "Color",
     },
     float: {
-      value: false,
+      value: true,
       label: "Float",
     },
   });
@@ -59,7 +60,7 @@ export default function AlienPlanetGLTF(props) {
         speed={float ? 0.35 : 0} // Animation speed, defaults to 1
         rotationIntensity={1} // XYZ rotation intensity, defaults to 1
         floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
-        floatingRange={[-0.4, 0.4]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
+        floatingRange={[-0.2, 0.2]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
       >
         <group
           {...props}

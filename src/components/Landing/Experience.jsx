@@ -51,18 +51,10 @@ function Experience() {
       <PerspectiveCamera
         ref={cameraRef}
         position={[0, 0, 0]}
-        // rotation={[0, Math.PI / 2, 0]}
         zoom={0.6}
         fov={40}
         makeDefault
       />
-      {/* <Sphere scale={[100, 100, 100]}>
-        <meshBasicMaterial
-          side={THREE.BackSide} // Render the material on the back side of the geometry (inside)
-        >
-          <texture map={new THREE.TextureLoader().load(TextureMap)} />{" "}
-        </meshBasicMaterial>{" "}
-      </Sphere> */}
       <Background />
       <Speed />
       <Stars
