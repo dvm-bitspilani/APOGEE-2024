@@ -51,7 +51,7 @@ function Experience() {
       <PerspectiveCamera
         ref={cameraRef}
         position={[0, 0, 0]}
-        zoom={0.6}
+        zoom={0.7}
         fov={40}
         makeDefault
       />
