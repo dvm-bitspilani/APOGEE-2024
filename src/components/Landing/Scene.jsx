@@ -163,7 +163,7 @@ export function Scene() {
         color={Number(lightColor.replace("#", "0x"))}
       />
       <Asteroid />
-      <Explosions />
+      {/* <Explosions /> */}
     </>
   );
 }

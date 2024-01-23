@@ -13,7 +13,7 @@ import { gsap } from "gsap";
 
 // import { EffectComposer, Outline, SelectiveBloom } from "@react-three/postprocessing";
 // import { BlendFunction, Resizer, KernelSize } from "postprocessing";
-import state from "../state";
+// import state from "../state";
 
 export function Asteroid(props) {
   const { nodes, materials } = useGLTF("/models/asteroid3.glb");
@@ -21,7 +21,7 @@ export function Asteroid(props) {
   const asteroidRef = useRef();
   const asteroidMeshRef = useRef();
 
-  const [isDestroyed, setIsDestroyed] = useState(false);
+  // const [isDestroyed, setIsDestroyed] = useState(false);
 
   // const { position } = useControls("Asteroid", {
   //   position: {
@@ -43,24 +43,26 @@ export function Asteroid(props) {
       8 * Math.cos(state.clock.elapsedTime * 0.2);
   });
 
-  useEffect(() => {
-    if (isDestroyed && asteroidMeshRef.current) {
-      asteroidMeshRef.current.visible = false;
-    }
-  }, [isDestroyed]);
+  // useEffect(() => {
+  //   if (isDestroyed && asteroidMeshRef.current) {
+  //     asteroidMeshRef.current.visible = false;
+  //   }
+  // }, [isDestroyed]);
 
-  const addExplosion = (e) => {
-    setIsDestroyed(true);
-    state.explosions.push({
-      guid: Math.random(),
-      offset: asteroidRef.current.position,
-      scale: 0.1,
-    });
-  }
+  // const addExplosion = (e) => {
+  //   setIsDestroyed(true);
+  //   state.explosions.push({
+  //     guid: Math.random(),
+  //     offset: asteroidRef.current.position,
+  //     scale: 0.1,
+  //   });
+  // }
 
   return (
     <>
-        <group ref={asteroidRef} {...props} dispose={null} onClick={addExplosion}>
+        <group ref={asteroidRef} {...props} dispose={null} 
+        // onClick={addExplosion}
+        >
           <mesh
             ref={asteroidMeshRef}
             castShadow

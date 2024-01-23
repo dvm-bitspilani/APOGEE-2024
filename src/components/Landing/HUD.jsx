@@ -48,7 +48,7 @@ export function Hud() {
           draggable={false}
           className={styles.logo}
         />
-        {CrossHairCursor()}
+        <CrossHairCursor />
         <button
           id="ham-menu-button"
           className={styles.hamMenuButton}
