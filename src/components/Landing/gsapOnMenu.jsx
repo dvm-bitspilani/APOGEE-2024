@@ -93,7 +93,7 @@ export function gsapOnMenu(
   } else {
     // window?.removeEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, menuRot));
 
-    console.log("backwards");
+    // console.log("backwards");
 
     const tl = gsap.timeline({
       onStart: () => {
