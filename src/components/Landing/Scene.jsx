@@ -154,8 +154,8 @@ export function Scene() {
       {/* <Earth /> */}
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
-      <AlienPlanetGLTF />
-      {/* <ProceduralPlanet /> */}
+      {/* <AlienPlanetGLTF /> */}
+      <ProceduralPlanet />
       <directionalLight
         ref={lightRef}
         position={lightPos}
