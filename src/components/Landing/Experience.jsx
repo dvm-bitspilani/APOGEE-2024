@@ -52,7 +52,7 @@ function Experience() {
         ref={cameraRef}
         position={[0, 0, 0]}
         // rotation={[0, Math.PI / 2, 0]}
-        zoom={0.5}
+        zoom={0.6}
         fov={40}
         makeDefault
       />
