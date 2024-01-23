@@ -39,7 +39,7 @@ export function Hud() {
         <img
           draggable={false}
           className={styles.tophud}
-          src="/images/Top HUD.svg"
+          src="/images/Top HUD.png"
           alt="top hud"
         />
         <img

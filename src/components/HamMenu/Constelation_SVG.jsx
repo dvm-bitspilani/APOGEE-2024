@@ -15,7 +15,9 @@ export function Constelation_SVG() {
         vivus.current?.play();
       }, 2500);
     } else {
+      setTimeout(() => {
       vivus.current?.reset();
+      }, 1000);
     }
   }, [snap.isHamOpen]);
 

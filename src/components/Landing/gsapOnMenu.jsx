@@ -85,7 +85,9 @@ export function gsapOnMenu(
         {
           autoAlpha: 1,
           duration: 1,
-          stagger: 0.2,
+          stagger: {
+            amount: 1,
+          },
           ease: "power2.inOut",
         },
         ">"
