@@ -13,7 +13,7 @@ export function Constelation_SVG() {
     if (snap.isHamOpen) {
       setTimeout(() => {
         vivus.current?.play();
-      }, 2000);
+      }, 2500);
     } else {
       vivus.current?.reset();
     }
