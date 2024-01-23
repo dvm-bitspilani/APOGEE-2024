@@ -98,8 +98,8 @@ const customStyles1 =  {
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
         textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
-        textTransform:"uppercase"
-  
+        textTransform:"uppercase",
+        position:"absolute"
       }),
       container: (provided) => ({
         ...provided,
