@@ -1,5 +1,3 @@
-import React from 'react'
-
 const customStyles1 =  {
     
     control: (provided, state) => ({
@@ -93,7 +91,6 @@ const customStyles1 =  {
       placeholder: (provided, state) => ({
         ...provided,
         // fontSize: "1.2rem",
-        opacity: "1",
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
