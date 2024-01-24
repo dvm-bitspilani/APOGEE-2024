@@ -70,22 +70,6 @@ export function Asteroid(props) {
             geometry={nodes.Cube.geometry}
             material={materials.Material}
             scale={0.5}
-            onPointerEnter={(e) => {
-              gsap.to(e.object.scale, {
-                x: 0.7,
-                y: 0.7,
-                z: 0.7,
-                duration: 0.5,
-              });
-            }}
-            onPointerLeave={(e) => {
-              gsap.to(e.object.scale, {
-                x: 0.5,
-                y: 0.5,
-                z: 0.5,
-                duration: 0.5,
-              });
-            }}
           />
         </group>
 
