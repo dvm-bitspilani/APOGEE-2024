@@ -201,7 +201,7 @@ const MyForm = () => {
                   "top": "-14%"
                 }} />
                 <label htmlFor="gender">GENDER</label>
-                <ErrorMessage name="gender" component="div" />
+                {/* <ErrorMessage name="gender" component="div" /> */}
               </div>
 
               <div className={styles.interests}>
@@ -261,7 +261,7 @@ const MyForm = () => {
                   "bottom": "-13%"
                 }} />
                 <label htmlFor="events">Events</label>
-                <ErrorMessage name="events" component="div" />
+                {/* <ErrorMessage name="events" component="div" /> */}
               </div>
 
               <div className={styles.colleges}>
@@ -288,7 +288,7 @@ const MyForm = () => {
                   "bottom": "-15%"
                 }} />
                 <label htmlFor="college">College</label>
-                <ErrorMessage name="college" component="div" />
+                {/* <ErrorMessage name="college" component="div" /> */}
               </div>
 
               <div className={styles.year}>
