@@ -7,18 +7,18 @@ import Select from 'react-select';
 import styles from "../../styles/Register.module.scss"
 import citiesData from '../Form/states.json';
 import customStyles from "../../components/Form/customStyles"
-import customStyles1 from "../../components/Form/customStyles1"
+import customStyles1 from "../../components/Form/customStyles1";
 
 const MyForm = () => {
-  const [interestOptions, setInterestOptions] = useState(['']);
+  // const [interestOptions, setInterestOptions] = useState(['']);
   const [eventsOptions, setEventsOptions] = useState(['']);
   const [collegeOptions, setCollegeOptions] = useState(['']);
   
 
   useEffect(() => {
-    axios.get('https://bits-apogee.org/registrations/get_event_categories')
-      .then(response => setInterestOptions(response.data))
-      .catch(error => console.error('Error fetching interests:', error));
+    // axios.get('https://bits-apogee.org/registrations/get_event_categories')
+    //   .then(response => setInterestOptions(response.data))
+    //   .catch(error => console.error('Error fetching interests:', error));
     axios.get('https://bits-apogee.org/registrations/get_event')
       .then(response => setEventsOptions(response.data))
       .catch(error => console.error('Error fetching events:', error));
@@ -84,17 +84,17 @@ const MyForm = () => {
   };
 
   const genderOptions = [
-    { value: 'M', label: 'MALE' },
-    { value: 'F', label: 'FEMALE' },
-    { value: 'O', label: 'OTHER' },
+    { value: 'M', label: 'MALE', label1: 'M' },
+    { value: 'F', label: 'FEMALE', label1:'F' },
+    { value: 'O', label: 'OTHER', label1:'O' },
   ];
 
-  // const interestOptions = [
-  //   { value: 'sports', label: 'Sports' },
-  //   { value: 'music', label: 'Music' },
-  //   { value: 'reading', label: 'Reading' },
-  //   // Add more interests as needed
-  // ];
+  const interestOptions = [
+    { value: 'sports', label: 'Sports' },
+    { value: 'music', label: 'Music' },
+    { value: 'reading', label: 'Reading' },
+    // Add more interests as needed
+  ];
 
   // const eventsOptions = [
   //   { value: 'event1', label: 'Event 1' },
@@ -187,7 +187,8 @@ const MyForm = () => {
                         {values.gender === option.value && <div className={styles.checkmark}>&#10003;</div>}
                       </div>
                       <label htmlFor={`gender-${option.value}`} className={styles.genderLabel}>
-                        {option.label}
+                        {/* {option.label} */}
+                        {window.innerWidth > 1200 ? option.label : option.label1}
                       </label>
                     </div>
                   ))}
@@ -200,17 +201,20 @@ const MyForm = () => {
                   "top": "-14%"
                 }} />
                 <label htmlFor="gender">GENDER</label>
-                <ErrorMessage name="gender" component="div" />
+                {/* <ErrorMessage name="gender" component="div" /> */}
               </div>
 
               <div className={styles.interests}>
                 <Select
                   id="interests"
                   name="interests"
-                  options={(Array.isArray(interestOptions.data) ? interestOptions.data : []).map(item => ({
-                    value: item.id,
-                    label: item.name
-                  }))}
+                  options={
+                  //   (Array.isArray(interestOptions.data) ? interestOptions.data : []).map(item => ({
+                  //   value: item.id,
+                  //   label: item.name
+                  // }))
+                  interestOptions
+                }
                   isMulti
                   value={(Array.isArray(interestOptions) ? interestOptions : []).filter(option => values.interests.includes(option.value))}
                   onChange={(selectedOptions) => {
@@ -257,7 +261,7 @@ const MyForm = () => {
                   "bottom": "-13%"
                 }} />
                 <label htmlFor="events">Events</label>
-                <ErrorMessage name="events" component="div" />
+                {/* <ErrorMessage name="events" component="div" /> */}
               </div>
 
               <div className={styles.colleges}>
@@ -284,7 +288,7 @@ const MyForm = () => {
                   "bottom": "-15%"
                 }} />
                 <label htmlFor="college">College</label>
-                <ErrorMessage name="college" component="div" />
+                {/* <ErrorMessage name="college" component="div" /> */}
               </div>
 
               <div className={styles.year}>
