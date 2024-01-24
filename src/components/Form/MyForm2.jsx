@@ -8,6 +8,7 @@ import styles from "../../styles/Register2.module.scss"
 import citiesData from '../Form/states.json';
 import customStyles from "../../components/Form/customStyles"
 import customStyles1 from "../../components/Form/customStyles1"
+import customStyles2 from "../../components/Form/customStyles2"
 const MyForm2 = () => {
   // const [interestOptions, setInterestOptions] = useState([]);
   // const [eventsOptions, setEventsOptions] = useState([]);
@@ -42,17 +43,17 @@ const MyForm2 = () => {
     event.target.value = inputValue;
   }
 
-  const handleSubmit = async (values, { resetForm, setSubmitting }) => {
-    try {
-      await axios.post('your-api-endpoint', values);
-      console.log('Data sent successfully!');
-      resetForm();
-    } catch (error) {
-      console.error('Error submitting the form:', error);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  // const handleSubmit = async (values, { resetForm, setSubmitting }) => {
+  //   try {
+  //     await axios.post('your-api-endpoint', values);
+  //     console.log('Data sent successfully!');
+  //     resetForm();
+  //   } catch (error) {
+  //     console.error('Error submitting the form:', error);
+  //   } finally {
+  //     setSubmitting(false);
+  //   }
+  // };
 
   const genderOptions = [
     { value: 'male', label: 'MALE' },
@@ -103,14 +104,30 @@ const MyForm2 = () => {
     value: city.name,
     label: city.name,
   }));
+  const handleSubmit = async (values, { resetForm }) => {
+    console.log('Register button clicked')
+    try {
+      console.log('Form Values:', values);
+      const response = await axios.post('https://bits-apogee.org/registrations/Register/', values);
+      if (response.data.success) {
+        console.log('Data sent successfully!');
+        resetForm();
+      } else {
+        console.error('Error submitting the form. Server response:', response.data);
+      }
+    } catch (error) {
+      console.error('Error submitting the form:', error);
+    } finally {
+    }
+  };
   return (
-    <>
+    // <>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, isSubmitting}) => (
         // <Form>
         <>
           <div className={styles.formWrapper}>
@@ -246,20 +263,23 @@ const MyForm2 = () => {
     setFieldValue('city', selectedOption ? selectedOption.value : '');
   }}
   className={styles.mobileCityWrapper}
-  styles={customStyles1}
+  styles={customStyles2}
   placeholder="Your City"
 />
 <img src="/images/phone.png" alt="" />
             <label htmlFor="city">City</label>
           </div>
           </div>
+    <div>
+              <button type='submit' className={styles.registerBtn}
+              disabled={isSubmitting}>
+                <span>REGISTER</span>
+              </button>
+            </div>
           </>
       )}
     </Formik>
-            <div className={styles.registerBtn}>
-            <span>REGISTER</span>
-            </div>
-            </>
+            // </>s
   );
 };
 

@@ -1,4 +1,4 @@
-const customStyles1 =  {
+const customStyles2 =  {
     
     control: (provided, state) => ({
         ...provided,
@@ -74,10 +74,10 @@ const customStyles1 =  {
         border:"0.1px solid #9AF0F4",
         paddingTop: "0px",
         paddingBottom: "0px",
-        maxHeight:"200%",
+        maxHeight:"500%",
         overflow:"scroll",
-        // position:"relative",
-        // zIndex:"10000000"
+        position:"relative",
+        zIndex:"10000000"
       }),
       menuList: (provided) => ({
         ...provided,
@@ -166,7 +166,7 @@ const customStyles1 =  {
     
 }
 
-export default customStyles1
+export default customStyles2
 
 
 

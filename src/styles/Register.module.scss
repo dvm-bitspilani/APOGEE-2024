@@ -43,6 +43,7 @@
             transform: translateX(-50%);
             height: max(10vw, 100px);
         }
+        // overflow-y: hidden;
     }
 }
 .homeBtn {
@@ -301,11 +302,10 @@ label{
 }
 
 .customCheckbox {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border: 2px solid var(--primary);
-  // border-radius: 5px;
-  margin-right: 10px;
+  margin-right: 5px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -416,6 +416,7 @@ label{
   inset: 0;
 }
 .year> .checkboxContainer{
+  width: 100%;
  top: -60%;
  bottom: 0;
 }
@@ -454,8 +455,15 @@ label{
   opacity: 1;
   color: #A9A9A9;
   font-family:Space Grotesk;
+  font-weight: 700;
   text-shadow:0px 0px 14.815px rgba(183, 255, 255, 1);
   text-transform:uppercase;
+  font-size: 1rem;
+}
+input:autofill{
+  background: transparent !important;
+  border: none !important;
+  color: white;
 }
 // @media (min-width: 1000px), (max-height:650px) {
 //     .globeImage{
@@ -548,22 +556,20 @@ input:-webkit-autofill {
   // top: 0;
   top: 68%;
 }
+@media only screen and (max-width: 1400px) {
+  .colleges label{
+    bottom: -25%;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .gender  .checkboxContainer{
-    // bottom: 50%;
-    width: max-content;
-  gap: 10px;
-  // left: -20%;
-  top: 0;
-  } .customCheckbox{
-    margin-right: 5px;
-  } .checkboxItem{
-    margin-right: 10px;
+  bottom: 50%;
   }
-.interestsWrapper{
-    width: max-content;
-    right: 55%;
-    bottom: 40% !important;
+  .eventsWrapper{
+    top: -50% !important;
+  }
+  .colleges label{
+    bottom: -25%;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -574,56 +580,55 @@ input:-webkit-autofill {
 
   // bottom: 50% !important;
   }
-  .gender  .checkboxContainer{
-    // bottom: 50%;
-    width: max-content;
-  gap: 10px;
-  left: -10%;
-  top: 0;
-  }
+  // .gender  .checkboxContainer{
+  //   // bottom: 50%;
+  //   width: max-content;
+  // gap: 10px;
+  // left: -10%;
+  // top: 0;
+  // }
   .interestsWrapper{
-    bottom: 45% !important;
-  }
-  .interestsWrapper{
-    width: max-content;
-    top: 15%;
+    // width: max-content;
+    width: 45%;
+    bottom: 42% !important;
+    // top: 15%;
   }
   .cityWrapper{
     top: 0;
   }
-  
+
 }
 @media only screen and (max-width: 992px) {
   .gender  .checkboxContainer{
-    // bottom: 50%;
-    width: max-content;
-  gap: 10px;
-  left: -20%;
-  top: 0;
+    bottom: 60%;
   }
 .interestsWrapper{
   bottom: 45% !important;
 }
 .interestsWrapper{
-  width: max-content;
-  top: 15%;
+width: 45%;
 }
 .cityWrapper{
   top: 0;
 }
 }
-@media only screen and (max-width: 810px) {
-  .gender .checkboxContainer{
-    display: flex;
-  justify-content: flex-start;
+@media only screen and (max-width: 920px) {
+  .eventsWrapper{
+    right: 5%;
   }
-  .gender .checkboxContainer{
-    width: min-content;
-    top: -100%;
-    flex-wrap: wrap;
-    // right: 0 !important;
-    left: 20% !important;
-  }
+}
+@media only screen and (max-width: 811px) {
+  // .gender .checkboxContainer{
+  //   display: flex;
+  // justify-content: flex-start;
+  // }
+  // .gender .checkboxContainer{
+  //   width: min-content;
+  //   top: -100%;
+  //   flex-wrap: wrap;
+  //   // right: 0 !important;
+  //   left: 20% !important;
+  // }
   .collegeWrapper{
   width: max-content;
   }
@@ -635,7 +640,7 @@ input:-webkit-autofill {
     bottom: -30%;
   }
 }
-@media only screen and (max-width: 809px) {
+@media only screen and (max-width: 810px) {
 .hud{
   display: none;
 }
