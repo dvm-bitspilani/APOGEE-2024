@@ -362,10 +362,11 @@
   .rightArrow {
     width: 20%;
     height: auto;
-    background: url("@assets/landing/right-arrow.svg");
+    background: url("@assets/landing/left-arrow.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform: rotate(180deg);
 
     transition: scale 0.2s ease-in-out;
 
