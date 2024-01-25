@@ -58,7 +58,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: auto;
-  height: max(10vw, 100px);
+  height: clamp(100px,10vw, 170px);
   object-fit: contain;
 
   // visibility: visible;
@@ -85,7 +85,7 @@
 }
 
 .hamMenuButton {
-  width: max(12vw, 120px);
+  width: clamp(120px, 12vw, 200px);
   aspect-ratio: 3/1;
   border-color: var(--secondary);
   background-color: transparent;
@@ -94,7 +94,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: max(calc(10vw - 7px), 92px);
+  top: clamp(92px,calc(10vw - 7px), 160px);
   pointer-events: all;
 
   display: flex;
