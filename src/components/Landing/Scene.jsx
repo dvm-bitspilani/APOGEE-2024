@@ -22,6 +22,7 @@ import { useHelper } from "@react-three/drei";
 import { DirectionalLightHelper } from "three";
 import { Asteroid } from "../Models/Asteroid";
 import Explosions from "../Models/Explosion";
+import Asteroids from "../Models/Asteroids";
 
 export function Scene() {
   const { camera } = useThree();
@@ -162,13 +163,7 @@ export function Scene() {
         intensity={intensity}
         color={Number(lightColor.replace("#", "0x"))}
       />
-      <Asteroid />
-      <Asteroid />
-      <Asteroid />
-      <Asteroid />
-      <Asteroid />
-      <Asteroid />
-      <Asteroid />
+      <Asteroids />
       {/* <Explosions /> */}
     </>
   );
