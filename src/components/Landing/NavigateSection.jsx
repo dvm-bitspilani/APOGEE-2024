@@ -4,11 +4,14 @@ import * as styles from "@styles/HUD.module.scss";
 import Countdown from "./Countdown";
 import Socials from "@components/HamMenu/Socials";
 
+import state from "../state";
+// import { useSnapshot } from "valtio";
+
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const Button = ({ value, handleMouseOver, handleMouseOut }) => {
+const Button = ({ value, handleMouseOver, handleMouseOut, isActive }) => {
   return (
-    <button data-value={value} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+    <button className={isActive ? styles.buttonActive : null} data-value={value} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       {value}
     </button>
   );
@@ -71,6 +74,7 @@ export default function NavigateSection() {
               value={value}
               handleMouseOver={handleMouseOver}
               handleMouseOut={handleMouseOut}
+              isActive={state.activeSection === index}
             />
           ))}
         </div>

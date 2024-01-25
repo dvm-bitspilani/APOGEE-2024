@@ -1,5 +1,3 @@
-import React from 'react'
-
 const customStyles1 =  {
     
     control: (provided, state) => ({
@@ -76,14 +74,17 @@ const customStyles1 =  {
         border:"0.1px solid #9AF0F4",
         paddingTop: "0px",
         paddingBottom: "0px",
-        maxHeight:"500%",
+        maxHeight:"200%",
         overflow:"scroll",
+        // position:"relative",
+        // zIndex:"10000000"
       }),
       menuList: (provided) => ({
         ...provided,
         // paddingTop: "1rem",
         paddingBottom: "1rem",
         backgroundColor: "transparent",
+
       }),
       dropdownIndicator: (provided, state) => ({
         ...provided,
@@ -93,13 +94,14 @@ const customStyles1 =  {
       placeholder: (provided, state) => ({
         ...provided,
         // fontSize: "1.2rem",
-        opacity: "1",
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
         textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
-        textTransform:"uppercase"
-  
+        textTransform:"uppercase",
+        position:"absolute",
+        fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
+        fontWeight:"700"
       }),
       container: (provided) => ({
         ...provided,

@@ -76,7 +76,7 @@
   height: 35px;
   object-fit: contain;
 
-  @media screen and (max-height: 700px) {
+  @media screen and (max-height: 700px), screen and (max-width: 1100px) {
     top: 15px;
     height: 25px;
   }
@@ -191,6 +191,7 @@
       align-items: flex-start;
       justify-content: center;
       padding: 0 15%;
+      align-self: flex-start;
 
       button {
         background-color: transparent;
@@ -214,6 +215,12 @@
             0px 0px 4.706px rgba(251, 186, 188, 0.8);
           color: var(--hover-link);
         }
+
+        &.buttonActive {
+          text-shadow: 0px 0px 30.591px #b16060,
+            0px 0px 4.706px rgba(251, 186, 188, 0.8);
+          color: var(--hover-link);
+        }
       }
     }
   }
@@ -232,7 +239,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 
   a {
     position: relative;
@@ -313,7 +320,6 @@
   background-position: center;
   height: 362px;
   width: 100%;
-  flex-grow: 1;
   flex-shrink: 0;
 
   padding-block: 10%;
@@ -356,10 +362,11 @@
   .rightArrow {
     width: 20%;
     height: auto;
-    background: url("@assets/landing/right-arrow.svg");
+    background: url("@assets/landing/left-arrow.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform: rotate(180deg);
 
     transition: scale 0.2s ease-in-out;
 
@@ -441,9 +448,9 @@
   justify-content: space-between;
 
   position: absolute;
-  top: 170px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -68%);
 
   height: 33%;
   width: 80%;
@@ -457,6 +464,12 @@
     text-shadow: 0px 0px 27.356px rgba(136, 196, 200, 0.7),
       0px 0px 4.419px rgba(134, 244, 232, 0.8);
     font-size: 1.3rem;
+
+    &.active{
+      text-shadow: 0px 0px 27.356px #b16060,
+      0px 0px 4.419px rgba(251, 186, 188, 0.8);
+      color: var(--hover-link);
+    }
   }
 }
 
@@ -523,9 +536,15 @@
     // top: 20%;
     bottom: 5%;
   }
+  .navigatorWrapper {
+    top: 15%;
+  }
+
+  .navigator>h1{
+    font-size: 1.5rem;
+  }
 
   .mobileLinks {
-    top: 50%;
     transform: translate(-50%, -50%);
   }
 }

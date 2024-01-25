@@ -51,7 +51,9 @@ export default function RegEventsSection() {
 export function EventsCarousel({ index, setIndex, images }) {
   const { ref, startGlitch, stopGlitch } = useGlitch({
     playMode: "manual",
-    hideOverflow: false,
+    hideOverflow: true,
+    glitchMode: "scanline",
+    shake: false,
   });
 
   function glitchEffect() {

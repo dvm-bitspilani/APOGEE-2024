@@ -17,6 +17,7 @@ const customStyles =  {
         borderRadius: "0px",
         height:"100%",
         width:"100%",
+        minWidth:"max-content"
 
       }),
       indicatorSeparator: () => {},
@@ -76,8 +77,10 @@ const customStyles =  {
         border:"0.1px solid #9AF0F4",
         paddingTop: "0px",
         paddingBottom: "0px",
-        maxHeight:"500%",
+        maxHeight:"300%",
         overflow:"scroll",
+        // position:"relative",
+        // zIndex:"-1"
       }),
       menuList: (provided) => ({
         ...provided,
@@ -98,8 +101,9 @@ const customStyles =  {
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
         textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
-        textTransform:"uppercase"
-  
+        textTransform:"uppercase",
+  fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
+  fontWeight:"700"
       }),
       container: (provided) => ({
         ...provided,

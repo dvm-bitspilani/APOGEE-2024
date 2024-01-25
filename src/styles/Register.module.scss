@@ -1,4 +1,16 @@
 .pageContainer{
+  --name-sp: 1%;
+  --email-sp: 8%;
+  --phone-sp: 8%;
+  --gender-sp: 7%;
+  --interests-sp: 3%;
+  --events-sp: 8%;
+  --colleges-sp: 10%;
+  --year-sp: 8%;
+  --city-sp: 5%;
+}
+
+.pageContainer{
     width: 100lvw;
     height: 100dvh;
     position: relative;
@@ -31,6 +43,7 @@
             transform: translateX(-50%);
             height: max(10vw, 100px);
         }
+        // overflow-y: hidden;
     }
 }
 .homeBtn {
@@ -85,6 +98,12 @@
   height: 65vh;
 
 }
+
+// .regContainer{
+//   width: 100%;
+//   position: relative;
+// }
+
 .content{
     width: 100%;
   height: 100%;
@@ -150,7 +169,7 @@
 }
 .leftSide{
   width: 48%;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-end;
   height: 100%;
@@ -158,7 +177,7 @@
 }
 .rightSide{
   width: 48%;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   height: 100%;
@@ -180,7 +199,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--name-sp));
+  margin-right: var(--name-sp);
   inset:0;
 }
 .name > input{
@@ -201,9 +221,10 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
   inset:0;
   top: -5%;
+  width: calc(75% - var(--email-sp));
+  margin-right: var(--email-sp);
 }
 .email>img{
   width: 100%;
@@ -223,7 +244,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--phone-sp));
+  margin-right: var(--phone-sp);
   inset:0;
 }
 .phone img{
@@ -245,7 +267,8 @@ input:focus{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--gender-sp));
+  margin-right: var(--gender-sp);
   inset:0;
   top: 7%;
 }
@@ -279,11 +302,10 @@ label{
 }
 
 .customCheckbox {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border: 2px solid var(--primary);
-  // border-radius: 5px;
-  margin-right: 10px;
+  margin-right: 5px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -313,7 +335,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: calc(75% - var(--interests-sp));
+  margin-right: var(--interests-sp);
   inset:0;
 }
 .interests>img{
@@ -339,7 +362,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--events-sp));
+  margin-left: var(--events-sp);
   inset: 0;
 }
 .events img{
@@ -363,7 +387,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--colleges-sp));
+  margin-left: var(--colleges-sp);
   inset: 0;
   top: -10%;
 }
@@ -386,10 +411,12 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--year-sp));
+  margin-left: var(--year-sp);
   inset: 0;
 }
 .year> .checkboxContainer{
+  width: 100%;
  top: -60%;
  bottom: 0;
 }
@@ -407,7 +434,8 @@ label{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 75%;
+  width: calc(75% - var(--city-sp));
+  margin-left: var(--city-sp);
   inset: 0;
 }
 .city img{
@@ -427,8 +455,15 @@ label{
   opacity: 1;
   color: #A9A9A9;
   font-family:Space Grotesk;
+  font-weight: 700;
   text-shadow:0px 0px 14.815px rgba(183, 255, 255, 1);
   text-transform:uppercase;
+  font-size: 1rem;
+}
+input:autofill{
+  background: transparent !important;
+  border: none !important;
+  color: white;
 }
 // @media (min-width: 1000px), (max-height:650px) {
 //     .globeImage{
@@ -507,23 +542,34 @@ input:-webkit-autofill {
   border: none;
   font-size: 1.1rem;
 }
-
+.scrollBar{
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow-y:hidden;
+  display: none;
+}
+.inScroll{
+  position: absolute;
+  left: 1px;
+  // top: 0;
+  top: 68%;
+}
+@media only screen and (max-width: 1400px) {
+  .colleges label{
+    bottom: -25%;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .gender  .checkboxContainer{
-    // bottom: 50%;
-    width: max-content;
-  gap: 10px;
-  // left: -20%;
-  top: 0;
-  } .customCheckbox{
-    margin-right: 5px;
-  } .checkboxItem{
-    margin-right: 10px;
+  bottom: 50%;
   }
-.interestsWrapper{
-    width: max-content;
-    right: 55%;
-    bottom: 40% !important;
+  .eventsWrapper{
+    top: -50% !important;
+  }
+  .colleges label{
+    bottom: -25%;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -534,56 +580,55 @@ input:-webkit-autofill {
 
   // bottom: 50% !important;
   }
-  .gender  .checkboxContainer{
-    // bottom: 50%;
-    width: max-content;
-  gap: 10px;
-  left: -10%;
-  top: 0;
-  }
+  // .gender  .checkboxContainer{
+  //   // bottom: 50%;
+  //   width: max-content;
+  // gap: 10px;
+  // left: -10%;
+  // top: 0;
+  // }
   .interestsWrapper{
-    bottom: 45% !important;
-  }
-  .interestsWrapper{
-    width: max-content;
-    top: 15%;
+    // width: max-content;
+    width: 45%;
+    bottom: 42% !important;
+    // top: 15%;
   }
   .cityWrapper{
     top: 0;
   }
-  
+
 }
 @media only screen and (max-width: 992px) {
   .gender  .checkboxContainer{
-    // bottom: 50%;
-    width: max-content;
-  gap: 10px;
-  left: -20%;
-  top: 0;
+    bottom: 60%;
   }
 .interestsWrapper{
   bottom: 45% !important;
 }
 .interestsWrapper{
-  width: max-content;
-  top: 15%;
+width: 45%;
 }
 .cityWrapper{
   top: 0;
 }
 }
-@media only screen and (max-width: 810px) {
-  .gender .checkboxContainer{
-    display: flex;
-  justify-content: flex-start;
+@media only screen and (max-width: 920px) {
+  .eventsWrapper{
+    right: 5%;
   }
-  .gender .checkboxContainer{
-    width: min-content;
-    top: -100%;
-    flex-wrap: wrap;
-    // right: 0 !important;
-    left: 20% !important;
-  }
+}
+@media only screen and (max-width: 811px) {
+  // .gender .checkboxContainer{
+  //   display: flex;
+  // justify-content: flex-start;
+  // }
+  // .gender .checkboxContainer{
+  //   width: min-content;
+  //   top: -100%;
+  //   flex-wrap: wrap;
+  //   // right: 0 !important;
+  //   left: 20% !important;
+  // }
   .collegeWrapper{
   width: max-content;
   }
@@ -595,7 +640,7 @@ input:-webkit-autofill {
     bottom: -30%;
   }
 }
-@media only screen and (max-width: 809px) {
+@media only screen and (max-width: 810px) {
 .hud{
   display: none;
 }
@@ -627,6 +672,9 @@ input:-webkit-autofill {
   display: block;
 }
 .leftTop, .rightTop, .middleTop{
+  display: block;
+}
+.scrollBar{
   display: block;
 }
 }

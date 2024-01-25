@@ -15,10 +15,8 @@ export function gsapOnMenu(
 
   const hamMenuButton = document.getElementById("ham-menu-button");
   const stars = document.querySelectorAll(`.${constellationStyles.constelationWrapper}>div`);
-  // console.log(stars);
 
   if (!isHamOpen) {
-    // console.log("forwards");
 
     const tl = gsap.timeline({
       onStart: () => {
@@ -87,7 +85,9 @@ export function gsapOnMenu(
         {
           autoAlpha: 1,
           duration: 1,
-          stagger: 0.2,
+          stagger: {
+            amount: 1,
+          },
           ease: "power2.inOut",
         },
         ">"

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
@@ -8,43 +8,46 @@ import { useControls } from "leva";
 
 import { gsapOnRender } from "./gsapOnRender";
 import Earth from "./Earth";
-import AlienPlanet from "./AlienPlanet";
-import { AlienPlanetGLB } from "./AlienPlanet";
-import AlienPlanetGLTF from "./AlienPlanetGLTF";
+import AlienPlanet from "../Models/AlienPlanet";
+import { AlienPlanetGLB } from "../Models/AlienPlanet";
+import AlienPlanetGLTF from "../Models/AlienPlanetGLTF";
+import ProceduralPlanet from "../Models/ProceduralPlanet";
 
 import gsap from "gsap/gsap-core";
 import { gsapOnMenu } from "./gsapOnMenu";
 
 import state from "../state";
 import { useSnapshot } from "valtio";
-import { useCamera, useHelper } from "@react-three/drei";
+import { useHelper } from "@react-three/drei";
 import { DirectionalLightHelper } from "three";
+import { Asteroid } from "../Models/Asteroid";
+import Explosions from "../Models/Explosion";
 
 export function Scene() {
   const { camera } = useThree();
 
-  const menuPos = [-2, -1.5, 0.5];
+  const menuPos = [-2, -1.5, -0];
   const menuRot = [0, -1.9, 0];
 
-  // const { position, rotation } = useControls("Camera", {
-  //   position: {
-  //     value: [...menuPos],
-  //     step: 10,
-  //     min: -1000,
-  //     max: 1000,
-  //   },
-  //   rotation: {
-  //     value: [...menuRot],
-  //     step: 0.1,
-  //     min: -Math.PI * 2,
-  //     max: Math.PI * 2,
-  //   },
-  // });
+  const { position, rotation } = useControls("Camera", {
+    position: {
+      value: [...menuPos],
+      step: 0.1,
+      min: -10,
+      max: 10,
+    },
+    rotation: {
+      value: [...menuRot],
+      step: 0.1,
+      min: -Math.PI * 2,
+      max: Math.PI * 2,
+    },
+  });
 
   useFrame(() => {
     // camera.position.set(...position);
     // camera.rotation.set(...rotation);
-    // console.log(camera);
+    // console.log(camera.position);
   });
 
   function rotationUpdateOnMouseMove(e, cameraPos) {
@@ -117,31 +120,32 @@ export function Scene() {
         rotationUpdateOnMouseMoveHandler2
       );
     };
-  }, [snap.isHamOpen]);
+  }, [snap.isHamOpen, camera]);
 
-  // const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
-  //   lightPos: {
-  //     value: [1, -2, 2],
-  //     step: 1,
-  //     min: -1000,
-  //     max: 1000,
-  //   },
-  //   lightColor: {
-  //     value: "#2dc79f",
-  //   },
-  //   intensity: {
-  //     value: 6,
-  //     step: 0.1,
-  //     min: 0,
-  //     max: 10,
-  //   },
-  // });
+  const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
+    lightPos: {
+      value: [4, -1, 5],
+      step: 1,
+      min: -1000,
+      max: 1000,
+    },
+    lightColor: {
+      value: "#be3d2d",
+    },
+    intensity: {
+      value: 0,
+      step: 0.1,
+      min: 0,
+      max: 10,
+    },
+  });
 
   const lightRef = useRef();
   // useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");
 
   useEffect(() => {
-    lightRef.current.target = state.alienPlanet;
+    // lightRef.current.target = state.alienPlanet;
+    // console.log(state.alienPlanet);
   }, [snap.alienPlanet]);
 
   return (
@@ -150,13 +154,16 @@ export function Scene() {
       {/* <Earth /> */}
       {/* <AlienPlanet /> */}
       {/* <AlienPlanetGLB /> */}
-      <AlienPlanetGLTF />
+      {/* <AlienPlanetGLTF /> */}
+      <ProceduralPlanet />
       <directionalLight
         ref={lightRef}
         position={[1, -2, 2]}
         intensity={6}
         color={Number("#2dc79f".replace("#", "0x"))}
       />
+      <Asteroid />
+      {/* <Explosions /> */}
     </>
   );
 }
