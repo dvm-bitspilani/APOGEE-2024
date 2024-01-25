@@ -53,7 +53,11 @@ export function EventsCarousel({ index, setIndex, images }) {
     playMode: "manual",
     hideOverflow: true,
     glitchMode: "scanline",
-    shake: false,
+    slice: {
+      count: 6,
+
+    },
+
   });
 
   function glitchEffect() {

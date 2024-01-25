@@ -17,8 +17,9 @@ import apogee from "@assets/landing/apogee_logo.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
 
-export function Hud() {
+import TopHUD from "./TopHUD";
 
+export function Hud() {
   return (
     <>
       <img
@@ -42,6 +43,7 @@ export function Hud() {
           src="/images/Top HUD.png"
           alt="top hud"
         />
+        {/* <TopHUD /> */}
         <img
           src={apogee}
           alt="apogee"
@@ -96,3 +98,5 @@ export function MobileHUD() {
     </>
   );
 }
+
+
