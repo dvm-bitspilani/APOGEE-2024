@@ -11,18 +11,18 @@ const Background = () => {
   const textureSphereBg = new TextureLoader().load(TextureMap);
   textureSphereBg.anisotropy = 16;
 
-  const {rotation} = useControls("Background", {
-    rotation: {
-      value: [1, -1, 0],
-      step: 0.1,
-      min: -Math.PI * 2,
-      max: Math.PI * 2,
-    },
-  });
+  // const {rotation} = useControls("Background", {
+  //   rotation: {
+  //     value: [1, -1, 0],
+  //     step: 0.1,
+  //     min: -Math.PI * 2,
+  //     max: Math.PI * 2,
+  //   },
+  // });
 
   return (
     <>
-      <Sphere args={[150, 40, 40]} rotation={rotation}>
+      <Sphere args={[150, 40, 40]} rotation={[2,-1,0]}>
         <meshBasicMaterial
           attach="material"
           side={THREE.BackSide}

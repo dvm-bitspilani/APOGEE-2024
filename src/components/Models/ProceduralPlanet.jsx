@@ -21,34 +21,34 @@ export default function ProceduralPlanet(props) {
         state.alienPlanet = alienPlanetRef.current;
       }, []);
 
-    useHelper(directionalLightRef, THREE.DirectionalLightHelper, 2, "green");
+    // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 2, "green");
   
-    const { color, intensity, position } = useControls("Alien Planet Light", {
-        position: {
-          value: [-3, 2.5, -3.5],
-          step: 0.1,
-          label: "Position",
-        },
-        color: {
-          value: "#24dede",
-          label: "Color",
-        },
-        intensity: {
-            value: 0.5,
-            step: 0.1,
-            min: 0,
-            max: 10,
-          },
-      });
+    // const { color, intensity, position } = useControls("Alien Planet Light", {
+    //     position: {
+    //       value: [-3, 2.5, -3.5],
+    //       step: 0.1,
+    //       label: "Position",
+    //     },
+    //     color: {
+    //       value: "#24dede",
+    //       label: "Color",
+    //     },
+    //     intensity: {
+    //         value: 0.5,
+    //         step: 0.1,
+    //         min: 0,
+    //         max: 10,
+    //       },
+    //   });
 
     return (
       <>
         <directionalLight
         ref={directionalLightRef}
-          intensity={intensity}
+          intensity={0.5}
           rotation={[Math.PI, 0, 0]}
-          position={position}
-          color={new THREE.Color(Number("0x" + color.replace("#", "")))}
+          position={[-3, 2.5, -3.5]}
+          color={new THREE.Color(Number("0x" + "#24dede".replace("#", "")))}
           target={alienPlanetRef.current}
         />
         <group

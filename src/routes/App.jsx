@@ -42,7 +42,7 @@ function App() {
             <Experience />
           </ScrollControls>
         {/* </Suspense> */}
-        <Stats />
+        {/* <Stats /> */}
       </Canvas>
       <Hud />
     </motion.div>

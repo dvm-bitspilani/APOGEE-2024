@@ -35,13 +35,13 @@ function Experience() {
       ];
       // console.log(newPosition);
 
-      gsap.to(camera.position, {
-        x: newPosition[0],
-        y: newPosition[1],
-        z: newPosition[2],
-        duration: 0.5,
-        ease: "power2.out",
-      });
+      // gsap.to(camera.position, {
+      //   x: newPosition[0],
+      //   y: newPosition[1],
+      //   z: newPosition[2],
+      //   duration: 0.5,
+      //   ease: "power2.out",
+      // });
     }
   });
 
