@@ -24,7 +24,7 @@ export function Asteroid(props) {
   const [clicked, setClicked] = useState(false);
   const [direction, setDirection] = useState(new THREE.Vector3());
 
-  // const [isDestroyed, setIsDestroyed] = useState(false);
+  const [isDestroyed, setIsDestroyed] = useState(false);
 
   // const { position } = useControls("Asteroid", {
   //   position: {
@@ -42,12 +42,9 @@ export function Asteroid(props) {
     Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
     []
   );
-  //   Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
-  //   []
-  // );
 
   const [omegaX, omegaY, omegaZ] = useMemo( () =>
-    Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.3)),
+    Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.25)),
     []
   );
 
@@ -89,14 +86,46 @@ export function Asteroid(props) {
     setDirection(direction);
   };
 
+  useEffect(() => {
+    if (isDestroyed && asteroidMeshRef.current) {
+      gsap.to(asteroidMeshRef.current.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    
+      gsap.to(asteroidMeshRef.current.scale, {
+        x: scale,
+        y: scale,
+        z: scale,
+        duration: 0.5,
+        ease: "power2.out",
+        delay: 4,
+        onComplete: () => {
+          setIsDestroyed(false);
+        }
+      });
+  }}, [isDestroyed]);
+
+  const addExplosion = (e) => {
+    setIsDestroyed(true);
+    state.explosions.push({
+      guid: Math.random(),
+      offset: asteroidRef.current.position,
+      scale: 0.07,
+    });
+  }
+
   return (
     <>
       <group
         ref={asteroidRef}
         {...props}
         dispose={null}
-        // onClick={addExplosion}
-        onClick={handleClick}
+        onClick={addExplosion}
+        // onClick={handleClick}
       >
         <mesh
           ref={asteroidMeshRef}
