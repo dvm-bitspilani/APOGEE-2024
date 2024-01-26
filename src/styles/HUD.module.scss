@@ -50,6 +50,18 @@
   width: max(10vw, 80px);
   height: max(10vw, 80px);
   object-fit: contain;
+
+  transition: scale 0.2s ease-in-out;
+
+  path{
+    transition: stroke 0.2s ease-in-out;
+  }
+
+  &.hover{
+    path{
+      stroke: var(--primary-red);
+    }
+  }
 }
 
 .tophud {

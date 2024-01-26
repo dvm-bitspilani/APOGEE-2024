@@ -15,6 +15,8 @@ import { gsap } from "gsap";
 // import { BlendFunction, Resizer, KernelSize } from "postprocessing";
 import state from "../state";
 
+import * as hudStyles from "@styles/HUD.module.scss";
+
 export function Asteroid(props) {
   const { nodes, materials } = useGLTF("/models/asteroid3.glb");
 
@@ -38,29 +40,32 @@ export function Asteroid(props) {
     return Math.random() * (max - min) + min;
   };
 
-  const [xMultiplier, yMultiplier, zMultiplier] = useMemo( () =>
-    Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
+  // const [xMultiplier, yMultiplier, zMultiplier] = useMemo( () =>
+  //   Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
+  //   []
+  // );
+
+  const [omegaX, omegaY, omegaZ] = useMemo(
+    () => Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.25)),
     []
   );
 
-  const [omegaX, omegaY, omegaZ] = useMemo( () =>
-    Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.25)),
+  const [ampX, ampZ] = useMemo(
+    () => Array.from({ length: 2 }, () => randomMultiplier(4, 10)),
     []
   );
 
-  const [ampX, ampZ] = useMemo( () =>
-    Array.from({ length: 2 }, () => randomMultiplier(4, 10)),
+  const [addX, addY, addZ] = useMemo(
+    () => Array.from({ length: 3 }, () => randomMultiplier(-Math.PI, Math.PI)),
     []
   );
 
-  const [addX, addY, addZ] = useMemo( () =>
-    Array.from({ length: 3 }, () => randomMultiplier(-Math.PI, Math.PI)),
+  const scale = useMemo(() => randomMultiplier(0.15, 0.5), []);
+
+  const [ampY] = useMemo(
+    () => Array.from({ length: 1 }, () => randomMultiplier(1, 3)),
     []
   );
-
-  const scale = useMemo( () => randomMultiplier(0.15, 0.5), []);
-
-  const [ampY] = useMemo( () => Array.from({ length: 1 }, () => randomMultiplier(1, 3)), []);
 
   useFrame((state, delta) => {
     asteroidRef.current.rotation.y += delta;
@@ -80,34 +85,33 @@ export function Asteroid(props) {
     }
   });
 
-  const handleClick = (e) => {
-    setClicked(true);
-    const direction = new THREE.Vector3(...e.point);
-    setDirection(direction);
-  };
+  // const handleClick = (e) => {
+  //   setClicked(true);
+  //   const direction = new THREE.Vector3(...e.point);
+  //   setDirection(direction);
+  // };
 
   useEffect(() => {
     if (isDestroyed && asteroidMeshRef.current) {
-      gsap.to(asteroidMeshRef.current.scale, {
+      gsap.set(asteroidMeshRef.current.scale, {
         x: 0,
         y: 0,
         z: 0,
-        duration: 0.5,
-        ease: "power2.out",
       });
-    
+
       gsap.to(asteroidMeshRef.current.scale, {
         x: scale,
         y: scale,
         z: scale,
         duration: 0.5,
         ease: "power2.out",
-        delay: 4,
+        delay: 10,
         onComplete: () => {
           setIsDestroyed(false);
-        }
+        },
       });
-  }}, [isDestroyed]);
+    }
+  }, [isDestroyed]);
 
   const addExplosion = (e) => {
     setIsDestroyed(true);
@@ -116,6 +120,16 @@ export function Asteroid(props) {
       offset: asteroidRef.current.position,
       scale: 0.07,
     });
+  };
+
+  const handleHover = (e) => {
+    const crosshair = document.querySelector(`.${hudStyles.crosshair}`);
+    crosshair.classList.add(hudStyles.hover);
+  }
+
+  const handleUnhover = (e) => {
+    const crosshair = document.querySelector(`.${hudStyles.crosshair}`);
+    crosshair.classList.remove(hudStyles.hover);
   }
 
   return (
@@ -126,6 +140,8 @@ export function Asteroid(props) {
         dispose={null}
         onClick={addExplosion}
         // onClick={handleClick}
+        onPointerEnter={handleHover}
+        onPointerLeave={handleUnhover}
       >
         <mesh
           ref={asteroidMeshRef}
