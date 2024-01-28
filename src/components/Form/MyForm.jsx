@@ -512,7 +512,7 @@ const customStyles1 =  {
 
               <div className={styles.email}>
                 <Field type="email" id="email_id" name="email_id" placeholder="Your Email" />
-                <img src="/images/email.png" alt="" />
+                <img src="/images/email.svg" alt="" />
                 <img src="/images/circularEnd.png" alt="" style={{
                   "width": "5%",
                   "position": "absolute",
@@ -527,7 +527,7 @@ const customStyles1 =  {
                 <Field type="text" id="phone" name="phone" maxLength="10" placeholder="Your Phone No"
                   onInput={(e) => handleNumericInput(e)}
                 />
-                <img src="/images/phone.png" alt="" />
+                <img src="/images/phone.svg" alt="" />
                 <img src="/images/circularEnd.png" alt="" style={{
                   "width": "5%",
                   "position": "absolute",
@@ -557,7 +557,7 @@ const customStyles1 =  {
                     </div>
                   ))}
                 </div>
-                <img src="/images/gender.png" alt="" />
+                <img src="/images/gender.svg" alt="" />
                 <img src="/images/circularEnd.png" alt="" style={{
                   "width": "5%",
                   "position": "absolute",
@@ -585,7 +585,7 @@ const customStyles1 =  {
     styles={customStyles1}
     placeholder="Choose Interests"
   />
-  <img src="/images/interests.png" alt="" />
+  <img src="/images/interests.svg" alt="" />
   <img src="/images/circularEnd.png" alt="" style={{
     "width": "5%",
     "position": "absolute",
@@ -711,7 +711,7 @@ const customStyles1 =  {
                 styles={customStyles}
                 placeholder="Your State"
               />
-              <img src="/images/stateNew.png" alt="" />
+              <img src="/images/state.svg" alt="" />
               <img
                 src="/images/circularEnd.png"
                 alt=""
@@ -746,7 +746,7 @@ const customStyles1 =  {
                   styles={customStyles}
                   placeholder="Your City"
                 />
-                <img src="/images/cityNew.png" alt="" />
+                <img src="/images/city.svg" alt="" />
                 <img src="/images/circularEnd.png" alt="" style={{
                   "width": "5%",
                   "position": "absolute",
