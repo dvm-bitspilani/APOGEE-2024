@@ -14,19 +14,19 @@ export default function EffectComposerLayer() {
     "Post Processing",
     {
       bloomStrength: {
-        value: 2.4,
-        step: 0.1,
-        min: 0,
-        max: 10,
-      },
-      bloomThreshold: {
         value: 0.8,
         step: 0.1,
         min: 0,
         max: 10,
       },
+      bloomThreshold: {
+        value: 0,
+        step: 0.1,
+        min: 0,
+        max: 10,
+      },
       luminanceSmoothing: {
-        value: 0.6,
+        value: 0.2,
         step: 0.1,
         min: 0,
         max: 10,
@@ -35,7 +35,7 @@ export default function EffectComposerLayer() {
   );
 
   return (
-    <EffectComposer disableNormalPass>
+    <EffectComposer >
       <Bloom
         intensity={bloomStrength}
         luminanceThreshold={bloomThreshold}

@@ -10,6 +10,8 @@
   opacity: 0;
   pointer-events: none;
 
+  // display: none;
+
   // *{
   //   opacity: 0;
   //   visibility: hidden;
@@ -23,6 +25,8 @@
   height: 100%;
   object-fit: contain;
 
+  pointer-events: none;
+
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -34,6 +38,8 @@
   right: 0;
   height: 100%;
   object-fit: contain;
+
+  pointer-events: none;
 
   @media screen and (max-width: 600px) {
     display: none;
@@ -48,6 +54,18 @@
   width: max(10vw, 80px);
   height: max(10vw, 80px);
   object-fit: contain;
+
+  transition: scale 0.2s ease-in-out;
+
+  path{
+    transition: stroke 0.2s ease-in-out;
+  }
+
+  &.hover{
+    path{
+      stroke: var(--primary-red);
+    }
+  }
 }
 
 .tophud {
@@ -56,7 +74,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: auto;
-  height: max(10vw, 100px);
+  height: clamp(100px,10vw, 170px);
   object-fit: contain;
 
   // visibility: visible;
@@ -83,7 +101,7 @@
 }
 
 .hamMenuButton {
-  width: max(12vw, 120px);
+  width: clamp(120px, 12vw, 200px);
   aspect-ratio: 3/1;
   border-color: var(--secondary);
   background-color: transparent;
@@ -92,7 +110,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: max(calc(10vw - 7px), 92px);
+  top: clamp(92px,calc(10vw - 7px), 160px);
   pointer-events: all;
 
   display: flex;
@@ -362,10 +380,11 @@
   .rightArrow {
     width: 20%;
     height: auto;
-    background: url("@assets/landing/right-arrow.svg");
+    background: url("@assets/landing/left-arrow.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform: rotate(180deg);
 
     transition: scale 0.2s ease-in-out;
 
