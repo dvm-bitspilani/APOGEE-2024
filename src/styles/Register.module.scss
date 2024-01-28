@@ -596,7 +596,7 @@ input:-webkit-autofill {
 }
 @media only screen and (max-width: 1400px) {
   .colleges label{
-    bottom: -25%;
+    bottom: -5%;
   }
 }
 @media only screen and (max-width: 1200px) {
@@ -606,9 +606,9 @@ input:-webkit-autofill {
   .eventsWrapper{
     top: -50% !important;
   }
-  .colleges label{
-    bottom: -25%;
-  }
+  // .colleges label{
+  //   bottom: -25%;
+  // }
 }
 @media only screen and (max-width: 1100px) {
 
@@ -634,7 +634,9 @@ input:-webkit-autofill {
   .cityWrapper{
     top: 0;
   }
-
+  .colleges label{
+    bottom: -10%;
+  }
 }
 @media only screen and (max-width: 992px) {
   .gender  .checkboxContainer{
