@@ -74,8 +74,9 @@ const customStyles1 =  {
         border:"0.1px solid #9AF0F4",
         paddingTop: "0px",
         paddingBottom: "0px",
-        maxHeight:"200%",
+        // maxHeight:"200%",
         overflow:"scroll",
+        textAlign:"center",
         // position:"relative",
         // zIndex:"10000000"
       }),

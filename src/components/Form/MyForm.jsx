@@ -1,4 +1,3 @@
-// MyForm.js
 import React, { useState, useEffect } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -6,23 +5,28 @@ import axios from 'axios';
 import Select from 'react-select';
 import styles from "../../styles/Register.module.scss"
 import citiesData from '../Form/states.json';
-import customStyles from "../../components/Form/customStyles"
+// import customStyles from "../../components/Form/customStyles"
 import customStyles1 from "../../components/Form/customStyles1";
-
+import statesData from '../Form/states.json';
 const MyForm = () => {
-  // const [interestOptions, setInterestOptions] = useState(['']);
+  const [interestOptions, setInterestOptions] = useState(['']);
   const [eventsOptions, setEventsOptions] = useState(['']);
   const [collegeOptions, setCollegeOptions] = useState(['']);
-  
+  const [stateOptions, setStateOptions] = useState([]);
 
   useEffect(() => {
-    // axios.get('https://bits-apogee.org/registrations/get_event_categories')
-    //   .then(response => setInterestOptions(response.data))
-    //   .catch(error => console.error('Error fetching interests:', error));
-    axios.get('https://bits-apogee.org/registrations/get_event')
+    axios.get('https://bits-apogee.org/2024/main/registrations/get_event_categories')
+      .then(response => {
+        setInterestOptions(response.data)
+        console.log(response.data)
+      })
+        
+      .catch(error => console.error('Error fetching interests:', error));
+      
+    axios.get('https://bits-apogee.org/2024/main/registrations/get_event')
       .then(response => setEventsOptions(response.data))
       .catch(error => console.error('Error fetching events:', error));
-    axios.get('https://bits-apogee.org/registrations/get_college')
+    axios.get('https://bits-apogee.org/2024/main/registrations/get_college')
       .then(response => setCollegeOptions(response.data))
       .catch(error => console.error('Error fetching colleges:', error));
 
@@ -34,13 +38,13 @@ const MyForm = () => {
 
   const initialValues = {
     name: '',
-    email: '',
+    email_id: '',
     phone: '',
     gender: '',
     interests: [],
     events: [],
-    college: '',
-    yearOfStudy: [],
+    college_id: '',
+    year: [],
     city: '',
   };
 
@@ -49,13 +53,13 @@ const MyForm = () => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
-    email: Yup.string().email("Please enter a valid email").required("Please enter your email"),
+    email_id: Yup.string().email("Please enter a valid email").required("Please enter your email"),
     phone: Yup.string().required('Phone number is required'),
     gender: Yup.string().required('Gender is required'),
     interests: Yup.array().min(1, 'Select at least one interest'),
     events: Yup.array().min(1, 'Select at least one event'),
-    college: Yup.string().required('College is required'),
-    yearOfStudy: Yup.string().required("Please select your year of study").oneOf(['1', '2', '3', '4', '5'], 'Invalid Year of Study'),
+    college_id: Yup.string().required('College is required'),
+    year: Yup.string().required("Please select your year of study").oneOf(['1', '2', '3', '4', '5'], 'Invalid Year of Study'),
     city: Yup.string().required('City is required'),
   });
 
@@ -69,8 +73,17 @@ const MyForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     console.log('Register button clicked')
     try {
+      const interestsIds = values.interests.map(interest => interest.value);
+      const eventsIds = values.events.map(event => event.value);
+console.log(interestsIds)
+      // Create a new object with IDs
+      const submitValues = {
+        ...values,
+        interests: interestsIds,
+        events: eventsIds,
+      };
       console.log('Form Values:', values);
-      const response = await axios.post('https://bits-apogee.org/registrations/Register/', values);
+      const response = await axios.post('https://bits-apogee.org/2024/main/registrations/Register/', submitValues);
       if (response.data.success) {
         console.log('Data sent successfully!');
         resetForm();
@@ -89,18 +102,6 @@ const MyForm = () => {
     { value: 'O', label: 'OTHER', label1:'O' },
   ];
 
-  const interestOptions = [
-    { value: 'sports', label: 'Sports' },
-    { value: 'music', label: 'Music' },
-    { value: 'reading', label: 'Reading' },
-    // Add more interests as needed
-  ];
-
-  // const eventsOptions = [
-  //   { value: 'event1', label: 'Event 1' },
-  //   { value: 'event2', label: 'Event 2' },
-  //   // Add more events as needed
-  // ];
 
   // const collegeOptions = [
   //   { value: 'college1', label: 'College 1' },
@@ -108,20 +109,383 @@ const MyForm = () => {
   //   // Add more colleges as needed
   // ];
 
-  const yearOfStudyOptions = [
+  const yearOptions = [
     { value: '1', label: '1' },
     { value: '2', label: '2' },
     { value: '3', label: '3' },
     { value: '4', label: '4' },
     { value: '5', label: '5' },
   ];
-
+  useEffect(() => {
+    const allStates = statesData.map(state => ({
+      value: state.name,
+      label: state.name,
+      // cities: state.cities.map(city => ({
+      //   value: city.name,
+      //   label: city.name,
+      // })),
+    }));
+    setStateOptions(allStates);
+  }, []);
   const allCities = citiesData.map(state => state.cities).flat();
   const cityOptions = allCities.map(city => ({
     value: city.name,
     label: city.name,
   }));
   // const customStyles = {  };
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(typeof window !== 'undefined' ? window.innerWidth : 0);
+    };
+
+    // Initial call to set styles based on initial screen size
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  const customStyles =  {
+    control: (provided, state) => ({
+        ...provided,
+        minHeight: "2rem",
+        backgroundColor: "transparent",
+        border: "none",
+        borderBottom: state.isFocused ? "none" : "none",
+        "&:hover": {
+          borderColor: "#9AF0F4",
+        },
+        outline: "none",
+        boxShadow: "none",
+        borderRadius: "0px",
+        height:"100%",
+        width:"100%",
+        minWidth:"max-content",
+        maxWidth: "100%",
+        width: "100%",
+        minWidth: "100%",
+  display: "flex",
+  justifyContent: "space-around"
+      }),
+      indicatorSeparator: () => {},
+      valueContainer: (provided) => ({
+        ...provided,
+        backgroundColor: "transparent",
+        paddingLeft: 0,
+  
+      }),
+      valueContainer: (provided) => ({
+        ...provided,
+        display:"flex",
+        maxHeight:"100%",
+        overflow:"scroll",
+        padding:"0",
+        // display:"flex",
+        flexDirection:"row-reverse",
+        maxWidth:"90%"
+      }),
+      ValueContainer2: (provided) => ({
+        ...provided,
+        maxWidth:"75% !important"
+      }),
+      indicatorsContainer: (provided) => ({
+        ...provided,
+      }),
+      singleValue: (provided) => ({
+        ...provided,
+        color: "#eee",
+        fontSize: "1.5rem",
+        fontWeight: 700,
+      }),
+      option: (provided, state) => ({
+        ...provided,
+        color: state.isSelected ? "white" : "#9AF0F4",
+        backgroundColor: state.isSelected ? "transparent" : "transparent",
+        fontSize: "1.2rem",
+        fontWeight: 500,
+        zIndex: 1002,
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        textShadow:" 0px 0px 14.815px rgba(154, 240, 244, 0.7)",
+        fontFamily:"",
+        textTransform:"uppercase",
+        "&:hover": {
+          backgroundColor: "#9AF0F4",
+          color: "black",
+          cursor:"pointer"
+        },
+      }),
+      menu: (provided) => ({
+        ...provided,
+        zIndex: 1002,
+        backgroundColor: "black",
+        color:"#9AF0F4",
+        border:"0.1px solid #9AF0F4",
+        paddingTop: "0px",
+        paddingBottom: "0px",
+        // maxHeight:"300%",
+        height:"7rem",
+        overflow:"scroll",
+        textAlign:"center"
+      }),
+      menuList: (provided) => ({
+        ...provided,
+        // paddingBottom: "1rem",
+        backgroundColor: "transparent",
+      }),
+      dropdownIndicator: (provided, state) => ({
+        ...provided,
+        color: "white",
+        padding: "5px",
+      }),
+      placeholder: (provided, state) => ({
+        ...provided,
+        opacity: "1",
+        color: "#A9A9A9",
+        opacity: state.isFocused ? "0" : "1",
+        fontFamily:"Space Grotesk",
+        textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+        textTransform:"uppercase",
+  fontSize:(windowWidth > 1100 ? "16px" : "14px"),
+  fontWeight:"700"
+      }),
+      container: (provided) => ({
+        ...provided,
+        overflow: "visible",
+      }),
+      input: (provided) => ({
+        ...provided,
+        color: "#fff",
+        fontSize: "1.5rem",
+        fontWeight: 700,
+        zIndex: 1002,
+        margin: "0",
+        paddingTop: "0",
+        paddngBottom: "0",
+        marginLeft: "2px",
+      }),
+      noOptionsMessage: (provided) => ({
+        ...provided,
+        color: "#fff",
+        fontSize: "1.2rem",
+        paddingLeft: "1rem",
+        backgroundColor: "#222222",
+        paddingTop: "0px",
+        paddingBottom: "0px",
+      }),
+      multiValue: (provided) => ({
+        ...provided,
+        color: "#fff",
+        fontSize: "1.2rem",
+        fontWeight: 700,
+        backgroundColor: "transparent",
+        border: "1px solid #5db3f1",
+        alignItems: "center",
+      }),
+      multiValueLabel: (provided) => ({
+        ...provided,
+        color: "#ffffff !important",
+        backgroundColor: "transparent",
+      }),
+      multiValueRemove: (provided) => ({
+        ...provided,
+        color: "#fff",
+        padding: "0",
+        paddingLeft: "0",
+        marginRight: "3px",
+        width: "14px",
+        height: "100%",
+        "&:hover": {
+          backgroundColor: "#5db3f1",
+          color: "#000",
+        },
+      }),
+      clearIndicator: (provided) => ({
+        ...provided,
+        color: "#fff",
+        "&:hover": {
+          color: "#5db3f1",
+        },
+      }),
+    
+    
+}
+const customStyles1 =  {
+    
+  control: (provided, state) => ({
+      ...provided,
+      minHeight: "2rem",
+      // height: "2rem",
+      backgroundColor: "transparent",
+      border: "none",
+      borderBottom: state.isFocused ? "none" : "none",
+      "&:hover": {
+        borderColor: "#9AF0F4",
+      },
+      outline: "none",
+      boxShadow: "none",
+      borderRadius: "0px",
+      height:"100%",
+      width:"100%",
+
+    }),
+    indicatorSeparator: () => {},
+    valueContainer: (provided) => ({
+      ...provided,
+      // height: "1.8rem",
+      backgroundColor: "transparent",
+      paddingLeft: 0,
+
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      // height: "1.8rem",
+      // backgroundColor: "transparent",
+      // paddingLeft: 0,
+      display:"flex",
+      maxHeight:"100%",
+      overflow:"scroll",
+      padding:"0",
+      // display:"flex",
+      // flexDirection:"row-reverse"
+    }),
+    indicatorsContainer: (provided) => ({
+      ...provided,
+      // height: "1.8rem",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#eee",
+      fontSize: "1.5rem",
+      fontWeight: 700,
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? "white" : "#9AF0F4",
+      backgroundColor: state.isSelected ? "transparent" : "transparent",
+      fontSize: "1.2rem",
+      fontWeight: 500,
+      zIndex: 1002,
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      textShadow:" 0px 0px 14.815px rgba(154, 240, 244, 0.7)",
+      fontFamily:"",
+      textTransform:"uppercase",
+      "&:hover": {
+        backgroundColor: "#9AF0F4",
+        color: "black",
+        cursor:"pointer"
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      zIndex: 1002,
+      backgroundColor: "black",
+      color:"#9AF0F4",
+      border:"0.1px solid #9AF0F4",
+      paddingTop: "0px",
+      paddingBottom: "0px",
+      // maxHeight:"200%",
+      overflow:"scroll",
+      textAlign:"center",
+      // position:"relative",
+      // zIndex:"10000000"
+    }),
+    menuList: (provided) => ({
+      ...provided,
+      // paddingTop: "1rem",
+      paddingBottom: "1rem",
+      backgroundColor: "transparent",
+
+    }),
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      color: "white",
+      padding: "5px",
+    }),
+    placeholder: (provided, state) => ({
+      ...provided,
+      // fontSize: "1.2rem",
+      color: "#A9A9A9",
+      opacity: state.isFocused ? "0" : "1",
+      fontFamily:"Space Grotesk",
+      textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+      textTransform:"uppercase",
+      position:"absolute",
+      fontSize:(windowWidth > 1150 ? "16px" : "14px"),
+      fontWeight:"700"
+    }),
+    container: (provided) => ({
+      ...provided,
+      overflow: "visible",
+    }),
+    input: (provided) => ({
+      ...provided,
+      color: "#fff",
+      fontSize: "1.5rem",
+      fontWeight: 700,
+      zIndex: 1002,
+      margin: "0",
+      paddingTop: "0",
+      paddngBottom: "0",
+      marginLeft: "2px",
+    }),
+    noOptionsMessage: (provided) => ({
+      ...provided,
+      color: "#fff",
+      fontSize: "1.2rem",
+      paddingLeft: "1rem",
+      backgroundColor: "#222222",
+      paddingTop: "0px",
+      paddingBottom: "0px",
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      color: "#fff",
+      fontSize: "1.2rem",
+      fontWeight: 700,
+      backgroundColor: "transparent",
+      border: "1px solid #5db3f1",
+      // paddingLeft: ".25rem",
+      alignItems: "center",
+      // paddingRight: "3px",
+    }),
+    multiValueLabel: (provided) => ({
+      ...provided,
+      color: "#ffffff !important",
+      backgroundColor: "transparent",
+    }),
+    multiValueRemove: (provided) => ({
+      ...provided,
+      color: "#fff",
+      padding: "0",
+      paddingLeft: "0",
+      marginRight: "3px",
+      width: "14px",
+      height: "100%",
+      "&:hover": {
+        backgroundColor: "#5db3f1",
+        color: "#000",
+      },
+    }),
+    clearIndicator: (provided) => ({
+      ...provided,
+      color: "#fff",
+      "&:hover": {
+        color: "#5db3f1",
+      },
+    }),
+  
+}
+
   return (
     <>
       <Formik
@@ -147,7 +511,7 @@ const MyForm = () => {
               </div>
 
               <div className={styles.email}>
-                <Field type="email" id="email" name="email" placeholder="Your Email" />
+                <Field type="email" id="email_id" name="email_id" placeholder="Your Email" />
                 <img src="/images/email.png" alt="" />
                 <img src="/images/circularEnd.png" alt="" style={{
                   "width": "5%",
@@ -155,8 +519,8 @@ const MyForm = () => {
                   "right": "-3%",
                   "bottom": "-16%"
                 }} />
-                <label htmlFor="email">EMAIL ID</label>
-                {/* <ErrorMessage name="email" component="div" /> */}
+                <label htmlFor="email_id">EMAIL ID</label>
+                <ErrorMessage name="email_id" component="div" />
               </div>
 
               <div className={styles.phone}>
@@ -205,35 +569,33 @@ const MyForm = () => {
               </div>
 
               <div className={styles.interests}>
-                <Select
-                  id="interests"
-                  name="interests"
-                  options={
-                  //   (Array.isArray(interestOptions.data) ? interestOptions.data : []).map(item => ({
-                  //   value: item.id,
-                  //   label: item.name
-                  // }))
-                  interestOptions
-                }
-                  isMulti
-                  value={(Array.isArray(interestOptions) ? interestOptions : []).filter(option => values.interests.includes(option.value))}
-                  onChange={(selectedOptions) => {
-                    setFieldValue('interests', selectedOptions ? selectedOptions.map((option) => option.value) : []);
-                  }}
-                  className={styles.interestsWrapper}
-                  styles={customStyles1}
-                  placeholder="Choose Interests"
-                />
-                <img src="/images/interests.png" alt="" />
-                <img src="/images/circularEnd.png" alt="" style={{
-                  "width": "5%",
-                  "position": "absolute",
-                  "right": "-3%",
-                  "top": "-10%"
-                }} />
-                <label htmlFor="interests">Interests</label>
-                {/* <ErrorMessage name="interests" component="div" /> */}
-              </div>
+  <Select
+    id="interests"
+    name="interests"
+    options={(Array.isArray(interestOptions.data) ? interestOptions.data : []).map(item => ({
+      value: item.id,
+      label: item.name
+    }))}
+    isMulti
+    value={values.interests || []}  // Updated
+    onChange={(selectedOptions) => {
+      setFieldValue('interests', selectedOptions || []);
+    }}
+    className={styles.interestsWrapper}
+    styles={customStyles1}
+    placeholder="Choose Interests"
+  />
+  <img src="/images/interests.png" alt="" />
+  <img src="/images/circularEnd.png" alt="" style={{
+    "width": "5%",
+    "position": "absolute",
+    "right": "-3%",
+    "top": "-10%"
+  }} />
+  <label htmlFor="interests">Interests</label>
+  {/* <ErrorMessage name="interests" component="div" /> */}
+</div>
+
             </div>
             <div className={styles.rightSide}>
               <div className={styles.events}>
@@ -245,9 +607,9 @@ const MyForm = () => {
                     label: item.name
                   }))}
                   isMulti
-                  value={(Array.isArray(eventsOptions) ? eventsOptions : []).filter(option => values.events.includes(option.value))}
+                  value={values.events || []}  // Updated
                   onChange={(selectedOptions) => {
-                    setFieldValue('events', selectedOptions ? selectedOptions.map((option) => option.value) : []);
+                    setFieldValue('events', selectedOptions || []);
                   }}
                   className={styles.eventsWrapper}
                   styles={customStyles}
@@ -266,15 +628,15 @@ const MyForm = () => {
 
               <div className={styles.colleges}>
                 <Select
-                  id="college"
-                  name="college"
+                  id="college_id"
+                  name="college_id"
                   options={(Array.isArray(collegeOptions.data) ? collegeOptions.data : []).map(item => ({
                     value: item.id,
                     label: item.name
                   }))}
                   value={(Array.isArray(collegeOptions) ? collegeOptions : []).find(option => option.value === values.college)}
                   onChange={(selectedOption) => {
-                    setFieldValue('college', selectedOption ? selectedOption.value : '');
+                    setFieldValue('college_id', selectedOption ? selectedOption.value : '');
                   }}
                   className={styles.collegeWrapper}
                   styles={customStyles}
@@ -287,39 +649,39 @@ const MyForm = () => {
                   "left": "-2%",
                   "bottom": "-15%"
                 }} />
-                <label htmlFor="college">College</label>
+                <label htmlFor="college_id">College</label>
                 {/* <ErrorMessage name="college" component="div" /> */}
               </div>
 
               <div className={styles.year}>
                 {/* <label>Year of Study</label>
-            {yearOfStudyOptions.map(option => (
+            {yearOptions.map(option => (
               <div key={option.value}>
                 <Field
                   type="radio"
-                  id={`yearOfStudy-${option.value}`}
-                  name="yearOfStudy"
+                  id={`year-${option.value}`}
+                  name="year"
                   value={option.value}
-                  checked={values.yearOfStudy === option.value}
+                  checked={values.year === option.value}
                   onChange={() => {
-                    setFieldValue('yearOfStudy', option.value);
+                    setFieldValue('year', option.value);
                   }}
                 />
-                <label htmlFor={`yearOfStudy-${option.value}`}>{option.label}</label>
+                <label htmlFor={`year-${option.value}`}>{option.label}</label>
               </div>
             ))} */}
                 <div className={styles.checkboxContainer}>
-                  {yearOfStudyOptions.map(option => (
+                  {yearOptions.map(option => (
                     <div key={option.value} className={styles.checkboxItem}>
                       <div
-                        className={`${styles.customCheckbox} ${values.yearOfStudy === option.value ? styles.checked : ''}`}
+                        className={`${styles.customCheckbox} ${values.year === option.value ? styles.checked : ''}`}
                         onClick={() => {
-                          setFieldValue('yearOfStudy', option.value);
+                          setFieldValue('year', option.value);
                         }}
                       >
-                        {values.yearOfStudy === option.value && <div className={styles.checkmark}>&#10003;</div>}
+                        {values.year === option.value && <div className={styles.checkmark}>&#10003;</div>}
                       </div>
-                      <label htmlFor={`yearOfStudy-${option.value}`} className={styles.yearLabel}>
+                      <label htmlFor={`year-${option.value}`} className={styles.yearLabel}>
                         {option.label}
                       </label>
                     </div>
@@ -333,9 +695,35 @@ const MyForm = () => {
                   "top": "-28%"
                 }} />
                 <label>Year of Study</label>
-                {/* <ErrorMessage name="yearOfStudy" component="div" /> */}
+                {/* <ErrorMessage name="year" component="div" /> */}
               </div>
-
+              <div className={styles.state}>
+              <Select
+                id="state"
+                name="state"
+                options={stateOptions}
+                value={stateOptions.find(option => option.value === values.state)}
+                onChange={(selectedOption) => {
+                  setFieldValue('state', selectedOption ? selectedOption.value : '');
+                  setFieldValue('city', ''); // Clear the city when the state changes
+                }}
+                className={styles.stateWrapper}
+                styles={customStyles}
+                placeholder="Your State"
+              />
+              <img src="/images/stateNew.png" alt="" />
+              <img
+                src="/images/circularEnd.png"
+                alt=""
+                style={{
+                  "width": "5%",
+                  "position": "absolute",
+                  "left": "-2%",
+                  "top": "-13%"
+                }}
+              />
+              <label htmlFor="state">State</label>
+            </div>
               <div className={styles.city}>
                 {/* <Select
               id="city"
@@ -358,7 +746,7 @@ const MyForm = () => {
                   styles={customStyles}
                   placeholder="Your City"
                 />
-                <img src="/images/city.svg" alt="" />
+                <img src="/images/cityNew.png" alt="" />
                 <img src="/images/circularEnd.png" alt="" style={{
                   "width": "5%",
                   "position": "absolute",

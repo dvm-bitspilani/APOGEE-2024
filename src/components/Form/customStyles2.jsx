@@ -77,7 +77,8 @@ const customStyles2 =  {
         maxHeight:"500%",
         overflow:"scroll",
         position:"relative",
-        zIndex:"10000000"
+        zIndex:"10000000",
+        textAlign:"center"
       }),
       menuList: (provided) => ({
         ...provided,
