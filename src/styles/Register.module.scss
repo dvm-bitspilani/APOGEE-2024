@@ -128,9 +128,10 @@
     justify-content: center;
     letter-spacing: 2px;
     font-size: 1.2rem;
-    transition: border-color 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    // transition: background-color 0.2s ease-in-out;
     z-index: 2;
-    bottom: -5vh;
+    bottom: -7vh;
   }
 }
 .imgContainer{
@@ -550,12 +551,14 @@ align-items: center;
   cursor: pointer;
   border-color: #b16060;
   text-shadow: 0px 0px 14.815px var(--hover-link);
+  background-color:  #b1606045;
   color: #b16060;
   // background-color: #b16060;
   
 }
 .registerBtn:hover span{
   // color: #b16060;
+  color: #b16060;
 }
 @media (min-width: 1000px), (max-height: 650px) {
   .hud{
