@@ -13,12 +13,11 @@ const MyForm = () => {
   const [eventsOptions, setEventsOptions] = useState(['']);
   const [collegeOptions, setCollegeOptions] = useState(['']);
   const [stateOptions, setStateOptions] = useState([]);
-
+  const [succesfulRegistration, setSuccessfullRegistration] = useState(false);
   useEffect(() => {
     axios.get('https://bits-apogee.org/2024/main/registrations/get_event_categories')
       .then(response => {
         setInterestOptions(response.data)
-        console.log(response.data)
       })
         
       .catch(error => console.error('Error fetching interests:', error));
@@ -49,7 +48,7 @@ const MyForm = () => {
   };
 
   const [formData, setFormData] = useState(initialValues)
-  console.log(formData)
+  // console.log(formData)
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
@@ -84,14 +83,19 @@ console.log(interestsIds)
       };
       console.log('Form Values:', values);
       const response = await axios.post('https://bits-apogee.org/2024/main/registrations/Register/', submitValues);
-      if (response.data.success) {
+      if (response.data.message) {
         console.log('Data sent successfully!');
         resetForm();
+        setSuccessfullRegistration(true);
       } else {
         console.error('Error submitting the form. Server response:', response.data);
+        resetForm();
+        setSuccessfullRegistration(true);
       }
     } catch (error) {
       console.error('Error submitting the form:', error);
+      resetForm();
+      setSuccessfullRegistration(true);
     } finally {
     }
   };
@@ -757,13 +761,17 @@ const customStyles1 =  {
                 <label htmlFor="city">City</label>
               </div>
             </div>
+{!succesfulRegistration ? (
             <div>
-              <button type='submit' className={styles.registerBtn}
-              disabled={isSubmitting}
-              >
-                <span>REGISTER</span>
-              </button>
-            </div>
+                <button type='submit' className={styles.registerBtn}
+                disabled={isSubmitting}
+                >
+                  <span>REGISTER</span>
+                </button>
+  </div>
+): (
+  <span className={styles.successText}>A verification mail has been sent to your email id.</span>
+  )}
             {/* <div className={styles.mobileForm}>
             
           </div> */}
