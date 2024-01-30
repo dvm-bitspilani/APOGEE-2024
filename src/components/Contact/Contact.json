@@ -1,0 +1,82 @@
+[
+    {
+        "id": "1",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "sample.png"
+    },
+    {
+        "id": "2",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    },
+    {
+        "id": "2",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    },
+    {
+        "id": "4",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    },
+    {
+        "id": "5",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    },
+    {
+        "id": "6",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    },
+    {
+        "id": "7",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    },
+    {
+        "id": "8",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    },
+    {
+        "id": "9",
+        "name": "Vedant Vyas",
+        "dept": "Department of Visual Meida",
+        "phone": "9999999999",
+        "mail": "mail@gmail.com",
+        "image": "src/assets/contact/sample.png"
+
+    }
+]
