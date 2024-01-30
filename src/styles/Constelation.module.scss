@@ -13,7 +13,7 @@
   background-repeat: no-repeat;
 
   * {
-    pointer-events: all;
+    pointer-events: none;
   }
 
   @media screen and (max-height: 700px) {

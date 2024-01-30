@@ -29,7 +29,7 @@ export function gsapOnMenu(
       onComplete: () => {
         hamMenuButton.disabled = false;
         const socialLinks = document.querySelectorAll(`.${hamStyles.socials} a`);
-        gsap.set(socialLinks, {
+        gsap.set([socialLinks, stars], {
           pointerEvents: "all",
         });
       },
