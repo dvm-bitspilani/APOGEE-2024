@@ -87,8 +87,13 @@ export function Asteroid(props) {
 
   const handleClick = (e) => {
     setClicked(true);
+    
     const direction = new THREE.Vector3(...e.point);
     setDirection(direction);
+
+    setTimeout(() => {
+      setClicked(false);
+    }, 7000);
   };
 
   // useEffect(() => {
