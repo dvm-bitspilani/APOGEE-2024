@@ -16,6 +16,8 @@ export function gsapOnMenu(
   const hamMenuButton = document.getElementById("ham-menu-button");
   const stars = document.querySelectorAll(`.${constellationStyles.constelationWrapper}>div`);
 
+  const landingLinks = document.querySelectorAll(`.${hudStyles.wrapper} a`);
+
   if (!isHamOpen) {
 
     const tl = gsap.timeline({
@@ -25,6 +27,10 @@ export function gsapOnMenu(
           rotationUpdateOnMouseMoveHandler
         );
         hamMenuButton.disabled = true;
+
+        gsap.set(landingLinks, {
+          pointerEvents: "none",
+        });
       },
       onComplete: () => {
         hamMenuButton.disabled = false;
@@ -108,6 +114,10 @@ export function gsapOnMenu(
       onComplete: () => {
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
         hamMenuButton.disabled = false;
+
+        gsap.set(landingLinks, {
+          pointerEvents: "all",
+        });
       },
     });
 

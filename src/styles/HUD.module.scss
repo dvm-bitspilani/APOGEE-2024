@@ -313,8 +313,12 @@
       rect[fill="#9AF0F4"] {
         fill: var(--hover-link);
       }
-      g {
+      g[filter="url(#filter0_d_1880_3147)"] {
         filter: url(#filter0_d_570_154);
+        opacity: 0.2;
+        path[fill="#3E6567"] {
+          fill: var(--hover-link);
+        }
       }
     }
   }
