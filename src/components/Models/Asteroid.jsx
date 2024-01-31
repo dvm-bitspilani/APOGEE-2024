@@ -46,7 +46,7 @@ export function Asteroid(props) {
   );
 
   const [omegaX, omegaY, omegaZ] = useMemo(
-    () => Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.25)),
+    () => Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.18)),
     []
   );
 
@@ -55,8 +55,8 @@ export function Asteroid(props) {
     []
   );
 
-  const [addX, addY, addZ] = useMemo(
-    () => Array.from({ length: 3 }, () => randomMultiplier(-Math.PI, Math.PI)),
+  const [phaseX, phaseY, phaseZ] = useMemo(
+    () => Array.from({ length: 3 }, () => randomMultiplier(0, 2 * Math.PI)),
     []
   );
 
@@ -77,11 +77,11 @@ export function Asteroid(props) {
       asteroidRef.current.position.z += direction.z * zMultiplier;
     } else {
       asteroidRef.current.position.x =
-        ampX * Math.sin((state.clock.elapsedTime + addX) * omegaX);
+        ampX * Math.sin((state.clock.elapsedTime) * omegaX + phaseX);
       asteroidRef.current.position.y =
-        ampY * Math.sin((state.clock.elapsedTime + addY) * omegaY);
+        ampY * Math.cos((state.clock.elapsedTime) * omegaY + phaseY);
       asteroidRef.current.position.z =
-        ampZ * Math.cos((state.clock.elapsedTime + addZ) * omegaZ);
+        ampZ * Math.cos((state.clock.elapsedTime) * omegaZ + phaseZ);
     }
   });
 
