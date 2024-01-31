@@ -176,6 +176,14 @@
   align-items: center;
   justify-content: center;
 
+  background-image: url("@assets/landing/navigatorBG.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  padding-block: 2%;
+  padding-inline: 2%;
+
   img {
     width: 100%;
     height: auto;
@@ -277,7 +285,7 @@
     place-items: center;
 
     svg {
-      width: 85%;
+      width: 90%;
       height: auto;
       // position: absolute;
     }
