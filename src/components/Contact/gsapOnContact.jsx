@@ -22,10 +22,9 @@ export function gsapOnContact(
           "mousemove",
           rotationUpdateOnMouseMoveHandler
         );
-      },
-      onComplete: () => {
         state.activeSection = targetSection;
       },
+      onComplete: () => {},
     });
 
     // window?.removeEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
@@ -87,10 +86,10 @@ export function gsapOnContact(
           "mousemove",
           rotationUpdateOnMouseMoveHandler
         );
+        state.activeSection = targetSection;
       },
       onComplete: () => {
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
-        state.activeSection = targetSection;
       },
     });
 
