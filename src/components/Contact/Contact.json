@@ -5,7 +5,7 @@
         "dept": "Department of Visual Meida",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/vedant.png"
+        "image": "vedant"
     },
     {
         "id": "2",
@@ -13,7 +13,7 @@
         "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sachika.png"
+        "image": "sachika"
 
     },
     {
@@ -22,7 +22,7 @@
         "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/dharun.png"
+        "image": "dharun"
 
     },
     {
@@ -31,7 +31,7 @@
         "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/yash.png"
+        "image": "yash"
 
     },
     {
@@ -40,7 +40,7 @@
         "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/tushar.png"
+        "image": "tushar"
 
     },
     {
@@ -49,16 +49,16 @@
         "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/noname.png"
+        "image": "noname"
 
     },
     {
         "id": "7",
         "name": "Abhinav Lamba",
-        "dept": "Department",
+        "dept": "General Secretary",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/lamba.png"
+        "image": "lamba"
 
     },
     {
@@ -67,7 +67,7 @@
         "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "sample"
 
     },
     {
@@ -76,7 +76,7 @@
         "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "sample"
 
     }
 ]
