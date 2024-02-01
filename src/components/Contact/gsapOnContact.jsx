@@ -13,8 +13,6 @@ export function gsapOnContact(
   // Store the function in a variable
   //   let rotationHandler = rotationUpdateOnMouseMoveHandler;
 
-  console.log(targetSection);
-
   if (targetSection === 4) {
     const tl = gsap.timeline({
       onStart: () => {

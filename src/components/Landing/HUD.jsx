@@ -19,6 +19,7 @@ import { CrossHairCursor } from "./CrossHairCursor";
 import ContactHUD from "../Contact/ContactHUD";
 
 import TopHUD from "./TopHUD";
+import { useSnapshot } from "valtio";
 
 export function Hud() {
   return (
@@ -69,6 +70,8 @@ export function Hud() {
 export function MobileHUD() {
   const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
+  const snap = useSnapshot(state);
+
   return (
     <>
       <div className={`${styles.mobileLinks} ${styles.landingElements}`}>
@@ -76,7 +79,7 @@ export function MobileHUD() {
           <button
             key={index}
             className={state.activeSection === index ? styles.active : ""}
-            onClick={() => (state.activeSection = index)}
+            onClick={() => (state.targetSection = index)}
           >
             {value}
           </button>

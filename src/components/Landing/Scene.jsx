@@ -54,28 +54,30 @@ export function Scene() {
     // console.log(camera.position);
   });
 
-  const rotationUpdateOnMouseMove = useCallback( (e, cameraPos) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const center = {
-      x: innerWidth / 2,
-      y: innerHeight / 2,
-    };
-    const maxRotate = Math.PI / 16;
-    // const { innerWidth, innerHeight } = window;
+  const rotationUpdateOnMouseMove = useCallback(
+    (e, cameraPos) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      const center = {
+        x: innerWidth / 2,
+        y: innerHeight / 2,
+      };
+      const maxRotate = Math.PI / 16;
+      // const { innerWidth, innerHeight } = window;
 
-    const y = (center.x - clientX) / innerWidth;
-    const x = (center.y - clientY) / innerHeight;
+      const y = (center.x - clientX) / innerWidth;
+      const x = (center.y - clientY) / innerHeight;
 
-    // console.log(cameraPos);
+      // console.log(cameraPos);
 
-    gsap.to(camera.rotation, {
-      x: cameraPos[0] + x * maxRotate,
-      y: cameraPos[1] + y * maxRotate,
-      ease: "power2.out",
-    });
-  }
-  , [camera]);
+      gsap.to(camera.rotation, {
+        x: cameraPos[0] + x * maxRotate,
+        y: cameraPos[1] + y * maxRotate,
+        ease: "power2.out",
+      });
+    },
+    [camera]
+  );
 
   const snap = useSnapshot(state);
 
@@ -97,7 +99,6 @@ export function Scene() {
       delay: 2,
       ease: "power2.inOut",
     });
-
   }, [camera]);
 
   const hamMenuButton = document.querySelector("#ham-menu-button");
@@ -127,9 +128,7 @@ export function Scene() {
         rotationUpdateOnMouseMoveHandler
       );
 
-    console.log(state.activeSection, snap.targetSection);
     if (state.activeSection === snap.targetSection) return;
-    console.log("hello");
     gsapOnContactHandler();
   }, [snap.targetSection, camera]);
 
