@@ -54,8 +54,8 @@ export function Hud() {
         <CrossHairCursor />
         <HamMenuButton />
         <NavigateSection />
-        {/* <RegEventsSection /> */}
-        <ContactHUD/>
+        <RegEventsSection />
+        {/* <ContactHUD/> */}
         <ConstellationDetected />
         <Socials />
         <MadeWithLuv />
