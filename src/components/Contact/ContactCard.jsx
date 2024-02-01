@@ -2,7 +2,14 @@ import * as styles from "@styles/Contact.module.scss";
 import React from "react";
 import phoneIcon from "../../assets/contact/phone.svg";
 import mailIcon from "../../assets/contact/mail.svg";
-import sampleImage from "../../assets/contact/sample.png"
+// import sampleImage from "../../assets/contact/sample.png"
+// import vedant from "../../assets/contact/vedant.png"
+// import sachika from "../../assets/contact/sachika.png"
+// import dharun from "../../assets/contact/dharun.png"
+// import yash from "../../assets/contact/yash.png"
+// import tushar from "../../assets/contact/tushar.png"
+// import noname from "../../assets/contact/noname.png"
+// import lamba from "../../assets/contact/lamba.png"
 
 export default function ContactCard({ image, dept, name, phone, email }) {
 
@@ -17,7 +24,7 @@ export default function ContactCard({ image, dept, name, phone, email }) {
     return (
         <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-                <img src={sampleImage} alt="" draggable='false' />
+                <img src={image} alt="" draggable='false' />
             </div>
             <div className={styles.dept}>{dept}</div>
             <div className={styles.name}>{name}</div>

@@ -5,66 +5,66 @@
         "dept": "Department of Visual Meida",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "sample.png"
+        "image": "src/assets/contact/vedant.png"
     },
     {
         "id": "2",
-        "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "name": "Sachika",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "src/assets/contact/sachika.png"
 
     },
     {
         "id": "2",
-        "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "name": "Dharun",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "src/assets/contact/dharun.png"
 
     },
     {
         "id": "4",
-        "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "name": "Yash",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "src/assets/contact/yash.png"
 
     },
     {
         "id": "5",
-        "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "name": "Tushar",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "src/assets/contact/tushar.png"
 
     },
     {
         "id": "6",
-        "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "name": "Name",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "src/assets/contact/noname.png"
 
     },
     {
         "id": "7",
-        "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "name": "Abhinav Lamba",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
-        "image": "src/assets/contact/sample.png"
+        "image": "src/assets/contact/lamba.png"
 
     },
     {
         "id": "8",
         "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
         "image": "src/assets/contact/sample.png"
@@ -73,7 +73,7 @@
     {
         "id": "9",
         "name": "Vedant Vyas",
-        "dept": "Department of Visual Meida",
+        "dept": "Department",
         "phone": "9999999999",
         "mail": "mail@gmail.com",
         "image": "src/assets/contact/sample.png"
