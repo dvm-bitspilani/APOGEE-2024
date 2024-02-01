@@ -28,7 +28,7 @@ export default function NavigateSection() {
 
     target.interval = setInterval(() => {
       target.innerText = target.innerText.split("").map((letter, index) => {
-        if (index < iteration + 4) {
+        if (index < iteration) {
           return target.dataset.value[index];
         }
         return letters[Math.floor(Math.random() * 26)];
@@ -53,11 +53,11 @@ export default function NavigateSection() {
   };
 
   const buttonData = [
-    "1 | HOME",
-    "2 | ABOUT",
-    "3 | EVENTS",
-    "4 | SPEAKERS",
-    "5 | CONTACT",
+    "HOME",
+    "ABOUT",
+    "EVENTS",
+    "SPEAKERS",
+    "CONTACT",
   ];
 
   return (
