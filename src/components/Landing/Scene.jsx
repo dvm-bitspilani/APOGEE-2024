@@ -1,4 +1,4 @@
-import { useEffect, useRef} from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
@@ -15,7 +15,7 @@ import ProceduralPlanet from "../Models/ProceduralPlanet";
 
 import gsap from "gsap/gsap-core";
 import { gsapOnMenu } from "./gsapOnMenu";
-
+import { gsapOnContact } from "../Contact/gsapOnContact";
 import state from "../state";
 import { useSnapshot } from "valtio";
 import { useHelper } from "@react-three/drei";
@@ -29,6 +29,9 @@ export function Scene() {
 
   const menuPos = [-2, -1.5, -0];
   const menuRot = [0, -1.9, 0];
+
+  const contactPos = [-10, 0, -23];
+  const contactRot = [0, 2, 0];
 
   const { position, rotation } = useControls("Camera", {
     position: {
@@ -51,7 +54,7 @@ export function Scene() {
     // console.log(camera.position);
   });
 
-  function rotationUpdateOnMouseMove(e, cameraPos) {
+  const rotationUpdateOnMouseMove = useCallback( (e, cameraPos) => {
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
     const center = {
@@ -72,13 +75,16 @@ export function Scene() {
       ease: "power2.out",
     });
   }
+  , [camera]);
 
   const snap = useSnapshot(state);
 
-  const rotationUpdateOnMouseMoveHandler = (e) =>
-    rotationUpdateOnMouseMove(e, [0, 0, 0]);
-  const rotationUpdateOnMouseMoveHandler2 = (e) =>
-    rotationUpdateOnMouseMove(e, menuRot);
+  const rotationUpdateOnMouseMoveHandler = useCallback(
+    (e) => rotationUpdateOnMouseMove(e, [0, 0, 0]),
+    [rotationUpdateOnMouseMove]
+  );
+  // const rotationUpdateOnMouseMoveHandler2 = (e) =>
+  //   rotationUpdateOnMouseMove(e, menuRot);
 
   useEffect(() => {
     gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
@@ -92,15 +98,10 @@ export function Scene() {
       ease: "power2.inOut",
     });
 
-    return () => {
-      window?.removeEventListener(
-        "mousemove",
-        rotationUpdateOnMouseMoveHandler
-      );
-    };
   }, [camera]);
 
   const hamMenuButton = document.querySelector("#ham-menu-button");
+  // const contactSection = document.querySelector("#active-section-4");
   // console.log("hello");
 
   useEffect(() => {
@@ -114,32 +115,44 @@ export function Scene() {
       );
 
     hamMenuButton.addEventListener("click", gsapOnMenuHandler);
-
-    return () => {
-      window?.removeEventListener(
-        "mousemove",
-        rotationUpdateOnMouseMoveHandler2
-      );
-    };
   }, [snap.isHamOpen, camera]);
 
-  const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
-    lightPos: {
-      value: [4, -1, 5],
-      step: 1,
-      min: -1000,
-      max: 1000,
-    },
-    lightColor: {
-      value: "#be3d2d",
-    },
-    intensity: {
-      value: 0,
-      step: 0.1,
-      min: 0,
-      max: 10,
-    },
-  });
+  useEffect(() => {
+    const gsapOnContactHandler = () =>
+      gsapOnContact(
+        camera,
+        contactPos,
+        contactRot,
+        state.targetSection,
+        rotationUpdateOnMouseMoveHandler
+      );
+
+    console.log(state.activeSection, snap.targetSection);
+    if (state.activeSection === snap.targetSection) return;
+    console.log("hello");
+    gsapOnContactHandler();
+  }, [snap.targetSection, camera]);
+
+  const { lightPos, lightColor, intensity } = useControls(
+    "Light on planet from menu open",
+    {
+      lightPos: {
+        value: [4, -1, 5],
+        step: 1,
+        min: -1000,
+        max: 1000,
+      },
+      lightColor: {
+        value: "#be3d2d",
+      },
+      intensity: {
+        value: 0,
+        step: 0.1,
+        min: 0,
+        max: 10,
+      },
+    }
+  );
 
   const lightRef = useRef();
   // useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");

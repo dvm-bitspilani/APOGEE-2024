@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as styles from "@styles/HUD.module.scss";
 
 import Countdown from "./Countdown";
 import Socials from "@components/HamMenu/Socials";
 
 import state from "../state";
-// import { useSnapshot } from "valtio";
+
+import { useSnapshot } from "valtio";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const Button = ({ value, handleMouseOver, handleMouseOut, isActive }) => {
+const Button = ({
+  value,
+  handleMouseOver,
+  handleMouseOut,
+  isActive,
+  index,
+}) => {
   return (
-    <button className={isActive ? styles.buttonActive : null} data-value={value} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+    <button
+      className={isActive ? styles.buttonActive : null}
+      id={`active-section-${index}`}
+      data-value={value}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onClick={() => (state.targetSection = index)}
+    >
       {value}
     </button>
   );
@@ -19,6 +33,8 @@ const Button = ({ value, handleMouseOver, handleMouseOut, isActive }) => {
 
 export default function NavigateSection() {
   const [hoveredButton, setHoveredButton] = useState(null);
+
+  const snap = useSnapshot(state);
 
   const handleMouseOver = (event) => {
     const { target } = event;
@@ -75,11 +91,12 @@ export default function NavigateSection() {
               handleMouseOver={handleMouseOver}
               handleMouseOut={handleMouseOut}
               isActive={state.activeSection === index}
+              index={index}
             />
           ))}
         </div>
         <Line />
-        <Socials navigate={true}/>
+        <Socials navigate={true} />
       </div>
     </div>
   );
