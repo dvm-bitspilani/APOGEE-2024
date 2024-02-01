@@ -98,12 +98,12 @@ const customStyles2 =  {
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
-        textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+        textShadow:"0px 0px 4.815px rgba(183, 255, 255, 0.8)",
         textTransform:"uppercase",
         position:"absolute",
         // fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
         fontSize:"17.6px",
-        fontWeight:"700",
+        fontWeight:"500"
         // color:"black"
       }),
       container: (provided) => ({

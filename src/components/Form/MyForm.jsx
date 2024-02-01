@@ -286,10 +286,10 @@ console.log(interestsIds)
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
-        textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+        textShadow:"0px 0px 4.815px rgba(183, 255, 255, 0.8)",
         textTransform:"uppercase",
   fontSize:(windowWidth > 1100 ? "16px" : "14px"),
-  fontWeight:"700"
+  fontWeight:"500"
       }),
       container: (provided) => ({
         ...provided,
@@ -463,10 +463,10 @@ console.log(interestsIds)
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
-        textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+        textShadow:"0px 0px 4.815px rgba(183, 255, 255, 0.8)",
         textTransform:"uppercase",
   fontSize:(windowWidth > 1100 ? "16px" : "14px"),
-  fontWeight:"700"
+  fontWeight:"500"
       }),
       container: (provided) => ({
         ...provided,
@@ -631,11 +631,11 @@ const customStyles1 =  {
       color: "#A9A9A9",
       opacity: state.isFocused ? "0" : "1",
       fontFamily:"Space Grotesk",
-      textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+      textShadow:"0px 0px 4.815px rgba(183, 255, 255, 0.8)",
       textTransform:"uppercase",
       position:"absolute",
       fontSize:(windowWidth > 1150 ? "16px" : "14px"),
-      fontWeight:"700"
+      fontWeight:"500"
     }),
     container: (provided) => ({
       ...provided,
