@@ -1,4 +1,4 @@
-import { useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
@@ -15,7 +15,7 @@ import ProceduralPlanet from "../Models/ProceduralPlanet";
 
 import gsap from "gsap/gsap-core";
 import { gsapOnMenu } from "./gsapOnMenu";
-
+import { gsapOnContact } from "../Contact/gsapOnContact";
 import state from "../state";
 import { useSnapshot } from "valtio";
 import { useHelper } from "@react-three/drei";
@@ -29,6 +29,9 @@ export function Scene() {
 
   const menuPos = [-2, -1.5, -0];
   const menuRot = [0, -1.9, 0];
+
+  const contactPos = [-10, 0, -23];
+  const contactRot = [0, 2, 0];
 
   const { position, rotation } = useControls("Camera", {
     position: {
@@ -80,6 +83,7 @@ export function Scene() {
   const rotationUpdateOnMouseMoveHandler2 = (e) =>
     rotationUpdateOnMouseMove(e, menuRot);
 
+
   useEffect(() => {
     gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
 
@@ -101,6 +105,7 @@ export function Scene() {
   }, [camera]);
 
   const hamMenuButton = document.querySelector("#ham-menu-button");
+  const contactSection = document.querySelector("#active-section-4");
   // console.log("hello");
 
   useEffect(() => {
@@ -112,8 +117,18 @@ export function Scene() {
         state.isHamOpen,
         rotationUpdateOnMouseMoveHandler
       );
+    const gsapOnContactHandler = () =>
+      gsapOnContact(
+        camera,
+        contactPos,
+        contactRot,
+        state.activeSection,
+        rotationUpdateOnMouseMoveHandler
+      );
+
 
     hamMenuButton.addEventListener("click", gsapOnMenuHandler);
+    contactSection.addEventListener("click", gsapOnContactHandler);
 
     return () => {
       window?.removeEventListener(
@@ -121,25 +136,28 @@ export function Scene() {
         rotationUpdateOnMouseMoveHandler2
       );
     };
-  }, [snap.isHamOpen, camera]);
+  }, [snap.isHamOpen, state.activeSection, camera]);
 
-  const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
-    lightPos: {
-      value: [4, -1, 5],
-      step: 1,
-      min: -1000,
-      max: 1000,
-    },
-    lightColor: {
-      value: "#be3d2d",
-    },
-    intensity: {
-      value: 0,
-      step: 0.1,
-      min: 0,
-      max: 10,
-    },
-  });
+  const { lightPos, lightColor, intensity } = useControls(
+    "Light on planet from menu open",
+    {
+      lightPos: {
+        value: [4, -1, 5],
+        step: 1,
+        min: -1000,
+        max: 1000,
+      },
+      lightColor: {
+        value: "#be3d2d",
+      },
+      intensity: {
+        value: 0,
+        step: 0.1,
+        min: 0,
+        max: 10,
+      },
+    }
+  );
 
   const lightRef = useRef();
   // useHelper(lightRef, DirectionalLightHelper, 2, "hotpink");

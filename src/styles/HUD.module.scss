@@ -102,6 +102,9 @@
 }
 
 .hamMenuButton {
+  opacity: 1;
+  visibility: inherit;
+  
   width: clamp(120px, 12vw, 200px);
   aspect-ratio: 3/1;
   border-color: var(--secondary);
@@ -254,6 +257,8 @@
 }
 
 .regEventsWrapper {
+  opacity: 1;
+  visibility: inherit;
   position: absolute;
   top: 20%;
   bottom: 15%;
