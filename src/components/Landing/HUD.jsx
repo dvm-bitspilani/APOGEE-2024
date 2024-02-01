@@ -16,6 +16,7 @@ import { Register_bg_svg } from "./RegEventsSection";
 import apogee from "@assets/landing/apogee_logo.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
+import ContactHUD from "../Contact/ContactHUD";
 
 import TopHUD from "./TopHUD";
 
@@ -44,12 +45,12 @@ export function Hud() {
           alt="top hud"
         />
         {/* <TopHUD /> */}
-        <img
+        {/* <img
           src={apogee}
           alt="apogee"
           draggable={false}
           className={styles.logo}
-        />
+        /> */}
         <CrossHairCursor />
         <button
           id="ham-menu-button"
@@ -61,6 +62,7 @@ export function Hud() {
         </button>
         <NavigateSection />
         <RegEventsSection />
+        {/* <ContactHUD/> */}
         <ConstellationDetected />
         <Socials />
         <MadeWithLuv />

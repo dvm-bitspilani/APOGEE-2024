@@ -90,7 +90,7 @@
   aspect-ratio: 1/1;
 
   background-position: center;
-  background-size: contain;
+  background-size: 80%;
   background-repeat: no-repeat;
 
   display: flex;
@@ -104,6 +104,10 @@
   &>svg {
     height: 30% !important;
     aspect-ratio: 1/1;
+
+    &:first-child {
+      height: 26% !important;
+    }
   }
 }
 

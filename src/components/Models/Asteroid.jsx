@@ -26,7 +26,7 @@ export function Asteroid(props) {
   const [clicked, setClicked] = useState(false);
   const [direction, setDirection] = useState(new THREE.Vector3());
 
-  const [isDestroyed, setIsDestroyed] = useState(false);
+  // const [isDestroyed, setIsDestroyed] = useState(false);
 
   // const { position } = useControls("Asteroid", {
   //   position: {
@@ -40,13 +40,13 @@ export function Asteroid(props) {
     return Math.random() * (max - min) + min;
   };
 
-  // const [xMultiplier, yMultiplier, zMultiplier] = useMemo( () =>
-  //   Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
-  //   []
-  // );
+  const [xMultiplier, yMultiplier, zMultiplier] = useMemo( () =>
+    Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
+    []
+  );
 
   const [omegaX, omegaY, omegaZ] = useMemo(
-    () => Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.25)),
+    () => Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.18)),
     []
   );
 
@@ -55,8 +55,8 @@ export function Asteroid(props) {
     []
   );
 
-  const [addX, addY, addZ] = useMemo(
-    () => Array.from({ length: 3 }, () => randomMultiplier(-Math.PI, Math.PI)),
+  const [phaseX, phaseY, phaseZ] = useMemo(
+    () => Array.from({ length: 3 }, () => randomMultiplier(0, 2 * Math.PI)),
     []
   );
 
@@ -77,50 +77,55 @@ export function Asteroid(props) {
       asteroidRef.current.position.z += direction.z * zMultiplier;
     } else {
       asteroidRef.current.position.x =
-        ampX * Math.sin((state.clock.elapsedTime + addX) * omegaX);
+        ampX * Math.sin((state.clock.elapsedTime) * omegaX + phaseX);
       asteroidRef.current.position.y =
-        ampY * Math.sin((state.clock.elapsedTime + addY) * omegaY);
+        ampY * Math.cos((state.clock.elapsedTime) * omegaY + phaseY);
       asteroidRef.current.position.z =
-        ampZ * Math.cos((state.clock.elapsedTime + addZ) * omegaZ);
+        ampZ * Math.cos((state.clock.elapsedTime) * omegaZ + phaseZ);
     }
   });
 
-  // const handleClick = (e) => {
-  //   setClicked(true);
-  //   const direction = new THREE.Vector3(...e.point);
-  //   setDirection(direction);
-  // };
+  const handleClick = (e) => {
+    setClicked(true);
+    
+    const direction = new THREE.Vector3(...e.point);
+    setDirection(direction);
 
-  useEffect(() => {
-    if (isDestroyed && asteroidMeshRef.current) {
-      gsap.set(asteroidMeshRef.current.scale, {
-        x: 0,
-        y: 0,
-        z: 0,
-      });
-
-      gsap.to(asteroidMeshRef.current.scale, {
-        x: scale,
-        y: scale,
-        z: scale,
-        duration: 0.5,
-        ease: "power2.out",
-        delay: 10,
-        onComplete: () => {
-          setIsDestroyed(false);
-        },
-      });
-    }
-  }, [isDestroyed]);
-
-  const addExplosion = (e) => {
-    setIsDestroyed(true);
-    state.explosions.push({
-      guid: Math.random(),
-      offset: asteroidRef.current.position,
-      scale: 0.07,
-    });
+    setTimeout(() => {
+      setClicked(false);
+    }, 7000);
   };
+
+  // useEffect(() => {
+  //   if (isDestroyed && asteroidMeshRef.current) {
+  //     gsap.set(asteroidMeshRef.current.scale, {
+  //       x: 0,
+  //       y: 0,
+  //       z: 0,
+  //     });
+
+  //     gsap.to(asteroidMeshRef.current.scale, {
+  //       x: scale,
+  //       y: scale,
+  //       z: scale,
+  //       duration: 0.5,
+  //       ease: "power2.out",
+  //       delay: 10,
+  //       onComplete: () => {
+  //         setIsDestroyed(false);
+  //       },
+  //     });
+  //   }
+  // }, [isDestroyed]);
+
+  // const addExplosion = (e) => {
+  //   setIsDestroyed(true);
+  //   state.explosions.push({
+  //     guid: Math.random(),
+  //     offset: asteroidRef.current.position,
+  //     scale: 0.07,
+  //   });
+  // };
 
   const handleHover = (e) => {
     const crosshair = document.querySelector(`.${hudStyles.crosshair}`);
@@ -138,8 +143,8 @@ export function Asteroid(props) {
         ref={asteroidRef}
         {...props}
         dispose={null}
-        onClick={addExplosion}
-        // onClick={handleClick}
+        // onClick={addExplosion}
+        onClick={handleClick}
         onPointerEnter={handleHover}
         onPointerLeave={handleUnhover}
       >

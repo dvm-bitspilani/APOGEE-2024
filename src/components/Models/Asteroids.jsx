@@ -9,7 +9,6 @@ export default function Asteroids() {
         <Asteroid />
         <Asteroid />
         <Asteroid />
-        <Asteroid />
     </>
   )
 }

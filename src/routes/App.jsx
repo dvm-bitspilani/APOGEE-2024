@@ -46,7 +46,7 @@ function App() {
         <Stats />
       </Canvas>
       <Hud />
-      <ContactHUD />
+      {/* <ContactHUD /> */}
     </motion.div>
   );
 }

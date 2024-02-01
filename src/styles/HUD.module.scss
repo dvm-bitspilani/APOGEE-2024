@@ -1,4 +1,5 @@
 .wrapper {
+  // display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -175,6 +176,14 @@
   align-items: center;
   justify-content: center;
 
+  background-image: url("@assets/landing/navigatorBG.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  padding-block: 2%;
+  padding-inline: 2%;
+
   img {
     width: 100%;
     height: auto;
@@ -276,7 +285,7 @@
     place-items: center;
 
     svg {
-      width: 85%;
+      width: 90%;
       height: auto;
       // position: absolute;
     }
@@ -312,8 +321,12 @@
       rect[fill="#9AF0F4"] {
         fill: var(--hover-link);
       }
-      g {
+      g[filter="url(#filter0_d_1880_3147)"] {
         filter: url(#filter0_d_570_154);
+        opacity: 0.2;
+        path[fill="#3E6567"] {
+          fill: var(--hover-link);
+        }
       }
     }
   }
