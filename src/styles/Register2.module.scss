@@ -22,10 +22,11 @@ input {
 .checkboxContainer {
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   bottom: 45%;
   height: 40px;
+  gap: 5%;
 }
 .gender input:focus {
   outline: none;
@@ -54,7 +55,7 @@ input {
   color: var(--primary);
 }
 .registerBtn {
-  width: max(12vw, 120px);
+  width: max(12vw, 150px);
   aspect-ratio: 3/1;
   border-color: var(--secondary);
   border-width: 1px;
@@ -67,12 +68,60 @@ input {
   letter-spacing: 2px;
   font-size: 1.2rem;
   transition: border-color 0.2s ease-in-out;
+  margin-inline: auto;
 }
 .checkboxItem > label{
   font-size: 1rem;
+}
+.mobileForm{
+  align-self: flex-end;
+  width: auto;
+  padding-bottom: 2rem;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.errorMessage{
+  color: #b16060;
+}
+::placeholder{
+  font-size: 1.1rem;
+}
+.successText{
+  // position: absolute;
+  // bottom: -5vh;
+  transform: translateY(-100%);
+  margin-inline: auto;
+  // left: 50%;
+  text-transform: uppercase;
+  width: max-content;
+}
+.successText::after{
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  margin-left: 5px;
+  left: 0;
+  animation:  cursor 0.8s infinite, typing 3s steps(51) forwards;
+  background-color: black;
+}
+@keyframes typing {
+  100%{
+    left: 100%;
+    
+  }
+}
+@keyframes cursor {
+  100%{
+    border-left: 1px solid var(--primary);
+  }
 }
 @media only screen and (max-width: 550px) {
   label {
     font-size: 1rem;
   }
+
 }

@@ -13,9 +13,9 @@ const customStyles2 =  {
         outline: "none",
         boxShadow: "none",
         borderRadius: "0px",
-        height:"100%",
+        // height:"100%",
         width:"100%",
-
+        height:"0"
       }),
       indicatorSeparator: () => {},
       valueContainer: (provided) => ({
@@ -101,8 +101,10 @@ const customStyles2 =  {
         textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
         textTransform:"uppercase",
         position:"absolute",
-        fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
-        fontWeight:"700"
+        // fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
+        fontSize:"17.6px",
+        fontWeight:"700",
+        // color:"black"
       }),
       container: (provided) => ({
         ...provided,
