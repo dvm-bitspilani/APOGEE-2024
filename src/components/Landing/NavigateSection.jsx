@@ -1,17 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as styles from "@styles/HUD.module.scss";
 
 import Countdown from "./Countdown";
 import Socials from "@components/HamMenu/Socials";
 
 import state from "../state";
-// import { useSnapshot } from "valtio";
+
+import { useSnapshot } from "valtio";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const Button = ({ value, handleMouseOver, handleMouseOut, isActive }) => {
+const Button = ({ value, handleMouseOver, handleMouseOut, isActive, index }) => {
+  const snap = useSnapshot(state);
+
   return (
-    <button className={isActive ? styles.buttonActive : null} data-value={value} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+    <button
+      className={isActive ? styles.buttonActive : null}
+      id={`active-section-${index}`}
+      data-value={value}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onClick={() => (state.activeSection = index)}
+    >
       {value}
     </button>
   );
@@ -27,12 +37,15 @@ export default function NavigateSection() {
     clearInterval(target.interval);
 
     target.interval = setInterval(() => {
-      target.innerText = target.innerText.split("").map((letter, index) => {
-        if (index < iteration + 4) {
-          return target.dataset.value[index];
-        }
-        return letters[Math.floor(Math.random() * 26)];
-      }).join("");
+      target.innerText = target.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration + 4) {
+            return target.dataset.value[index];
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
 
       if (iteration >= target.dataset.value.length) {
         clearInterval(target.interval);
@@ -75,11 +88,12 @@ export default function NavigateSection() {
               handleMouseOver={handleMouseOver}
               handleMouseOut={handleMouseOut}
               isActive={state.activeSection === index}
+              index={index}
             />
           ))}
         </div>
         <Line />
-        <Socials navigate={true}/>
+        <Socials navigate={true} />
       </div>
     </div>
   );
