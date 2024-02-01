@@ -77,8 +77,8 @@ export function Scene() {
 
   const rotationUpdateOnMouseMoveHandler = (e) =>
     rotationUpdateOnMouseMove(e, [0, 0, 0]);
-  const rotationUpdateOnMouseMoveHandler2 = (e) =>
-    rotationUpdateOnMouseMove(e, menuRot);
+  // const rotationUpdateOnMouseMoveHandler2 = (e) =>
+  //   rotationUpdateOnMouseMove(e, menuRot);
 
   useEffect(() => {
     gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
@@ -115,12 +115,12 @@ export function Scene() {
 
     hamMenuButton.addEventListener("click", gsapOnMenuHandler);
 
-    return () => {
-      window?.removeEventListener(
-        "mousemove",
-        rotationUpdateOnMouseMoveHandler2
-      );
-    };
+    // return () => {
+    //   window?.removeEventListener(
+    //     "mousemove",
+    //     rotationUpdateOnMouseMoveHandler2
+    //   );
+    // };
   }, [snap.isHamOpen, camera]);
 
   const { lightPos, lightColor, intensity } = useControls("Light on planet from menu open", {
