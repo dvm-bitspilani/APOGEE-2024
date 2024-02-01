@@ -13,9 +13,9 @@ const customStyles1 =  {
         outline: "none",
         boxShadow: "none",
         borderRadius: "0px",
-        height:"100%",
+        // height:"100%",
         width:"100%",
-
+        height:"0"
       }),
       indicatorSeparator: () => {},
       valueContainer: (provided) => ({
@@ -34,6 +34,8 @@ const customStyles1 =  {
         maxHeight:"100%",
         overflow:"scroll",
         padding:"0",
+        // maxWidth:"80%"
+        width:"0px"
         // display:"flex",
         // flexDirection:"row-reverse"
       }),
@@ -98,11 +100,11 @@ const customStyles1 =  {
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
-        textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+        textShadow:"0px 0px 4.815px rgba(183, 255, 255, 0.8)",
         textTransform:"uppercase",
         position:"absolute",
-        fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
-        fontWeight:"700"
+        fontSize:"17.6px",
+        fontWeight:"500"
       }),
       container: (provided) => ({
         ...provided,
@@ -118,6 +120,8 @@ const customStyles1 =  {
         paddingTop: "0",
         paddngBottom: "0",
         marginLeft: "2px",
+        maxWidth:"100%",
+        overflow:"scroll"
       }),
       noOptionsMessage: (provided) => ({
         ...provided,

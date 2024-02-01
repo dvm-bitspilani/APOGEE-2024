@@ -91,10 +91,10 @@ const customStyles =  {
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
-        textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+        textShadow:"0px 0px 4.815px rgba(183, 255, 255, 0.8)",
         textTransform:"uppercase",
   fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
-  fontWeight:"700"
+  fontWeight:"500"
       }),
       container: (provided) => ({
         ...provided,

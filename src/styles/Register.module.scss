@@ -111,6 +111,7 @@
   position: relative;
   inset: 0;
   mix-blend-mode: exclusion;
+  overflow: hidden;
   .registerBtn
   {
     width: max(12vw, 120px);
@@ -191,6 +192,9 @@ input{
   border: none;
   font-size: 1.1rem;
   color: white;
+  font-family: "Space Grotesk";
+  text-transform: uppercase;
+  font-weight: 700;
 }
 input:focus{
   outline: none;
@@ -283,9 +287,10 @@ input:focus{
   display: flex;
   width: 65%;
   height: 40%;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   bottom: 45%;
+  gap: 5%;
 }
 .gender input{
   margin-right: 10px;
@@ -395,13 +400,17 @@ label{
   width: calc(75% - var(--colleges-sp));
   margin-left: var(--colleges-sp);
   inset: 0;
-  top: -10%;
+  top: -1%;
 }
 .colleges img{
   width: 100%;
 }
 .collegeWrapper{
   width: 61%;
+  width: 54%;
+  top: -50% !important;
+  height: 40%;
+  position: absolute !important;
 }
 .colleges label{
   position: absolute;
@@ -423,7 +432,7 @@ label{
   width: calc(75% - var(--year-sp));
   margin-left: var(--year-sp);
   inset: 0;
-  top: 3%;
+  top: 9%;
 }
 .year> .checkboxContainer{
   width: 100%;
@@ -478,7 +487,7 @@ label{
   width: calc(75% - var(--states-sp));
   margin-left: var(--states-sp);
   inset: 0;
-  top: 2.5%;
+  top: 7.5%;
 }
 .state img{
   width: 100%;
@@ -487,7 +496,9 @@ label{
   width: 65%;
   position: absolute !important;
   top: 16%;
-  max-height: 40%;
+  max-height: 20%;
+  height: 20%;
+
 }
 .successText{
   position: absolute;
@@ -522,9 +533,9 @@ label{
   // font-size: "1.2rem";
   opacity: 1;
   color: #A9A9A9;
-  font-family:Space Grotesk;
-  font-weight: 700;
-  text-shadow:0px 0px 14.815px rgba(183, 255, 255, 1);
+  font-family:"Space Grotesk";
+  font-weight: 500;
+  text-shadow:0px 0px 4.815px rgba(183, 255, 255, 0.8);
   text-transform:uppercase;
   font-size: 1rem;
 }
@@ -589,6 +600,52 @@ align-items: center;
   // color: #b16060;
   color: #b16060;
 }
+.name .errorMessage{
+  position: absolute;
+  top: -15%;
+  color: #b16060;
+}
+.email .errorMessage{
+  position: absolute;
+  top: -20%;
+  color: #b16060;
+}
+.phone .errorMessage{
+  position: absolute;
+  top: -40%;
+  color: #b16060;
+}
+.gender .errorMessage{
+  position: absolute;
+  top: -2%;
+  color: #b16060;
+}
+.interests .errorMessage{
+  position: absolute;
+  top: 95%;
+  color: #b16060;
+}
+.colleges .errorMessage{
+  position: absolute;
+  top: 75%;
+  color: #b16060;
+}
+.year .errorMessage{
+  position: absolute;
+  top: 95%;
+  color: #b16060;
+}
+.state .errorMessage{
+  position: absolute;
+  top: -3%;
+  color: #b16060;
+}
+.city .errorMessage{
+  position: absolute;
+  top: 30%;
+  color: #b16060;
+}
+
 @media (min-width: 1000px), (max-height: 650px) {
   .hud{
     height: 20vh !important;
