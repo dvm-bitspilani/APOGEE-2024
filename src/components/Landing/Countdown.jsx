@@ -79,10 +79,12 @@ const Countdown = ({ mobile = false }) => {
         <div className={styles.numbers}>{days}</div>
         <div className={styles.labels}>DAYS</div>
       </div>
+      :
       <div id="hours" className={styles.label}>
         <div className={styles.numbers}>{hrs}</div>
         <div className={styles.labels}>HOURS</div>
       </div>
+      :
       <div id="min" className={styles.label}>
         <div className={styles.numbers}>{mins}</div>
         <div className={styles.labels}>MINS</div>
