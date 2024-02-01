@@ -2,22 +2,20 @@ import gsap from "gsap";
 import * as hudStyles from "@styles/HUD.module.scss";
 import * as contactStyles from "@styles/Contact.module.scss";
 import state from "../state";
-import { useSnapshot } from "valtio";
 
 export function gsapOnContact(
   camera,
   contactPos,
   contactRot,
-  activeSection,
+  targetSection,
   rotationUpdateOnMouseMoveHandler
 ) {
   // Store the function in a variable
   //   let rotationHandler = rotationUpdateOnMouseMoveHandler;
 
-  console.log(activeSection)
+  console.log(targetSection);
 
-
-  if (activeSection !== 0) {
+  if (targetSection === 4) {
     const tl = gsap.timeline({
       onStart: () => {
         window?.removeEventListener(
@@ -25,11 +23,8 @@ export function gsapOnContact(
           rotationUpdateOnMouseMoveHandler
         );
       },
-      onStart: () => {
-        window?.removeEventListener(
-          "mousemove",
-          rotationUpdateOnMouseMoveHandler
-        );
+      onComplete: () => {
+        state.activeSection = targetSection;
       },
     });
 
@@ -43,7 +38,7 @@ export function gsapOnContact(
         duration: 1,
         ease: "power2.inOut",
       },
-      "-=0.5"
+      ""
     )
       .to(
         `.${hudStyles.hamMenuButton}`,
@@ -52,7 +47,7 @@ export function gsapOnContact(
           duration: 1,
           ease: "power2.inOut",
         },
-        
+        "<"
       )
       .to(
         camera.position,
@@ -84,19 +79,18 @@ export function gsapOnContact(
           ease: "power2.inOut",
         },
         "-=0.5"
-      )
-      
-  } else {
-    // window?.removeEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, contactRot));
-
-    // console.log("backwards");
-
+      );
+  } else if (targetSection === 0) {
     const tl = gsap.timeline({
       onStart: () => {
-        window?.removeEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+        window?.removeEventListener(
+          "mousemove",
+          rotationUpdateOnMouseMoveHandler
+        );
       },
       onComplete: () => {
-        window?.removeEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+        window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+        state.activeSection = targetSection;
       },
     });
 
@@ -131,21 +125,15 @@ export function gsapOnContact(
         },
         "<"
       )
-      .to(
-        `.${hudStyles.hamMenuButton}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-      )
-      .to(
-        `.${hudStyles.regEventsWrapper}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-      );
+      .to(`.${hudStyles.hamMenuButton}`, {
+        autoAlpha: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      })
+      .to(`.${hudStyles.regEventsWrapper}`, {
+        autoAlpha: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      });
   }
 }

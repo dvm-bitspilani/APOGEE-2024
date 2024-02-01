@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
@@ -54,7 +54,7 @@ export function Scene() {
     // console.log(camera.position);
   });
 
-  function rotationUpdateOnMouseMove(e, cameraPos) {
+  const rotationUpdateOnMouseMove = useCallback( (e, cameraPos) => {
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
     const center = {
@@ -75,13 +75,16 @@ export function Scene() {
       ease: "power2.out",
     });
   }
+  , [camera]);
 
   const snap = useSnapshot(state);
 
-  const rotationUpdateOnMouseMoveHandler = (e) =>
-    rotationUpdateOnMouseMove(e, [0, 0, 0]);
-  const rotationUpdateOnMouseMoveHandler2 = (e) =>
-    rotationUpdateOnMouseMove(e, menuRot);
+  const rotationUpdateOnMouseMoveHandler = useCallback(
+    (e) => rotationUpdateOnMouseMove(e, [0, 0, 0]),
+    [rotationUpdateOnMouseMove]
+  );
+  // const rotationUpdateOnMouseMoveHandler2 = (e) =>
+  //   rotationUpdateOnMouseMove(e, menuRot);
 
   useEffect(() => {
     gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
@@ -95,16 +98,10 @@ export function Scene() {
       ease: "power2.inOut",
     });
 
-    return () => {
-      window?.removeEventListener(
-        "mousemove",
-        rotationUpdateOnMouseMoveHandler
-      );
-    };
   }, [camera]);
 
   const hamMenuButton = document.querySelector("#ham-menu-button");
-  const contactSection = document.querySelector("#active-section-4");
+  // const contactSection = document.querySelector("#active-section-4");
   // console.log("hello");
 
   useEffect(() => {
@@ -116,26 +113,25 @@ export function Scene() {
         state.isHamOpen,
         rotationUpdateOnMouseMoveHandler
       );
+
+    hamMenuButton.addEventListener("click", gsapOnMenuHandler);
+  }, [snap.isHamOpen, camera]);
+
+  useEffect(() => {
     const gsapOnContactHandler = () =>
       gsapOnContact(
         camera,
         contactPos,
         contactRot,
-        state.activeSection,
+        state.targetSection,
         rotationUpdateOnMouseMoveHandler
       );
 
-
-    hamMenuButton.addEventListener("click", gsapOnMenuHandler);
-    contactSection.addEventListener("click", gsapOnContactHandler);
-
-    return () => {
-      window?.removeEventListener(
-        "mousemove",
-        rotationUpdateOnMouseMoveHandler2
-      );
-    };
-  }, [snap.isHamOpen, state.activeSection, camera]);
+    console.log(state.activeSection, snap.targetSection);
+    if (state.activeSection === snap.targetSection) return;
+    console.log("hello");
+    gsapOnContactHandler();
+  }, [snap.targetSection, camera]);
 
   const { lightPos, lightColor, intensity } = useControls(
     "Light on planet from menu open",

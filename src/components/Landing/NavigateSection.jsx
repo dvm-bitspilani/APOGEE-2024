@@ -10,9 +10,13 @@ import { useSnapshot } from "valtio";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const Button = ({ value, handleMouseOver, handleMouseOut, isActive, index }) => {
-  const snap = useSnapshot(state);
-
+const Button = ({
+  value,
+  handleMouseOver,
+  handleMouseOut,
+  isActive,
+  index,
+}) => {
   return (
     <button
       className={isActive ? styles.buttonActive : null}
@@ -20,7 +24,7 @@ const Button = ({ value, handleMouseOver, handleMouseOut, isActive, index }) => 
       data-value={value}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
-      onClick={() => (state.activeSection = index)}
+      onClick={() => (state.targetSection = index)}
     >
       {value}
     </button>
@@ -29,6 +33,8 @@ const Button = ({ value, handleMouseOver, handleMouseOut, isActive, index }) => 
 
 export default function NavigateSection() {
   const [hoveredButton, setHoveredButton] = useState(null);
+
+  const snap = useSnapshot(state);
 
   const handleMouseOver = (event) => {
     const { target } = event;
