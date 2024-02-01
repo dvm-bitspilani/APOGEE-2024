@@ -46,10 +46,10 @@
     align-items: center;
 
     img {
-      height: 60px;
+      height: 35px;
       aspect-ratio: 1/1;
       // Fixing the image size
-      transform: translateX(-5px);
+      transform: translateX(-2px);
     }
   }
 }
@@ -90,7 +90,7 @@
   aspect-ratio: 1/1;
 
   background-position: center;
-  background-size: contain;
+  background-size: 80%;
   background-repeat: no-repeat;
 
   display: flex;
@@ -104,6 +104,10 @@
   &>svg {
     height: 30% !important;
     aspect-ratio: 1/1;
+
+    &:first-child {
+      height: 26% !important;
+    }
   }
 }
 

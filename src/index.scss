@@ -1,42 +1,43 @@
 @font-face {
-    font-family: Alacrity Sans;
-    src: url("/fonts/Alacrity Sans Bold.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
+  font-family: Alacrity Sans;
+  src: url("/fonts/Alacrity Sans Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    scrollbar-width: none;
-    font-family: Alacrity Sans;
-    color: var(--primary);
-    user-select: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  font-family: Alacrity Sans;
+  color: var(--primary);
+  user-select: none;
 }
 
-*::-webkit-scrollbar{
-    display: none;
+*::-webkit-scrollbar {
+  display: none;
 }
 
-:root{
-    --primary: #9AF0F4;
-    --secondary: #4FCBE3;
-    --primary-blue: #4675B8;
-    --primary-grey: #777777;
-    --primary-link: rgba(148, 242, 246, 0.72);
-    --hover-link: rgba(245, 162, 165, 0.72);
-    --grey-text: rgba(215, 215, 215, 0.72);
+:root {
+  --primary: #9af0f4;
+  --secondary: #4fcbe3;
+  --primary-blue: #4675b8;
+  --primary-red: #fbbfc1;
+  --primary-grey: #777777;
+  --primary-link: rgba(148, 242, 246, 0.72);
+  --hover-link: #d8575b;
+  --grey-text: rgba(215, 215, 215, 0.72);
 }
 
-body{
-    background-color: black;
+body {
+  background-color: black;
 }
 
-#root canvas{
-    width: 100lvw !important;
-    height: 100dvh;
+#root canvas {
+  width: 100lvw !important;
+  height: 100dvh;
 }

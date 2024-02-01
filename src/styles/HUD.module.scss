@@ -1,4 +1,5 @@
 .wrapper {
+  // display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,6 +10,8 @@
   background-size: cover;
   opacity: 0;
   pointer-events: none;
+
+  // display: none;
 
   // *{
   //   opacity: 0;
@@ -23,6 +26,8 @@
   height: 100%;
   object-fit: contain;
 
+  pointer-events: none;
+
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -34,6 +39,8 @@
   right: 0;
   height: 100%;
   object-fit: contain;
+
+  pointer-events: none;
 
   @media screen and (max-width: 600px) {
     display: none;
@@ -48,6 +55,18 @@
   width: max(10vw, 80px);
   height: max(10vw, 80px);
   object-fit: contain;
+
+  transition: scale 0.2s ease-in-out;
+
+  path {
+    transition: stroke 0.2s ease-in-out;
+  }
+
+  &.hover {
+    path {
+      stroke: var(--primary-red);
+    }
+  }
 }
 
 .tophud {
@@ -56,7 +75,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: auto;
-  height: max(10vw, 100px);
+  height: clamp(100px, 10vw, 170px);
   object-fit: contain;
 
   // visibility: visible;
@@ -83,16 +102,23 @@
 }
 
 .hamMenuButton {
-  width: max(12vw, 120px);
-  aspect-ratio: 3/1;
-  border-color: var(--secondary);
+  width: clamp(150px, 13vw, 240px);
+  aspect-ratio: 2.7;
+
+  outline: none;
+  border: none;
+
+  background-image: url("@assets/landing/hamMenuButton.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
   background-color: transparent;
-  border-width: 1px;
-  border-style: solid;
+
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: max(calc(10vw - 7px), 92px);
+  top: clamp(90px, calc(9.4vw - 7px), 154px);
   pointer-events: all;
 
   display: flex;
@@ -105,8 +131,8 @@
   // opacity: 1;
 
   @media screen and (max-height: 700px) {
-    top: 94px;
-    width: 110px;
+    top: 90px;
+    width: 140px;
   }
 
   & * {
@@ -114,7 +140,10 @@
   }
 
   span {
-    font-size: 1.4rem;
+    position: relative;
+    top: -2px;
+
+    font-size: 1rem;
     font-weight: 200;
     text-transform: uppercase;
     text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
@@ -123,14 +152,14 @@
     transition: all 0.2s ease-in-out;
 
     @media screen and (max-height: 700px), screen and (max-width: 600px) {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
   }
   &:hover {
     cursor: pointer;
-    border-color: #b16060;
-    text-shadow: 0px 0px 14.815px var(--hover-link);
     color: var(--hover-link);
+    text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+      0px 0px 3.754px rgba(198, 50, 50, 0.8);
 
     div div {
       background-color: var(--hover-link);
@@ -144,18 +173,26 @@
 
 .navigatorWrapper {
   position: absolute;
-  top: 25%;
+  top: 20%;
   bottom: 15%;
   left: 10%;
-  width: 280px;
+  width: 300px;
   pointer-events: all;
 
-  // border: 2px solid var(--primary);
+  overflow: visible;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  background-image: url("@assets/landing/navigatorBG.png");
+  background-size: 100% 105%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  padding-block: 2%;
+  padding-inline: 2%;
 
   img {
     width: 100%;
@@ -188,10 +225,9 @@
       flex-direction: column;
       flex-shrink: 0;
       flex-grow: 1;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       padding: 0 15%;
-      align-self: flex-start;
 
       button {
         background-color: transparent;
@@ -211,14 +247,14 @@
 
         &:hover {
           cursor: pointer;
-          text-shadow: 0px 0px 30.591px #b16060,
-            0px 0px 4.706px rgba(251, 186, 188, 0.8);
+          text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+            0px 0px 3.754px rgba(198, 50, 50, 0.8);
           color: var(--hover-link);
         }
 
         &.buttonActive {
-          text-shadow: 0px 0px 30.591px #b16060,
-            0px 0px 4.706px rgba(251, 186, 188, 0.8);
+          text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+            0px 0px 3.754px rgba(198, 50, 50, 0.8);
           color: var(--hover-link);
         }
       }
@@ -258,7 +294,7 @@
     place-items: center;
 
     svg {
-      width: 85%;
+      width: 90%;
       height: auto;
       // position: absolute;
     }
@@ -294,8 +330,12 @@
       rect[fill="#9AF0F4"] {
         fill: var(--hover-link);
       }
-      g {
+      g[filter="url(#filter0_d_1880_3147)"] {
         filter: url(#filter0_d_570_154);
+        opacity: 0.2;
+        path[fill="#3E6567"] {
+          fill: var(--hover-link);
+        }
       }
     }
   }
@@ -465,9 +505,9 @@
       0px 0px 4.419px rgba(134, 244, 232, 0.8);
     font-size: 1.3rem;
 
-    &.active{
+    &.active {
       text-shadow: 0px 0px 27.356px #b16060,
-      0px 0px 4.419px rgba(251, 186, 188, 0.8);
+        0px 0px 4.419px rgba(251, 186, 188, 0.8);
       color: var(--hover-link);
     }
   }
@@ -486,7 +526,7 @@
   justify-content: center;
   gap: 5px;
 
-  *{
+  * {
     pointer-events: all;
   }
   pointer-events: all;
@@ -511,7 +551,6 @@
       width: 75%;
       height: auto;
       // position: absolute;
-      
     }
 
     path,
@@ -540,7 +579,7 @@
     top: 15%;
   }
 
-  .navigator>h1{
+  .navigator > h1 {
     font-size: 1.5rem;
   }
 
@@ -554,7 +593,8 @@
   .navigatorWrapper {
     display: none;
   }
-  .mobileBottom, .mobileLinks {
+  .mobileBottom,
+  .mobileLinks {
     display: flex;
   }
 }

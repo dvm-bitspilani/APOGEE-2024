@@ -1,10 +1,10 @@
+import { HamMenuButton } from "./HamMenuButton";
 import * as styles from "@styles/HUD.module.scss";
 
 import NavigateSection from "./NavigateSection";
 
 import state from "@components/state";
 import RegEventsSection from "./RegEventsSection";
-import { HamIcon } from "./HamIcon";
 import ConstellationDetected from "@components/HamMenu/ConstellationDetected";
 import Socials from "@components/HamMenu/Socials";
 import MadeWithLuv from "@components/HamMenu/MadeWithLuv";
@@ -16,9 +16,11 @@ import { Register_bg_svg } from "./RegEventsSection";
 import apogee from "@assets/landing/apogee_logo.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
+import ContactHUD from "../Contact/ContactHUD";
+
+import TopHUD from "./TopHUD";
 
 export function Hud() {
-
   return (
     <>
       <img
@@ -42,23 +44,18 @@ export function Hud() {
           src="/images/Top HUD.png"
           alt="top hud"
         />
-        <img
+        {/* <TopHUD /> */}
+        {/* <img
           src={apogee}
           alt="apogee"
           draggable={false}
           className={styles.logo}
-        />
+        /> */}
         <CrossHairCursor />
-        <button
-          id="ham-menu-button"
-          className={styles.hamMenuButton}
-          onClick={() => (state.isHamOpen = !state.isHamOpen)}
-        >
-          <HamIcon />
-          <span>Menu</span>
-        </button>
+        <HamMenuButton />
         <NavigateSection />
         <RegEventsSection />
+        {/* <ContactHUD/> */}
         <ConstellationDetected />
         <Socials />
         <MadeWithLuv />

@@ -5,7 +5,17 @@
   height: 70px;
   justify-content: center;
   align-items: center;
-  color: #54aeff;
+  color: var(--primary);
+
+  /* HUD Glow */
+  text-shadow: 0px 0px 8px rgba(154, 240, 244, 0.7);
+
+  font-size: 1rem;
+  font-family: "Alacrity Sans";
+
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 .label {
@@ -57,7 +67,6 @@
   .countdown[data-ismobile="true"] {
     display: none !important;
   }
-  
 }
 
 @keyframes card-flip {

@@ -7,8 +7,12 @@ import { Stars } from "@react-three/drei";
 
 import { useControls } from "leva";
 
+import { useEffect, useState } from "react";
+import { useLoader } from "@react-three/fiber";
+
 const Background = () => {
-  const textureSphereBg = new TextureLoader().load(TextureMap);
+  
+  const textureSphereBg = useLoader(TextureLoader, TextureMap);
   textureSphereBg.anisotropy = 16;
 
   // const {rotation} = useControls("Background", {

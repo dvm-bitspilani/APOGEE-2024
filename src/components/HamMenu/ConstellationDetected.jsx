@@ -1,6 +1,6 @@
 import * as styles from "@styles/HamMenu.module.scss";
 
-import apogeeLogo from "/images/apogee.png";
+import apogeeLogo from "@assets/hamMenu/logo.svg";
 
 export default function ConstellationDetected() {
   return (

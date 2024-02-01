@@ -1,11 +1,9 @@
 import React from 'react'
 
 const customStyles =  {
-    
     control: (provided, state) => ({
         ...provided,
         minHeight: "2rem",
-        // height: "2rem",
         backgroundColor: "transparent",
         border: "none",
         borderBottom: state.isFocused ? "none" : "none",
@@ -23,16 +21,12 @@ const customStyles =  {
       indicatorSeparator: () => {},
       valueContainer: (provided) => ({
         ...provided,
-        // height: "1.8rem",
         backgroundColor: "transparent",
         paddingLeft: 0,
   
       }),
       valueContainer: (provided) => ({
         ...provided,
-        // height: "1.8rem",
-        // backgroundColor: "transparent",
-        // paddingLeft: 0,
         display:"flex",
         maxHeight:"100%",
         overflow:"scroll",
@@ -42,7 +36,6 @@ const customStyles =  {
       }),
       indicatorsContainer: (provided) => ({
         ...provided,
-        // height: "1.8rem",
       }),
       singleValue: (provided) => ({
         ...provided,
@@ -77,15 +70,14 @@ const customStyles =  {
         border:"0.1px solid #9AF0F4",
         paddingTop: "0px",
         paddingBottom: "0px",
-        maxHeight:"300%",
+        // maxHeight:"300%",
+        height:"7rem",
         overflow:"scroll",
-        // position:"relative",
-        // zIndex:"-1"
+        textAlign:"center"
       }),
       menuList: (provided) => ({
         ...provided,
-        // paddingTop: "1rem",
-        paddingBottom: "1rem",
+        // paddingBottom: "1rem",
         backgroundColor: "transparent",
       }),
       dropdownIndicator: (provided, state) => ({
@@ -95,15 +87,14 @@ const customStyles =  {
       }),
       placeholder: (provided, state) => ({
         ...provided,
-        // fontSize: "1.2rem",
         opacity: "1",
         color: "#A9A9A9",
         opacity: state.isFocused ? "0" : "1",
         fontFamily:"Space Grotesk",
-        textShadow:"0px 0px 14.815px rgba(183, 255, 255, 1)",
+        textShadow:"0px 0px 4.815px rgba(183, 255, 255, 0.8)",
         textTransform:"uppercase",
   fontSize:(window.innerWidth > 1100 ? "12px" : "14px"),
-  fontWeight:"700"
+  fontWeight:"500"
       }),
       container: (provided) => ({
         ...provided,
@@ -136,9 +127,7 @@ const customStyles =  {
         fontWeight: 700,
         backgroundColor: "transparent",
         border: "1px solid #5db3f1",
-        // paddingLeft: ".25rem",
         alignItems: "center",
-        // paddingRight: "3px",
       }),
       multiValueLabel: (provided) => ({
         ...provided,
@@ -165,6 +154,7 @@ const customStyles =  {
           color: "#5db3f1",
         },
       }),
+    
     
 }
 

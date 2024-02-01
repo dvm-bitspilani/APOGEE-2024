@@ -35,7 +35,7 @@ export default function EffectComposerLayer() {
   // );
 
   return (
-    <EffectComposer disableNormalPass>
+    <EffectComposer >
       <Bloom
         intensity={2.4}
         luminanceThreshold={0.8}
