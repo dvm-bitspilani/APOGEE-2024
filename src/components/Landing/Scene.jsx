@@ -21,7 +21,7 @@ import { useSnapshot } from "valtio";
 import { useHelper } from "@react-three/drei";
 import { DirectionalLightHelper } from "three";
 import { Asteroid } from "../Models/Asteroid";
-import Explosions from "../Models/Explosion";
+// import Explosions from "../Models/Explosion";
 import Asteroids from "../Models/Asteroids";
 
 export function Scene() {
@@ -164,7 +164,7 @@ export function Scene() {
         color={Number(lightColor.replace("#", "0x"))}
       />
       <Asteroids />
-      <Explosions />
+      {/* <Explosions /> */}
     </>
   );
 }

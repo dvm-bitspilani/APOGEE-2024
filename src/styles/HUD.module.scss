@@ -58,12 +58,12 @@
 
   transition: scale 0.2s ease-in-out;
 
-  path{
+  path {
     transition: stroke 0.2s ease-in-out;
   }
 
-  &.hover{
-    path{
+  &.hover {
+    path {
       stroke: var(--primary-red);
     }
   }
@@ -75,7 +75,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: auto;
-  height: clamp(100px,10vw, 170px);
+  height: clamp(100px, 10vw, 170px);
   object-fit: contain;
 
   // visibility: visible;
@@ -102,16 +102,23 @@
 }
 
 .hamMenuButton {
-  width: clamp(120px, 12vw, 200px);
-  aspect-ratio: 3/1;
-  border-color: var(--secondary);
+  width: clamp(150px, 13vw, 240px);
+  aspect-ratio: 2.7;
+
+  outline: none;
+  border: none;
+
+  background-image: url("@assets/landing/hamMenuButton.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
   background-color: transparent;
-  border-width: 1px;
-  border-style: solid;
+
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: clamp(92px,calc(10vw - 7px), 160px);
+  top: clamp(90px, calc(9.4vw - 7px), 154px);
   pointer-events: all;
 
   display: flex;
@@ -133,7 +140,10 @@
   }
 
   span {
-    font-size: 1.4rem;
+    position: relative;
+    top: -2px;
+
+    font-size: 1rem;
     font-weight: 200;
     text-transform: uppercase;
     text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
@@ -142,14 +152,14 @@
     transition: all 0.2s ease-in-out;
 
     @media screen and (max-height: 700px), screen and (max-width: 600px) {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
   }
   &:hover {
     cursor: pointer;
-    border-color: #b16060;
-    text-shadow: 0px 0px 14.815px var(--hover-link);
     color: var(--hover-link);
+    text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+      0px 0px 3.754px rgba(198, 50, 50, 0.8);
 
     div div {
       background-color: var(--hover-link);
@@ -163,13 +173,13 @@
 
 .navigatorWrapper {
   position: absolute;
-  top: 25%;
+  top: 20%;
   bottom: 15%;
   left: 10%;
-  width: 280px;
+  width: 300px;
   pointer-events: all;
 
-  // border: 2px solid var(--primary);
+  overflow: visible;
 
   display: flex;
   flex-direction: column;
@@ -177,7 +187,7 @@
   justify-content: center;
 
   background-image: url("@assets/landing/navigatorBG.png");
-  background-size: cover;
+  background-size: 100% 105%;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -238,14 +248,14 @@
 
         &:hover {
           cursor: pointer;
-          text-shadow: 0px 0px 30.591px #b16060,
-            0px 0px 4.706px rgba(251, 186, 188, 0.8);
+          text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+            0px 0px 3.754px rgba(198, 50, 50, 0.8);
           color: var(--hover-link);
         }
 
         &.buttonActive {
-          text-shadow: 0px 0px 30.591px #b16060,
-            0px 0px 4.706px rgba(251, 186, 188, 0.8);
+          text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+            0px 0px 3.754px rgba(198, 50, 50, 0.8);
           color: var(--hover-link);
         }
       }
@@ -496,9 +506,9 @@
       0px 0px 4.419px rgba(134, 244, 232, 0.8);
     font-size: 1.3rem;
 
-    &.active{
+    &.active {
       text-shadow: 0px 0px 27.356px #b16060,
-      0px 0px 4.419px rgba(251, 186, 188, 0.8);
+        0px 0px 4.419px rgba(251, 186, 188, 0.8);
       color: var(--hover-link);
     }
   }
@@ -517,7 +527,7 @@
   justify-content: center;
   gap: 5px;
 
-  *{
+  * {
     pointer-events: all;
   }
   pointer-events: all;
@@ -542,7 +552,6 @@
       width: 75%;
       height: auto;
       // position: absolute;
-      
     }
 
     path,
@@ -571,7 +580,7 @@
     top: 15%;
   }
 
-  .navigator>h1{
+  .navigator > h1 {
     font-size: 1.5rem;
   }
 
@@ -585,7 +594,8 @@
   .navigatorWrapper {
     display: none;
   }
-  .mobileBottom, .mobileLinks {
+  .mobileBottom,
+  .mobileLinks {
     display: flex;
   }
 }

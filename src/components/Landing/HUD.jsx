@@ -1,10 +1,10 @@
+import { HamMenuButton } from "./HamMenuButton";
 import * as styles from "@styles/HUD.module.scss";
 
 import NavigateSection from "./NavigateSection";
 
 import state from "@components/state";
 import RegEventsSection from "./RegEventsSection";
-import { HamIcon } from "./HamIcon";
 import ConstellationDetected from "@components/HamMenu/ConstellationDetected";
 import Socials from "@components/HamMenu/Socials";
 import MadeWithLuv from "@components/HamMenu/MadeWithLuv";
@@ -52,14 +52,7 @@ export function Hud() {
           className={styles.logo}
         /> */}
         <CrossHairCursor />
-        <button
-          id="ham-menu-button"
-          className={styles.hamMenuButton}
-          onClick={() => (state.isHamOpen = !state.isHamOpen)}
-        >
-          <HamIcon />
-          <span>Menu</span>
-        </button>
+        <HamMenuButton />
         <NavigateSection />
         <RegEventsSection />
         {/* <ContactHUD/> */}
@@ -100,5 +93,3 @@ export function MobileHUD() {
     </>
   );
 }
-
-
