@@ -56,7 +56,7 @@ function Experience() {
         makeDefault
       />
       <Background />
-      <Speed />
+      {/* <Speed /> */}
       <Stars
         radius={15}
         depth={75}
