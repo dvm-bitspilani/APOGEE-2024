@@ -125,15 +125,23 @@ export function gsapOnContact(
         },
         "<"
       )
-      .to(`.${hudStyles.hamMenuButton}`, {
-        autoAlpha: 1,
-        duration: 1,
-        ease: "power2.inOut",
-      })
-      .to(`.${hudStyles.regEventsWrapper}`, {
-        autoAlpha: 1,
-        duration: 1,
-        ease: "power2.inOut",
-      });
+      .to(
+        `.${hudStyles.hamMenuButton}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      )
+      .to(
+        `.${hudStyles.regEventsWrapper}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "<"
+      );
   }
 }
