@@ -18,6 +18,10 @@
   user-select: none;
 }
 
+html{
+  overflow: hidden;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
