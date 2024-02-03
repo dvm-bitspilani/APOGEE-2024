@@ -274,6 +274,10 @@ console.log(interestsIds)
         backgroundColor: "transparent",
         height:"7rem",
         overflowY:"scroll",
+        "::-webkit-scrollbar": {
+          width: "4px",
+          height: "5px",
+        },
       }),
       dropdownIndicator: (provided, state) => ({
         ...provided,

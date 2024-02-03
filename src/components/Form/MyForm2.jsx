@@ -292,7 +292,7 @@ console.log(interestsIds)
               />
               <img src="/images/phone.png" alt="" />
               <label htmlFor="events">Events</label>
-              <ErrorMessage name="interests" component="div" className={styles.errorMessage}/>
+              <ErrorMessage name="events" component="div" className={styles.errorMessage}/>
             </div>
 
             <div className={styles.mobileColleges}>

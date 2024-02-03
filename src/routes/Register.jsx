@@ -53,27 +53,27 @@ export default function Register() {
           style={{ top: `${scrollPosition}%` }}
         />
       </div>
-      <span className={styles.heading}>REGISTRATION</span>
+      {/* <span className={styles.heading}>REGISTRATION</span> */}
       <img src="/images/Left helm.png" alt="" className={styles.leftHelm} />
       <img src="/images/Right helm.png" alt="" className={styles.rightHelm} />
       <div className={styles.topContainer}>
-        <img
+        {/* <img
           src="/images/leftMobileReg.png"
           alt=""
           className={styles.leftTop}
-        />
-        <img
+        /> */}
+        {/* <img
           src="/images/rightMobileReg.png"
           alt=""
           className={styles.rightTop}
-        />
-        <img src="/images/topMobile.png" alt="" className={styles.middleTop} />
+        /> */}
+        <img src="/images/regTop HUD.png" alt="" className={styles.middleTop} />
         <div className={styles.homeBtn} onClick={handleHomeClick}>
           <span>HOME</span>
         </div>
       </div>
       <div className={styles.pageWrapper}>
-        <img src="/images/Top HUD.svg" alt="" className={styles.hud} />
+        <img src="/images/regTop HUD.png" alt="" className={styles.hud} />
         <div className={styles.content}>
           <div className={styles.homeBtn} onClick={handleHomeClick}>
             <span>HOME</span>

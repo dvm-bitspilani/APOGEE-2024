@@ -15,7 +15,7 @@ const customStyles2 =  {
         borderRadius: "0px",
         // height:"100%",
         width:"100%",
-        height:"0"
+        // height:"0"
       }),
       indicatorSeparator: () => {},
       valueContainer: (provided) => ({
