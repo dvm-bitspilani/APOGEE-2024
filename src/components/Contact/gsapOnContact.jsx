@@ -10,8 +10,14 @@ export function gsapOnContact(
   targetSection,
   rotationUpdateOnMouseMoveHandler
 ) {
-  // Store the function in a variable
-  //   let rotationHandler = rotationUpdateOnMouseMoveHandler;
+
+  const navigationLinks = document.querySelectorAll(
+    `.${hudStyles.navigatorrapper} button`
+  );
+
+  const cardContainers = document.querySelectorAll(
+    `.${contactStyles.cardContainer}`
+  );
 
   if (targetSection === 4) {
     const tl = gsap.timeline({
@@ -20,16 +26,47 @@ export function gsapOnContact(
           "mousemove",
           rotationUpdateOnMouseMoveHandler
         );
+        state.isMoving = true; // Set isMoving to true when position is changing
         state.activeSection = targetSection;
+
+        // disable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "none",
+        });
+        
       },
-      onComplete: () => {},
+      onComplete: () => {
+        // Set isMoving to false when rotation is completed
+        state.isMoving = false;
+        gsap.set(`.${contactStyles.wrapper}`, {
+          autoAlpha: 1,
+        });
+      
+        // enable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "all",
+        });
+        gsap.fromTo(
+          cardContainers,
+          {
+            autoAlpha: 0,
+            y: 50,
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.inOut",
+            stagger: 0.2,
+          },
+        )
+        // Add back the mousemove event listener for rotation
+        // window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+      },
     });
 
-    // window?.removeEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
-    // window?.addEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, contactRot));
-
     tl.to(
-      `.${hudStyles.regEventsWrapper}`,
+      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -37,15 +74,6 @@ export function gsapOnContact(
       },
       ""
     )
-      .to(
-        `.${hudStyles.hamMenuButton}`,
-        {
-          autoAlpha: 0,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
       .to(
         camera.position,
         {
@@ -55,7 +83,16 @@ export function gsapOnContact(
           duration: 2,
           ease: "power2.inOut",
         },
-        "-=0.5"
+        ""
+      )
+      .to(
+        `.${contactStyles.title}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "-=1"
       )
       .to(
         camera.rotation,
@@ -67,17 +104,9 @@ export function gsapOnContact(
           ease: "power2.inOut",
         },
         "<"
-      )
-      .to(
-        `.${contactStyles.wrapper}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "-=0.5"
       );
   } else if (targetSection === 0) {
+
     const tl = gsap.timeline({
       onStart: () => {
         window?.removeEventListener(
@@ -85,20 +114,30 @@ export function gsapOnContact(
           rotationUpdateOnMouseMoveHandler
         );
         state.activeSection = targetSection;
+
+        // disable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "none",
+        });
       },
       onComplete: () => {
+        // Add back the mousemove event listener for rotation
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+        // enable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "all",
+        });
       },
     });
 
     tl.to(
-      `.${contactStyles.wrapper}`,
+      `.${contactStyles.wrapper}, .${contactStyles.title}`,
       {
         autoAlpha: 0,
         duration: 1,
         ease: "power2.inOut",
       },
-      "<"
+      ""
     )
       .to(
         camera.rotation,
@@ -109,7 +148,7 @@ export function gsapOnContact(
           duration: 2,
           ease: "power2.inOut",
         },
-        "-=0.5"
+        ""
       )
       .to(
         camera.position,
@@ -123,22 +162,14 @@ export function gsapOnContact(
         "<"
       )
       .to(
-        `.${hudStyles.hamMenuButton}`,
+        `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}`,
         {
           autoAlpha: 1,
           duration: 1,
           ease: "power2.inOut",
         },
-        "-=0.5"
-      )
-      .to(
-        `.${hudStyles.regEventsWrapper}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "<"
+        "-=1"
       );
   }
 }
+

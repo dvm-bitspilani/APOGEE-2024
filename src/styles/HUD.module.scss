@@ -266,7 +266,7 @@
   opacity: 1;
   visibility: inherit;
   position: absolute;
-  top: 20%;
+  top: 22%;
   bottom: 15%;
   right: 10%;
   width: 280px;
@@ -312,14 +312,14 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -40%);
-      font-size: 1.1rem;
+      font-size: 1.4rem;
     }
 
     &:hover {
       cursor: pointer;
       span {
-        text-shadow: 0px 0px 30.591px #b16060,
-          0px 0px 4.706px rgba(251, 186, 188, 0.8);
+        text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+          0px 0px 3.754px rgba(198, 50, 50, 0.8);
         color: var(--hover-link);
       }
 
@@ -483,6 +483,10 @@
   }
 }
 
+.landingElements{
+  scroll-behavior: smooth;
+}
+
 .mobileLinks {
   display: none;
   flex-direction: column;
@@ -579,7 +583,12 @@
     // top: 20%;
     bottom: 5%;
   }
+  
   .navigatorWrapper {
+    top: 17%;
+  }
+
+  .regEventsWrapper {
     top: 15%;
   }
 

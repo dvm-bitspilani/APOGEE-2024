@@ -118,6 +118,18 @@
 .socials a:hover , .landingSocials a:hover{
   scale: 1.1;
   cursor: pointer;
+
+  &>svg {
+
+    path[stroke="#9AF0F4"]{
+      stroke: var(--hover-link);
+    }
+
+    path[fill="#9AF0F4"]{
+      fill: var(--hover-link);
+      stroke: var(--hover-link);
+    }
+  }
 }
 
 .socials a:nth-child(1) , .landingSocials a:nth-child(1){

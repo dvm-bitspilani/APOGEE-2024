@@ -46,12 +46,12 @@ export function Hud() {
           alt="top hud"
         />
         {/* <TopHUD /> */}
-        {/* <img
+        <img
           src={apogee}
           alt="apogee"
           draggable={false}
           className={styles.logo}
-        /> */}
+        />
         <CrossHairCursor />
         <HamMenuButton />
         <NavigateSection />
