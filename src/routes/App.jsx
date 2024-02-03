@@ -20,28 +20,11 @@ function App() {
       exit={{ opacity: 0, transition: { duration: 1, ease: "easeInOut" } }}
       transition={{ duration: 2, ease: "easeInOut" }}
     >
-      <Canvas >
+      <Canvas>
         {/* <EffectComposerLayer /> */}
         <Suspense fallback={<Loader />}>
           <ambientLight intensity={1.5} />
-          <ScrollControls
-            pages={10}
-            damping={0.5}
-            style={{
-              top: "0px",
-              left: "0px",
-              bottom: "0px",
-              right: "0px",
-              width: "auto",
-              height: "auto",
-              animation: "fadeIn 2.4s ease-in-out 1.2s forwards",
-              animationDelay: "5s",
-              // pointerEvents: 'none',
-              opacity: 0,
-            }}
-          >
-            <Experience />
-          </ScrollControls>
+          <Experience />
         </Suspense>
         <Stats />
       </Canvas>
