@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 
 import { useControls } from "leva";
@@ -6,32 +6,37 @@ import { useControls } from "leva";
 // Styles
 // import * as hudStyles from "@styles/HUD.module.scss";
 
-import { gsapOnRender } from "./gsapOnRender";
-import Earth from "./Earth";
-import AlienPlanet from "../Models/AlienPlanet";
-import { AlienPlanetGLB } from "../Models/AlienPlanet";
-import AlienPlanetGLTF from "../Models/AlienPlanetGLTF";
+// import Earth from "./Earth";
+// import AlienPlanet from "../Models/AlienPlanet";
+// import { AlienPlanetGLB } from "../Models/AlienPlanet";
+// import AlienPlanetGLTF from "../Models/AlienPlanetGLTF";
 import ProceduralPlanet from "../Models/ProceduralPlanet";
 
 import gsap from "gsap/gsap-core";
+
+import { gsapOnRender } from "./gsapOnRender";
 import { gsapOnMenu } from "./gsapOnMenu";
 import { gsapOnContact } from "../Contact/gsapOnContact";
+
 import state from "../state";
 import { useSnapshot } from "valtio";
-import { useHelper } from "@react-three/drei";
-import { DirectionalLightHelper } from "three";
-import { Asteroid } from "../Models/Asteroid";
-// import Explosions from "../Models/Explosion";
+
+import { handleAnimation } from "./handleAnimation";
+
+// import { useHelper } from "@react-three/drei";
+// import { DirectionalLightHelper } from "three";
+
+import Explosions from "../Models/Explosion";
 import Asteroids from "../Models/Asteroids";
 
 export function Scene() {
   const { camera } = useThree();
 
-  const menuPos = [-2, -1.5, -0];
-  const menuRot = [0, -1.9, 0];
+  const menuPos = useMemo(() => [-2, -1.5, -0], []);
+  const menuRot = useMemo(() => [0, -1.9, 0], []);
 
-  const contactPos = [-10, 0, -23];
-  const contactRot = [0, 2, 0];
+  const contactPos = useMemo(() => [-10, 0, -23], []);
+  const contactRot = useMemo(() => [0, 2, 0], []);
 
   const { position, rotation } = useControls("Camera", {
     position: {
@@ -42,7 +47,7 @@ export function Scene() {
     },
     rotation: {
       value: [...menuRot],
-      step: 0.1,
+      step: 0.05,
       min: -Math.PI * 2,
       max: Math.PI * 2,
     },
@@ -55,7 +60,7 @@ export function Scene() {
   });
 
   const rotationUpdateOnMouseMove = useCallback(
-    (e, cameraPos) => {
+    (e, cameraRot) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
       const center = {
@@ -65,14 +70,22 @@ export function Scene() {
       const maxRotate = Math.PI / 16;
       // const { innerWidth, innerHeight } = window;
 
-      const y = (center.x - clientX) / innerWidth;
-      const x = (center.y - clientY) / innerHeight;
+      let x, y, z;
 
-      // console.log(cameraPos);
+      if (cameraRot[1] === 0) {
+        y = (center.x - clientX) / innerWidth;
+        x = (center.y - clientY) / innerHeight;
+        z = 0;
+      } else {
+        y = (center.x - clientX) / innerWidth;
+        x = (center.y - clientY) / innerHeight;
+        z = 0;
+      }
 
       gsap.to(camera.rotation, {
-        x: cameraPos[0] + x * maxRotate,
-        y: cameraPos[1] + y * maxRotate,
+        x: cameraRot[0] + x * maxRotate,
+        y: cameraRot[1] + y * maxRotate,
+        z: cameraRot[2] + z * maxRotate,
         ease: "power2.out",
       });
     },
@@ -85,8 +98,10 @@ export function Scene() {
     (e) => rotationUpdateOnMouseMove(e, [0, 0, 0]),
     [rotationUpdateOnMouseMove]
   );
-  // const rotationUpdateOnMouseMoveHandler2 = (e) =>
-  //   rotationUpdateOnMouseMove(e, menuRot);
+  const rotationUpdateOnMouseMoveMenuHandler = useCallback(
+    (e) => rotationUpdateOnMouseMove(e, menuRot),
+    [rotationUpdateOnMouseMove, menuRot]
+  );
 
   useEffect(() => {
     gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
@@ -101,36 +116,69 @@ export function Scene() {
     });
   }, [camera]);
 
-  const hamMenuButton = document.querySelector("#ham-menu-button");
-  // const contactSection = document.querySelector("#active-section-4");
-  // console.log("hello");
-
   useEffect(() => {
+    const hamMenuButton = document.querySelector("#ham-menu-button");
     const gsapOnMenuHandler = () =>
       gsapOnMenu(
         camera,
         menuPos,
         menuRot,
         state.isHamOpen,
-        rotationUpdateOnMouseMoveHandler
+        rotationUpdateOnMouseMoveHandler,
+        rotationUpdateOnMouseMoveMenuHandler
       );
 
+    if (snap.targetSection !== 0) return;
     hamMenuButton.addEventListener("click", gsapOnMenuHandler);
-  }, [snap.isHamOpen, camera]);
+
+    return () => {
+      hamMenuButton.removeEventListener("click", gsapOnMenuHandler);
+    };
+  }, [
+    snap.targetSection,
+    snap.isHamOpen,
+    camera,
+    rotationUpdateOnMouseMoveHandler,
+    rotationUpdateOnMouseMoveMenuHandler,
+    menuPos,
+    menuRot,
+  ]);
 
   useEffect(() => {
+    if (state.activeSection === snap.targetSection) return;
+
+    const hamMenuButton = document.querySelector("#ham-menu-button");
     const gsapOnContactHandler = () =>
       gsapOnContact(
         camera,
         contactPos,
         contactRot,
-        state.targetSection,
+        snap.targetSection,
         rotationUpdateOnMouseMoveHandler
       );
-
-    if (state.activeSection === snap.targetSection) return;
     gsapOnContactHandler();
-  }, [snap.targetSection, camera]);
+
+    const clickHome = () => {
+      const homeButton = document.querySelector("#active-section-0");
+      homeButton.click();
+    };
+
+    if (snap.targetSection !== 0) {
+      hamMenuButton.addEventListener("click", clickHome);
+    }
+
+    handleAnimation(state);
+
+    return () => {
+      hamMenuButton.removeEventListener("click", clickHome);
+    };
+  }, [
+    snap.targetSection,
+    camera,
+    rotationUpdateOnMouseMoveHandler,
+    contactPos,
+    contactRot,
+  ]);
 
   const { lightPos, lightColor, intensity } = useControls(
     "Light on planet from menu open",
@@ -176,7 +224,7 @@ export function Scene() {
         color={Number(lightColor.replace("#", "0x"))}
       />
       <Asteroids />
-      {/* <Explosions /> */}
+      <Explosions />
     </>
   );
 }

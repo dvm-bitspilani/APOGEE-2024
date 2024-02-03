@@ -13,6 +13,10 @@ export function gsapOnContact(
   // Store the function in a variable
   //   let rotationHandler = rotationUpdateOnMouseMoveHandler;
 
+  const navigationLinks = document.querySelectorAll(
+    `.${hudStyles.navigatorrapper} button`
+  );
+
   if (targetSection === 4) {
     const tl = gsap.timeline({
       onStart: () => {
@@ -21,8 +25,19 @@ export function gsapOnContact(
           rotationUpdateOnMouseMoveHandler
         );
         state.activeSection = targetSection;
+
+        // disable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "none",
+        });
       },
-      onComplete: () => {},
+      onComplete: () => {
+        // window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+        // enable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "all",
+        });
+      },
     });
 
     // window?.removeEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
@@ -37,15 +52,6 @@ export function gsapOnContact(
       },
       ""
     )
-      .to(
-        `.${hudStyles.hamMenuButton}`,
-        {
-          autoAlpha: 0,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
       .to(
         camera.position,
         {
@@ -85,9 +91,18 @@ export function gsapOnContact(
           rotationUpdateOnMouseMoveHandler
         );
         state.activeSection = targetSection;
+
+        // disable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "none",
+        });
       },
       onComplete: () => {
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+        // enable the navigation buttons
+        gsap.set(navigationLinks, {
+          pointerEvents: "all",
+        });
       },
     });
 
@@ -123,22 +138,13 @@ export function gsapOnContact(
         "<"
       )
       .to(
-        `.${hudStyles.hamMenuButton}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "-=0.5"
-      )
-      .to(
         `.${hudStyles.regEventsWrapper}`,
         {
           autoAlpha: 1,
           duration: 1,
           ease: "power2.inOut",
         },
-        "<"
+        "-=0.5"
       );
   }
 }

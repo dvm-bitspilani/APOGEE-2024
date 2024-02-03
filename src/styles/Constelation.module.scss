@@ -16,7 +16,7 @@
     pointer-events: none;
   }
 
-  @media screen and (max-height: 700px) {
+  @media screen and (max-height: 760px) {
     top: 23%;
     width: 400px;
   }
@@ -128,6 +128,7 @@
 .eventsRule {
   top: 85%;
   left: 29%;
+  width: 150px;
 }
 .sponsors {
   top: 5%;
@@ -142,7 +143,7 @@
   left: 79%;
 }
 
-@media screen and (max-height: 700px), screen and (max-width: 700px) {
+@media screen and (max-height: 760px), screen and (max-width: 700px) {
   .home {
     top: 46%;
     left: 43%;
