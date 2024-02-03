@@ -10,14 +10,15 @@ export function gsapOnContact(
   targetSection,
   rotationUpdateOnMouseMoveHandler
 ) {
-
   const navigationLinks = document.querySelectorAll(
-    `.${hudStyles.navigatorrapper} button`
+    `.${hudStyles.navigatorWrapper} button`
   );
 
   const cardContainers = document.querySelectorAll(
     `.${contactStyles.cardContainer}`
   );
+
+  const hamMenuButton = document.getElementById("ham-menu-button");
 
   if (targetSection === 4) {
     const tl = gsap.timeline({
@@ -30,10 +31,12 @@ export function gsapOnContact(
         state.activeSection = targetSection;
 
         // disable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "none",
+        navigationLinks.forEach((link) => {
+          link.disabled = true;
         });
-        
+
+        // Disable hame menu button
+        hamMenuButton.disabled = true;
       },
       onComplete: () => {
         // Set isMoving to false when rotation is completed
@@ -41,11 +44,12 @@ export function gsapOnContact(
         gsap.set(`.${contactStyles.wrapper}`, {
           autoAlpha: 1,
         });
-      
+
         // enable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "all",
+        navigationLinks.forEach((link) => {
+          link.disabled = false;
         });
+
         gsap.fromTo(
           cardContainers,
           {
@@ -58,10 +62,13 @@ export function gsapOnContact(
             duration: 1,
             ease: "power2.inOut",
             stagger: 0.2,
-          },
-        )
+          }
+        );
         // Add back the mousemove event listener for rotation
         // window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+
+        // Enable hame menu button
+        hamMenuButton.disabled = false;
       },
     });
 
@@ -106,7 +113,6 @@ export function gsapOnContact(
         "<"
       );
   } else if (targetSection === 0) {
-
     const tl = gsap.timeline({
       onStart: () => {
         window?.removeEventListener(
@@ -116,17 +122,24 @@ export function gsapOnContact(
         state.activeSection = targetSection;
 
         // disable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "none",
+        navigationLinks.forEach((link) => {
+          link.disabled = true;
         });
+
+        // Disable hame menu button
+        hamMenuButton.disabled = true;
       },
       onComplete: () => {
         // Add back the mousemove event listener for rotation
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+
         // enable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "all",
+        navigationLinks.forEach((link) => {
+          link.disabled = false;
         });
+
+        // Enable hame menu button
+        hamMenuButton.disabled = false;
       },
     });
 
@@ -172,4 +185,3 @@ export function gsapOnContact(
       );
   }
 }
-
