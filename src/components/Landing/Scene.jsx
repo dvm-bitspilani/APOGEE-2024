@@ -35,8 +35,8 @@ export function Scene() {
   const menuPos = useMemo(() => [-2, -1.5, -0], []);
   const menuRot = useMemo(() => [0, -1.9, 0], []);
 
-  const contactPos = useMemo(() => [-10, 0, -23], []);
-  const contactRot = useMemo(() => [0, 2, 0], []);
+  const contactPos = useMemo(() => [0, 0, -60], []);
+  const contactRot = useMemo(() => [0, 1.5, 0], []);
 
   const { position, rotation } = useControls("Camera", {
     position: {
