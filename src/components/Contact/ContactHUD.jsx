@@ -1,11 +1,11 @@
 import * as styles from "@styles/Contact.module.scss";
 import ContactCard from "./ContactCard.jsx";
-import data from "./Contact.json"
+import data from "./Contact.json";
 
 function CardList() {
   return (
     <div className={styles.container}>
-      {data.map(card => (
+      {data.map((card) => (
         <ContactCard
           key={card.id}
           name={card.name}
@@ -16,15 +16,16 @@ function CardList() {
         />
       ))}
     </div>
-  )
+  );
 }
 
 export default function ContactHUD() {
   return (
     <>
+      <h1 className={styles.title}>CONTACT US</h1>
       <div className={styles.wrapper}>
-        <CardList/>
+        <CardList />
       </div>
     </>
-  )
+  );
 }

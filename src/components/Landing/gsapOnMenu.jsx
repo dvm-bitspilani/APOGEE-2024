@@ -9,7 +9,7 @@ export function gsapOnMenu(
   menuRot,
   isHamOpen,
   rotationUpdateOnMouseMoveHandler,
-  rotationUpdateOnMouseMoveMenuHandler
+  // rotationUpdateOnMouseMoveMenuHandler
 ) {
   // Store the function in a variable
   //   let rotationHandler = rotationUpdateOnMouseMoveHandler;

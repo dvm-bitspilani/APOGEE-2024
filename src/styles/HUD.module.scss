@@ -483,6 +483,10 @@
   }
 }
 
+.landingElements{
+  scroll-behavior: smooth;
+}
+
 .mobileLinks {
   display: none;
   flex-direction: column;
