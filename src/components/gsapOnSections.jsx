@@ -75,7 +75,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}`,
+      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -239,7 +239,7 @@ export function gsapOnSection(
         "<"
       )
       .to(
-        `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}`,
+        `.${hudStyles.regEventsWrapper}, .${hudStyles.logo} .${hudStyles.mobileLinks}`,
         {
           autoAlpha: 1,
           duration: 1,
