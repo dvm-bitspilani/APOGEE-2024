@@ -84,7 +84,7 @@ export function MobileHUD() {
 
   const handleClick = (value, index) => {
     console.log(index);
-    if (index === 1 || index === 2 || index === 3) {
+    if (index === 2 || index === 3) {
       navigate(`/${value.toLowerCase()}`);
     } else {
       state.targetSection = index;
