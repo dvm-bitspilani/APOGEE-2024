@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import * as hudStyles from "@styles/HUD.module.scss";
 import * as contactStyles from "@styles/Contact.module.scss";
+import * as aboutStyles from "@styles/About.module.scss";
 import state from "./state";
 
 export function gsapOnSection(
@@ -48,7 +49,6 @@ export function gsapOnSection(
 
         // enable the navigation buttons
         navigationLinks.forEach((link) => {
-          console.log(link.innerText);
           if (link.innerText !== "HOME") return;
           link.disabled = false;
         });
@@ -133,9 +133,9 @@ export function gsapOnSection(
         hamMenuButton.disabled = true;
       },
       onComplete: () => {
-
         // enable the navigation buttons
         navigationLinks.forEach((link) => {
+          if (link.innerText !== "HOME") return;
           link.disabled = false;
         });
 
@@ -153,6 +153,15 @@ export function gsapOnSection(
       },
       ""
     )
+      .to(
+        `.${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}`,
+        {
+          autoAlpha: 0,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        ""
+      )
       .to(
         camera.rotation,
         {
@@ -174,6 +183,24 @@ export function gsapOnSection(
           ease: "power3.out",
         },
         ">"
+      )
+      .to(
+        `.${aboutStyles.wrapper}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "-=1"
+      )
+      .to(
+        `.${aboutStyles.title}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "-=1"
       );
   } else if (targetSection === 0) {
     const tl = gsap.timeline({
@@ -207,7 +234,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${contactStyles.wrapper}, .${contactStyles.title}`,
+      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}`,
       {
         autoAlpha: 0,
         duration: 1,

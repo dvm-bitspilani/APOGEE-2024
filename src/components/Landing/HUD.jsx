@@ -26,6 +26,7 @@ import { useNavigate } from "react-router-dom";
 export function Hud() {
   useEffect(() => {
     state.isHamOpen = false;
+    state.activeSection = 0;
   }, []);
 
   return (
