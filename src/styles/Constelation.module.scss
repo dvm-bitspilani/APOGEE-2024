@@ -32,6 +32,12 @@
     width: 300px;
   }
 
+  @media screen and (max-width: 430px) {
+    top: 23%;
+    transform-origin: center;
+    transform: scale(0.8) translate(-65%, 0);
+  }
+
   & > svg {
     width: 100%;
     height: 100%;
