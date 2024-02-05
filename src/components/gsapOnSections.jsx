@@ -29,7 +29,6 @@ export function gsapOnSection(
           "mousemove",
           rotationUpdateOnMouseMoveHandler
         );
-        state.isMoving = true; // Set isMoving to true when position is changing
         state.activeSection = targetSection;
 
         // disable the navigation buttons
@@ -41,14 +40,14 @@ export function gsapOnSection(
         hamMenuButton.disabled = true;
       },
       onComplete: () => {
-        // Set isMoving to false when rotation is completed
-        state.isMoving = false;
         gsap.set(`.${contactStyles.wrapper}`, {
           autoAlpha: 1,
         });
 
         // enable the navigation buttons
         navigationLinks.forEach((link) => {
+          console.log(link.innerText);
+          if (link.innerText !== "HOME") return;
           link.disabled = false;
         });
 
@@ -132,8 +131,6 @@ export function gsapOnSection(
         hamMenuButton.disabled = true;
       },
       onComplete: () => {
-        // Set isMoving to false when rotation is completed
-        state.isMoving = false;
 
         // enable the navigation buttons
         navigationLinks.forEach((link) => {
