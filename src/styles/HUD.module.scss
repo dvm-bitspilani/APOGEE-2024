@@ -552,8 +552,9 @@
 
     height: fit-content;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     svg {
       width: 75%;

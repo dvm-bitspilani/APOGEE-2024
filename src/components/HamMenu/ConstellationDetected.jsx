@@ -8,10 +8,10 @@ export default function ConstellationDetected() {
       <div className={styles.apogeeLogo}>
         <img src={apogeeLogo} alt="apogee logo" />
       </div>
-        <div className={styles.textContainer}>
-            <h1>Constellation Detected</h1>
-            <p>&quot;Apogee&quot;</p>
-        </div>
+      <div className={styles.textContainer}>
+        <h1>Constellation Detected</h1>
+        <p>&quot;Apogee&quot;</p>
+      </div>
     </div>
   );
 }

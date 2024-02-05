@@ -8,7 +8,7 @@ export function gsapOnMenu(
   menuPos,
   menuRot,
   isHamOpen,
-  rotationUpdateOnMouseMoveHandler,
+  rotationUpdateOnMouseMoveHandler
   // rotationUpdateOnMouseMoveMenuHandler
 ) {
   // Store the function in a variable
@@ -19,7 +19,13 @@ export function gsapOnMenu(
     `.${constellationStyles.constelationWrapper}>div`
   );
 
-  const landingLinks = document.querySelectorAll(`.${hudStyles.wrapper} a`);
+  const landingLinks = document.querySelectorAll(
+    `.${hudStyles.landingElements} a`
+  );
+  const mobileLandingLinks = document.querySelectorAll(
+    `.${hudStyles.mobileBottom} a`
+  );
+  const menuLinks = document.querySelectorAll(`.${hamStyles.menu} a`);
 
   if (!isHamOpen) {
     const tl = gsap.timeline({
@@ -30,6 +36,7 @@ export function gsapOnMenu(
         );
         hamMenuButton.disabled = true;
 
+        // Setting landing links to pointer events none
         gsap.set(landingLinks, {
           pointerEvents: "none",
         });
@@ -44,6 +51,11 @@ export function gsapOnMenu(
           `.${hamStyles.socials} a`
         );
         gsap.set([socialLinks, stars], {
+          pointerEvents: "all",
+        });
+
+        // Setting menu links to pointer events all
+        gsap.set(menuLinks, {
           pointerEvents: "all",
         });
       },
@@ -61,6 +73,11 @@ export function gsapOnMenu(
       },
       "<"
     )
+      .call(() => {
+        gsap.set(mobileLandingLinks, {
+          display: "none",
+        });
+      })
       .to(
         camera.position,
         {
@@ -120,6 +137,20 @@ export function gsapOnMenu(
         );
         gsap.set(socialLinks, {
           pointerEvents: "none",
+        });
+
+        // Setting menu links to pointer events none
+        gsap.set(menuLinks, {
+          pointerEvents: "none",
+        });
+
+        // Setting landing links to pointer events all
+        gsap.set(landingLinks, {
+          pointerEvents: "all",
+        });
+
+        gsap.set(mobileLandingLinks, {
+          display: "flex",
         });
       },
       onComplete: () => {

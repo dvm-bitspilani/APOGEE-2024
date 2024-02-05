@@ -70,6 +70,7 @@ export function Hud() {
 export function MobileHUD() {
   const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
+  // To rerender the component when the state changes
   const snap = useSnapshot(state);
 
   return (

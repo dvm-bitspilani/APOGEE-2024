@@ -86,17 +86,6 @@ export function EventsCarousel({ index, setIndex, images }) {
     setIndex((index + 1) % kernel_events.length);
   }
 
-  useEffect(() => {
-    setInterval(() => {
-      const nextBtn = document.querySelector(`.${styles.rightArrow}`);
-      nextBtn?.click();
-    }, 5000);
-
-    return () => {
-      clearInterval();
-    }
-  }, []);
-
   return (
     <>
       <div className={styles.eventsCarousel}>
