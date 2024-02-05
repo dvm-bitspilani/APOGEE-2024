@@ -220,7 +220,7 @@
     // }
 
     .cardContainer{
-      width: 100%;
+      // width: 100%;
       display: flex;
       --img: 1rem;
       --gap: 0.5rem;
@@ -248,7 +248,7 @@
     }
 
     .container{
-      display: grid;
+      display: flex;
       grid-template-columns: 1fr 1fr;
       align-items: center;
       justify-content: center;
@@ -257,6 +257,7 @@
       overflow-x: hidden;
 
       padding-bottom: 4rem;
+      gap: 1rem;
     }
 
   }
