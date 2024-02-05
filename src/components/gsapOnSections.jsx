@@ -239,7 +239,7 @@ export function gsapOnSection(
         "<"
       )
       .to(
-        `.${hudStyles.regEventsWrapper}, .${hudStyles.logo} .${hudStyles.mobileLinks}`,
+        `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}`,
         {
           autoAlpha: 1,
           duration: 1,
