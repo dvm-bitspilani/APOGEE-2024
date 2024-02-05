@@ -30,6 +30,7 @@ export function gsapOnSection(
           rotationUpdateOnMouseMoveHandler
         );
         state.activeSection = targetSection;
+        state.isMoving = true;
 
         // disable the navigation buttons
         navigationLinks.forEach((link) => {
@@ -43,6 +44,7 @@ export function gsapOnSection(
         gsap.set(`.${contactStyles.wrapper}`, {
           autoAlpha: 1,
         });
+        state.isMoving = false;
 
         // enable the navigation buttons
         navigationLinks.forEach((link) => {
