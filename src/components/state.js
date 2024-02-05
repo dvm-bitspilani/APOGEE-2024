@@ -6,6 +6,7 @@ const state = proxy({
   camera: null,
   activeSection: 0,
   targetSection: 0,
+  isMoving: false,
   explosions: [],
 });
 
