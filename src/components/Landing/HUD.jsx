@@ -21,6 +21,7 @@ import { CrossHairCursor } from "./CrossHairCursor";
 // import TopHUD from "./TopHUD";
 import { useSnapshot } from "valtio";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Hud() {
   useEffect(() => {
@@ -76,7 +77,18 @@ export function MobileHUD() {
   const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
   // To rerender the component when the state changes
-  const snap = useSnapshot(state);
+  useSnapshot(state);
+
+  const navigate = useNavigate();
+
+  const handleClick = (value, index) => {
+    state.targetSection = index;
+
+    console.log(index);
+    if (index === 1 || index === 2 || index === 3) {
+      navigate(`/${value.toLowerCase()}`);
+    }
+  };
 
   return (
     <>
@@ -85,7 +97,7 @@ export function MobileHUD() {
           <button
             key={index}
             className={state.activeSection === index ? styles.active : ""}
-            onClick={() => (state.targetSection = index)}
+            onClick={() => handleClick(value, index)}
           >
             {value}
           </button>
