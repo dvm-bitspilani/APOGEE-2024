@@ -21,11 +21,10 @@ const Button = ({
   const navigate = useNavigate();
 
   const handleClick = () => {
-    state.targetSection = index;
-
-    console.log(index);
     if (index === 2 || index === 3) {
       navigate(`/${value.toLowerCase()}`);
+    } else {
+      state.targetSection = index;
     }
   };
 
