@@ -1,12 +1,14 @@
 import gsap from "gsap";
 import * as hudStyles from "@styles/HUD.module.scss";
 import * as contactStyles from "@styles/Contact.module.scss";
-import state from "../state";
+import state from "./state";
 
-export function gsapOnContact(
+export function gsapOnSection(
   camera,
   contactPos,
   contactRot,
+  aboutPos,
+  aboutRot,
   targetSection,
   rotationUpdateOnMouseMoveHandler
 ) {
@@ -111,6 +113,68 @@ export function gsapOnContact(
           ease: "power2.inOut",
         },
         "<"
+      );
+  } else if (targetSection === 1) {
+    const tl = gsap.timeline({
+      onStart: () => {
+        window?.removeEventListener(
+          "mousemove",
+          rotationUpdateOnMouseMoveHandler
+        );
+        state.activeSection = targetSection;
+
+        // disable the navigation buttons
+        navigationLinks.forEach((link) => {
+          link.disabled = true;
+        });
+
+        // Disable hame menu button
+        hamMenuButton.disabled = true;
+      },
+      onComplete: () => {
+        // Set isMoving to false when rotation is completed
+        state.isMoving = false;
+
+        // enable the navigation buttons
+        navigationLinks.forEach((link) => {
+          link.disabled = false;
+        });
+
+        // Enable hame menu button
+        hamMenuButton.disabled = false;
+      },
+    });
+
+    tl.to(
+      `.${hudStyles.regEventsWrapper}`,
+      {
+        autoAlpha: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      ""
+    )
+      .to(
+        camera.rotation,
+        {
+          x: aboutRot[0],
+          y: aboutRot[1],
+          z: aboutRot[2],
+          duration: 2,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(
+        camera.position,
+        {
+          x: aboutPos[0],
+          y: aboutPos[1],
+          z: aboutPos[2],
+          duration: 1.5,
+          ease: "power3.out",
+        },
+        ">"
       );
   } else if (targetSection === 0) {
     const tl = gsap.timeline({

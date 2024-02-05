@@ -7,11 +7,12 @@ import { Stars } from "@react-three/drei";
 
 import { useControls } from "leva";
 
-import { useEffect, useState } from "react";
-import { useLoader } from "@react-three/fiber";
+import { useEffect, useRef, useState } from "react";
+import {  useLoader } from "@react-three/fiber";
 
 const Background = () => {
-  
+  const sphereRef = useRef();
+
   const textureSphereBg = useLoader(TextureLoader, TextureMap);
   textureSphereBg.anisotropy = 16;
 
@@ -23,7 +24,7 @@ const Background = () => {
   //   setTextureSphereBg(loader);
   //   }, []);
 
-  const {rotation} = useControls("Background", {
+  const { rotation } = useControls("Background", {
     rotation: {
       value: [1, -1, 0],
       step: 0.1,
@@ -34,7 +35,7 @@ const Background = () => {
 
   return (
     <>
-      <Sphere args={[150, 40, 40]} rotation={rotation}>
+      <Sphere ref={sphereRef} args={[150, 40, 40]} rotation={rotation}>
         <meshBasicMaterial
           attach="material"
           side={THREE.BackSide}

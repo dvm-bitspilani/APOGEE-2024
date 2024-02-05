@@ -16,7 +16,7 @@ import gsap from "gsap/gsap-core";
 
 import { gsapOnRender } from "./gsapOnRender";
 import { gsapOnMenu } from "./gsapOnMenu";
-import { gsapOnContact } from "../Contact/gsapOnContact";
+import { gsapOnSection } from "@components/gsapOnSections";
 
 import state from "../state";
 import { useSnapshot } from "valtio";
@@ -38,6 +38,9 @@ export function Scene() {
   const contactPos = useMemo(() => [0, 0, -60], []);
   const contactRot = useMemo(() => [0, 1.5, 0], []);
 
+  const aboutPos = useMemo(() => [0.75, -1.5, -2], []);
+  const aboutRot = useMemo(() => [-0.65, -0.3, 0], []);
+
   const { position, rotation } = useControls("Camera", {
     position: {
       value: [...menuPos],
@@ -46,7 +49,7 @@ export function Scene() {
       max: 10,
     },
     rotation: {
-      value: [...menuRot],
+      value: [...aboutRot],
       step: 0.05,
       min: -Math.PI * 2,
       max: Math.PI * 2,
@@ -98,10 +101,11 @@ export function Scene() {
     (e) => rotationUpdateOnMouseMove(e, [0, 0, 0]),
     [rotationUpdateOnMouseMove]
   );
-  const rotationUpdateOnMouseMoveMenuHandler = useCallback(
-    (e) => rotationUpdateOnMouseMove(e, menuRot),
-    [rotationUpdateOnMouseMove, menuRot]
-  );
+
+  // const rotationUpdateOnMouseMoveMenuHandler = useCallback(
+  //   (e) => rotationUpdateOnMouseMove(e, menuRot),
+  //   [rotationUpdateOnMouseMove, menuRot]
+  // );
 
   useEffect(() => {
     gsapOnRender(camera, rotationUpdateOnMouseMoveHandler);
@@ -124,8 +128,8 @@ export function Scene() {
         menuPos,
         menuRot,
         state.isHamOpen,
-        rotationUpdateOnMouseMoveHandler,
-        rotationUpdateOnMouseMoveMenuHandler
+        rotationUpdateOnMouseMoveHandler
+        // rotationUpdateOnMouseMoveMenuHandler
       );
 
     if (snap.targetSection !== 0) return;
@@ -139,37 +143,47 @@ export function Scene() {
     snap.isHamOpen,
     camera,
     rotationUpdateOnMouseMoveHandler,
-    rotationUpdateOnMouseMoveMenuHandler,
+    // rotationUpdateOnMouseMoveMenuHandler,
     menuPos,
     menuRot,
   ]);
 
   useEffect(() => {
+    // In order to avoid running this on render and also fallback
     if (state.activeSection === snap.targetSection) return;
 
+    // This is the button that will take us back to the home section
     const hamMenuButton = document.querySelector("#ham-menu-button");
-    const gsapOnContactHandler = () =>
-      gsapOnContact(
+
+    // This is the function that will handle the gsap animation and also to remove the event listener when the component is unmounted
+    const gsapOnSectionHandler = () =>
+      gsapOnSection(
         camera,
         contactPos,
         contactRot,
+        aboutPos,
+        aboutRot,
         snap.targetSection,
         rotationUpdateOnMouseMoveHandler
       );
-    gsapOnContactHandler();
+    gsapOnSectionHandler();
 
+    // This is the event listener that will trigger the gsap animation
     const clickHome = () => {
       const homeButton = document.querySelector("#active-section-0");
       homeButton.click();
     };
 
+    // If we are on some section other than home, then we will add the event listener to go back to home
     if (snap.targetSection !== 0) {
       hamMenuButton.addEventListener("click", clickHome);
     }
 
+    // This is the function that will handle the random text animation on menu button text
     handleAnimation(state);
 
     return () => {
+      // This is the cleanup function that will remove the event listener when the component is unmounted
       hamMenuButton.removeEventListener("click", clickHome);
     };
   }, [
@@ -224,7 +238,7 @@ export function Scene() {
         color={Number(lightColor.replace("#", "0x"))}
       />
       <Asteroids />
-      <Explosions />
+      {/* <Explosions /> */}
     </>
   );
 }
