@@ -9,7 +9,7 @@ import customStyles from "../../components/Form/customStyles";
 import customStyles1 from "../../components/Form/customStyles1";
 import customStyles2 from "../../components/Form/customStyles2";
 import statesData from "../Form/states.json";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 const MyForm2 = () => {
   const [stateOptions, setStateOptions] = useState([]);
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
@@ -58,7 +58,7 @@ const MyForm2 = () => {
       .oneOf(["1", "2", "3", "4", "5"], "Invalid Year of Study"),
     city: Yup.string().required("City is required"),
     state: Yup.string().required("State is required"),
-    token: Yup.string().required("reCAPTCHA verification is required"),
+    // token: Yup.string().required("reCAPTCHA verification is required"),
   });
 
   function handleNumericInput(event) {
@@ -117,7 +117,7 @@ console.log(interestsIds)
     const response = await axios.post(
       'https://bits-apogee.org/2024/main/registrations/Register/',{
         ...submitValues,
-        token: values.token, // Include the reCAPTCHA token in the payload
+        // token: values.token, // Include the reCAPTCHA token in the payload
       });
       if (response) {
         console.log(response)
@@ -369,14 +369,14 @@ console.log(interestsIds)
               <ErrorMessage name="city" component="div" className={styles.errorMessage}/>
             </div>
           </div>
-          <div className={styles.recaptcha}>
+          {/* <div className={styles.recaptcha}>
               <ReCAPTCHA
                 sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
                 onChange={(token) => {
                   setFieldValue("token", token);
                 }}
               />
-            </div>
+            </div> */}
           {
   (() => {
     switch (true) {
