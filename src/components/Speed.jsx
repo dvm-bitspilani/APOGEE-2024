@@ -19,8 +19,8 @@ const SpeedShape = () => {
 
   const resetRandom = () => {
     randomPosition = {
-      x:  MathUtils.randFloatSpread(8),
-      y:  MathUtils.randFloatSpread(5),
+      x: MathUtils.randFloatSpread(8),
+      y: MathUtils.randFloatSpread(5),
       z: MathUtils.randFloatSpread(80),
     };
     randomSpeed = MathUtils.randFloat(16, 20);
@@ -55,8 +55,7 @@ export const Speed = () => {
   useFrame((_state, delta) => {
     if (state.isMoving) {
       speedMaterial.current.opacity = MAX_OPACITY;
-    }
-    else {
+    } else {
       speedMaterial.current.opacity = 0;
     }
     if (speedMaterial.current.opacity > 0) {

@@ -31,6 +31,7 @@ export function gsapOnSection(
           rotationUpdateOnMouseMoveHandler
         );
         state.activeSection = targetSection;
+        
         state.isMoving = true;
 
         // disable the navigation buttons
