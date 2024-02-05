@@ -18,6 +18,10 @@
   user-select: none;
 }
 
+html {
+  overflow: hidden;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
@@ -40,4 +44,12 @@ body {
 #root canvas {
   width: 100lvw !important;
   height: 100dvh;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
 }

@@ -5,7 +5,7 @@ export function handleAnimation(snap) {
   const target = document.querySelector("#ham-menu-button span");
   let iteration = 0;
 
-  console.log("state.targetSection", snap.targetSection);
+  // console.log("state.targetSection", snap.targetSection);
   const finalWord =
     snap.isHamOpen || snap.targetSection !== 0 ? "Home" : "Menu";
 

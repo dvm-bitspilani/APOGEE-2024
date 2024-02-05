@@ -2,12 +2,19 @@ import { Constelation_SVG } from "./Constelation_SVG";
 
 import * as styles from "@styles/Constelation.module.scss";
 import * as hamStyles from "@styles/HamMenu.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Constelation() {
-
   function handleHome() {
     const ham_menu_but = document.getElementById("ham-menu-button");
     ham_menu_but.click();
+  }
+
+  const navigate = useNavigate();
+
+  function navigateToSoon(e) {
+    // Navigate to the inner text of the span inside the target element
+    navigate(`/${e.target.innerText.toLowerCase()}`);
   }
 
   return (
@@ -17,27 +24,27 @@ export default function Constelation() {
         <StarSVG />
         <span>HOME</span>
       </div>
-      <div className={styles.login}>
+      <div className={styles.login} onClick={navigateToSoon}>
         <span>LOGIN</span>
         <StarSVG />
       </div>
-      <div className={styles.armageddon}>
+      <div className={styles.armageddon} onClick={navigateToSoon}>
         <StarSVG />
         <span>ARMAGEDDON</span>
       </div>
-      <div className={styles.eventsRule}>
+      <div className={styles.eventsRule} onClick={navigateToSoon}>
         <StarSVG />
         <span>EVENTS RULEBOOK</span>
       </div>
-      <div className={styles.sponsors}>
+      <div className={styles.sponsors} onClick={navigateToSoon}>
         <StarSVG />
         <span>SPONSORS</span>
       </div>
-      <div className={styles.mediaPartners}>
+      <div className={styles.mediaPartners} onClick={navigateToSoon}>
         <StarSVG />
         <span>MEDIA PARTNERS</span>
       </div>
-      <div className={styles.developers}>
+      <div className={styles.developers} onClick={navigateToSoon}>
         <StarSVG />
         <span>DEVELOPERS</span>
       </div>

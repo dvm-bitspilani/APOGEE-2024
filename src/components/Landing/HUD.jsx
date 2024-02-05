@@ -16,12 +16,17 @@ import { Register_bg_svg } from "./RegEventsSection";
 import apogee from "@assets/landing/apogee_logo.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
-import ContactHUD from "../Contact/ContactHUD";
+// import ContactHUD from "../Contact/ContactHUD";
 
-import TopHUD from "./TopHUD";
+// import TopHUD from "./TopHUD";
 import { useSnapshot } from "valtio";
+import { useEffect } from "react";
 
 export function Hud() {
+  useEffect(() => {
+    state.isHamOpen = false;
+  }, []);
+
   return (
     <>
       <img
@@ -70,6 +75,7 @@ export function Hud() {
 export function MobileHUD() {
   const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
+  // To rerender the component when the state changes
   const snap = useSnapshot(state);
 
   return (

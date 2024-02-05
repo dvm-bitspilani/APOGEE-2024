@@ -1,23 +1,26 @@
 import gsap from "gsap";
 import * as hudStyles from "@styles/HUD.module.scss";
 import * as contactStyles from "@styles/Contact.module.scss";
-import state from "../state";
+import state from "./state";
 
-export function gsapOnContact(
+export function gsapOnSection(
   camera,
   contactPos,
   contactRot,
+  aboutPos,
+  aboutRot,
   targetSection,
   rotationUpdateOnMouseMoveHandler
 ) {
-
   const navigationLinks = document.querySelectorAll(
-    `.${hudStyles.navigatorrapper} button`
+    `.${hudStyles.navigatorWrapper} button`
   );
 
   const cardContainers = document.querySelectorAll(
     `.${contactStyles.cardContainer}`
   );
+
+  const hamMenuButton = document.getElementById("ham-menu-button");
 
   if (targetSection === 4) {
     const tl = gsap.timeline({
@@ -30,10 +33,12 @@ export function gsapOnContact(
         state.activeSection = targetSection;
 
         // disable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "none",
+        navigationLinks.forEach((link) => {
+          link.disabled = true;
         });
-        
+
+        // Disable hame menu button
+        hamMenuButton.disabled = true;
       },
       onComplete: () => {
         // Set isMoving to false when rotation is completed
@@ -41,11 +46,12 @@ export function gsapOnContact(
         gsap.set(`.${contactStyles.wrapper}`, {
           autoAlpha: 1,
         });
-      
+
         // enable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "all",
+        navigationLinks.forEach((link) => {
+          link.disabled = false;
         });
+
         gsap.fromTo(
           cardContainers,
           {
@@ -58,15 +64,18 @@ export function gsapOnContact(
             duration: 1,
             ease: "power2.inOut",
             stagger: 0.2,
-          },
-        )
+          }
+        );
         // Add back the mousemove event listener for rotation
         // window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+
+        // Enable hame menu button
+        hamMenuButton.disabled = false;
       },
     });
 
     tl.to(
-      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}`,
+      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -105,8 +114,7 @@ export function gsapOnContact(
         },
         "<"
       );
-  } else if (targetSection === 0) {
-
+  } else if (targetSection === 1) {
     const tl = gsap.timeline({
       onStart: () => {
         window?.removeEventListener(
@@ -116,17 +124,86 @@ export function gsapOnContact(
         state.activeSection = targetSection;
 
         // disable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "none",
+        navigationLinks.forEach((link) => {
+          link.disabled = true;
         });
+
+        // Disable hame menu button
+        hamMenuButton.disabled = true;
+      },
+      onComplete: () => {
+        // Set isMoving to false when rotation is completed
+        state.isMoving = false;
+
+        // enable the navigation buttons
+        navigationLinks.forEach((link) => {
+          link.disabled = false;
+        });
+
+        // Enable hame menu button
+        hamMenuButton.disabled = false;
+      },
+    });
+
+    tl.to(
+      `.${hudStyles.regEventsWrapper}`,
+      {
+        autoAlpha: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      ""
+    )
+      .to(
+        camera.rotation,
+        {
+          x: aboutRot[0],
+          y: aboutRot[1],
+          z: aboutRot[2],
+          duration: 2,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(
+        camera.position,
+        {
+          x: aboutPos[0],
+          y: aboutPos[1],
+          z: aboutPos[2],
+          duration: 1.5,
+          ease: "power3.out",
+        },
+        ">"
+      );
+  } else if (targetSection === 0) {
+    const tl = gsap.timeline({
+      onStart: () => {
+        window?.removeEventListener(
+          "mousemove",
+          rotationUpdateOnMouseMoveHandler
+        );
+        state.activeSection = targetSection;
+
+        // disable the navigation buttons
+        navigationLinks.forEach((link) => {
+          link.disabled = true;
+        });
+
+        // Disable hame menu button
+        hamMenuButton.disabled = true;
       },
       onComplete: () => {
         // Add back the mousemove event listener for rotation
         window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
+
         // enable the navigation buttons
-        gsap.set(navigationLinks, {
-          pointerEvents: "all",
+        navigationLinks.forEach((link) => {
+          link.disabled = false;
         });
+
+        // Enable hame menu button
+        hamMenuButton.disabled = false;
       },
     });
 
@@ -162,7 +239,7 @@ export function gsapOnContact(
         "<"
       )
       .to(
-        `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}`,
+        `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}`,
         {
           autoAlpha: 1,
           duration: 1,
@@ -172,4 +249,3 @@ export function gsapOnContact(
       );
   }
 }
-
