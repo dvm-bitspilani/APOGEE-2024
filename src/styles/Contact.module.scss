@@ -42,10 +42,10 @@
     // height: 60%;
   }
 
-  // .container :nth-child(even) .imgContainer .frameBar img{
-  //   animation: rotateFrameBar 5s infinite linear;
-  //   animation-delay: 2s;
-  // }
+  .container :nth-child(even) .imgContainer .frameBar img{
+    animation: rotateFrameBar 5s infinite linear;
+    animation-delay: 2s;
+  }
 
   .cardContainer {
     --img: 9rem;
@@ -252,6 +252,9 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
       justify-content: center;
+      height: 90vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
 
   }
