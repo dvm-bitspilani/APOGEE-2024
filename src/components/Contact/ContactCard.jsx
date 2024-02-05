@@ -10,6 +10,7 @@ import tushar from "../../assets/contact/tushar.png";
 import aarohi from "../../assets/contact/aarohi.png";
 import abhinav from "../../assets/contact/abhinav.png";
 import hitansh from "../../assets/contact/hitansh.png";
+import sarthak from "../../assets/contact/sarthak.png";
 import framebar from "../../assets/contact/frame-bar.svg";
 
 export default function ContactCard({ image, dept, name, phone, email }) {
@@ -22,6 +23,7 @@ export default function ContactCard({ image, dept, name, phone, email }) {
     aarohi: aarohi,
     abhinav: abhinav,
     hitansh: hitansh,
+    sarthak: sarthak,
   };
 
   const handlePhoneClick = () => {

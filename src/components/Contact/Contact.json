@@ -62,5 +62,13 @@
         "phone": "7078879443",
         "mail": "gensec@pilani.bits-pilani.ac.in",
         "image": "abhinav"
+    },
+    {
+        "id": "9",
+        "name": "Sarthak Aggarwal",
+        "dept": "President, Students' Union",
+        "phone": "8005000213",
+        "mail": "president@pilani.bits-pilani.ac.in",
+        "image": "sarthak"
     }
 ]
