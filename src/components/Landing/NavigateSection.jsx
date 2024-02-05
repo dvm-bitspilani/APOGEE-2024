@@ -7,6 +7,7 @@ import Socials from "@components/HamMenu/Socials";
 import state from "../state";
 
 import { useSnapshot } from "valtio";
+import { useNavigate } from "react-router-dom";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -17,6 +18,17 @@ const Button = ({
   isActive,
   index,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    state.targetSection = index;
+
+    console.log(index);
+    if (index === 2 || index === 3) {
+      navigate(`/${value.toLowerCase()}`);
+    }
+  };
+
   return (
     <button
       className={isActive ? styles.buttonActive : null}
@@ -24,7 +36,7 @@ const Button = ({
       data-value={value}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
-      onClick={() => (state.targetSection = index)}
+      onClick={handleClick}
     >
       {value}
     </button>
@@ -43,12 +55,15 @@ export default function NavigateSection() {
     clearInterval(target.interval);
 
     target.interval = setInterval(() => {
-      target.innerText = target.innerText.split("").map((letter, index) => {
-        if (index < iteration) {
-          return target.dataset.value[index];
-        }
-        return letters[Math.floor(Math.random() * 26)];
-      }).join("");
+      target.innerText = target.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration) {
+            return target.dataset.value[index];
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
 
       if (iteration >= target.dataset.value.length) {
         clearInterval(target.interval);
@@ -68,13 +83,7 @@ export default function NavigateSection() {
     }
   };
 
-  const buttonData = [
-    "HOME",
-    "ABOUT",
-    "EVENTS",
-    "SPEAKERS",
-    "CONTACT",
-  ];
+  const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
   return (
     <div className={`${styles.navigatorWrapper} ${styles.landingElements}`}>

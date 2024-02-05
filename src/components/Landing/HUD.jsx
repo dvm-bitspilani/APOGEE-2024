@@ -16,9 +16,9 @@ import { Register_bg_svg } from "./RegEventsSection";
 import apogee from "@assets/landing/apogee_logo.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
-import ContactHUD from "../Contact/ContactHUD";
+// import ContactHUD from "../Contact/ContactHUD";
 
-import TopHUD from "./TopHUD";
+// import TopHUD from "./TopHUD";
 import { useSnapshot } from "valtio";
 
 export function Hud() {

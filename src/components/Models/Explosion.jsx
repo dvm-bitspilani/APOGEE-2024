@@ -25,7 +25,7 @@ function make(color, speed) {
 
 export default function Explosions() {
   const explosions = useSnapshot(state.explosions);
-  console.log(explosions);
+  // console.log(explosions);
   return explosions.map(({ guid, offset, scale }) => (
     <Explosion key={guid} position={offset} scale={scale * 0.75} />
   ));
@@ -52,8 +52,6 @@ function Explosion({ position, scale }) {
       mesh.instanceMatrix.needsUpdate = true;
     });
   });
-
-  console.log(position);
 
   return (
     <group ref={group} position={position} scale={[scale, scale, scale]}>
