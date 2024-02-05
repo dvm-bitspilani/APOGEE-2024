@@ -12,6 +12,8 @@ import EffectComposerLayer from "../components/EffectComposer";
 import Experience from "../components/Landing/Experience";
 // import { OrbitControls } from "@react-three/drei";
 
+import AboutUs from "@components/About/AboutUs";
+
 function App() {
   return (
     <motion.div
@@ -30,6 +32,7 @@ function App() {
       </Canvas>
       <Hud />
       <ContactHUD />
+      <AboutUs />
     </motion.div>
   );
 }

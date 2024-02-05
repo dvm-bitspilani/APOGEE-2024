@@ -25,6 +25,7 @@ import { useEffect } from "react";
 export function Hud() {
   useEffect(() => {
     state.isHamOpen = false;
+    state.activeSection = 0;
   }, []);
 
   return (
