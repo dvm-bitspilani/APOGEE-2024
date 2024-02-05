@@ -26,7 +26,7 @@ export default function ConstellationDetected({ navigate = false }) {
       <a
         rel="noreferrer"
         target="_blank"
-        href="https://www.facebook.com/bitsapogee/"
+        href="https://www.linkedin.com/company/apogee-bits-pilani/"
         className={styles.fb}
       >
         <LinkedIn />
