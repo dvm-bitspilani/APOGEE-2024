@@ -16,7 +16,7 @@
     pointer-events: none;
   }
 
-  @media screen and (max-height: 700px) {
+  @media screen and (max-height: 760px) {
     top: 23%;
     width: 400px;
   }
@@ -30,6 +30,12 @@
   @media screen and (max-width: 515px) {
     top: 23%;
     width: 300px;
+  }
+
+  @media screen and (max-width: 430px) {
+    top: 23%;
+    transform-origin: center;
+    transform: scale(0.8) translate(-65%, 0);
   }
 
   & > svg {
@@ -67,6 +73,8 @@
     }
 
     svg {
+      overflow: visible;
+
       @media screen and (max-width: 515px) {
         scale: 0.6;
       }
@@ -111,7 +119,7 @@
     }
   }
 
-  span{
+  span {
     color: #ef8f93 !important;
   }
 }
@@ -127,7 +135,9 @@
 }
 .eventsRule {
   top: 85%;
-  left: 29%;
+  left: 37%;
+  max-width: 150px !important;
+  flex-wrap: nowrap !important;
 }
 .sponsors {
   top: 5%;
@@ -135,14 +145,16 @@
 }
 .mediaPartners {
   top: 21%;
-  left: 72%;
+  left: 80%;
+  max-width: 150px !important;
+  flex-wrap: nowrap !important;
 }
 .developers {
   top: 62%;
   left: 79%;
 }
 
-@media screen and (max-height: 700px), screen and (max-width: 700px) {
+@media screen and (max-height: 760px), screen and (max-width: 700px) {
   .home {
     top: 46%;
     left: 43%;
@@ -157,7 +169,7 @@
   }
   .eventsRule {
     top: 83%;
-    left: 27%;
+    left: 36%;
   }
   .sponsors {
     top: 2%;
@@ -165,7 +177,7 @@
   }
   .mediaPartners {
     top: 19%;
-    left: 68%;
+    left: 78%;
   }
   .developers {
     top: 60%;
@@ -188,7 +200,8 @@
   }
   .eventsRule {
     top: 80%;
-    left: 21%;
+    left: 34%;
+    max-width: 120px !important;
   }
   .sponsors {
     top: 2%;
@@ -196,7 +209,8 @@
   }
   .mediaPartners {
     top: 18%;
-    left: 64%;
+    left: 79%;
+    max-width: 100px !important;
   }
   .developers {
     top: 58%;

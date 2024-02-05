@@ -9,17 +9,25 @@ export function gsapOnMenu(
   menuRot,
   isHamOpen,
   rotationUpdateOnMouseMoveHandler
+  // rotationUpdateOnMouseMoveMenuHandler
 ) {
   // Store the function in a variable
   //   let rotationHandler = rotationUpdateOnMouseMoveHandler;
 
   const hamMenuButton = document.getElementById("ham-menu-button");
-  const stars = document.querySelectorAll(`.${constellationStyles.constelationWrapper}>div`);
+  const stars = document.querySelectorAll(
+    `.${constellationStyles.constelationWrapper}>div`
+  );
 
-  const landingLinks = document.querySelectorAll(`.${hudStyles.wrapper} a`);
+  const landingLinks = document.querySelectorAll(
+    `.${hudStyles.landingElements} a`
+  );
+  const mobileLandingLinks = document.querySelectorAll(
+    `.${hudStyles.mobileBottom} a`
+  );
+  const menuLinks = document.querySelectorAll(`.${hamStyles.menu} a`);
 
   if (!isHamOpen) {
-
     const tl = gsap.timeline({
       onStart: () => {
         window?.removeEventListener(
@@ -28,14 +36,26 @@ export function gsapOnMenu(
         );
         hamMenuButton.disabled = true;
 
+        // Setting landing links to pointer events none
         gsap.set(landingLinks, {
           pointerEvents: "none",
         });
       },
       onComplete: () => {
+        // window?.addEventListener(
+        //   "mousemove",
+        //   rotationUpdateOnMouseMoveMenuHandler
+        // );
         hamMenuButton.disabled = false;
-        const socialLinks = document.querySelectorAll(`.${hamStyles.socials} a`);
+        const socialLinks = document.querySelectorAll(
+          `.${hamStyles.socials} a`
+        );
         gsap.set([socialLinks, stars], {
+          pointerEvents: "all",
+        });
+
+        // Setting menu links to pointer events all
+        gsap.set(menuLinks, {
           pointerEvents: "all",
         });
       },
@@ -53,6 +73,11 @@ export function gsapOnMenu(
       },
       "<"
     )
+      .call(() => {
+        gsap.set(mobileLandingLinks, {
+          display: "none",
+        });
+      })
       .to(
         camera.position,
         {
@@ -83,7 +108,8 @@ export function gsapOnMenu(
           ease: "power2.inOut",
         },
         "-=0.5"
-      ).fromTo(
+      )
+      .fromTo(
         stars,
         {
           autoAlpha: 0,
@@ -99,16 +125,32 @@ export function gsapOnMenu(
         ">"
       );
   } else {
-    // window?.removeEventListener("mousemove", (e) => rotationUpdateOnMouseMove(e, menuRot));
-
-    // console.log("backwards");
-
     const tl = gsap.timeline({
       onStart: () => {
+        // window?.removeEventListener(
+        //   "mousemove",
+        //   rotationUpdateOnMouseMoveMenuHandler
+        // );
         hamMenuButton.disabled = true;
-        const socialLinks = document.querySelectorAll(`.${hamStyles.socials} a`);
+        const socialLinks = document.querySelectorAll(
+          `.${hamStyles.socials} a`
+        );
         gsap.set(socialLinks, {
           pointerEvents: "none",
+        });
+
+        // Setting menu links to pointer events none
+        gsap.set(menuLinks, {
+          pointerEvents: "none",
+        });
+
+        // Setting landing links to pointer events all
+        gsap.set(landingLinks, {
+          pointerEvents: "all",
+        });
+
+        gsap.set(mobileLandingLinks, {
+          display: "flex",
         });
       },
       onComplete: () => {
@@ -130,13 +172,17 @@ export function gsapOnMenu(
       },
       "<"
     )
-      .to(camera.rotation, {
-        x: 0,
-        y: 0,
-        z: 0,
-        duration: 2,
-        ease: "power2.inOut",
-      }, "-=0.5")
+      .to(
+        camera.rotation,
+        {
+          x: 0,
+          y: 0,
+          z: 0,
+          duration: 2,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      )
       .to(
         camera.position,
         {
@@ -156,6 +202,6 @@ export function gsapOnMenu(
           ease: "power2.inOut",
         },
         "-=0.5"
-      )
+      );
   }
 }

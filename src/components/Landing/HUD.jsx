@@ -16,11 +16,19 @@ import { Register_bg_svg } from "./RegEventsSection";
 import apogee from "@assets/landing/apogee_logo.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
-import ContactHUD from "../Contact/ContactHUD";
+// import ContactHUD from "../Contact/ContactHUD";
 
-import TopHUD from "./TopHUD";
+// import TopHUD from "./TopHUD";
+import { useSnapshot } from "valtio";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Hud() {
+  useEffect(() => {
+    state.isHamOpen = false;
+    state.activeSection = 0;
+  }, []);
+
   return (
     <>
       <img
@@ -45,12 +53,12 @@ export function Hud() {
           alt="top hud"
         />
         {/* <TopHUD /> */}
-        {/* <img
+        <img
           src={apogee}
           alt="apogee"
           draggable={false}
           className={styles.logo}
-        /> */}
+        />
         <CrossHairCursor />
         <HamMenuButton />
         <NavigateSection />
@@ -69,6 +77,20 @@ export function Hud() {
 export function MobileHUD() {
   const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
+  // To rerender the component when the state changes
+  useSnapshot(state);
+
+  const navigate = useNavigate();
+
+  const handleClick = (value, index) => {
+    state.targetSection = index;
+
+    console.log(index);
+    if (index === 1 || index === 2 || index === 3) {
+      navigate(`/${value.toLowerCase()}`);
+    }
+  };
+
   return (
     <>
       <div className={`${styles.mobileLinks} ${styles.landingElements}`}>
@@ -76,7 +98,7 @@ export function MobileHUD() {
           <button
             key={index}
             className={state.activeSection === index ? styles.active : ""}
-            onClick={() => (state.activeSection = index)}
+            onClick={() => handleClick(value, index)}
           >
             {value}
           </button>

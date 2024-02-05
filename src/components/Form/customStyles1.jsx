@@ -15,7 +15,7 @@ const customStyles1 =  {
         borderRadius: "0px",
         // height:"100%",
         width:"100%",
-        height:"0"
+        // height:"0"
       }),
       indicatorSeparator: () => {},
       valueContainer: (provided) => ({
@@ -121,7 +121,7 @@ const customStyles1 =  {
         paddngBottom: "0",
         marginLeft: "2px",
         maxWidth:"100%",
-        overflow:"scroll"
+        overflow:"scroll",
       }),
       noOptionsMessage: (provided) => ({
         ...provided,

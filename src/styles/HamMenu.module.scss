@@ -118,6 +118,18 @@
 .socials a:hover , .landingSocials a:hover{
   scale: 1.1;
   cursor: pointer;
+
+  &>svg {
+
+    path[stroke="#9AF0F4"]{
+      stroke: var(--hover-link);
+    }
+
+    path[fill="#9AF0F4"]{
+      fill: var(--hover-link);
+      stroke: var(--hover-link);
+    }
+  }
 }
 
 .socials a:nth-child(1) , .landingSocials a:nth-child(1){
@@ -177,7 +189,7 @@
   }
 }
 
-@media screen and (max-width: 1168px) {
+@media screen and (max-width: 1300px) {
   .constellationDetected {
     transform-origin: 100% 50%;
     transform: scale(0.8);
@@ -201,7 +213,7 @@
 //   }
 // }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1190px) {
   .constellationDetected {
     display: none;
   }
@@ -216,14 +228,14 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
   .socials {
     transform: translateY(-50%) scale(0.6);
     right: 10px;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 765px) {
   .socials {
     flex-direction: row;
     justify-content: space-between;

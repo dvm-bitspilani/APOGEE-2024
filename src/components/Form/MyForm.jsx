@@ -9,6 +9,7 @@ import citiesData from '../Form/states.json';
 import customStyles1 from "../../components/Form/customStyles1";
 import customStyles from "../../components/Form/customStyles";
 import statesData from '../Form/states.json';
+import { Register_bg_svg } from '../Landing/RegEventsSection';
 const MyForm = () => {
   const [interestOptions, setInterestOptions] = useState(['']);
   const [eventsOptions, setEventsOptions] = useState(['']);
@@ -73,7 +74,7 @@ const MyForm = () => {
     inputValue = inputValue.replace(/[^0-9]/g, "");
     event.target.value = inputValue;
   }
-
+  
   const handleSubmit = async (values, { resetForm }) => {
     console.log("Register button clicked");
     try {
@@ -85,6 +86,7 @@ console.log(interestsIds)
         ...values,
         interests: interestsIds,
         events: eventsIds,
+        token: formData.token,
       };
     console.log('Form Values:',submitValues);
 
@@ -145,21 +147,6 @@ console.log(interestsIds)
       })) || [];
     setCityOptions(selectedStateCities);
   }, [selectedState]);
-
-  // const allCities = citiesData.map(state => state.cities).flat();
-  // const cityOptions = allCities.map(city => ({
-  //   value: city.name,
-  //   label: city.name,
-  // }));
-
-  // const handleStateChange = (selectedOption) => {
-  //   const newState = selectedOption ? selectedOption.value : '';
-  //   setFieldValue('state', newState);
-  //   setSelectedState(newState);
-  //   setFieldValue('city', ''); // Clear the city when the state changes
-    
-  // };
-  // const customStyles = {  };
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
   const [windowHeight, setWindowHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 0);
 
@@ -273,6 +260,10 @@ console.log(interestsIds)
         backgroundColor: "transparent",
         height:"7rem",
         overflowY:"scroll",
+        "::-webkit-scrollbar": {
+          width: "4px",
+          height: "5px",
+        },
       }),
       dropdownIndicator: (provided, state) => ({
         ...provided,
@@ -902,22 +893,6 @@ const customStyles1 =  {
               </div>
 
               <div className={styles.year}>
-                {/* <label>Year of Study</label>
-            {yearOptions.map(option => (
-              <div key={option.value}>
-                <Field
-                  type="radio"
-                  id={`year-${option.value}`}
-                  name="year"
-                  value={option.value}
-                  checked={values.year === option.value}
-                  onChange={() => {
-                    setFieldValue('year', option.value);
-                  }}
-                />
-                <label htmlFor={`year-${option.value}`}>{option.label}</label>
-              </div>
-            ))} */}
                 <div className={styles.checkboxContainer}>
                   {yearOptions.map(option => (
                     <div key={option.value} className={styles.checkboxItem}>
@@ -959,12 +934,6 @@ const customStyles1 =  {
                 className={styles.stateWrapper}
                 styles={customStyles}
                 placeholder="Your State"
-              // />
-              //  value={stateOptions.find(option => option.value === values.state)}
-              //    onChange={(selectedOption) => handleStateChange(selectedOption)}
-              //    className={styles.stateWrapper}
-              //    styles={customStyles}
-              //    placeholder="Your State"
                />
               <img src="/images/state.svg" alt="" />
               <img
@@ -981,27 +950,10 @@ const customStyles1 =  {
               <ErrorMessage name="state" component="div" className={styles.errorMessage}/>
             </div>
               <div className={styles.city}>
-                {/* <Select
-              id="city"
-              name="city"
-              options={cityOptions}
-              value={cityOptions.find(option => option.value === values.city)}
-              onChange={(selectedOption) => {
-                setFieldValue('city', selectedOption ? selectedOption.value : '');
-              }}
-            /> */}
                 <Select
                   id="city"
                   name="city"
                   options={cityOptions}
-                //   value={cityOptions.find(option => option.value === values.city)}
-                //   onChange={(selectedOption) => {
-                //     setFieldValue('city', selectedOption ? selectedOption.value : '');
-                //   }}
-                //   className={styles.cityWrapper}
-                //   styles={customStyles}
-                //   placeholder="Your City"
-                // />
                 value={cityOptions.find(option => option.value === values.city)}
                 onChange={(selectedOption) => {
                   setFieldValue('city', selectedOption ? selectedOption.value : '');
@@ -1022,17 +974,6 @@ const customStyles1 =  {
                 <label htmlFor="city">City</label>
               </div>
             </div>
-{/* {!succesfulRegistration ? (
-            <div>
-                <button type='submit' className={styles.registerBtn}
-                disabled={isSubmitting}
-                >
-                  <span>REGISTER</span>
-                </button>
-  </div>
-): (
-  <span className={styles.successText}>A verification mail has been sent to your email id.</span>
-  )} */}
   {
   (() => {
     switch (true) {
@@ -1044,6 +985,7 @@ const customStyles1 =  {
               className={styles.registerBtn}
               disabled={isSubmitting}
             >
+              <Register_bg_svg/>
               <span>REGISTER</span>
             </button>
           </div>

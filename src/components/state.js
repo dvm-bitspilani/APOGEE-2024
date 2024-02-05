@@ -5,6 +5,7 @@ const state = proxy({
   alienPlanet: null,
   camera: null,
   activeSection: 0,
+  targetSection: 0,
   explosions: [],
 });
 

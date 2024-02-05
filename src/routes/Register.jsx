@@ -57,23 +57,26 @@ export default function Register() {
       <img draggable={false} src="/images/Left helm.png" alt="" className={styles.leftHelm} />
       <img draggable={false} src="/images/Right helm.png" alt="" className={styles.rightHelm} />
       <div className={styles.topContainer}>
-        <img
+        {/* <img
           src="/images/leftMobileReg.png"
           alt=""
           className={styles.leftTop}
-        />
-        <img
+        /> */}
+        {/* <img
           src="/images/rightMobileReg.png"
           alt=""
           className={styles.rightTop}
         />
         <img draggable={false} src="/images/topMobile.png" alt="" className={styles.middleTop} />
+        /> */}
+        <img src="/images/regTop HUD.png" alt="" className={styles.middleTop} />
         <div className={styles.homeBtn} onClick={handleHomeClick}>
           <span>HOME</span>
         </div>
       </div>
       <div className={styles.pageWrapper}>
         <img draggable={false} src="/images/Top HUD.svg" alt="" className={styles.hud} />
+        <img src="/images/regTop HUD.png" alt="" className={styles.hud} />
         <div className={styles.content}>
           <div className={styles.homeBtn} onClick={handleHomeClick}>
             <span>HOME</span>

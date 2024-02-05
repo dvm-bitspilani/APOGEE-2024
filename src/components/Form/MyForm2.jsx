@@ -9,13 +9,13 @@ import customStyles from "../../components/Form/customStyles";
 import customStyles1 from "../../components/Form/customStyles1";
 import customStyles2 from "../../components/Form/customStyles2";
 import statesData from "../Form/states.json";
+// import ReCAPTCHA from "react-google-recaptcha";
 const MyForm2 = () => {
   const [stateOptions, setStateOptions] = useState([]);
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
   const [selectedState, setSelectedState] = useState('');
   const [cityOptions, setCityOptions] = useState([]);
   const [displayTest, setDisplayText]=useState('');
-
   const [isCityDisabled, setCityDisabled] = useState(true);
   const initialValues = {
     name: "",
@@ -37,14 +37,8 @@ const MyForm2 = () => {
       setWindowWidth(typeof window !== 'undefined' ? window.innerWidth : 0);
       setWindowHeight(typeof window !== 'undefined' ? window.innerHeight : 0);
     };
-
-    // Initial call to set styles based on initial screen size
     handleResize();
-
-    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
-
-    // Cleanup the event listener when the component is unmounted
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -64,6 +58,7 @@ const MyForm2 = () => {
       .oneOf(["1", "2", "3", "4", "5"], "Invalid Year of Study"),
     city: Yup.string().required("City is required"),
     state: Yup.string().required("State is required"),
+    // token: Yup.string().required("reCAPTCHA verification is required"),
   });
 
   function handleNumericInput(event) {
@@ -71,19 +66,6 @@ const MyForm2 = () => {
     inputValue = inputValue.replace(/[^0-9]/g, "");
     event.target.value = inputValue;
   }
-
-  // const handleSubmit = async (values, { resetForm, setSubmitting }) => {
-  //   try {
-  //     await axios.post('your-api-endpoint', values);
-  //     console.log('Data sent successfully!');
-  //     resetForm();
-  //   } catch (error) {
-  //     console.error('Error submitting the form:', error);
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
-
   const genderOptions = [
     { value: "M", label: "MALE", label1:"M" },
     { value: "F", label: "FEMALE", label1:"F" },
@@ -119,17 +101,12 @@ const MyForm2 = () => {
   ];
 
   const allCities = citiesData.map((state) => state.cities).flat();
-  // const cityOptions = allCities.map((city) => ({
-  //   value: city.name,
-  //   label: city.name,
-  // }));
   const handleSubmit = async (values, { resetForm }) => {
     console.log("Register button clicked");
     try {
       const interestsIds = (values.interests || []).map(interest => interest.value);
       const eventsIds = (values.events || []).map(event => event.value);
 console.log(interestsIds)
-      // Create a new object with IDs
       const submitValues = {
         ...values,
         interests: interestsIds,
@@ -138,17 +115,16 @@ console.log(interestsIds)
     console.log('Form Values:',submitValues);
 
     const response = await axios.post(
-      'https://bits-apogee.org/2024/main/registrations/Register/',submitValues);
-      // console.log('Form Values:', values);
-      // console.log(submitValues)
-      // const response = await axios.post('https://bits-apogee.org/2024/main/registrations/Register/', submitValues);
+      'https://bits-apogee.org/2024/main/registrations/Register/',{
+        ...submitValues,
+        // token: values.token, // Include the reCAPTCHA token in the payload
+      });
       if (response) {
         console.log(response)
         console.log('Data sent successfully!');
         setSuccessfullRegistration(1);
       } else {
         console.error('Error submitting the form. Server response:', response);
-        // setSuccessfullRegistration(true);
       }
     } catch (error) {
       console.error('Error submitting the form:', error.response.data.message);
@@ -292,7 +268,7 @@ console.log(interestsIds)
               />
               <img src="/images/phone.png" alt="" />
               <label htmlFor="events">Events</label>
-              <ErrorMessage name="interests" component="div" className={styles.errorMessage}/>
+              <ErrorMessage name="events" component="div" className={styles.errorMessage}/>
             </div>
 
             <div className={styles.mobileColleges}>
@@ -359,30 +335,6 @@ console.log(interestsIds)
               <Select
                 id="state"
                 name="state"
-              //   options={stateOptions}
-              //   value={stateOptions.find(
-              //     (option) => option.value === values.state
-              //   )}
-              //   onChange={(selectedOption) => {
-              //     setFieldValue(
-              //       "state",
-              //       selectedOption ? selectedOption.value : ""
-              //     );
-              //     setFieldValue("city", ""); // Clear the city when the state changes
-              //   }}
-              //   className={styles.stateWrapper}
-              //   styles={customStyles2}
-              //   placeholder="Your State"
-              // />
-              // options={stateOptions}
-              //   value={stateOptions.find(
-              //     (option) => option.value === values.state
-              //   )}
-              //   onChange={(selectedOption) => {
-              //     setFieldValue("state", selectedOption ? selectedOption.value : "");
-              //     setFieldValue("city", ""); // Clear the city when the state changes
-              //     setCityDisabled(!selectedOption); // Disable city field if no state is selected
-              //   }}
               options={stateOptions}
               value={stateOptions.find(option => option.value === values.state)}
               onChange={(selectedOption) => {
@@ -403,20 +355,6 @@ console.log(interestsIds)
                 id="city"
                 name="city"
                 options={cityOptions}
-              //   options={cityOptions}
-              //   value={cityOptions.find(
-              //     (option) => option.value === values.city
-              //   )}
-              //   onChange={(selectedOption) => {
-              //     setFieldValue(
-              //       "city",
-              //       selectedOption ? selectedOption.value : ""
-              //     );
-              //   }}
-              //   className={styles.mobileCityWrapper}
-              //   styles={customStyles2}
-              //   placeholder="Your City"
-              // />
               value={cityOptions.find(option => option.value === values.city)}
               onChange={(selectedOption) => {
                 setFieldValue('city', selectedOption ? selectedOption.value : '');
@@ -431,12 +369,19 @@ console.log(interestsIds)
               <ErrorMessage name="city" component="div" className={styles.errorMessage}/>
             </div>
           </div>
+          {/* <div className={styles.recaptcha}>
+              <ReCAPTCHA
+                sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
+                onChange={(token) => {
+                  setFieldValue("token", token);
+                }}
+              />
+            </div> */}
           {
   (() => {
     switch (true) {
       case succesfulRegistration===0:
         return (
-          // <div>
             <button
               type="submit"
               className={styles.registerBtn}
@@ -444,7 +389,6 @@ console.log(interestsIds)
             >
               <span>REGISTER</span>
             </button>
-          // </div>
         );
         case succesfulRegistration===1:
         return (
@@ -465,13 +409,10 @@ console.log(interestsIds)
     }
   })()
 }
-
           </Form>
       )}
     </Formik>
           </>
-    // </>s
   );
 };
-
 export default MyForm2;

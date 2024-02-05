@@ -1,17 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as styles from "@styles/HUD.module.scss";
 
 import Countdown from "./Countdown";
 import Socials from "@components/HamMenu/Socials";
 
 import state from "../state";
-// import { useSnapshot } from "valtio";
+
+import { useSnapshot } from "valtio";
+import { useNavigate } from "react-router-dom";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const Button = ({ value, handleMouseOver, handleMouseOut, isActive }) => {
+const Button = ({
+  value,
+  handleMouseOver,
+  handleMouseOut,
+  isActive,
+  index,
+}) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    state.targetSection = index;
+
+    console.log(index);
+    if (index === 2 || index === 3) {
+      navigate(`/${value.toLowerCase()}`);
+    }
+  };
+
   return (
-    <button className={isActive ? styles.buttonActive : null} data-value={value} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+    <button
+      className={isActive ? styles.buttonActive : null}
+      id={`active-section-${index}`}
+      data-value={value}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onClick={handleClick}
+    >
       {value}
     </button>
   );
@@ -20,6 +46,8 @@ const Button = ({ value, handleMouseOver, handleMouseOut, isActive }) => {
 export default function NavigateSection() {
   const [hoveredButton, setHoveredButton] = useState(null);
 
+  const snap = useSnapshot(state);
+
   const handleMouseOver = (event) => {
     const { target } = event;
     let iteration = 0;
@@ -27,12 +55,15 @@ export default function NavigateSection() {
     clearInterval(target.interval);
 
     target.interval = setInterval(() => {
-      target.innerText = target.innerText.split("").map((letter, index) => {
-        if (index < iteration) {
-          return target.dataset.value[index];
-        }
-        return letters[Math.floor(Math.random() * 26)];
-      }).join("");
+      target.innerText = target.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration) {
+            return target.dataset.value[index];
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
 
       if (iteration >= target.dataset.value.length) {
         clearInterval(target.interval);
@@ -52,13 +83,7 @@ export default function NavigateSection() {
     }
   };
 
-  const buttonData = [
-    "HOME",
-    "ABOUT",
-    "EVENTS",
-    "SPEAKERS",
-    "CONTACT",
-  ];
+  const buttonData = ["HOME", "ABOUT", "EVENTS", "SPEAKERS", "CONTACT"];
 
   return (
     <div className={`${styles.navigatorWrapper} ${styles.landingElements}`}>
@@ -75,11 +100,12 @@ export default function NavigateSection() {
               handleMouseOver={handleMouseOver}
               handleMouseOut={handleMouseOut}
               isActive={state.activeSection === index}
+              index={index}
             />
           ))}
         </div>
         <Line />
-        <Socials navigate={true}/>
+        <Socials navigate={true} />
       </div>
     </div>
   );
