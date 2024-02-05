@@ -20,8 +20,13 @@ import { CrossHairCursor } from "./CrossHairCursor";
 
 // import TopHUD from "./TopHUD";
 import { useSnapshot } from "valtio";
+import { useEffect } from "react";
 
 export function Hud() {
+  useEffect(() => {
+    state.isHamOpen = false;
+  }, []);
+
   return (
     <>
       <img
