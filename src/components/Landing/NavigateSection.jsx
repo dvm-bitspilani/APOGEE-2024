@@ -24,7 +24,7 @@ const Button = ({
     state.targetSection = index;
 
     console.log(index);
-    if (index === 1 || index === 2 || index === 3) {
+    if (index === 2 || index === 3) {
       navigate(`/${value.toLowerCase()}`);
     }
   };
