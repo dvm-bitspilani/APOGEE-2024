@@ -40,7 +40,7 @@ function App() {
           <ambientLight intensity={1.5} />
           <Experience />
         </Suspense>
-        <Stats />
+        {/* <Stats /> */}
       </Canvas>
       <Hud />
       <ContactHUD />
