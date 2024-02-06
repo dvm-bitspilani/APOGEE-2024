@@ -35,7 +35,8 @@ export function gsapOnSection(
         state.isMoving = true;
 
         // disable the navigation buttons
-        navigationLinks.forEach((link) => {
+        navigationLinks.forEach((link, index) => {
+          if (index !== 1) return;
           link.disabled = true;
         });
 
@@ -125,8 +126,9 @@ export function gsapOnSection(
         );
         state.activeSection = targetSection;
 
-        // disable the navigation buttons
-        navigationLinks.forEach((link) => {
+         // disable the navigation buttons
+         navigationLinks.forEach((link, index) => {
+          if (index !== 4) return;
           link.disabled = true;
         });
 

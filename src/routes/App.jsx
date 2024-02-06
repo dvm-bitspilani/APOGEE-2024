@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Stats, ScrollControls } from "@react-three/drei";
 
@@ -11,10 +11,22 @@ import EffectComposerLayer from "../components/EffectComposer";
 // import Background from "../components/Landing/Background";
 import Experience from "../components/Landing/Experience";
 // import { OrbitControls } from "@react-three/drei";
+import state from "@components/state";
 
 import AboutUs from "@components/About/AboutUs";
 
 function App() {
+  useEffect(() => {
+    state.isHamOpen = false;
+    state.activeSection = 0;
+
+    return () => {
+      state.isHamOpen = false;
+      state.activeSection = 0;
+      state.isMoving = false;
+      state.targetSection = 0;
+    };
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }}

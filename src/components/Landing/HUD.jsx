@@ -20,14 +20,9 @@ import { CrossHairCursor } from "./CrossHairCursor";
 
 // import TopHUD from "./TopHUD";
 import { useSnapshot } from "valtio";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Hud() {
-  useEffect(() => {
-    state.isHamOpen = false;
-    state.activeSection = 0;
-  }, []);
 
   return (
     <>
