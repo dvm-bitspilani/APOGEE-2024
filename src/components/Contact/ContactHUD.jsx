@@ -12,7 +12,7 @@ function CardList() {
           dept={card.dept}
           image={card.image}
           phone={card.phone}
-          email={card.email}
+          email={card.mail}
         />
       ))}
     </div>
