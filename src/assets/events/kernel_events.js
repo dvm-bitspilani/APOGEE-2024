@@ -1,6 +1,6 @@
 const kernel_events = [
   {
-    name: "AIC",
+    name: "APOGEE Innovation Challenge",
     image: "placeholder.png",
     category: "Kernel",
   },
@@ -10,12 +10,12 @@ const kernel_events = [
     category: "Kernel",
   },
   {
-    name: "SMS",
+    name: "Stock Market Simulator",
     image: "sms.jpg",
     category: "Kernel",
   },
   {
-    name: "OHT",
+    name: "International Coding League",
     image: "oht.jpg",
     category: "Kernel",
   },
@@ -35,7 +35,7 @@ const kernel_events = [
     category: "Kernel",
   },
   {
-    name: "ICL",
+    name: "International Coding League",
     image: "icl.jpg",
     category: "Kernel",
   },
