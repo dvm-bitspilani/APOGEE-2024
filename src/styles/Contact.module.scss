@@ -215,9 +215,49 @@ h1.title {
     padding: 5%;
   }
 
-  // .cardContainer{
-  //   width: calc(40% - 5px);
-  // }
+  @media only screen and (max-width: 1500px) {
+    .cardContainer {
+      --img: 2rem;
+      --dept: 1.2rem;
+      --name: 1rem;
+      --icons: 1rem;
+      --gap: 0.4rem;
+    }
+  }
+
+  @media only screen and (max-width: 1250px) {
+    .cardContainer {
+      --img: 2rem;
+      --dept: 1rem;
+      --name: 1rem;
+      --icons: 1rem;
+      --gap: 0.4rem;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .cardContainer {
+      --img: 2rem;
+      --dept: 1rem;
+      --name: 0.9rem;
+      --icons: 0.8rem;
+      --gap: 0.3rem;
+    }
+
+    .imgContainer{
+      img{
+        width: 14vw;
+      }
+    }
+  }
+
+  @media only screen and (max-height: 750px) {
+    .wrapper{
+      scale: .8;
+      top: 20%;
+      left: calc(5% + 300px);
+    }
+  }
 
   .cardContainer {
     // width: 100%;
