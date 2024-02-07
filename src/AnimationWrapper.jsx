@@ -11,8 +11,10 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import ReactGa from "react-ga4";
 
 export default function AnimationWrapper() {
+  ReactGa.initialize("G-93KSJ6NXN3");
     
   const location = useLocation();
   return (
