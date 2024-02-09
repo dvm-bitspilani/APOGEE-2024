@@ -1,5 +1,5 @@
 .wrapper {
-  opacity: 0;
+  // opacity: 0;
   visibility: hidden;
   bottom: 10%;
 
@@ -15,38 +15,103 @@
   justify-content: center;
 }
 
-h1.title {
-  position: absolute;
-  top: 1.5vw;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  height: 35px;
-  text-shadow: 0px 0px 18.12px rgba(154, 240, 244, 0.7);
+// h1.title {
+//   position: absolute;
+//   top: 1.5vw;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   width: auto;
+//   height: 35px;
+//   text-shadow: 0px 0px 18.12px rgba(154, 240, 244, 0.7);
 
-  visibility: hidden;
-  opacity: 0;
+//   visibility: hidden;
+//   opacity: 0;
 
-  @media screen and (max-height: 700px), screen and (max-width: 1100px) {
-    top: 15px;
-    font-size: 1.3rem;
-  }
-}
+//   @media screen and (max-height: 700px), screen and (max-width: 1100px) {
+//     top: 15px;
+//     font-size: 1.3rem;
+//   }
+// }
 
-.successText {
+// .successText {
+//   position: relative;
+//   display: inline-block;
+//   font-size: 3.5rem;
+//   color: var(--primary);
+//   font-weight: 600;
+//   text-align: center;
+//   text-shadow: 0px 0px 18.12px rgba(154, 240, 244, 0.7);
+// }
+
+// @media only screen and (max-width: 800px) {
+//   .wrapper {
+//     top: 130px;
+//     left: 0;
+//     right: 0;
+//   }
+// }
+
+.container {
+  width: 75%;
+  aspect-ratio: 1;
   position: relative;
-  display: inline-block;
-  font-size: 3.5rem;
-  color: var(--primary);
-  font-weight: 600;
-  text-align: center;
-  text-shadow: 0px 0px 18.12px rgba(154, 240, 244, 0.7);
+  background-image: url("@assets/about/background.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  // padding-top: 10%;
+  // padding-bottom: 18%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-@media only screen and (max-width: 800px) {
-  .wrapper {
-    top: 130px;
-    left: 0;
-    right: 0;
-  }
+.line {
+  position: absolute;
+  bottom: 17%;
+  width: 100%;
+}
+
+.videocontainer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video{
+  background-image: url("@assets/about/videocorners.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  aspect-ratio: 1.5;
+  // border: solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoembed{
+  // opacity: 0;
+  width: 95%;
+  aspect-ratio: 1.77777;
+  border: solid #9AF0F4 0.25px;
+  ;
+}
+
+.text {
+  // border: solid white;
+  padding-top: 1rem;
+  font-family: "Space Grotesk";
+  font-size: 1.1vw;
+  font-weight: 400;
+  text-align: center;
+  padding-inline: 6%;
+}
+
+@media only screen and (max-width: 2000px){
+
 }
