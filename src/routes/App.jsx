@@ -36,10 +36,10 @@ function App() {
     >
       <Canvas>
         {/* <EffectComposerLayer /> */}
-        {/* <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
           <ambientLight intensity={1.5} />
           <Experience />
-        </Suspense> */}
+        </Suspense>
         {/* <Stats /> */}
       </Canvas>
       <Hud />
