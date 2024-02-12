@@ -24,7 +24,7 @@ h1.title {
   height: fit-content;
 
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: calc(10% + 300px);
   right: 2%;
   z-index: 1;
@@ -40,6 +40,7 @@ h1.title {
   align-items: start;
   width: 100%;
   // height: 60%;
+  scale: .8;
 }
 
 .container :nth-child(even) .imgContainer .frameBar img {

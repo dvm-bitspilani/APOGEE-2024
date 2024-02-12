@@ -31,12 +31,11 @@ export function gsapOnSection(
           rotationUpdateOnMouseMoveHandler
         );
         state.activeSection = targetSection;
-        
+
         state.isMoving = true;
 
         // disable the navigation buttons
         navigationLinks.forEach((link, index) => {
-          if (index !== 1) return;
           link.disabled = true;
         });
 
@@ -51,7 +50,6 @@ export function gsapOnSection(
 
         // enable the navigation buttons
         navigationLinks.forEach((link) => {
-          if (link.innerText !== "HOME") return;
           link.disabled = false;
         });
 
@@ -78,7 +76,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}`,
+      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -125,25 +123,36 @@ export function gsapOnSection(
           rotationUpdateOnMouseMoveHandler
         );
         state.activeSection = targetSection;
+        state.isMoving = true;
 
-         // disable the navigation buttons
-         navigationLinks.forEach((link, index) => {
-          if (index !== 4) return;
+        // disable the navigation buttons
+        navigationLinks.forEach((link, index) => {
           link.disabled = true;
         });
+
+        // disable the navigation buttons
+        // navigationLinks.forEach((link, index) => {
+        //   if (index !== 4) return;
+        //   link.disabled = true;
+        // });
 
         // Disable hame menu button
         hamMenuButton.disabled = true;
       },
       onComplete: () => {
         // enable the navigation buttons
+        // navigationLinks.forEach((link) => {
+        //   if (link.innerText !== "HOME") return;
+        //   link.disabled = false;
+        // });
+        // enable the navigation buttons
         navigationLinks.forEach((link) => {
-          if (link.innerText !== "HOME") return;
           link.disabled = false;
         });
 
         // Enable hame menu button
         hamMenuButton.disabled = false;
+        state.isMoving = false;
       },
     });
 
@@ -157,13 +166,33 @@ export function gsapOnSection(
       ""
     )
       .to(
-        `.${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}`,
+        `.${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${contactStyles.wrapper}, .${contactStyles.title}`,
         {
           autoAlpha: 0,
           duration: 1,
           ease: "power2.inOut",
         },
         ""
+      )
+      .to(
+        camera.position,
+        {
+          x: aboutPos[0],
+          y: aboutPos[1],
+          z: aboutPos[2],
+          duration: 2,
+          ease: "power2.inOut",
+        },
+        ""
+      )
+      .to(
+        `.${aboutStyles.title}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "-=1"
       )
       .to(
         camera.rotation,
@@ -177,33 +206,49 @@ export function gsapOnSection(
         "<"
       )
       .to(
-        camera.position,
+        `.${aboutStyles.wrapper}`,
         {
-          x: aboutPos[0],
-          y: aboutPos[1],
-          z: aboutPos[2],
-          duration: 1.5,
-          ease: "power3.out",
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: "power2.inOut",
+        },
+        "-=1"
+      )
+      .to(
+        `.${aboutStyles.line}`,
+        {
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: "power2.inOut",
         },
         ">"
       )
       .to(
-        `.${aboutStyles.wrapper}`,
+        `.${aboutStyles.container}`,
         {
           autoAlpha: 1,
-          duration: 1,
+          duration: 0.5,
           ease: "power2.inOut",
         },
-        "-=1"
+        ">"
       )
       .to(
-        `.${aboutStyles.title}`,
+        `.${aboutStyles.text}`,
         {
           autoAlpha: 1,
-          duration: 1,
+          duration: 0.5,
           ease: "power2.inOut",
         },
-        "-=1"
+        ">"
+      )
+      .to(
+        `.${aboutStyles.carouselContainer}`,
+        {
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: "power2.inOut",
+        },
+        ">"
       );
   } else if (targetSection === 0) {
     const tl = gsap.timeline({
@@ -237,7 +282,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}`,
+      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
       {
         autoAlpha: 0,
         duration: 1,
