@@ -1,13 +1,12 @@
 import { Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Stats, ScrollControls } from "@react-three/drei";
 
 import { motion } from "framer-motion";
 import Loader from "@components/Loader";
 // import { Scene } from "@components/Landing/Scene";
 import { Hud } from "@components/Landing/HUD";
 import ContactHUD from "@components/Contact/ContactHUD";
-import EffectComposerLayer from "../components/EffectComposer";
+// import EffectComposerLayer from "../components/EffectComposer";
 // import Background from "../components/Landing/Background";
 import Experience from "../components/Landing/Experience";
 // import { OrbitControls } from "@react-three/drei";

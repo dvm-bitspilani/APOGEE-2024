@@ -8,6 +8,9 @@ const state = proxy({
   targetSection: 0,
   isMoving: false,
   explosions: [],
+
+  numCategories: 10,
+  categoryOffset: 0,
 });
 
 export default state;
