@@ -186,6 +186,15 @@ export function gsapOnSection(
         ""
       )
       .to(
+        `.${aboutStyles.title}`,
+        {
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "-=1"
+      )
+      .to(
         camera.rotation,
         {
           x: aboutRot[0],
@@ -194,7 +203,7 @@ export function gsapOnSection(
           duration: 2,
           ease: "power2.inOut",
         },
-        ">"
+        "<"
       )
       .to(
         `.${aboutStyles.wrapper}`,
@@ -240,15 +249,6 @@ export function gsapOnSection(
           ease: "power2.inOut",
         },
         ">"
-      )
-      .to(
-        `.${aboutStyles.title}`,
-        {
-          autoAlpha: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        "-=1"
       );
   } else if (targetSection === 0) {
     const tl = gsap.timeline({
