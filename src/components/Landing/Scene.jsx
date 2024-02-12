@@ -38,8 +38,8 @@ export function Scene() {
   const contactPos = useMemo(() => [0, 0, -60], []);
   const contactRot = useMemo(() => [0, 1.5, 0], []);
 
-  const aboutPos = useMemo(() => [0.75, -1.5, -2], []);
-  const aboutRot = useMemo(() => [-0.65, -0.3, 0], []);
+  const aboutPos = useMemo(() => [0, 0, -60], []);
+  const aboutRot = useMemo(() => [0, -1.5, 0], []);
 
   // const { position, rotation } = useControls("Camera", {
   //   position: {
