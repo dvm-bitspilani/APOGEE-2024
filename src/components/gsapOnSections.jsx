@@ -209,7 +209,7 @@ export function gsapOnSection(
         `.${aboutStyles.wrapper}`,
         {
           autoAlpha: 1,
-          duration: 1,
+          duration: 0.5,
           ease: "power2.inOut",
         },
         "-=1"
