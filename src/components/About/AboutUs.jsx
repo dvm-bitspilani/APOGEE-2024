@@ -1,6 +1,7 @@
 import * as styles from "@styles/About.module.scss";
 import * as registerStyles from "@styles/Register.module.scss";
 import line from "../../assets/about/line.svg";
+import Carousel from "./Carousel";
 
 export default function AboutUs() {
   return (
@@ -10,7 +11,7 @@ export default function AboutUs() {
         {/* <span className={styles.successText}>COMING SOON</span> */}
         <div className={styles.container}>
           <img src={line} alt="" className={styles.line} />
-          <div className={styles.videocontainer}>
+          {/* <div className={styles.videocontainer}>
             <div className={styles.video}>
               <iframe
                 className={styles.videoembed}
@@ -21,6 +22,9 @@ export default function AboutUs() {
                 allowfullscreen
               ></iframe>
             </div>
+          </div> */}
+          <div className={styles["carouselContainer"]}>
+            <Carousel />
           </div>
           <div className={styles.text}>
             BITS Pilani, India is back with the 41st edition of APOGEE (A

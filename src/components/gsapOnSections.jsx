@@ -76,7 +76,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.video}`,
+      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -242,7 +242,7 @@ export function gsapOnSection(
         ">"
       )
       .to(
-        `.${aboutStyles.video}`,
+        `.${aboutStyles.carouselContainer}`,
         {
           autoAlpha: 1,
           duration: 0.5,
@@ -282,7 +282,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.video}`,
+      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
       {
         autoAlpha: 0,
         duration: 1,
