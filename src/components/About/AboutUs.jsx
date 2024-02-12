@@ -27,7 +27,7 @@ export default function AboutUs() {
             <Carousel />
           </div>
           <div className={styles.text}>
-            BITS Pilani, India is back with the 41st edition of APOGEE (A
+            BITS Pilani, India is back with the 42nd edition of APOGEE (A
             Professions Oriented Gathering over Educational Experiences) the
             institute's annual technical extravaganza, from 4th April to 7th
             April 2024, this time as A Celestial Epiphany! APOGEE, a unique
