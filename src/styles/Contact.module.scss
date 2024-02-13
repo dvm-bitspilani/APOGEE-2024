@@ -24,8 +24,8 @@ h1.title {
   height: fit-content;
 
   position: absolute;
-  top: 20%;
-  left: calc(10% + 300px);
+  top: 15%;
+  left: calc(7% + 300px);
   right: 2%;
   z-index: 1;
 }
@@ -206,7 +206,7 @@ h1.title {
 
 @media only screen and (max-width: 800px) {
   .wrapper {
-    top: 130px;
+    top: 40px;
     left: 0;
     right: 0;
   }
@@ -283,7 +283,7 @@ h1.title {
 
 @media only screen and (max-width: 800px) {
   .wrapper {
-    top: 155px;
+    top: 35px;
     left: 0;
     right: 0;
   }
@@ -293,7 +293,7 @@ h1.title {
     grid-template-columns: 1fr 1fr;
     align-items: start;
     justify-content: center;
-    height: 90svh;
+    height: 100svh;
     overflow-y: scroll;
     overflow-x: hidden;
 
