@@ -25,31 +25,10 @@ export default function Experience() {
 
   useFrame(() => {
     // console.log(scroll);
-    setCategoryOffset((categoryOffset) =>
-      Math.min(
-        Math.max(scroll.offset * viewport.width * state.numCategories, 0),
-        state.numCategories * viewport.width - viewport.width
-      )
+    setCategoryOffset(
+      scroll.offset * viewport.width * (state.numCategories - 1)
     );
   });
-
-  // useEffect(() => {
-  //   function handleScroll(e) {
-  //     const multiplier = viewport.width / innerHeight;
-  //     setCategoryOffset((categoryOffset) =>
-  //       Math.min(
-  //         Math.max(categoryOffset + e.deltaY * multiplier, 0),
-  //         state.numCategories * viewport.width - viewport.width
-  //       )
-  //     );
-  //   }
-
-  //   document.addEventListener("wheel", handleScroll);
-
-  //   return () => {
-  //     document.removeEventListener("wheel", handleScroll);
-  //   };
-  // }, [viewport.width, innerHeight]);
 
   const positions = Array.from({ length: snap.numCategories }, (v, i) => {
     return [viewport.width * i - categoryOffset, 0, 0];
