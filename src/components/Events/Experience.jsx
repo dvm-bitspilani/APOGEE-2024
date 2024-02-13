@@ -1,5 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { useControls } from "leva";
+// import { useControls } from "leva";
 
 import Image from "./Image";
 import MascotModel from "../Models/MascotModel";
@@ -10,13 +10,11 @@ import { useEffect, useState } from "react";
 import state from "../state";
 import { useSnapshot } from "valtio";
 
-// gsap
-import gsap from "gsap";
+// Import Scroll to implement parallax
 import { useScroll } from "@react-three/drei";
 
 export default function Experience() {
   const { viewport } = useThree();
-  const { innerWidth, innerHeight } = window;
 
   const [categoryOffset, setCategoryOffset] = useState(0);
   const snap = useSnapshot(state);
