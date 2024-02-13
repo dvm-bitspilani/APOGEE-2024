@@ -1,8 +1,10 @@
 import { useFrame, useThree } from "@react-three/fiber";
 // import { useControls } from "leva";
 
+// Components
 import Image from "./Image";
 import MascotModel from "../Models/MascotModel";
+import EventContainer from "./EventContainer";
 
 import { useEffect, useState } from "react";
 
@@ -32,6 +34,14 @@ export default function Experience() {
     return [viewport.width * i - categoryOffset, 0, 0];
   });
 
+  const eventPositions = Array.from({ length: snap.numCategories }, (v, i) => {
+    return [viewport.width * i - categoryOffset, viewport.height / 5.4, 0];
+  });
+
+  const eventContainers = eventPositions.map((position, index) => (
+    <EventContainer key={index} position={position} />
+  ));
+
   const images = positions.map((position, index) => (
     <Image key={index} position={position} />
   ));
@@ -40,6 +50,7 @@ export default function Experience() {
     <>
       {images}
       <MascotModel />
+      {eventContainers}
     </>
   );
 }
