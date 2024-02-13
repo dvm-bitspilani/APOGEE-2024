@@ -86,40 +86,11 @@ h1.title {
   visibility: hidden;
 }
 
-.videocontainer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video {
-  visibility: hidden;
-
-  background-image: url("@assets/about/videocorners.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 50%;
-  aspect-ratio: 1.5;
-  // border: solid red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.videoembed {
-  // opacity: 0;
-  width: 95%;
-  aspect-ratio: 1.77777;
-  border: solid #9af0f4 0.25px;
-}
-
 .text {
   visibility: hidden;
 
   // border: solid white;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   padding-bottom: 3.5rem;
   font-family: "Space Grotesk";
   font-size: 1.1vw;
@@ -128,4 +99,30 @@ h1.title {
   padding-inline: 12%;
 }
 
-@media only screen and (max-width: 2000px) {}
+@media only screen and (max-width: 1300px) {
+  .text {
+    padding-inline: 8%;
+    padding-bottom: 2.5rem;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .text {
+    padding-inline: 4%;
+    padding-bottom: 1.5rem;
+    font-size: .75rem;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .wrapper{
+    left: 0;
+  }
+  .container{
+    background-position: bottom;
+  }
+  .text {
+    padding-inline: 8%;
+    padding-bottom: 2.5rem;
+    padding-top: 0;
+  }
+  
+}

@@ -5,6 +5,11 @@ import Video from "./Video";
 import * as carousel from "../../styles/Carousel.module.scss";
 import RightArrowImage from "../../../public/images/right-button.svg";
 import LeftArrowImage from "../../../public/images/left-button.svg";
+import TopRight from "../../../public/images/top-right.svg";
+import BottomRight from "../../../public/images/bottom-right.svg";
+import TopLeft from "../../../public/images/top-left.svg";
+import BottomLeft from "../../../public/images/bottom-left.svg";
+
 // import thumbnail from "../images/thumbnail.png";
 
 import { IMAGES } from "./Images";
@@ -50,13 +55,19 @@ const Carousel = () => {
   return (
     <div className={carousel["carousel"]}>
       <div className={carousel["sliderContainer"]}>
+        <img src={TopRight} alt="]" className={carousel["topRight"]} />
+        <img src={TopLeft} alt="[" className={carousel["topLeft"]} />
+        <img src={BottomRight} alt="]" className={carousel["bottomRight"]} />
+        <img src={BottomLeft} alt="[" className={carousel["bottomLeft"]} />
         <div className={carousel["slider"]}>
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={imageCount}
-              style={{
-                // background: `url(${thumbnail})`,
-              }}
+              style={
+                {
+                  // background: `url(${thumbnail})`,
+                }
+              }
               custom={direction}
               variants={sliderVariants}
               initial="incoming"

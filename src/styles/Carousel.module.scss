@@ -1,6 +1,5 @@
 .carousel {
-    width: 100%; 
-    aspect-ratio: 1.77777;
+    width: 100%;
 }
 
 .sliderContainer {
@@ -16,6 +15,32 @@
     height: 20vh;
     width: clamp(230px, 23vw, 450px);
     overflow: hidden;
+    box-shadow: 1.4237079620361328px 1.4237079620361328px 6.264313697814941px 0px #9AF0F4;
+}
+
+.topRight {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    z-index: 100;
+}
+
+.topLeft {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+}
+
+.bottomRight {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+}
+
+.bottomLeft {
+    position: absolute;
+    bottom: -1rem;
+    left: -1rem;
 }
 
 .sliderContainer .slider .image {
@@ -44,7 +69,7 @@
 .buttons {
     position: absolute;
     top: 40%;
-    width: max(120%, 300px);
+    width: 135%;
     display: flex;
     justify-content: space-between;
 }
@@ -111,7 +136,7 @@
 
 @media (min-height: 1000px) {
     .slider {
-        height: 300px;
+        height: 15vh;
         /* width: 450px; */
     }
 
@@ -140,13 +165,15 @@
     }
 
     .slider {
-        width: 250px;
-        height: 25vh;
+        width: 210px;
+        height: 15vh;
+    }
+    .buttons{
+        top: 30%;
+        scale: 0.85;
+        width: 170%;
     }
 
-    .buttons {
-        width: 40%;
-    }
 }
 
 @media(max-height: 600px) {
