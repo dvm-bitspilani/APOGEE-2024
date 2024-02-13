@@ -1,6 +1,6 @@
 .eventsContainer{
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     display: flex;
 }
 .eventsContainer img{
