@@ -2,8 +2,8 @@ import { Suspense, useEffect } from "react";
 // import { useWindowSize } from "rooks";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
-import { ImageContainer } from "../components/Events/ImageContainer";
-import { OrbitControls, Stats } from "@react-three/drei";
+import Experience from "../components/Events/Experience";
+import { OrbitControls, ScrollControls, Stats } from "@react-three/drei";
 
 import { motion } from "framer-motion";
 import MascotModel from "@components/Models/MascotModel";
@@ -31,8 +31,9 @@ function EventsPage() {
       <Canvas>
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
-          <ImageContainer />
-          <MascotModel />
+          <ScrollControls pages={state.numCategories} damping={0.3}>
+            <Experience />
+          </ScrollControls>
         </Suspense>
         <Stats />
         {/* <AxesHelper /> */}
