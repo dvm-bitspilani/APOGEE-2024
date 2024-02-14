@@ -23,7 +23,7 @@ export default function AnimationWrapper() {
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<App />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/events" element={<Events />} />
+        {/* <Route path="/events" element={<Events />} /> */}
         <Route path="/*" element={<ComingSoon />} />
       </Routes>
     </AnimatePresence>
