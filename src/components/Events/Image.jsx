@@ -11,18 +11,12 @@ export default function Image(props) {
   // console.log(viewport.width, viewport.height);
 
   return (
-    <group position={props.position}>
-      <mesh>
-        <planeGeometry
-          attach="geometry"
-          args={[viewport.width, viewport.height]}
-        />
-        <meshBasicMaterial attach="material" map={texture} toneMapped={false} />
-      </mesh>
-
-      <Text color="white" fontSize={viewport.width / 10}>
-        Hello
-      </Text>
-    </group>
+    <mesh position={props.position}>
+      <planeGeometry
+        attach="geometry"
+        args={[viewport.width, viewport.height]}
+      />
+      <meshBasicMaterial attach="material" map={texture} toneMapped={false} />
+    </mesh>
   );
 }

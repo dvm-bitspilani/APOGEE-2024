@@ -29,12 +29,12 @@ export default function AboutUs() {
           <div className={styles.text}>
             BITS Pilani, India is back with the 42nd edition of APOGEE (A
             Professions Oriented Gathering over Educational Experiences) the
-            institute's annual technical extravaganza, from 4th April to 7th
-            April 2024, this time as A Celestial Epiphany! APOGEE, a unique
+            institute&apos;s annual technical extravaganza, from 4th April to
+            7th April 2024, this time as A Celestial Epiphany! APOGEE, a unique
             blend of technology, innovation, and inspiration, gathers the
             brightest minds worldwide. This premier technical conference
             features groundbreaking papers, innovative projects, and exhibitions
-            showcasing mankind's best creations. With guest lectures sharing
+            showcasing mankind&apos;s best creations. With guest lectures sharing
             unheard stories, APOGEE challenges the intellect of the participants
             and piques the minds of the audience.
           </div>

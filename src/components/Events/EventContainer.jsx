@@ -1,4 +1,5 @@
 import { useThree } from "@react-three/fiber";
+import { Text } from "@react-three/drei";
 
 import { useControls } from "leva";
 
@@ -22,16 +23,30 @@ export default function EventContainer(props) {
   });
 
   return (
-    <mesh position={position}>
-      <planeGeometry
-        args={[xPercent * viewport.width, yPercent * viewport.height]}
-      />
-      <meshBasicMaterial
-        attach="material"
+    <group position={position}>
+      <mesh>
+        <planeGeometry
+          attach="geometry"
+          args={[xPercent * viewport.width, yPercent * viewport.height]}
+        />
+        <meshBasicMaterial
+          attach="material"
+          color="white"
+          opacity={0.2}
+          transparent
+        />
+      </mesh>
+      <Text
         color="white"
-        opacity={0.02}
-        transparent
-      />
-    </mesh>
+        fontSize={viewport.width / 10}
+        position={[
+          -viewport.width * 0.18,
+          viewport.height * 0.2,
+          0,
+        ]}
+      >
+        Hello
+      </Text>
+    </group>
   );
 }

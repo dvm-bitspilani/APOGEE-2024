@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "@popmotion/popcorn";
 import Video from "./Video";
 import * as carousel from "../../styles/Carousel.module.scss";
-import RightArrowImage from "../../../public/images/right-button.svg";
-import LeftArrowImage from "../../../public/images/left-button.svg";
-import TopRight from "../../../public/images/top-right.svg";
-import BottomRight from "../../../public/images/bottom-right.svg";
-import TopLeft from "../../../public/images/top-left.svg";
-import BottomLeft from "../../../public/images/bottom-left.svg";
+import RightArrowImage from "/images/right-button.svg";
+import LeftArrowImage from "/images/left-button.svg";
+import TopRight from "/images/top-right.svg";
+import BottomRight from "/images/bottom-right.svg";
+import TopLeft from "/images/top-left.svg";
+import BottomLeft from "/images/bottom-left.svg";
 
 // import thumbnail from "../images/thumbnail.png";
 
