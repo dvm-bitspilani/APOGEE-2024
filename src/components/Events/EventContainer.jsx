@@ -44,8 +44,6 @@ export default function EventContainer(props) {
         />
       </mesh>
       <Text
-        color="#9AF0F4"
-        // fontSize={viewport.width / 10}
         anchorX={"left"}
         position={[
           viewport.width * textPosition[0] * xPercent,
@@ -56,6 +54,13 @@ export default function EventContainer(props) {
         fontSize={0.5}
       >
         QUANTACULUS
+        <meshStandardMaterial
+          attach="material"
+          color={"#9AF0F4"}
+          emissiveIntensity={2}
+          emissive={"#9AF0F4"}
+          toneMapped={false}
+        />
       </Text>
     </group>
   );

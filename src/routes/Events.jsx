@@ -6,7 +6,9 @@ import Experience from "../components/Events/Experience";
 import { OrbitControls, ScrollControls, Stats } from "@react-three/drei";
 
 import { motion } from "framer-motion";
-import MascotModel from "@components/Models/MascotModel";
+
+// Effect Composer
+import EffectComposer from "@components/EffectComposer";
 
 // State Management
 import state from "@components/state";
@@ -31,6 +33,7 @@ function EventsPage() {
       <Canvas>
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
+          <EffectComposer />
           <ScrollControls pages={state.numCategories} damping={0.3}>
             <Experience />
           </ScrollControls>
