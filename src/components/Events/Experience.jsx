@@ -6,7 +6,7 @@ import Image from "./Image";
 import MascotModel from "../Models/MascotModel";
 import EventContainer from "./EventContainer";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 // State Management
 import state from "../state";
@@ -14,6 +14,7 @@ import { useSnapshot } from "valtio";
 
 // Import Scroll to implement parallax
 import { useScroll } from "@react-three/drei";
+import gsapOnRender from "./gsapOnRender";
 
 export default function Experience() {
   const { viewport } = useThree();
@@ -21,6 +22,14 @@ export default function Experience() {
   const [categoryOffset, setCategoryOffset] = useState(0);
   const snap = useSnapshot(state);
 
+  const mascotPos = useMemo(() => {
+    return [0, -2, 0.6];
+  }, []);
+
+  useEffect(() => {
+    gsapOnRender(mascotPos);
+  }, [mascotPos]);
+  
   const scroll = useScroll();
 
   useFrame(() => {
@@ -29,6 +38,7 @@ export default function Experience() {
       scroll.offset * viewport.width * (state.numCategories - 1)
     );
   });
+
 
   const positions = Array.from({ length: snap.numCategories }, (v, i) => {
     return [viewport.width * i - categoryOffset, 0, 0];
@@ -49,7 +59,7 @@ export default function Experience() {
   return (
     <>
       {images}
-      <MascotModel />
+      <MascotModel mascotPos={mascotPos} />
       {eventContainers}
     </>
   );
