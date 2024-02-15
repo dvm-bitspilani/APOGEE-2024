@@ -57,7 +57,7 @@ export default function EventContainer(props) {
         <meshStandardMaterial
           attach="material"
           color={"#9AF0F4"}
-          emissiveIntensity={2}
+          emissiveIntensity={1.5}
           emissive={"#9AF0F4"}
           toneMapped={false}
         />
