@@ -14,6 +14,8 @@ import { useSnapshot } from "valtio";
 
 // Import Scroll to implement parallax
 import { useScroll } from "@react-three/drei";
+
+// GSAP
 import gsapOnRender from "./gsapOnRender";
 
 export default function Experience() {
@@ -29,7 +31,7 @@ export default function Experience() {
   useEffect(() => {
     gsapOnRender(mascotPos);
   }, [mascotPos]);
-  
+
   const scroll = useScroll();
 
   useFrame(() => {
@@ -38,7 +40,6 @@ export default function Experience() {
       scroll.offset * viewport.width * (state.numCategories - 1)
     );
   });
-
 
   const positions = Array.from({ length: snap.numCategories }, (v, i) => {
     return [viewport.width * i - categoryOffset, 0, 0];
@@ -59,7 +60,7 @@ export default function Experience() {
   return (
     <>
       {images}
-      <MascotModel mascotPos={mascotPos} />
+      <MascotModel />
       {eventContainers}
     </>
   );

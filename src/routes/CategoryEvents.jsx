@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 // import { useWindowSize } from "rooks";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
-import Experience from "../components/Events/Experience";
+import Experience from "../components/ContactEvents/Experience";
 import { OrbitControls, ScrollControls, Stats } from "@react-three/drei";
 
 import { motion } from "framer-motion";
@@ -12,15 +12,14 @@ import EffectComposer from "@components/EffectComposer";
 
 // State Management
 import state from "@components/state";
+import { useParams } from "react-router-dom";
 
 function EventsPage() {
+  const params = useParams();
+
   useEffect(() => {
-    document.title = "APOGEE '2024 | Events";
-    // document.body.style.height = `${100 * state.numCategories}vh`;
-    return () => {
-      document.title = "APOGEE '2024 | Celestial Epiphany";
-    };
-  }, []);
+    document.title = `Events | ${params.category}`;
+  }, [params.category]);
 
   return (
     <motion.div
@@ -38,8 +37,6 @@ function EventsPage() {
             <Experience />
           </ScrollControls>
         </Suspense>
-        {/* <Stats /> */}
-        {/* <AxesHelper /> */}
       </Canvas>
     </motion.div>
   );

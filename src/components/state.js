@@ -11,6 +11,8 @@ const state = proxy({
 
   numCategories: 10,
   categoryOffset: 0,
+
+  mascotRef: null,
 });
 
 export default state;

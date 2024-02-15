@@ -2,7 +2,6 @@ import { useThree } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 
 import { useControls } from "leva";
-import OpenButton from "./OpenButton";
 
 export default function EventContainer(props) {
   const { position } = props;
@@ -54,7 +53,7 @@ export default function EventContainer(props) {
         font="/fonts/Alacrity Sans Bold.ttf"
         fontSize={0.5}
       >
-        Kernel
+        QUANTACULUS
         <meshStandardMaterial
           attach="material"
           color={"#9AF0F4"}
@@ -63,9 +62,6 @@ export default function EventContainer(props) {
           toneMapped={false}
         />
       </Text>
-      <OpenButton
-        position={[0, -viewport.height * textPosition[1] * yPercent, 0]}
-      />
     </group>
   );
 }

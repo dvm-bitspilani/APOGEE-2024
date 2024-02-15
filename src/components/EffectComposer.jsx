@@ -6,10 +6,11 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 
-import {useControls} from "leva";
+import { ToneMappingMode } from "postprocessing";
+
+import { useControls } from "leva";
 
 export default function EffectComposerLayer() {
-
   // const { bloomStrength, bloomThreshold, luminanceSmoothing } = useControls(
   //   "Post Processing",
   //   {
@@ -35,13 +36,15 @@ export default function EffectComposerLayer() {
   // );
 
   return (
-    <EffectComposer >
+    <EffectComposer>
       <Bloom
         intensity={2.4}
         luminanceThreshold={0.8}
         luminanceSmoothing={0.6}
-        mipmapBlur={true}
+        mipmapBlur
+        kernelSize={3}
       />
+      <ToneMapping mode={ToneMappingMode.OPTIMIZED_CINEON} />
     </EffectComposer>
   );
 }

@@ -24,10 +24,14 @@ h1.title {
   height: fit-content;
 
   position: absolute;
-  top: 15%;
-  left: calc(7% + 300px);
+  top: 25%;
+  left: 29%;
   right: 2%;
   z-index: 1;
+
+  @media screen and (max-height: 700px) {
+    top: 20%;
+  }
 }
 
 .container {
@@ -40,7 +44,7 @@ h1.title {
   align-items: start;
   width: 100%;
   // height: 60%;
-  scale: .8;
+  scale: 0.8;
 }
 
 .container :nth-child(even) .imgContainer .frameBar img {
@@ -245,16 +249,16 @@ h1.title {
       --gap: 0.3rem;
     }
 
-    .imgContainer{
-      img{
+    .imgContainer {
+      img {
         width: 14vw;
       }
     }
   }
 
   @media only screen and (max-height: 750px) {
-    .wrapper{
-      scale: .8;
+    .wrapper {
+      scale: 0.8;
       top: 20%;
       left: calc(5% + 300px);
     }
