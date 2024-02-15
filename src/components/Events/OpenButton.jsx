@@ -35,6 +35,7 @@ export default function OpenButton(props) {
 
   return (
     <group
+      position={position}
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
       onClick={handleNavigation}

@@ -24,9 +24,9 @@ export default function MascotModel() {
     prevOffset.current = scroll.offset;
 
     // Scroll controls
-    if (scroll.delta > 0.0002) {
+    if (scroll.delta > 0.0002 && isScrolling === false) {
       setIsScrolling(true);
-    } else {
+    } else if (scroll.delta < 0.001 && isScrolling === true) {
       setIsScrolling(false);
     }
   });

@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 // import { useWindowSize } from "rooks";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
-import Experience from "../components/Events/Experience";
+import Experience from "../components/ContactEvents/Experience";
 import { OrbitControls, ScrollControls, Stats } from "@react-three/drei";
 
 import { motion } from "framer-motion";
