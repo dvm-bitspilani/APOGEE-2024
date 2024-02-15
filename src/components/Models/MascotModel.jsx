@@ -12,8 +12,18 @@ export default function MascotModel() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [direction, setDirection] = useState(1);
 
+  const prevOffset = useRef(scroll.offset);
+
   useFrame(() => {
-    // Direction of scroll is determined by the value of scroll.delta);
+    // Direction Controls
+    if (scroll.offset > prevOffset.current) {
+      setDirection(1);
+    } else if (scroll.offset < prevOffset.current) {
+      setDirection(-1);
+    }
+    prevOffset.current = scroll.offset;
+
+    // Scroll controls
     if (scroll.delta > 0.0002) {
       setIsScrolling(true);
     } else {
@@ -21,13 +31,13 @@ export default function MascotModel() {
     }
   });
 
-  const handleDirection = useCallback((e) => {
-    if (e.deltaY > 0) {
-      setDirection(1);
-    } else if (e.deltaY < 0) {
-      setDirection(-1);
-    }
-  }, []);
+  // const handleDirection = useCallback((e) => {
+  //   if (e.deltaY > 0) {
+  //     setDirection(1);
+  //   } else if (e.deltaY < 0) {
+  //     setDirection(-1);
+  //   }
+  // }, []);
 
   useEffect(() => {
     const refCurrent = ref.current;
@@ -46,7 +56,7 @@ export default function MascotModel() {
       });
     }
 
-    document.addEventListener("wheel", handleDirection);
+    // document.addEventListener("wheel", handleDirection);
 
     return () => {
       gsap.to(refCurrent.rotation, {
@@ -55,9 +65,9 @@ export default function MascotModel() {
         ease: "power3.inout",
       });
 
-      document.removeEventListener("wheel", handleDirection);
+      // document.removeEventListener("wheel", handleDirection);
     };
-  }, [isScrolling, handleDirection, direction]);
+  }, [isScrolling, direction]);
 
   return (
     <Float

@@ -2,6 +2,7 @@ import { useThree } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 
 import { useControls } from "leva";
+import OpenButton from "./OpenButton";
 
 export default function EventContainer(props) {
   const { position } = props;
@@ -62,6 +63,7 @@ export default function EventContainer(props) {
           toneMapped={false}
         />
       </Text>
+      <OpenButton position={[viewport.width * 0.3, viewport.height * 0.3, 0]} />
     </group>
   );
 }
