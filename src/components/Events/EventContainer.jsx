@@ -22,6 +22,13 @@ export default function EventContainer(props) {
     },
   });
 
+  const { textPosition } = useControls("EventContainer", {
+    textPosition: {
+      value: [-0.45, 0.3, 0],
+      step: 0.01,
+    },
+  });
+
   return (
     <group position={position}>
       <mesh>
@@ -31,21 +38,24 @@ export default function EventContainer(props) {
         />
         <meshBasicMaterial
           attach="material"
-          color="white"
-          opacity={0.2}
+          color="#314557"
+          opacity={0.4}
           transparent
         />
       </mesh>
       <Text
-        color="white"
-        fontSize={viewport.width / 10}
+        color="#9AF0F4"
+        // fontSize={viewport.width / 10}
+        anchorX={"left"}
         position={[
-          -viewport.width * 0.18,
-          viewport.height * 0.2,
+          viewport.width * textPosition[0] * xPercent,
+          viewport.height * textPosition[1] * yPercent,
           0,
         ]}
+        font="/fonts/Alacrity Sans Bold.ttf"
+        fontSize={0.5}
       >
-        Hello
+        QUANTACULUS
       </Text>
     </group>
   );
