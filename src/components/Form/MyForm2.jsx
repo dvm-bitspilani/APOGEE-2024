@@ -10,6 +10,7 @@ import customStyles1 from "../../components/Form/customStyles1";
 import customStyles2 from "../../components/Form/customStyles2";
 import statesData from "../Form/states.json";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Register_bg_svg } from '../Landing/RegEventsSection';
 const MyForm2 = () => {
   const [stateOptions, setStateOptions] = useState([]);
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
@@ -447,13 +448,16 @@ useEffect(()=>{
     switch (true) {
       case succesfulRegistration===0:
         return (
-            <button
-              type="submit"
-              className={styles.registerBtn}
-              disabled={isSubmitting}
-            >
-              <span>REGISTER</span>
-            </button>
+          <div className={styles.regBtnWrapper}>
+          <button
+            type='submit'
+            className={styles.registerBtn}
+            disabled={isSubmitting}
+          >
+            <Register_bg_svg/>
+            <span>REGISTER</span>
+          </button>
+        </div>
         );
         case succesfulRegistration===1:
         return (
