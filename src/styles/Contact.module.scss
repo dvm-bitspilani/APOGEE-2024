@@ -46,7 +46,7 @@ h1.title {
   // height: 60%;
   scale: 0.8;
 
-  @media screen and (max-height: 700px) {
+  @media screen and (max-height: 700px) and (min-width: 800px) {
     scale: 0.7;
   }
 }
