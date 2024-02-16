@@ -747,6 +747,7 @@ input:autofill {
   height: 18vh;
   display: none;
 }
+
 // .registerBtn:hover{
 //   cursor: pointer;
 //   border-color: #b16060;
@@ -810,12 +811,15 @@ input:autofill {
   top: 30%;
   color: #b16060;
 }
-
+.recaptcha{
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 @media (min-width: 1000px), (max-height: 650px) {
-  .hud {
-    // height: 20vh !important;
-  }
-  .heading {
+
+  .heading{
     top: 3vh;
   }
 }
@@ -851,6 +855,7 @@ input:-webkit-autofill {
   left: 50%;
   transform: translateX(-50%);
 }
+
 @media only screen and (max-width: 1400px) {
   .colleges label {
     // bottom: 10%;

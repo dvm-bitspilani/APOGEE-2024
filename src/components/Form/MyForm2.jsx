@@ -9,7 +9,7 @@ import customStyles from "../../components/Form/customStyles";
 import customStyles1 from "../../components/Form/customStyles1";
 import customStyles2 from "../../components/Form/customStyles2";
 import statesData from "../Form/states.json";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 const MyForm2 = () => {
   const [stateOptions, setStateOptions] = useState([]);
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
@@ -17,6 +17,9 @@ const MyForm2 = () => {
   const [cityOptions, setCityOptions] = useState([]);
   const [displayTest, setDisplayText] = useState("");
   const [isCityDisabled, setCityDisabled] = useState(true);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
+  const [valuesState, setValuesState] = useState();
   const initialValues = {
     name: "",
     email_id: "",
@@ -25,9 +28,10 @@ const MyForm2 = () => {
     interests: [],
     events: [],
     college_id: "",
-    year: [],
+    year: "",
     city: "",
-    state: "",
+    state:"",
+    // token:""
   };
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0,
@@ -78,7 +82,6 @@ const MyForm2 = () => {
   const [interestOptions, setInterestOptions] = useState([""]);
   const [eventsOptions, setEventsOptions] = useState([""]);
   const [collegeOptions, setCollegeOptions] = useState([""]);
-  // const [stateOptions, setStateOptions] = useState([]);
 
   useEffect(() => {
     axios
@@ -107,26 +110,40 @@ const MyForm2 = () => {
   const allCities = citiesData.map((state) => state.cities).flat();
   const handleSubmit = async (values, { resetForm }) => {
     console.log("Register button clicked");
+    setShowCaptcha(true);
+    const finalValues = {
+      name: values.name,
+      email_id: values.email_id,
+      phone: values.phone,
+      gender: values.gender,
+      interests: [...values.interests],
+      events: [...values.events],
+      college_id: values.college_id,
+      year:values.year,
+      city: values.city,
+      state:values.state,
+      // token:""
+    };
+    setValuesState(finalValues)
+  };
+useEffect(()=>{
+  const handleSubmit2 = async(valuesState) =>{
+    if(captchaToken!=""){
     try {
-      const interestsIds = (values.interests || []).map(
-        (interest) => interest.value,
-      );
-      const eventsIds = (values.events || []).map((event) => event.value);
-      console.log(interestsIds);
+      const interestsIds = (valuesState.interests || []).map(interest => interest.value);
+      const eventsIds = (valuesState.events || []).map(event => event.value);
       const submitValues = {
-        ...values,
+        ...valuesState,
         interests: interestsIds,
         events: eventsIds,
+        token:captchaToken
       };
       console.log("Form Values:", submitValues);
 
-      const response = await axios.post(
-        "https://bits-apogee.org/2024/main/registrations/Register/",
-        {
-          ...submitValues,
-          // token: values.token, // Include the reCAPTCHA token in the payload
-        },
-      );
+    const response = await axios.post(
+      'https://bits-apogee.org/2024/main/registrations/Register/',{
+        ...submitValues,
+      });
       if (response) {
         console.log(response);
         console.log("Data sent successfully!");
@@ -135,13 +152,14 @@ const MyForm2 = () => {
         console.error("Error submitting the form. Server response:", response);
       }
     } catch (error) {
-      console.error("Error submitting the form:", error.response.data.message);
+      console.error('Error submitting the form:', error);
       setSuccessfullRegistration(2);
-      setDisplayText(error.response.data.message);
+      setDisplayText(error)
     } finally {
-    }
-  };
-
+    }}
+  }
+  handleSubmit2(valuesState);
+},[captchaToken]);
   useEffect(() => {
     const allStates = statesData.map((state) => ({
       value: state.name,
@@ -344,136 +362,118 @@ const MyForm2 = () => {
                 />
               </div>
 
-              <div className={styles.mobileYear}>
-                <div className={styles.checkboxContainer}>
-                  {yearOfStudyOptions.map((option) => (
-                    <div key={option.value} className={styles.checkboxItem}>
-                      <div
-                        className={`${styles.customCheckbox} ${
-                          values.year === option.value ? styles.checked : ""
-                        }`}
-                        onClick={() => {
-                          setFieldValue("year", option.value);
-                        }}
-                      >
-                        {values.year === option.value && (
-                          <div className={styles.checkmark}>&#10003;</div>
-                        )}
-                      </div>
-                      <label
-                        htmlFor={`year-${option.value}`}
-                        className={styles.yearLabel}
-                      >
-                        {option.label}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-                <img src="/images/phone.png" alt="" />
-                <label htmlFor="year">Year of Study</label>
-              </div>
-              <div className={styles.mobileState}>
-                <Select
-                  id="state"
-                  name="state"
-                  options={stateOptions}
-                  value={stateOptions.find(
-                    (option) => option.value === values.state,
-                  )}
-                  onChange={(selectedOption) => {
-                    setFieldValue(
-                      "state",
-                      selectedOption ? selectedOption.value : "",
-                    );
-                    setFieldValue("city", ""); // Clear the city when the state changes
-                    setSelectedState(
-                      selectedOption ? selectedOption.value : "",
-                    );
-                  }}
-                  className={styles.stateWrapper}
-                  styles={customStyles2}
-                  placeholder="Your State"
-                />
-                <img src="/images/phone.png" alt="" />
-                <label htmlFor="state">State</label>
-                <ErrorMessage
-                  name="state"
-                  component="div"
-                  className={styles.errorMessage}
-                />
-              </div>
-              <div className={styles.mobileCity}>
-                <Select
-                  id="city"
-                  name="city"
-                  options={cityOptions}
-                  value={cityOptions.find(
-                    (option) => option.value === values.city,
-                  )}
-                  onChange={(selectedOption) => {
-                    setFieldValue(
-                      "city",
-                      selectedOption ? selectedOption.value : "",
-                    );
-                  }}
-                  isDisabled={!values.state}
-                  className={styles.mobileCityWrapper}
-                  styles={customStyles2}
-                  placeholder="Your City"
-                />
-                <img src="/images/phone.png" alt="" />
-                <label htmlFor="city">City</label>
-                <ErrorMessage
-                  name="city"
-                  component="div"
-                  className={styles.errorMessage}
-                />
-              </div>
-            </div>
-            {/* <div className={styles.recaptcha}>
-              <ReCAPTCHA
-                sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
-                onChange={(token) => {
-                  setFieldValue("token", token);
-                }}
-              />
-            </div> */}
-            {(() => {
-              switch (true) {
-                case succesfulRegistration === 0:
-                  return (
-                    <button
-                      type="submit"
-                      className={styles.registerBtn}
-                      disabled={isSubmitting}
-                    >
-                      <span>REGISTER</span>
-                    </button>
-                  );
-                case succesfulRegistration === 1:
-                  return (
-                    <span
-                      className={styles.successText}
-                      style={{
-                        fontSize:
-                          windowWidth < 400
-                            ? "12px"
-                            : windowWidth < 500
-                              ? "13px"
-                              : "16px",
+            <div className={styles.mobileYear}>
+              <div className={styles.checkboxContainer}>
+                {yearOfStudyOptions.map((option) => (
+                  <div key={option.value} className={styles.checkboxItem}>
+                    <div
+                      className={`${styles.customCheckbox} ${
+                        values.year === option.value
+                          ? styles.checked
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setFieldValue("year", option.value);
                       }}
                     >
-                      A verification mail has been sent to your email id.
-                    </span>
-                  );
-                case succesfulRegistration === 2:
-                  return (
-                    <span className={styles.successText}>{displayTest}</span>
-                  );
-                default:
-                  return null;
-              }
-            })()}
+                      {values.year === option.value && (
+                        <div className={styles.checkmark}>&#10003;</div>
+                      )}
+                    </div>
+                    <label
+                      htmlFor={`year-${option.value}`}
+                      className={styles.yearLabel}
+                    >
+                      {option.label}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <img src="/images/phone.png" alt="" />
+              <label htmlFor="year">Year of Study</label>
+            </div>
+            <div className={styles.mobileState}>
+              <Select
+                id="state"
+                name="state"
+              options={stateOptions}
+              value={stateOptions.find(option => option.value === values.state)}
+              onChange={(selectedOption) => {
+                setFieldValue('state', selectedOption ? selectedOption.value : '');
+                setFieldValue('city', '');
+                setSelectedState(selectedOption ? selectedOption.value : '');
+              }}
+                className={styles.stateWrapper}
+                styles={customStyles2}
+                placeholder="Your State"
+              />
+              <img src="/images/phone.png" alt="" />
+              <label htmlFor="state">State</label>
+              <ErrorMessage name="state" component="div" className={styles.errorMessage}/>
+            </div>
+            <div className={styles.mobileCity}>
+              <Select
+                id="city"
+                name="city"
+                options={cityOptions}
+              value={cityOptions.find(option => option.value === values.city)}
+              onChange={(selectedOption) => {
+                setFieldValue('city', selectedOption ? selectedOption.value : '');
+              }}
+              isDisabled={!values.state}
+                className={styles.mobileCityWrapper}
+                styles={customStyles2}
+                placeholder="Your City"
+              />
+              <img src="/images/phone.png" alt="" />
+              <label htmlFor="city">City</label>
+              <ErrorMessage name="city" component="div" className={styles.errorMessage}/>
+            </div>
+          </div>
+       {showCaptcha ? (
+         
+         <div className={styles.recaptcha}>
+                <ReCAPTCHA
+                  sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
+                  onChange={(token) => {
+                    // setFieldValue("token", token);
+                    setCaptchaToken(token);
+                  }}
+                />
+              </div>
+         ) : null}   
+          {
+  (() => {
+    switch (true) {
+      case succesfulRegistration===0:
+        return (
+            <button
+              type="submit"
+              className={styles.registerBtn}
+              disabled={isSubmitting}
+            >
+              <span>REGISTER</span>
+            </button>
+        );
+        case succesfulRegistration===1:
+        return (
+          <span className={styles.successText}  style={{
+            fontSize: windowWidth<400 ? "12px" : (windowWidth<500?"13px":"16px")
+          }}>
+            A verification mail has been sent to your email id.
+          </span>
+        );
+        case succesfulRegistration===2:
+        return (
+          <span className={styles.successText}>
+            {displayTest}
+            
+          </span>
+        );
+        default: return null;
+    }
+  })()
+}
           </Form>
         )}
       </Formik>

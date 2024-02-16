@@ -8,8 +8,9 @@ import citiesData from "../Form/states.json";
 // import customStyles from "../../components/Form/customStyles"
 import customStyles1 from "../../components/Form/customStyles1";
 import customStyles from "../../components/Form/customStyles";
-import statesData from "../Form/states.json";
-import { Register_bg_svg } from "../Landing/RegEventsSection";
+import statesData from '../Form/states.json';
+import { Register_bg_svg } from '../Landing/RegEventsSection';
+import ReCAPTCHA from "react-google-recaptcha";
 const MyForm = () => {
   const [interestOptions, setInterestOptions] = useState([""]);
   const [eventsOptions, setEventsOptions] = useState([""]);
@@ -18,7 +19,10 @@ const MyForm = () => {
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
   const [selectedState, setSelectedState] = useState("");
   const [cityOptions, setCityOptions] = useState([]);
-  const [displayTest, setDisplayText] = useState("");
+  const [displayTest, setDisplayText]=useState('');
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
+  const [valuesState, setValuesState] = useState();
   useEffect(() => {
     axios
       .get(
@@ -27,23 +31,16 @@ const MyForm = () => {
       .then((response) => {
         setInterestOptions(response.data);
       })
-
-      .catch((error) => console.error("Error fetching interests:", error));
-
-    axios
-      .get("https://bits-apogee.org/2024/main/registrations/get_event")
-      .then((response) => setEventsOptions(response.data))
-      .catch((error) => console.error("Error fetching events:", error));
-    axios
-      .get("https://bits-apogee.org/2024/main/registrations/get_college")
-      .then((response) => setCollegeOptions(response.data))
-      .catch((error) => console.error("Error fetching colleges:", error));
-    // setSuccessfullRegistration(false)
+        
+      .catch(error => console.error('Error fetching interests:', error));
+      
+    axios.get('https://bits-apogee.org/2024/main/registrations/get_event')
+      .then(response => setEventsOptions(response.data))
+      .catch(error => console.error('Error fetching events:', error));
+    axios.get('https://bits-apogee.org/2024/main/registrations/get_college')
+      .then(response => setCollegeOptions(response.data))
+      .catch(error => console.error('Error fetching colleges:', error));
   }, []);
-
-  // console.log(interestOptions.data)
-  // console.log(eventsOptions)
-  // console.log(collegeOptions)
 
   const initialValues = {
     name: "",
@@ -58,8 +55,7 @@ const MyForm = () => {
     state: "",
   };
 
-  const [formData, setFormData] = useState(initialValues);
-  // console.log(formData)
+  const [formData, setFormData] = useState(initialValues)
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -84,42 +80,57 @@ const MyForm = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     console.log("Register button clicked");
-    try {
-      const interestsIds = values.interests.map((interest) => interest.value);
-      const eventsIds = values.events.map((event) => event.value);
-      console.log(interestsIds);
-      // Create a new object with IDs
-      const submitValues = {
-        ...values,
-        interests: interestsIds,
-        events: eventsIds,
-        token: formData.token,
-      };
-      console.log("Form Values:", submitValues);
-
-      const response = await axios.post(
-        "https://bits-apogee.org/2024/main/registrations/Register/",
-        submitValues,
-      );
-      // console.log('Form Values:', values);
-      // console.log(submitValues)
-      // const response = await axios.post('https://bits-apogee.org/2024/main/registrations/Register/', submitValues);
-      if (response) {
-        console.log(response);
-        console.log("Data sent successfully!");
-        setSuccessfullRegistration(1);
-      } else {
-        console.error("Error submitting the form. Server response:", response);
-        // setSuccessfullRegistration(true);
-      }
-    } catch (error) {
-      console.error("Error submitting the form:", error.response.data.message);
-      setSuccessfullRegistration(2);
-      setDisplayText(error.response.data.message);
-    } finally {
-    }
+    setShowCaptcha(true);
+    const finalValues = {
+      name: values.name,
+      email_id: values.email_id,
+      phone: values.phone,
+      gender: values.gender,
+      interests: [...values.interests],
+      events: [...values.events],
+      college_id: values.college_id,
+      year:values.year,
+      city: values.city,
+      state:values.state,
+      // token:""
+    };
+    setValuesState(finalValues)
   };
-
+  useEffect(()=>{
+    const handleSubmit2 = async(valuesState) =>{
+      if(captchaToken!=""){
+      try {
+        const interestsIds = (valuesState.interests || []).map(interest => interest.value);
+        const eventsIds = (valuesState.events || []).map(event => event.value);
+        const submitValues = {
+          ...valuesState,
+          interests: interestsIds,
+          events: eventsIds,
+          token:captchaToken
+        };
+      console.log('Form Values:',submitValues);
+  
+      const response = await axios.post(
+        'https://bits-apogee.org/2024/main/registrations/Register/',{
+          ...submitValues,
+        });
+        if (response) {
+          console.log(response)
+          console.log('Data sent successfully!');
+          setSuccessfullRegistration(1);
+        } else {
+          console.error('Error submitting the form. Server response:', response);
+        }
+      } catch (error) {
+        console.error('Error submitting the form:', error);
+        setSuccessfullRegistration(2);
+        setDisplayText(error)
+      } finally {
+      }}
+    }
+    handleSubmit2(valuesState);
+  },[captchaToken]);
+  
   const genderOptions = [
     { value: "M", label: "MALE", label1: "M" },
     { value: "F", label: "FEMALE", label1: "F" },
@@ -168,14 +179,8 @@ const MyForm = () => {
       setWindowWidth(typeof window !== "undefined" ? window.innerWidth : 0);
       setWindowHeight(typeof window !== "undefined" ? window.innerHeight : 0);
     };
-
-    // Initial call to set styles based on initial screen size
     handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup the event listener when the component is unmounted
+    window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -1075,33 +1080,49 @@ const MyForm = () => {
                 <label htmlFor="city">City</label>
               </div>
             </div>
-            {(() => {
-              switch (true) {
-                case succesfulRegistration === 0:
-                  return (
-                    <div>
-                      <button
-                        type="submit"
-                        className={styles.registerBtn}
-                        disabled={isSubmitting}
-                      >
-                        <Register_bg_svg />
-                        <span>REGISTER</span>
-                      </button>
-                    </div>
-                  );
-                case succesfulRegistration === 1:
-                  return (
-                    <span className={styles.successText}>
-                      A verification mail has been sent to your email id.
-                    </span>
-                  );
-                case succesfulRegistration === 2:
-                  return (
-                    <span className={styles.successText}>{displayTest}</span>
-                  );
-              }
-            })()}
+            {showCaptcha ? (
+         
+         <div className={styles.recaptcha}>
+                <ReCAPTCHA
+                  sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
+                  onChange={(token) => {
+                    // setFieldValue("token", token);
+                    setCaptchaToken(token);
+                  }}
+                />
+              </div>
+         ) : null}   
+  {
+  (() => {
+    switch (true) {
+      case succesfulRegistration===0:
+        return (
+          <div>
+            <button
+              type='submit'
+              className={styles.registerBtn}
+              disabled={isSubmitting}
+            >
+              <Register_bg_svg/>
+              <span>REGISTER</span>
+            </button>
+          </div>
+        );
+        case succesfulRegistration===1:
+        return (
+          <span className={styles.successText}>
+            A verification mail has been sent to your email id.
+          </span>
+        );
+        case succesfulRegistration===2:
+        return (
+          <span className={styles.successText}>
+            {displayTest}
+          </span>
+        );
+    }
+  })()
+}
             {/* <div className={styles.mobileForm}>
             
           </div> */}

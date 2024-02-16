@@ -105,7 +105,11 @@ input {
   text-transform: uppercase;
   width: max-content;
 }
-.successText::after {
+.recaptcha{
+  display: flex;
+  justify-content: center;
+}
+.successText::after{
   content: "";
   position: absolute;
   height: 100%;
