@@ -34,9 +34,9 @@ export default function AboutUs() {
             blend of technology, innovation, and inspiration, gathers the
             brightest minds worldwide. This premier technical conference
             features groundbreaking papers, innovative projects, and exhibitions
-            showcasing mankind&apos;s best creations. With guest lectures sharing
-            unheard stories, APOGEE challenges the intellect of the participants
-            and piques the minds of the audience.
+            showcasing mankind&apos;s best creations. With guest lectures
+            sharing unheard stories, APOGEE challenges the intellect of the
+            participants and piques the minds of the audience.
           </div>
         </div>
       </div>

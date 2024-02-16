@@ -15,7 +15,7 @@ function make(color, speed) {
         new THREE.Vector3(
           -1 + Math.random() * 2,
           -1 + Math.random() * 2,
-          -1 + Math.random() * 2
+          -1 + Math.random() * 2,
         )
           .normalize()
           .multiplyScalar(speed * 0.75),
@@ -36,7 +36,7 @@ function Explosion({ position, scale }) {
   const dummy = new THREE.Object3D();
   const particles = useMemo(
     () => [make("white", 0.8), make("orange", 0.6)],
-    []
+    [],
   );
 
   useFrame(() => {

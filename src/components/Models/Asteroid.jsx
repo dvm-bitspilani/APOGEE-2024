@@ -40,31 +40,31 @@ export function Asteroid(props) {
     return Math.random() * (max - min) + min;
   };
 
-  const [xMultiplier, yMultiplier, zMultiplier] = useMemo( () =>
-    Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
-    []
+  const [xMultiplier, yMultiplier, zMultiplier] = useMemo(
+    () => Array.from({ length: 3 }, () => randomMultiplier(0.003, 0.015)),
+    [],
   );
 
   const [omegaX, omegaY, omegaZ] = useMemo(
     () => Array.from({ length: 3 }, () => randomMultiplier(0.1, 0.18)),
-    []
+    [],
   );
 
   const [ampX, ampZ] = useMemo(
     () => Array.from({ length: 2 }, () => randomMultiplier(4, 10)),
-    []
+    [],
   );
 
   const [phaseX, phaseY, phaseZ] = useMemo(
     () => Array.from({ length: 3 }, () => randomMultiplier(0, 2 * Math.PI)),
-    []
+    [],
   );
 
   const scale = useMemo(() => randomMultiplier(0.15, 0.5), []);
 
   const [ampY] = useMemo(
     () => Array.from({ length: 1 }, () => randomMultiplier(1, 3)),
-    []
+    [],
   );
 
   useFrame((state, delta) => {
@@ -77,17 +77,17 @@ export function Asteroid(props) {
       asteroidRef.current.position.z += direction.z * zMultiplier;
     } else {
       asteroidRef.current.position.x =
-        ampX * Math.sin((state.clock.elapsedTime) * omegaX + phaseX);
+        ampX * Math.sin(state.clock.elapsedTime * omegaX + phaseX);
       asteroidRef.current.position.y =
-        ampY * Math.cos((state.clock.elapsedTime) * omegaY + phaseY);
+        ampY * Math.cos(state.clock.elapsedTime * omegaY + phaseY);
       asteroidRef.current.position.z =
-        ampZ * Math.cos((state.clock.elapsedTime) * omegaZ + phaseZ);
+        ampZ * Math.cos(state.clock.elapsedTime * omegaZ + phaseZ);
     }
   });
 
   const handleClick = (e) => {
     setClicked(true);
-    
+
     const direction = new THREE.Vector3(...e.point);
     setDirection(direction);
 
@@ -130,12 +130,12 @@ export function Asteroid(props) {
   const handleHover = (e) => {
     const crosshair = document.querySelector(`.${hudStyles.crosshair}`);
     crosshair.classList.add(hudStyles.hover);
-  }
+  };
 
   const handleUnhover = (e) => {
     const crosshair = document.querySelector(`.${hudStyles.crosshair}`);
     crosshair.classList.remove(hudStyles.hover);
-  }
+  };
 
   return (
     <>

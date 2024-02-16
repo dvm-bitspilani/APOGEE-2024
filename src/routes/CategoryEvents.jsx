@@ -3,7 +3,7 @@ import { Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
 import Experience from "../components/ContactEvents/Experience";
-import { OrbitControls, ScrollControls, Stats } from "@react-three/drei";
+import { ScrollControls } from "@react-three/drei";
 
 import { motion } from "framer-motion";
 

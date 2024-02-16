@@ -8,7 +8,7 @@ import { Stars } from "@react-three/drei";
 import { useControls } from "leva";
 
 import { useEffect, useRef, useState } from "react";
-import {  useLoader } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 
 const Background = () => {
   const sphereRef = useRef();
@@ -27,7 +27,7 @@ const Background = () => {
 
   return (
     <>
-      <Sphere args={[150, 40, 40]} rotation={[2,-1,0]}>
+      <Sphere args={[150, 40, 40]} rotation={[2, -1, 0]}>
         <meshBasicMaterial
           attach="material"
           side={THREE.BackSide}

@@ -50,7 +50,13 @@ export default function Earth() {
     >
       <group>
         {/* <hemisphereLight skyColor={new THREE.Color(0x226ea3)} groundColor={new THREE.Color(0x226ea3)} intensity={1} position={[3,-1.5,-6]} ref={hemisphereLightRef}/> */}
-        <directionalLight ref={directionalLightRef} intensity={4} rotation={[Math.PI, 0, 0]} position={[3, -1.5, -6]} color={new THREE.Color(0x226ea3)}/>
+        <directionalLight
+          ref={directionalLightRef}
+          intensity={4}
+          rotation={[Math.PI, 0, 0]}
+          position={[3, -1.5, -6]}
+          color={new THREE.Color(0x226ea3)}
+        />
         <mesh
           ref={earthRef}
           position={[3, -1.5, -6]}
@@ -58,7 +64,7 @@ export default function Earth() {
           scale={0.45}
         >
           <sphereGeometry args={[5, 64, 64]} />
-          <meshStandardMaterial map={earthTexture} roughness={1} fog={true}/>
+          <meshStandardMaterial map={earthTexture} roughness={1} fog={true} />
         </mesh>
       </group>
     </Float>

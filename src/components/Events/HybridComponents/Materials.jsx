@@ -1,46 +1,90 @@
-import { MeshStandardMaterial,MeshPhysicalMaterial,Color, DoubleSide,Vector2 } from "three"
-import { shaderMaterial } from "@react-three/drei"
+import {
+  MeshStandardMaterial,
+  MeshPhysicalMaterial,
+  Color,
+  DoubleSide,
+  Vector2,
+} from "three";
+import { shaderMaterial } from "@react-three/drei";
 
 export const baseMaterial = new MeshStandardMaterial({
-    color : 0xa9a5bb,emissive : 0xeeeeff,emissiveIntensity : 1.3,
-    roughness : 0.2, metalness : 1.4,envMapIntensity :.3, side : DoubleSide
-})
+  color: 0xa9a5bb,
+  emissive: 0xeeeeff,
+  emissiveIntensity: 1.3,
+  roughness: 0.2,
+  metalness: 1.4,
+  envMapIntensity: 0.3,
+  side: DoubleSide,
+});
 
 export const glassMaterial = new MeshPhysicalMaterial({
-    color : 0xccccff, emissiveIntensity : 0, ior: 2.33 ,transparent : true,
-    opacity : 0.15,roughness : 0.08, metalness:1, envMapIntensity : 0.7
-})
+  color: 0xccccff,
+  emissiveIntensity: 0,
+  ior: 2.33,
+  transparent: true,
+  opacity: 0.15,
+  roughness: 0.08,
+  metalness: 1,
+  envMapIntensity: 0.7,
+});
 
-export const robotMaterial =new MeshStandardMaterial({
-    color : 0xffffff ,emissive: 0xffffff, emissiveIntensity: 0.5, 
-    roughness : 0.28, metalness : 0.95,envMapIntensity : .2, side : DoubleSide
-})
+export const robotMaterial = new MeshStandardMaterial({
+  color: 0xffffff,
+  emissive: 0xffffff,
+  emissiveIntensity: 0.5,
+  roughness: 0.28,
+  metalness: 0.95,
+  envMapIntensity: 0.2,
+  side: DoubleSide,
+});
 
-export const whiteMaterial =new MeshStandardMaterial({
-    color : 0xffffff, emissive: 0xffffff, emissiveIntensity: 1, 
-    roughness : 0.15, metalness : 0.95, envMapIntensity : .2
-  })
-  
+export const whiteMaterial = new MeshStandardMaterial({
+  color: 0xffffff,
+  emissive: 0xffffff,
+  emissiveIntensity: 1,
+  roughness: 0.15,
+  metalness: 0.95,
+  envMapIntensity: 0.2,
+});
+
 export const blackMaterial = new MeshPhysicalMaterial({
-    color : 0x000000, emissive : 0x000000, metalness : 1, roughness : 0,
-    envMapIntensity : .5, side : DoubleSide
-  })
+  color: 0x000000,
+  emissive: 0x000000,
+  metalness: 1,
+  roughness: 0,
+  envMapIntensity: 0.5,
+  side: DoubleSide,
+});
 
-export const bloomBlueMaterial = new MeshStandardMaterial({color : new Color(0,3,5), toneMapped : false,side:DoubleSide})
-export const whiteBloomMaterial = new MeshStandardMaterial({color : new Color(2.5,2,2), toneMapped : false})
-export const alumMaterial = new MeshStandardMaterial({color : 0xdddddd,emissiveIntensity:1.5,emissive : 0xffffff, metalness : 1.35, roughness : 0.1,envMapIntensity : .35, side:DoubleSide})
+export const bloomBlueMaterial = new MeshStandardMaterial({
+  color: new Color(0, 3, 5),
+  toneMapped: false,
+  side: DoubleSide,
+});
+export const whiteBloomMaterial = new MeshStandardMaterial({
+  color: new Color(2.5, 2, 2),
+  toneMapped: false,
+});
+export const alumMaterial = new MeshStandardMaterial({
+  color: 0xdddddd,
+  emissiveIntensity: 1.5,
+  emissive: 0xffffff,
+  metalness: 1.35,
+  roughness: 0.1,
+  envMapIntensity: 0.35,
+  side: DoubleSide,
+});
 
 export const smokeDroneMaterial = shaderMaterial(
-  { 
-    uTime : 0,
-    uUvFrequency : new Vector2(3,2),
-    uTimeFrequency : 4,
-    uColor : new Color('#e8d9bf'),
-    transparent : true,
-  
+  {
+    uTime: 0,
+    uUvFrequency: new Vector2(3, 2),
+    uTimeFrequency: 4,
+    uColor: new Color("#e8d9bf"),
+    transparent: true,
   },
   // vertex shader
-  /*glsl*/`
+  /*glsl*/ `
   uniform float uTime;
   varying vec2 vUv; 
   
@@ -105,7 +149,7 @@ export const smokeDroneMaterial = shaderMaterial(
   
   `,
   // fragment shader
-  /*glsl*/`
+  /*glsl*/ `
   uniform vec2 uUvFrequency;
   uniform float uTime;
   uniform float uTimeFrequency;
@@ -160,5 +204,5 @@ void main(){
 
     gl_FragColor = vec4(uColor, perlin);  
 }
-  `
-)
+  `,
+);

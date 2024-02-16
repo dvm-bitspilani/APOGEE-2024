@@ -103,7 +103,7 @@ export function EventsCarousel({ index, setIndex, images }) {
       <img src={eventsSep} alt="separator" />
       <div className={styles.eventsInfo}>
         <h2>{kernel_events[index].name}</h2>
-        <p>{kernel_events[index].category}</p>
+        <Link to="/events/kernel">{kernel_events[index].category}</Link>
       </div>
     </>
   );
