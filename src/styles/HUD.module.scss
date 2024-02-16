@@ -469,21 +469,30 @@
     gap: 1.5rem;
 
     h2 {
+      font-size: 1.4rem;
       text-align: center;
       text-shadow: 0px 0px 36.347px rgba(136, 196, 200, 0.7),
         0px 0px 5.871px rgba(134, 244, 232, 0.8);
       width: 80%;
     }
-    p {
+    a {
+      font-size: 1.2rem;
       text-align: center;
       color: var(--grey-text);
       text-shadow: 0px 0px 36.347px rgba(197, 197, 197, 0.7),
         0px 0px 5.871px rgba(197, 197, 197, 0.8);
+
+      &:hover {
+        cursor: pointer;
+        color: var(--hover-link);
+        text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+          0px 0px 3.754px rgba(198, 50, 50, 0.8);
+      }
     }
   }
 }
 
-.landingElements{
+.landingElements {
   scroll-behavior: smooth;
 }
 
@@ -584,7 +593,7 @@
     // top: 20%;
     bottom: 5%;
   }
-  
+
   .navigatorWrapper {
     top: 17%;
   }
