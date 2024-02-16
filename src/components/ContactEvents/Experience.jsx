@@ -37,7 +37,7 @@ export default function Experience() {
   useFrame(() => {
     // console.log(scroll);
     setCategoryOffset(
-      scroll.offset * viewport.width * (state.numCategories - 1)
+      scroll.offset * viewport.width * (state.numCategories - 1),
     );
   });
 

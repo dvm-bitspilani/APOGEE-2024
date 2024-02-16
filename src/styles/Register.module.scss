@@ -1,4 +1,4 @@
-.pageContainer{
+.pageContainer {
   --name-sp: 1%;
   --email-sp: 8%;
   --phone-sp: 8%;
@@ -7,51 +7,51 @@
   --events-sp: 1%;
   --colleges-sp: 5%;
   --year-sp: 8%;
-  --states-sp:7%;
+  --states-sp: 7%;
   --city-sp: 3%;
 }
 
-.pageContainer{
-    width: 100lvw;
+.pageContainer {
+  width: 100lvw;
+  height: 100dvh;
+  position: relative;
+  background-image: url(/images/starsAsset.png);
+  background-size: 100lvw 100dvh;
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .leftHelm {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100dvh;
+    width: auto;
+  }
+  .rightHelm {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: auto;
+  }
+  .pageWrapper {
+    height: 100%;
+    width: 100%;
     position: relative;
-    background-image: url(/images/starsAsset.png);
-    background-size: 100lvw 100dvh;
-    position: fixed;
-    inset: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    .leftHelm{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100dvh;
-        width: auto;
+    .hud {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      height: clamp(100px, 10vw, 170px);
+      object-fit: contain;
+      @media screen and (max-height: 700px) {
+        height: 100px;
+      }
     }
-    .rightHelm{
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100dvh;
-        width: auto;
-    }
-    .pageWrapper{
-        height: 100%;
-        width: 100%;
-        position: relative;
-        .hud{
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto;
-            height: clamp(100px, 10vw, 170px);
-            object-fit: contain;
-            @media screen and (max-height: 700px) {
-              height: 100px;
-            }
-        }
-    }
+  }
 }
 .homeBtn {
   //   width: max(12vw, 120px);
@@ -63,18 +63,18 @@
   //   left: 50%;
   //   transform: translateX(-50%);
   //   top: max(calc(10vw - 7px), 92px);
-  
+
   //   display: flex;
   //   align-items: center;
   //   justify-content: center;
-  
+
   //   transition: border-color 0.2s ease-in-out;
   //   z-index: 2;
-  
+
   //   svg * {
   //     transition: all 0.2s ease-in-out;
   //   }
-  
+
   //   span {
   //     font-size: max(1rem, 1.5vw);
   //     font-weight: 200;
@@ -89,7 +89,7 @@
   //     border-color: #b16060;
   //     text-shadow: 0px 0px 14.815px var(--hover-link);
   //     color: var(--hover-link);
-  
+
   //     svg {
   //       g {
   //         filter: none;
@@ -127,7 +127,7 @@
 
   // visibility: visible;
   // opacity: 1;
-z-index: 1;
+  z-index: 1;
   @media screen and (max-height: 700px) {
     top: 90px;
     width: 140px;
@@ -156,7 +156,8 @@ z-index: 1;
   &:hover {
     cursor: pointer;
     color: var(--hover-link);
-    text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+    text-shadow:
+      0px 0px 24.402px rgba(198, 50, 50, 0.86),
       0px 0px 3.754px rgba(198, 50, 50, 0.8);
 
     div div {
@@ -168,10 +169,9 @@ z-index: 1;
     }
   }
 }
-.globeImage{
-    width: auto;
+.globeImage {
+  width: auto;
   height: 65vh;
-
 }
 
 // .regContainer{
@@ -179,8 +179,8 @@ z-index: 1;
 //   position: relative;
 // }
 
-.content{
-    width: 100%;
+.content {
+  width: 100%;
   height: 100%;
   position: relative;
   inset: 0;
@@ -210,15 +210,16 @@ z-index: 1;
   // }
   {
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	outline: inherit;
+    color: inherit;
+    border: none;
+    padding: 0;
+    outline: inherit;
     position: fixed;
     text-decoration: none;
     color: var(--primary-link);
     font-family: "Space Grotesk", sans-serif;
-    text-shadow: 0px 0px 30.591px rgba(136, 196, 200, 0.7),
+    text-shadow:
+      0px 0px 30.591px rgba(136, 196, 200, 0.7),
       0px 0px 4.942px rgba(134, 244, 232, 0.8);
     font-weight: 700;
     font-size: 1.5rem;
@@ -256,7 +257,8 @@ z-index: 1;
     &:hover {
       cursor: pointer;
       span {
-        text-shadow: 0px 0px 24.402px rgba(198, 50, 50, 0.86),
+        text-shadow:
+          0px 0px 24.402px rgba(198, 50, 50, 0.86),
           0px 0px 3.754px rgba(198, 50, 50, 0.8);
         color: var(--hover-link);
       }
@@ -280,8 +282,8 @@ z-index: 1;
     }
   }
 }
-.imgContainer{
-    position: absolute;
+.imgContainer {
+  position: absolute;
   top: 50%;
   transform: translateY(-40%);
   margin-inline: auto;
@@ -290,20 +292,20 @@ z-index: 1;
   justify-content: center;
   align-items: center;
 }
-.heading{
-    position: absolute;
-    top: max(2vw, 10px);
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: max(1rem, 1.5vw);
-      font-weight: 200;
-      text-transform: uppercase;
-      text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
-      color: inherit;
-      padding-inline: 0.5rem;
-      transition: all 0.2s ease-in-out;
+.heading {
+  position: absolute;
+  top: max(2vw, 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: max(1rem, 1.5vw);
+  font-weight: 200;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+  color: inherit;
+  padding-inline: 0.5rem;
+  transition: all 0.2s ease-in-out;
 }
-.formContainer{
+.formContainer {
   position: absolute;
   top: 50%;
   transform: translateY(-40%);
@@ -315,7 +317,7 @@ z-index: 1;
   height: 60%;
   height: 65vh;
 }
-.leftSide{
+.leftSide {
   width: 48%;
   display: inline-flex;
   flex-direction: column;
@@ -323,7 +325,7 @@ z-index: 1;
   height: 100%;
   justify-content: space-evenly;
 }
-.rightSide{
+.rightSide {
   width: 48%;
   display: inline-flex;
   flex-direction: column;
@@ -332,7 +334,7 @@ z-index: 1;
   justify-content: space-evenly;
   margin-left: 4%;
 }
-input{
+input {
   background: transparent;
   border: none;
   font-size: 1.1rem;
@@ -341,10 +343,10 @@ input{
   text-transform: uppercase;
   font-weight: 700;
 }
-input:focus{
+input:focus {
   outline: none;
 }
-.name{
+.name {
   position: relative;
   right: 5%;
   top: -5%;
@@ -353,43 +355,43 @@ input:focus{
   align-items: flex-start;
   width: calc(75% - var(--name-sp));
   margin-right: var(--name-sp);
-  inset:0;
+  inset: 0;
 }
-.name > input{
+.name > input {
   width: 51%;
 }
-.name>img{
+.name > img {
   width: 100%;
 }
-.name label{
+.name label {
   font-size: 1.5rem;
   position: absolute;
   top: 35%;
 }
-.email{
+.email {
   position: relative;
   right: 5%;
   top: -12%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  inset:0;
+  inset: 0;
   top: -5%;
   width: calc(75% - var(--email-sp));
   margin-right: var(--email-sp);
 }
-.email>img{
+.email > img {
   width: 100%;
 }
-.email label{
+.email label {
   font-size: 1.5rem;
   position: absolute;
   top: 55%;
 }
-.email > input{
+.email > input {
   width: 56%;
 }
-.phone{
+.phone {
   position: relative;
   right: 10%;
   top: -10%;
@@ -398,21 +400,20 @@ input:focus{
   align-items: flex-start;
   width: calc(75% - var(--phone-sp));
   margin-right: var(--phone-sp);
-  inset:0;
+  inset: 0;
 }
-.phone img{
+.phone img {
   width: 100%;
 }
-.phone > input{
+.phone > input {
   width: 100%;
 }
-.phone label{
+.phone label {
   font-size: 1.5rem;
   position: absolute;
   top: 105%;
 }
-.gender
-{
+.gender {
   position: relative;
   right: 10%;
   top: -2%;
@@ -421,13 +422,13 @@ input:focus{
   align-items: flex-start;
   width: calc(75% - var(--gender-sp));
   margin-right: var(--gender-sp);
-  inset:0;
+  inset: 0;
   top: 7%;
 }
-.gender>img{
+.gender > img {
   width: 100%;
 }
-.checkboxContainer{
+.checkboxContainer {
   position: absolute;
   display: flex;
   width: 65%;
@@ -437,16 +438,16 @@ input:focus{
   bottom: 45%;
   gap: 5%;
 }
-.gender input{
+.gender input {
   margin-right: 10px;
   border: none;
   outline: none;
   padding: 0;
 }
-label{
+label {
   text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
 }
-.gender input:focus{
+.gender input:focus {
   outline: none;
 }
 .checkboxItem {
@@ -464,7 +465,7 @@ label{
   justify-content: center;
   align-items: center;
 }
-.gender>label{
+.gender > label {
   font-size: 1.5rem;
   // position: absolute;
   // top: 105%;
@@ -481,7 +482,7 @@ label{
   font-size: 16px;
   color: var(--primary);
 }
-.interests{
+.interests {
   position: relative;
   right: 5%;
   top: -10%;
@@ -490,12 +491,12 @@ label{
   align-items: flex-start;
   width: calc(75% - var(--interests-sp));
   margin-right: var(--interests-sp);
-  inset:0;
+  inset: 0;
 }
-.interests>img{
+.interests > img {
   width: 100%;
 }
-.interestsWrapper{
+.interestsWrapper {
   width: 45%;
   position: absolute !important;
   bottom: 36% !important;
@@ -504,11 +505,11 @@ label{
   justify-content: space-between;
   height: 30%;
 }
-.interests label{
+.interests label {
   font-size: 1.5rem;
   text-transform: uppercase;
 }
-.events{
+.events {
   position: relative;
   right: -5%;
   top: 2%;
@@ -520,22 +521,22 @@ label{
   inset: 0;
   top: 2%;
 }
-.events img{
+.events img {
   width: 100%;
 }
-.eventsWrapper{
+.eventsWrapper {
   width: 54%;
   top: -40% !important;
   height: 40%;
   position: absolute !important;
 }
-.events label{
+.events label {
   position: absolute;
   top: 22%;
   font-size: 1.5rem;
   text-transform: uppercase;
 }
-.colleges{
+.colleges {
   position: relative;
   right: -5%;
   top: 2%;
@@ -547,27 +548,27 @@ label{
   inset: 0;
   top: -1%;
 }
-.colleges img{
+.colleges img {
   width: 100%;
 }
-.collegeWrapper{
+.collegeWrapper {
   width: 61%;
   width: 54%;
   top: -50% !important;
   height: 40%;
   position: absolute !important;
 }
-.colleges label{
+.colleges label {
   position: absolute;
   top: 35%;
   font-size: 1.5rem;
   text-transform: uppercase;
 }
-.year > .checkboxContainer{
+.year > .checkboxContainer {
   width: 70%;
   justify-content: space-between;
 }
-.year{
+.year {
   position: relative;
   right: -5%;
   top: 2%;
@@ -579,26 +580,26 @@ label{
   inset: 0;
   top: 9%;
 }
-.year> .checkboxContainer{
+.year > .checkboxContainer {
   width: 100%;
- top: -60%;
- bottom: 0;
- width: 70% !important;
- justify-content: space-between;
+  top: -60%;
+  bottom: 0;
+  width: 70% !important;
+  justify-content: space-between;
 }
 
-.year img{
+.year img {
   width: 100%;
 }
-.year label{
+.year label {
   text-transform: uppercase;
   font-size: 1.5rem;
 }
-.state label{
+.state label {
   text-transform: uppercase;
   font-size: 1.5rem;
 }
-.city{
+.city {
   position: relative;
   right: -5%;
   top: 2%;
@@ -609,20 +610,20 @@ label{
   margin-left: var(--city-sp);
   inset: 0;
 }
-.city img{
+.city img {
   width: 100%;
 }
-.city label{
+.city label {
   text-transform: uppercase;
   font-size: 1.5rem;
 }
-.cityWrapper{
+.cityWrapper {
   width: 45%;
   top: 39%;
   position: absolute !important;
   max-height: 40%;
 }
-.state{
+.state {
   position: relative;
   right: -5%;
   top: 2%;
@@ -634,18 +635,17 @@ label{
   inset: 0;
   top: 7.5%;
 }
-.state img{
+.state img {
   width: 100%;
 }
-.stateWrapper{
+.stateWrapper {
   width: 65%;
   position: absolute !important;
   top: 16%;
   max-height: 20%;
   height: 20%;
-
 }
-.successText{
+.successText {
   position: absolute;
   bottom: -5vh;
   transform: translateX(-50%);
@@ -653,7 +653,7 @@ label{
   text-transform: uppercase;
   text-align: center;
 }
-.successText::after{
+.successText::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -661,31 +661,32 @@ label{
 
   margin-left: 5px;
   left: 0;
-  animation:  cursor 0.8s infinite, typing 3s steps(51) forwards;
+  animation:
+    cursor 0.8s infinite,
+    typing 3s steps(51) forwards;
   background-color: black;
 }
 @keyframes typing {
-  100%{
+  100% {
     left: 100%;
-    
   }
 }
 @keyframes cursor {
-  100%{
+  100% {
     border-left: 1px solid var(--primary);
   }
 }
-::placeholder{
+::placeholder {
   // font-size: "1.2rem";
   opacity: 1;
-  color: #A9A9A9;
-  font-family:"Space Grotesk";
+  color: #a9a9a9;
+  font-family: "Space Grotesk";
   font-weight: 500;
-  text-shadow:0px 0px 4.815px rgba(183, 255, 255, 0.8);
-  text-transform:uppercase;
+  text-shadow: 0px 0px 4.815px rgba(183, 255, 255, 0.8);
+  text-transform: uppercase;
   font-size: 1rem;
 }
-input:autofill{
+input:autofill {
   background: transparent !important;
   border: none !important;
   color: white;
@@ -695,51 +696,54 @@ input:autofill{
 //         max-height: 65vh;
 //     }
 // }
-.mobileContent{
+.mobileContent {
   top: 0;
   left: 0;
   height: auto;
   width: 100vw;
-align-items: center;
+  align-items: center;
   justify-content: center;
 }
-.leftTop, .rightTop{
+.leftTop,
+.rightTop {
   width: 50%;
   height: 14vh;
   position: absolute;
 }
-.leftTop{
+.leftTop {
   left: 0;
 }
-.rightTop{
+.rightTop {
   right: 0;
 }
-.middleTop{
+.middleTop {
   // width: 100%;
   // height: 10vh;
   // position: absolute;
   // inset: 0;
   position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto;
-            height: clamp(100px, 10vw, 170px);
-            object-fit: contain;
-            @media screen and (max-height: 700px) {
-              height: 100px;
-            }
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: clamp(100px, 10vw, 170px);
+  object-fit: contain;
+  @media screen and (max-height: 700px) {
+    height: 100px;
+  }
 }
-.mobileContent{
+.mobileContent {
   display: none;
 }
-.leftTop, .rightTop, .middleTop{
+.leftTop,
+.rightTop,
+.middleTop {
   display: none;
 }
-.mobileContent{
+.mobileContent {
   display: none;
 }
-.topContainer{
+.topContainer {
   height: 18vh;
   display: none;
 }
@@ -750,68 +754,68 @@ align-items: center;
 //   background-color:  #b1606045;
 //   color: #b16060;
 //   // background-color: #b16060;
-  
+
 // }
 // .registerBtn:hover span{
 //   // color: #b16060;
 //   color: #b16060;
 // }
-.name .errorMessage{
+.name .errorMessage {
   position: absolute;
   top: -15%;
   color: #b16060;
 }
-.events .errorMessage{
+.events .errorMessage {
   position: absolute;
   top: -50%;
   color: #b16060;
 }
-.email .errorMessage{
+.email .errorMessage {
   position: absolute;
   top: -20%;
   color: #b16060;
 }
-.phone .errorMessage{
+.phone .errorMessage {
   position: absolute;
   top: -40%;
   color: #b16060;
 }
-.gender .errorMessage{
+.gender .errorMessage {
   position: absolute;
   top: -2%;
   color: #b16060;
 }
-.interests .errorMessage{
+.interests .errorMessage {
   position: absolute;
   top: 95%;
   color: #b16060;
 }
-.colleges .errorMessage{
+.colleges .errorMessage {
   position: absolute;
   top: -65%;
   color: #b16060;
 }
-.year .errorMessage{
+.year .errorMessage {
   position: absolute;
   top: 95%;
   color: #b16060;
 }
-.state .errorMessage{
+.state .errorMessage {
   position: absolute;
   top: -3%;
   color: #b16060;
 }
-.city .errorMessage{
+.city .errorMessage {
   position: absolute;
   top: 30%;
   color: #b16060;
 }
 
 @media (min-width: 1000px), (max-height: 650px) {
-  .hud{
+  .hud {
     // height: 20vh !important;
   }
-  .heading{
+  .heading {
     top: 3vh;
   }
 }
@@ -826,21 +830,21 @@ input:-webkit-autofill {
   border: none;
   font-size: 1.1rem;
 }
-.scrollBar{
+.scrollBar {
   position: fixed;
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  overflow-y:hidden;
+  overflow-y: hidden;
   display: none;
 }
-.inScroll{
+.inScroll {
   position: absolute;
   left: 1px;
   // top: 0;
   top: 68%;
 }
-.captchaContainer{
+.captchaContainer {
   position: absolute;
   bottom: -5vh;
   text-align: center;
@@ -848,15 +852,15 @@ input:-webkit-autofill {
   transform: translateX(-50%);
 }
 @media only screen and (max-width: 1400px) {
-  .colleges label{
+  .colleges label {
     // bottom: 10%;
   }
 }
 @media only screen and (max-width: 1200px) {
-  .gender  .checkboxContainer{
-  bottom: 50%;
+  .gender .checkboxContainer {
+    bottom: 50%;
   }
-  .eventsWrapper{
+  .eventsWrapper {
     top: -50% !important;
   }
   // .colleges label{
@@ -864,12 +868,11 @@ input:-webkit-autofill {
   // }
 }
 @media only screen and (max-width: 1100px) {
-
-  .interestsWrapper{
+  .interestsWrapper {
     width: max-content;
     right: 55%;
 
-  // bottom: 50% !important;
+    // bottom: 50% !important;
   }
   // .gender  .checkboxContainer{
   //   // bottom: 50%;
@@ -878,35 +881,35 @@ input:-webkit-autofill {
   // left: -10%;
   // top: 0;
   // }
-  .interestsWrapper{
+  .interestsWrapper {
     // width: max-content;
     width: 45%;
     bottom: 42% !important;
     // top: 15%;
   }
-  .cityWrapper{
+  .cityWrapper {
     top: 0;
   }
-  .colleges label{
+  .colleges label {
     bottom: -10%;
   }
 }
 @media only screen and (max-width: 992px) {
-  .gender  .checkboxContainer{
+  .gender .checkboxContainer {
     bottom: 60%;
   }
-.interestsWrapper{
-  bottom: 45% !important;
-}
-.interestsWrapper{
-width: 45%;
-}
-.cityWrapper{
-  top: 0;
-}
+  .interestsWrapper {
+    bottom: 45% !important;
+  }
+  .interestsWrapper {
+    width: 45%;
+  }
+  .cityWrapper {
+    top: 0;
+  }
 }
 @media only screen and (max-width: 920px) {
-  .eventsWrapper{
+  .eventsWrapper {
     right: 5%;
   }
 }
@@ -922,58 +925,57 @@ width: 45%;
   //   // right: 0 !important;
   //   left: 20% !important;
   // }
-  .collegeWrapper{
-  width: max-content;
+  .collegeWrapper {
+    width: max-content;
   }
-  .eventsWrapper{
+  .eventsWrapper {
     width: max-content;
     top: -50% !important;
   }
-  .colleges label{
+  .colleges label {
     bottom: -30%;
   }
 }
 @media only screen and (max-width: 810px) {
-.hud{
-  display: none;
-}
-.leftHelm{
-  display: none;
-}
-.rightHelm{
-  display: none;
-}
-.content{
-  display: none;
-}
-.heading{
-  font-size: 2rem;
-  top: 3vh;
-}
-.mobileContent{
-  display: flex ;
-  flex-direction: column;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  display: flex;
-  overflow-y: scroll;
-}
-.topContainer{
-  display: block;
-}
-.leftTop, .rightTop, .middleTop{
-  display: block;
-}
-.scrollBar{
-  display: block;
-}
+  .hud {
+    display: none;
+  }
+  .leftHelm {
+    display: none;
+  }
+  .rightHelm {
+    display: none;
+  }
+  .content {
+    display: none;
+  }
+  .heading {
+    font-size: 2rem;
+    top: 3vh;
+  }
+  .mobileContent {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    overflow-y: scroll;
+  }
+  .topContainer {
+    display: block;
+  }
+  .leftTop,
+  .rightTop,
+  .middleTop {
+    display: block;
+  }
+  .scrollBar {
+    display: block;
+  }
 }
 @media only screen and (max-width: 768px) {
-
 }
 @media only screen and (max-width: 600px) {
-
 }
 @media only screen and (max-width: 600px) {
-
 }

@@ -1,68 +1,67 @@
-
-.loaderContainer{
-    position: fixed;
-    z-index: 100;
-    top :  0;
-    width: 100vw;
-    height: 100vh;
-    background-color:#0a0c0d;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-  }  
-  .loaderContainer img{
-    transform: scale(0.75);
-  }
-  .loaderContainer h2{
-    position: relative;
-    bottom: 15%;
-    color: #ede8e8;
-    font-size: 3em;
-    font-family: Michroma;
-  }
-  .loaderContainer span{
-    position: absolute;
-    top : 80%;
-    background-color: #ede8e8;
-    width: 100vw;
-    height: 1vh;
-    transform-origin: left center;
-  }
-  .loaderContainer h3{
-    position: absolute;
-    top : 88%;
-    opacity: 0;
-    right : 5%;
-    font-family: Exan;
-    color : #ede8e8;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-  }
-  .loaderContainer h4{
-    position: absolute;
-    top : 88%;
-    opacity: 0;
-    left : 5%;
-    font-size: 3em;
-    font-family: Exan;
-    color : #ede8e8;
-    font-size: 1.6em;
-    text-transform: uppercase;
-  }  
-  .loaderContainer h5{
-    position: absolute;
-    top : 88%;
-    opacity: 0;
-    left : 5%;
-    font-family: Exan;
-    color : #ede8e8;
-    font-size: 1.8em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-  }
+.loaderContainer {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0c0d;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.loaderContainer img {
+  transform: scale(0.75);
+}
+.loaderContainer h2 {
+  position: relative;
+  bottom: 15%;
+  color: #ede8e8;
+  font-size: 3em;
+  font-family: Michroma;
+}
+.loaderContainer span {
+  position: absolute;
+  top: 80%;
+  background-color: #ede8e8;
+  width: 100vw;
+  height: 1vh;
+  transform-origin: left center;
+}
+.loaderContainer h3 {
+  position: absolute;
+  top: 88%;
+  opacity: 0;
+  right: 5%;
+  font-family: Exan;
+  color: #ede8e8;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.loaderContainer h4 {
+  position: absolute;
+  top: 88%;
+  opacity: 0;
+  left: 5%;
+  font-size: 3em;
+  font-family: Exan;
+  color: #ede8e8;
+  font-size: 1.6em;
+  text-transform: uppercase;
+}
+.loaderContainer h5 {
+  position: absolute;
+  top: 88%;
+  opacity: 0;
+  left: 5%;
+  font-family: Exan;
+  color: #ede8e8;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}

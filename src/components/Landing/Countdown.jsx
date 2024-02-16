@@ -11,17 +11,17 @@ const Countdown = ({ mobile = false }) => {
     [days, setDays] = useState(0);
 
   const [hrs, setHrs] = useState(
-      Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24
+      Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24,
     ),
     [prevHr, setPrevHr] = useState(
-      Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24
+      Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24,
     );
 
   const [prevMin, setPrevMin] = useState(
-      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60
+      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60,
     ),
     [mins, setMins] = useState(
-      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60
+      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60,
     );
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Countdown = ({ mobile = false }) => {
     setHrs(Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24);
 
     setMins(
-      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60
+      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60,
     );
 
     hrs < 10 && setHrs((prevHrs) => "0" + prevHrs);
@@ -74,7 +74,11 @@ const Countdown = ({ mobile = false }) => {
   }, [curr, mins, APOGEE]);
 
   return (
-    <div ref={(el) => (count = el)} className={styles.countdown} data-ismobile={mobile}>
+    <div
+      ref={(el) => (count = el)}
+      className={styles.countdown}
+      data-ismobile={mobile}
+    >
       <div id="days" className={styles.label}>
         <div className={styles.numbers}>{days}</div>
         <div className={styles.labels}>DAYS</div>

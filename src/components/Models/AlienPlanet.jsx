@@ -72,7 +72,7 @@ export function AlienPlanetGLB() {
     useLoader.preload(GLTFLoader, "/models/alien_planet.glb"),
     (progress) => {
       console.log((progress.loaded / progress.total) * 100 + "% loaded");
-    }
+    },
   );
 
   let alienPlanetMaterial;
@@ -93,7 +93,7 @@ export function AlienPlanetGLB() {
       gsap.to(alienPlanetMaterial, {
         opacity: 1,
         duration: 2, // Duration of the fade-in in seconds
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
       });
     }
   }, [alienPlanetMaterial]);
@@ -140,23 +140,23 @@ export function AlienPlanetGLB() {
         floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[-0.4, 0]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
       > */}
-        <group>
-          {/* <hemisphereLight skyColor={new THREE.Color(0x226ea3)} groundColor={new THREE.Color(0x226ea3)} intensity={1} position={[3,-1.5,-6]} ref={hemisphereLightRef}/> */}
-          <directionalLight
-            ref={directionalLightRef}
-            intensity={4}
-            rotation={[Math.PI, 0, 0]}
-            position={[-50, 50, -50]}
-            color={new THREE.Color(0xffffff)}
-          />
-          <primitive
-            ref={alienPlanetRef}
-            position={[50, -75, -100]}
-            rotation={[0, 0, 0]}
-            scale={75}
-            object={alienPlanet.scene}
-          />
-        </group>
+      <group>
+        {/* <hemisphereLight skyColor={new THREE.Color(0x226ea3)} groundColor={new THREE.Color(0x226ea3)} intensity={1} position={[3,-1.5,-6]} ref={hemisphereLightRef}/> */}
+        <directionalLight
+          ref={directionalLightRef}
+          intensity={4}
+          rotation={[Math.PI, 0, 0]}
+          position={[-50, 50, -50]}
+          color={new THREE.Color(0xffffff)}
+        />
+        <primitive
+          ref={alienPlanetRef}
+          position={[50, -75, -100]}
+          rotation={[0, 0, 0]}
+          scale={75}
+          object={alienPlanet.scene}
+        />
+      </group>
       {/* </Float> */}
     </>
   );

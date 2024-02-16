@@ -23,7 +23,6 @@ import { useSnapshot } from "valtio";
 import { useNavigate } from "react-router-dom";
 
 export function Hud() {
-
   return (
     <>
       <img

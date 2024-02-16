@@ -1,74 +1,74 @@
 [
-    {
-        "id": "1",
-        "name": "Vedant Vyas",
-        "dept": "Website, App and Payments",
-        "phone": "9265332241",
-        "mail": "webmaster@bits-apogee.org",
-        "image": "vedant"
-    },
-    {
-        "id": "2",
-        "name": "Sachika Lala",
-        "dept": "Registrations & Correspondence",
-        "phone": "6366582838",
-        "mail": "pcr@bits-apogee.org",
-        "image": "sachika"
-    },
-    {
-        "id": "3",
-        "name": "Dharun Bail",
-        "dept": "Logistics and Operations",
-        "phone": "7506749108",
-        "mail": "controls@bits-apogee.org",
-        "image": "dharun"
-    },
-    {
-        "id": "4",
-        "name": "Yash Choudhary",
-        "dept": "Online Collaborations and Publicity",
-        "phone": "7045161590",
-        "mail": "adp@bits-apogee.org",
-        "image": "yash"
-    },
-    {
-        "id": "5",
-        "name": "Tushar Vigh",
-        "dept": "Reception and Accommodation",
-        "phone": "9158380489",
-        "mail": "recnacc@bits-apogee.org",
-        "image": "tushar"
-    },
-    {
-        "id": "6",
-        "name": "Aarohi Uniyal",
-        "dept": "Guest Lectures and Paper Presentations",
-        "phone": "7863062447",
-        "mail": "pep@bits-apogee.org",
-        "image": "aarohi"
-    },
-    {
-        "id": "7",
-        "name": "Hitansh Tanna",
-        "dept": "Sponsorships and Company Collaborations",
-        "phone": "9082764126",
-        "mail": "hitansh@bits-apogee.org",
-        "image": "hitansh"
-    },
-    {
-        "id": "8",
-        "name": "Abhinav Lamba",
-        "dept": "General Secretary, Students' Union",
-        "phone": "7078879443",
-        "mail": "gensec@pilani.bits-pilani.ac.in",
-        "image": "abhinav"
-    },
-    {
-        "id": "9",
-        "name": "Sarthak Aggarwal",
-        "dept": "President, Students' Union",
-        "phone": "8005000213",
-        "mail": "president@pilani.bits-pilani.ac.in",
-        "image": "sarthak"
-    }
+  {
+    "id": "1",
+    "name": "Vedant Vyas",
+    "dept": "Website, App and Payments",
+    "phone": "9265332241",
+    "mail": "webmaster@bits-apogee.org",
+    "image": "vedant"
+  },
+  {
+    "id": "2",
+    "name": "Sachika Lala",
+    "dept": "Registrations & Correspondence",
+    "phone": "6366582838",
+    "mail": "pcr@bits-apogee.org",
+    "image": "sachika"
+  },
+  {
+    "id": "3",
+    "name": "Dharun Bail",
+    "dept": "Logistics and Operations",
+    "phone": "7506749108",
+    "mail": "controls@bits-apogee.org",
+    "image": "dharun"
+  },
+  {
+    "id": "4",
+    "name": "Yash Choudhary",
+    "dept": "Online Collaborations and Publicity",
+    "phone": "7045161590",
+    "mail": "adp@bits-apogee.org",
+    "image": "yash"
+  },
+  {
+    "id": "5",
+    "name": "Tushar Vigh",
+    "dept": "Reception and Accommodation",
+    "phone": "9158380489",
+    "mail": "recnacc@bits-apogee.org",
+    "image": "tushar"
+  },
+  {
+    "id": "6",
+    "name": "Aarohi Uniyal",
+    "dept": "Guest Lectures and Paper Presentations",
+    "phone": "7863062447",
+    "mail": "pep@bits-apogee.org",
+    "image": "aarohi"
+  },
+  {
+    "id": "7",
+    "name": "Hitansh Tanna",
+    "dept": "Sponsorships and Company Collaborations",
+    "phone": "9082764126",
+    "mail": "hitansh@bits-apogee.org",
+    "image": "hitansh"
+  },
+  {
+    "id": "8",
+    "name": "Abhinav Lamba",
+    "dept": "General Secretary, Students' Union",
+    "phone": "7078879443",
+    "mail": "gensec@pilani.bits-pilani.ac.in",
+    "image": "abhinav"
+  },
+  {
+    "id": "9",
+    "name": "Sarthak Aggarwal",
+    "dept": "President, Students' Union",
+    "phone": "8005000213",
+    "mail": "president@pilani.bits-pilani.ac.in",
+    "image": "sarthak"
+  }
 ]

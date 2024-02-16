@@ -1,4 +1,3 @@
-
 export function handleAnimation(snap) {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

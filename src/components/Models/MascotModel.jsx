@@ -7,7 +7,7 @@ import { useMemo, useEffect, useRef, useState } from "react";
 // State management
 import state from "../state";
 
-export default function MascotModel({ mascotPos}) {
+export default function MascotModel({ mascotPos }) {
   const scroll = useScroll();
   const ref = useRef();
 

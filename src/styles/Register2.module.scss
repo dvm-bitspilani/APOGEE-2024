@@ -72,10 +72,10 @@ input {
   transition: border-color 0.2s ease-in-out;
   margin-inline: auto;
 }
-.checkboxItem > label{
+.checkboxItem > label {
   font-size: 1rem;
 }
-.mobileForm{
+.mobileForm {
   align-self: flex-end;
   width: auto;
   padding-bottom: 2rem;
@@ -84,19 +84,19 @@ input {
   flex-direction: column;
   gap: 3rem;
 }
-.errorMessage{
+.errorMessage {
   color: #b16060;
 }
-::placeholder{
+::placeholder {
   font-size: 1.1rem;
   opacity: 1;
-  color: #A9A9A9;
-  font-family:"Space Grotesk";
+  color: #a9a9a9;
+  font-family: "Space Grotesk";
   font-weight: 500;
-  text-shadow:0px 0px 4.815px rgba(183, 255, 255, 0.8);
-  text-transform:uppercase;
+  text-shadow: 0px 0px 4.815px rgba(183, 255, 255, 0.8);
+  text-transform: uppercase;
 }
-.successText{
+.successText {
   // position: absolute;
   // bottom: -5vh;
   transform: translateY(-100%);
@@ -105,7 +105,7 @@ input {
   text-transform: uppercase;
   width: max-content;
 }
-.successText::after{
+.successText::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -113,17 +113,18 @@ input {
 
   margin-left: 5px;
   left: 0;
-  animation:  cursor 0.8s infinite, typing 3s steps(51) forwards;
+  animation:
+    cursor 0.8s infinite,
+    typing 3s steps(51) forwards;
   background-color: black;
 }
 @keyframes typing {
-  100%{
+  100% {
     left: 100%;
-    
   }
 }
 @keyframes cursor {
-  100%{
+  100% {
     border-left: 1px solid var(--primary);
   }
 }
@@ -131,5 +132,4 @@ input {
   label {
     font-size: 1rem;
   }
-
 }

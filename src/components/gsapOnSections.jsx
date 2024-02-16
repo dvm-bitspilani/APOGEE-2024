@@ -11,14 +11,14 @@ export function gsapOnSection(
   aboutPos,
   aboutRot,
   targetSection,
-  rotationUpdateOnMouseMoveHandler
+  rotationUpdateOnMouseMoveHandler,
 ) {
   const navigationLinks = document.querySelectorAll(
-    `.${hudStyles.navigatorWrapper} button`
+    `.${hudStyles.navigatorWrapper} button`,
   );
 
   const cardContainers = document.querySelectorAll(
-    `.${contactStyles.cardContainer}`
+    `.${contactStyles.cardContainer}`,
   );
 
   const hamMenuButton = document.getElementById("ham-menu-button");
@@ -28,7 +28,7 @@ export function gsapOnSection(
       onStart: () => {
         window?.removeEventListener(
           "mousemove",
-          rotationUpdateOnMouseMoveHandler
+          rotationUpdateOnMouseMoveHandler,
         );
         state.activeSection = targetSection;
 
@@ -65,7 +65,7 @@ export function gsapOnSection(
             duration: 1,
             ease: "power2.inOut",
             stagger: 0.2,
-          }
+          },
         );
         // Add back the mousemove event listener for rotation
         // window?.addEventListener("mousemove", rotationUpdateOnMouseMoveHandler);
@@ -82,7 +82,7 @@ export function gsapOnSection(
         duration: 1,
         ease: "power2.inOut",
       },
-      ""
+      "",
     )
       .to(
         camera.position,
@@ -93,7 +93,7 @@ export function gsapOnSection(
           duration: 2,
           ease: "power2.inOut",
         },
-        ""
+        "",
       )
       .to(
         `.${contactStyles.title}`,
@@ -102,7 +102,7 @@ export function gsapOnSection(
           duration: 1,
           ease: "power2.inOut",
         },
-        "-=1"
+        "-=1",
       )
       .to(
         camera.rotation,
@@ -113,14 +113,14 @@ export function gsapOnSection(
           duration: 2,
           ease: "power2.inOut",
         },
-        "<"
+        "<",
       );
   } else if (targetSection === 1) {
     const tl = gsap.timeline({
       onStart: () => {
         window?.removeEventListener(
           "mousemove",
-          rotationUpdateOnMouseMoveHandler
+          rotationUpdateOnMouseMoveHandler,
         );
         state.activeSection = targetSection;
         state.isMoving = true;
@@ -163,7 +163,7 @@ export function gsapOnSection(
         duration: 1,
         ease: "power2.inOut",
       },
-      ""
+      "",
     )
       .to(
         `.${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${contactStyles.wrapper}, .${contactStyles.title}`,
@@ -172,7 +172,7 @@ export function gsapOnSection(
           duration: 1,
           ease: "power2.inOut",
         },
-        ""
+        "",
       )
       .to(
         camera.position,
@@ -183,7 +183,7 @@ export function gsapOnSection(
           duration: 2,
           ease: "power2.inOut",
         },
-        ""
+        "",
       )
       .to(
         `.${aboutStyles.title}`,
@@ -192,7 +192,7 @@ export function gsapOnSection(
           duration: 1,
           ease: "power2.inOut",
         },
-        "-=1"
+        "-=1",
       )
       .to(
         camera.rotation,
@@ -203,7 +203,7 @@ export function gsapOnSection(
           duration: 2,
           ease: "power2.inOut",
         },
-        "<"
+        "<",
       )
       .to(
         `.${aboutStyles.wrapper}`,
@@ -212,7 +212,7 @@ export function gsapOnSection(
           duration: 0.5,
           ease: "power2.inOut",
         },
-        "-=1"
+        "-=1",
       )
       .to(
         `.${aboutStyles.line}`,
@@ -221,7 +221,7 @@ export function gsapOnSection(
           duration: 0.5,
           ease: "power2.inOut",
         },
-        ">"
+        ">",
       )
       .to(
         `.${aboutStyles.container}`,
@@ -230,7 +230,7 @@ export function gsapOnSection(
           duration: 0.5,
           ease: "power2.inOut",
         },
-        ">"
+        ">",
       )
       .to(
         `.${aboutStyles.text}`,
@@ -239,7 +239,7 @@ export function gsapOnSection(
           duration: 0.5,
           ease: "power2.inOut",
         },
-        ">"
+        ">",
       )
       .to(
         `.${aboutStyles.carouselContainer}`,
@@ -248,14 +248,14 @@ export function gsapOnSection(
           duration: 0.5,
           ease: "power2.inOut",
         },
-        ">"
+        ">",
       );
   } else if (targetSection === 0) {
     const tl = gsap.timeline({
       onStart: () => {
         window?.removeEventListener(
           "mousemove",
-          rotationUpdateOnMouseMoveHandler
+          rotationUpdateOnMouseMoveHandler,
         );
         state.activeSection = targetSection;
 
@@ -288,7 +288,7 @@ export function gsapOnSection(
         duration: 1,
         ease: "power2.inOut",
       },
-      ""
+      "",
     )
       .to(
         camera.rotation,
@@ -299,7 +299,7 @@ export function gsapOnSection(
           duration: 2,
           ease: "power2.inOut",
         },
-        ""
+        "",
       )
       .to(
         camera.position,
@@ -310,7 +310,7 @@ export function gsapOnSection(
           duration: 2,
           ease: "power2.inOut",
         },
-        "<"
+        "<",
       )
       .to(
         `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}`,
@@ -319,7 +319,7 @@ export function gsapOnSection(
           duration: 1,
           ease: "power2.inOut",
         },
-        "-=1"
+        "-=1",
       );
   }
 }

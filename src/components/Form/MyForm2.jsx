@@ -13,9 +13,9 @@ import statesData from "../Form/states.json";
 const MyForm2 = () => {
   const [stateOptions, setStateOptions] = useState([]);
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
-  const [selectedState, setSelectedState] = useState('');
+  const [selectedState, setSelectedState] = useState("");
   const [cityOptions, setCityOptions] = useState([]);
-  const [displayTest, setDisplayText]=useState('');
+  const [displayTest, setDisplayText] = useState("");
   const [isCityDisabled, setCityDisabled] = useState(true);
   const initialValues = {
     name: "",
@@ -27,20 +27,24 @@ const MyForm2 = () => {
     college_id: "",
     year: [],
     city: "",
-    state:""
+    state: "",
   };
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
-  const [windowHeight, setWindowHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 0);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0,
+  );
+  const [windowHeight, setWindowHeight] = useState(
+    typeof window !== "undefined" ? window.innerHeight : 0,
+  );
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(typeof window !== 'undefined' ? window.innerWidth : 0);
-      setWindowHeight(typeof window !== 'undefined' ? window.innerHeight : 0);
+      setWindowWidth(typeof window !== "undefined" ? window.innerWidth : 0);
+      setWindowHeight(typeof window !== "undefined" ? window.innerHeight : 0);
     };
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   const validationSchema = Yup.object({
@@ -67,9 +71,9 @@ const MyForm2 = () => {
     event.target.value = inputValue;
   }
   const genderOptions = [
-    { value: "M", label: "MALE", label1:"M" },
-    { value: "F", label: "FEMALE", label1:"F" },
-    { value: "O", label: "OTHER", label1:"O"},
+    { value: "M", label: "MALE", label1: "M" },
+    { value: "F", label: "FEMALE", label1: "F" },
+    { value: "O", label: "OTHER", label1: "O" },
   ];
   const [interestOptions, setInterestOptions] = useState([""]);
   const [eventsOptions, setEventsOptions] = useState([""]);
@@ -79,7 +83,7 @@ const MyForm2 = () => {
   useEffect(() => {
     axios
       .get(
-        "https://bits-apogee.org/2024/main/registrations/get_event_categories"
+        "https://bits-apogee.org/2024/main/registrations/get_event_categories",
       )
       .then((response) => setInterestOptions(response.data))
       .catch((error) => console.error("Error fetching interests:", error));
@@ -104,272 +108,329 @@ const MyForm2 = () => {
   const handleSubmit = async (values, { resetForm }) => {
     console.log("Register button clicked");
     try {
-      const interestsIds = (values.interests || []).map(interest => interest.value);
-      const eventsIds = (values.events || []).map(event => event.value);
-console.log(interestsIds)
+      const interestsIds = (values.interests || []).map(
+        (interest) => interest.value,
+      );
+      const eventsIds = (values.events || []).map((event) => event.value);
+      console.log(interestsIds);
       const submitValues = {
         ...values,
         interests: interestsIds,
         events: eventsIds,
       };
-    console.log('Form Values:',submitValues);
+      console.log("Form Values:", submitValues);
 
-    const response = await axios.post(
-      'https://bits-apogee.org/2024/main/registrations/Register/',{
-        ...submitValues,
-        // token: values.token, // Include the reCAPTCHA token in the payload
-      });
+      const response = await axios.post(
+        "https://bits-apogee.org/2024/main/registrations/Register/",
+        {
+          ...submitValues,
+          // token: values.token, // Include the reCAPTCHA token in the payload
+        },
+      );
       if (response) {
-        console.log(response)
-        console.log('Data sent successfully!');
+        console.log(response);
+        console.log("Data sent successfully!");
         setSuccessfullRegistration(1);
       } else {
-        console.error('Error submitting the form. Server response:', response);
+        console.error("Error submitting the form. Server response:", response);
       }
     } catch (error) {
-      console.error('Error submitting the form:', error.response.data.message);
+      console.error("Error submitting the form:", error.response.data.message);
       setSuccessfullRegistration(2);
-      setDisplayText(error.response.data.message)
+      setDisplayText(error.response.data.message);
     } finally {
     }
   };
 
   useEffect(() => {
-    const allStates = statesData.map(state => ({
+    const allStates = statesData.map((state) => ({
       value: state.name,
       label: state.name,
     }));
     setStateOptions(allStates);
   }, []);
   useEffect(() => {
-    const selectedStateCities = citiesData
-      .find(state => state.name === selectedState)
-      ?.cities.map(city => ({
-        value: city.name,
-        label: city.name,
-      })) || [];
+    const selectedStateCities =
+      citiesData
+        .find((state) => state.name === selectedState)
+        ?.cities.map((city) => ({
+          value: city.name,
+          label: city.name,
+        })) || [];
     setCityOptions(selectedStateCities);
   }, [selectedState]);
   return (
     <>
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ values, setFieldValue, isSubmitting }) => (
-        <Form className={styles.mobileForm}>
-          <div className={styles.formWrapper}>
-            <div className={styles.mobileName}>
-              <Field
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your Name"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="name">NAME</label>
-              <ErrorMessage name="name" component="div" className={styles.errorMessage}/>
-            </div>
-
-            <div className={styles.mobileEmail}>
-              <Field
-                type="email"
-                id="email_id"
-                name="email_id"
-                placeholder="Your Email"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="email_id">EMAIL ID</label>
-              <ErrorMessage name="email_id" component="div" className={styles.errorMessage}/>
-            </div>
-
-            <div className={styles.mobilePhone}>
-              <Field
-                type="text"
-                id="phone"
-                name="phone"
-                placeholder="Your Phone No"
-                onInput={(e) => handleNumericInput(e)}
-                maxLength="10"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="phone">PHONE</label>
-              <ErrorMessage name="phone" component="div" className={styles.errorMessage}/>
-            </div>
-
-            <div className={styles.mobileGender}>
-              <div className={styles.checkboxContainer}>
-                {genderOptions.map((option) => (
-                  <div key={option.value} className={styles.checkboxItem}>
-                    <div
-                      className={`${styles.customCheckbox} ${
-                        values.gender === option.value ? styles.checked : ""
-                      }`}
-                      onClick={() => {
-                        setFieldValue("gender", option.value);
-                      }}
-                    >
-                      {values.gender === option.value && (
-                        <div className={styles.checkmark}>&#10003;</div>
-                      )}
-                    </div>
-                    <label
-                      htmlFor={`gender-${option.value}`}
-                      className={styles.genderLabel}
-                    >
-                      {window.innerWidth > 360 ? option.label : option.label1}
-                    </label>
-                  </div>
-                ))}
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ values, setFieldValue, isSubmitting }) => (
+          <Form className={styles.mobileForm}>
+            <div className={styles.formWrapper}>
+              <div className={styles.mobileName}>
+                <Field
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="name">NAME</label>
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className={styles.errorMessage}
+                />
               </div>
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="gender">GENDER</label>
-              <ErrorMessage name="gender" component="div" className={styles.errorMessage}/>
-            </div>
 
-            <div className={styles.mobileInterests}>
-              <Select
-                id="interests"
-                name="interests"
-                options={(Array.isArray(interestOptions.data) ? interestOptions.data : []).map(item => ({
-                  value: item.id,
-                  label: item.name
-                }))}
-                isMulti
-                value={values.interests || []}  // Updated
-                onChange={(selectedOptions) => {
-                  setFieldValue('interests', selectedOptions || []);
-                }}
-                className={styles.mobileInterestsWrapper}
-                styles={customStyles1}
-                placeholder="Choose Interests"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="interests">Interests</label>
-              <ErrorMessage name="interests" component="div" className={styles.errorMessage}/>
-            </div>
-            <div className={styles.mobileEvents}>
-              <Select
-                id="events"
-                name="events"
-                options={(Array.isArray(eventsOptions.data) ? eventsOptions.data : []).map(item => ({
-                  value: item.id,
-                  label: item.name
-                }))}
-                isMulti
-                value={values.events || []}  // Updated
-                onChange={(selectedOptions) => {
-                  setFieldValue('events', selectedOptions || []);
-                }}
-                className={styles.mobileEventsWrapper}
-                styles={customStyles1}
-                placeholder="Choose Events"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="events">Events</label>
-              <ErrorMessage name="events" component="div" className={styles.errorMessage}/>
-            </div>
-
-            <div className={styles.mobileColleges}>
-              <Select
-                id="college_id"
-                name="college_id"
-                options={(Array.isArray(collegeOptions.data)
-                  ? collegeOptions.data
-                  : []
-                ).map((item) => ({
-                  value: item.id,
-                  label: item.name,
-                }))}
-                value={(Array.isArray(collegeOptions)
-                  ? collegeOptions
-                  : []
-                ).find((option) => option.value === values.college)}
-                onChange={(selectedOption) => {
-                  setFieldValue(
-                    "college_id",
-                    selectedOption ? selectedOption.value : ""
-                  );
-                }}
-                className={styles.mobileCollegeWrapper}
-                styles={customStyles1}
-                placeholder="Choose Your College"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="college_id">College</label>
-              <ErrorMessage name="college_id" component="div" className={styles.errorMessage}/>
-            </div>
-
-            <div className={styles.mobileYear}>
-              <div className={styles.checkboxContainer}>
-                {yearOfStudyOptions.map((option) => (
-                  <div key={option.value} className={styles.checkboxItem}>
-                    <div
-                      className={`${styles.customCheckbox} ${
-                        values.year === option.value
-                          ? styles.checked
-                          : ""
-                      }`}
-                      onClick={() => {
-                        setFieldValue("year", option.value);
-                      }}
-                    >
-                      {values.year === option.value && (
-                        <div className={styles.checkmark}>&#10003;</div>
-                      )}
-                    </div>
-                    <label
-                      htmlFor={`year-${option.value}`}
-                      className={styles.yearLabel}
-                    >
-                      {option.label}
-                    </label>
-                  </div>
-                ))}
+              <div className={styles.mobileEmail}>
+                <Field
+                  type="email"
+                  id="email_id"
+                  name="email_id"
+                  placeholder="Your Email"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="email_id">EMAIL ID</label>
+                <ErrorMessage
+                  name="email_id"
+                  component="div"
+                  className={styles.errorMessage}
+                />
               </div>
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="year">Year of Study</label>
+
+              <div className={styles.mobilePhone}>
+                <Field
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  placeholder="Your Phone No"
+                  onInput={(e) => handleNumericInput(e)}
+                  maxLength="10"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="phone">PHONE</label>
+                <ErrorMessage
+                  name="phone"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
+
+              <div className={styles.mobileGender}>
+                <div className={styles.checkboxContainer}>
+                  {genderOptions.map((option) => (
+                    <div key={option.value} className={styles.checkboxItem}>
+                      <div
+                        className={`${styles.customCheckbox} ${
+                          values.gender === option.value ? styles.checked : ""
+                        }`}
+                        onClick={() => {
+                          setFieldValue("gender", option.value);
+                        }}
+                      >
+                        {values.gender === option.value && (
+                          <div className={styles.checkmark}>&#10003;</div>
+                        )}
+                      </div>
+                      <label
+                        htmlFor={`gender-${option.value}`}
+                        className={styles.genderLabel}
+                      >
+                        {window.innerWidth > 360 ? option.label : option.label1}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="gender">GENDER</label>
+                <ErrorMessage
+                  name="gender"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
+
+              <div className={styles.mobileInterests}>
+                <Select
+                  id="interests"
+                  name="interests"
+                  options={(Array.isArray(interestOptions.data)
+                    ? interestOptions.data
+                    : []
+                  ).map((item) => ({
+                    value: item.id,
+                    label: item.name,
+                  }))}
+                  isMulti
+                  value={values.interests || []} // Updated
+                  onChange={(selectedOptions) => {
+                    setFieldValue("interests", selectedOptions || []);
+                  }}
+                  className={styles.mobileInterestsWrapper}
+                  styles={customStyles1}
+                  placeholder="Choose Interests"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="interests">Interests</label>
+                <ErrorMessage
+                  name="interests"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
+              <div className={styles.mobileEvents}>
+                <Select
+                  id="events"
+                  name="events"
+                  options={(Array.isArray(eventsOptions.data)
+                    ? eventsOptions.data
+                    : []
+                  ).map((item) => ({
+                    value: item.id,
+                    label: item.name,
+                  }))}
+                  isMulti
+                  value={values.events || []} // Updated
+                  onChange={(selectedOptions) => {
+                    setFieldValue("events", selectedOptions || []);
+                  }}
+                  className={styles.mobileEventsWrapper}
+                  styles={customStyles1}
+                  placeholder="Choose Events"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="events">Events</label>
+                <ErrorMessage
+                  name="events"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
+
+              <div className={styles.mobileColleges}>
+                <Select
+                  id="college_id"
+                  name="college_id"
+                  options={(Array.isArray(collegeOptions.data)
+                    ? collegeOptions.data
+                    : []
+                  ).map((item) => ({
+                    value: item.id,
+                    label: item.name,
+                  }))}
+                  value={(Array.isArray(collegeOptions)
+                    ? collegeOptions
+                    : []
+                  ).find((option) => option.value === values.college)}
+                  onChange={(selectedOption) => {
+                    setFieldValue(
+                      "college_id",
+                      selectedOption ? selectedOption.value : "",
+                    );
+                  }}
+                  className={styles.mobileCollegeWrapper}
+                  styles={customStyles1}
+                  placeholder="Choose Your College"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="college_id">College</label>
+                <ErrorMessage
+                  name="college_id"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
+
+              <div className={styles.mobileYear}>
+                <div className={styles.checkboxContainer}>
+                  {yearOfStudyOptions.map((option) => (
+                    <div key={option.value} className={styles.checkboxItem}>
+                      <div
+                        className={`${styles.customCheckbox} ${
+                          values.year === option.value ? styles.checked : ""
+                        }`}
+                        onClick={() => {
+                          setFieldValue("year", option.value);
+                        }}
+                      >
+                        {values.year === option.value && (
+                          <div className={styles.checkmark}>&#10003;</div>
+                        )}
+                      </div>
+                      <label
+                        htmlFor={`year-${option.value}`}
+                        className={styles.yearLabel}
+                      >
+                        {option.label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="year">Year of Study</label>
+              </div>
+              <div className={styles.mobileState}>
+                <Select
+                  id="state"
+                  name="state"
+                  options={stateOptions}
+                  value={stateOptions.find(
+                    (option) => option.value === values.state,
+                  )}
+                  onChange={(selectedOption) => {
+                    setFieldValue(
+                      "state",
+                      selectedOption ? selectedOption.value : "",
+                    );
+                    setFieldValue("city", ""); // Clear the city when the state changes
+                    setSelectedState(
+                      selectedOption ? selectedOption.value : "",
+                    );
+                  }}
+                  className={styles.stateWrapper}
+                  styles={customStyles2}
+                  placeholder="Your State"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="state">State</label>
+                <ErrorMessage
+                  name="state"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
+              <div className={styles.mobileCity}>
+                <Select
+                  id="city"
+                  name="city"
+                  options={cityOptions}
+                  value={cityOptions.find(
+                    (option) => option.value === values.city,
+                  )}
+                  onChange={(selectedOption) => {
+                    setFieldValue(
+                      "city",
+                      selectedOption ? selectedOption.value : "",
+                    );
+                  }}
+                  isDisabled={!values.state}
+                  className={styles.mobileCityWrapper}
+                  styles={customStyles2}
+                  placeholder="Your City"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="city">City</label>
+                <ErrorMessage
+                  name="city"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
             </div>
-            <div className={styles.mobileState}>
-              <Select
-                id="state"
-                name="state"
-              options={stateOptions}
-              value={stateOptions.find(option => option.value === values.state)}
-              onChange={(selectedOption) => {
-                setFieldValue('state', selectedOption ? selectedOption.value : '');
-                setFieldValue('city', ''); // Clear the city when the state changes
-                setSelectedState(selectedOption ? selectedOption.value : '');
-              }}
-                className={styles.stateWrapper}
-                styles={customStyles2}
-                placeholder="Your State"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="state">State</label>
-              <ErrorMessage name="state" component="div" className={styles.errorMessage}/>
-            </div>
-            <div className={styles.mobileCity}>
-              <Select
-                id="city"
-                name="city"
-                options={cityOptions}
-              value={cityOptions.find(option => option.value === values.city)}
-              onChange={(selectedOption) => {
-                setFieldValue('city', selectedOption ? selectedOption.value : '');
-              }}
-              isDisabled={!values.state}
-                className={styles.mobileCityWrapper}
-                styles={customStyles2}
-                placeholder="Your City"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="city">City</label>
-              <ErrorMessage name="city" component="div" className={styles.errorMessage}/>
-            </div>
-          </div>
-          {/* <div className={styles.recaptcha}>
+            {/* <div className={styles.recaptcha}>
               <ReCAPTCHA
                 sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
                 onChange={(token) => {
@@ -377,42 +438,46 @@ console.log(interestsIds)
                 }}
               />
             </div> */}
-          {
-  (() => {
-    switch (true) {
-      case succesfulRegistration===0:
-        return (
-            <button
-              type="submit"
-              className={styles.registerBtn}
-              disabled={isSubmitting}
-            >
-              <span>REGISTER</span>
-            </button>
-        );
-        case succesfulRegistration===1:
-        return (
-          <span className={styles.successText}  style={{
-            fontSize: windowWidth<400 ? "12px" : (windowWidth<500?"13px":"16px")
-          }}>
-            A verification mail has been sent to your email id.
-          </span>
-        );
-        case succesfulRegistration===2:
-        return (
-          <span className={styles.successText}>
-            {displayTest}
-            
-          </span>
-        );
-        default: return null;
-    }
-  })()
-}
+            {(() => {
+              switch (true) {
+                case succesfulRegistration === 0:
+                  return (
+                    <button
+                      type="submit"
+                      className={styles.registerBtn}
+                      disabled={isSubmitting}
+                    >
+                      <span>REGISTER</span>
+                    </button>
+                  );
+                case succesfulRegistration === 1:
+                  return (
+                    <span
+                      className={styles.successText}
+                      style={{
+                        fontSize:
+                          windowWidth < 400
+                            ? "12px"
+                            : windowWidth < 500
+                              ? "13px"
+                              : "16px",
+                      }}
+                    >
+                      A verification mail has been sent to your email id.
+                    </span>
+                  );
+                case succesfulRegistration === 2:
+                  return (
+                    <span className={styles.successText}>{displayTest}</span>
+                  );
+                default:
+                  return null;
+              }
+            })()}
           </Form>
-      )}
-    </Formik>
-          </>
+        )}
+      </Formik>
+    </>
   );
 };
 export default MyForm2;

@@ -1,8 +1,8 @@
-.eventsContainer{
-    width: 100vw;
-    height: 100svh;
-    display: flex;
+.eventsContainer {
+  width: 100vw;
+  height: 100svh;
+  display: flex;
 }
-.eventsContainer img{
-    width: 100%;
+.eventsContainer img {
+  width: 100%;
 }

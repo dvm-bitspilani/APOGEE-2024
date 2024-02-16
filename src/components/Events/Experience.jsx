@@ -29,16 +29,15 @@ export default function Experience() {
   useEffect(() => {
     gsapOnRender(mascotPos);
   }, [mascotPos]);
-  
+
   const scroll = useScroll();
 
   useFrame(() => {
     // console.log(scroll);
     setCategoryOffset(
-      scroll.offset * viewport.width * (state.numCategories - 1)
+      scroll.offset * viewport.width * (state.numCategories - 1),
     );
   });
-
 
   const positions = Array.from({ length: snap.numCategories }, (v, i) => {
     return [viewport.width * i - categoryOffset, 0, 0];

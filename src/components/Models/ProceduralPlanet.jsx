@@ -23,25 +23,25 @@ export default function ProceduralPlanet(props) {
     state.alienPlanet = alienPlanetRef.current;
   }, []);
 
-    // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 2, "green");
-  
-    // const { color, intensity, position } = useControls("Alien Planet Light", {
-    //     position: {
-    //       value: [-3, 2.5, -3.5],
-    //       step: 0.1,
-    //       label: "Position",
-    //     },
-    //     color: {
-    //       value: "#24dede",
-    //       label: "Color",
-    //     },
-    //     intensity: {
-    //         value: 0.5,
-    //         step: 0.1,
-    //         min: 0,
-    //         max: 10,
-    //       },
-    //   });
+  // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 2, "green");
+
+  // const { color, intensity, position } = useControls("Alien Planet Light", {
+  //     position: {
+  //       value: [-3, 2.5, -3.5],
+  //       step: 0.1,
+  //       label: "Position",
+  //     },
+  //     color: {
+  //       value: "#24dede",
+  //       label: "Color",
+  //     },
+  //     intensity: {
+  //         value: 0.5,
+  //         step: 0.1,
+  //         min: 0,
+  //         max: 10,
+  //       },
+  //   });
 
   // Create a material for the backside
   const backsideMaterial = new THREE.MeshBasicMaterial({
@@ -80,5 +80,5 @@ export default function ProceduralPlanet(props) {
       </group>
     </>
   );
-}useGLTF.preload("/models/procedural3.glb");
-
+}
+useGLTF.preload("/models/procedural3.glb");
