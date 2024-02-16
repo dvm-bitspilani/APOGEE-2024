@@ -16,6 +16,6 @@ export default function gsapOnRender(mascotPos) {
       duration: 1.5,
       ease: "power3.out",
       delay: 1,
-    }
+    },
   );
 }

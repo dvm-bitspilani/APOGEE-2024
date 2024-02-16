@@ -27,8 +27,7 @@ h1.title {
   visibility: hidden;
   opacity: 0;
 
-  @media screen and (max-height: 700px),
-  screen and (max-width: 1100px) {
+  @media screen and (max-height: 700px), screen and (max-width: 1100px) {
     top: 15px;
     font-size: 1.3rem;
   }
@@ -68,7 +67,6 @@ h1.title {
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
-
 }
 
 .line {
@@ -76,7 +74,6 @@ h1.title {
   bottom: 0;
   width: 100%;
   visibility: hidden;
-
 }
 
 .carouselContainer {
@@ -109,14 +106,14 @@ h1.title {
   .text {
     padding-inline: 4%;
     padding-bottom: 1.5rem;
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 }
 @media only screen and (max-width: 800px) {
-  .wrapper{
+  .wrapper {
     left: 0;
   }
-  .container{
+  .container {
     background-position: bottom;
   }
   .text {
@@ -124,5 +121,4 @@ h1.title {
     padding-bottom: 2.5rem;
     padding-top: 0;
   }
-  
 }

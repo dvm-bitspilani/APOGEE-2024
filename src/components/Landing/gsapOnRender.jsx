@@ -33,7 +33,7 @@ export function gsapOnRender(camera, rotationUpdateOnMouseMoveHandler) {
         duration: 1,
         ease: "power2.inOut",
       },
-      ">"
+      ">",
     )
     .fromTo(
       `.${navigatorStyles.navigatorLinks} button`,
@@ -48,7 +48,7 @@ export function gsapOnRender(camera, rotationUpdateOnMouseMoveHandler) {
         ease: "power3.in",
         stagger: 0.2,
       },
-      "-=1"
+      "-=1",
     );
 
   // Start the timeline

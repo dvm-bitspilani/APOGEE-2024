@@ -7,7 +7,6 @@ import { Speed } from "../Speed";
 import state from "../state";
 
 function Experience() {
-
   const cameraRef = useRef();
 
   useEffect(() => {

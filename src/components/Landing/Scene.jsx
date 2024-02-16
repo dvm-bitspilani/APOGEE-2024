@@ -92,14 +92,14 @@ export function Scene() {
         ease: "power2.out",
       });
     },
-    [camera]
+    [camera],
   );
 
   const snap = useSnapshot(state);
 
   const rotationUpdateOnMouseMoveHandler = useCallback(
     (e) => rotationUpdateOnMouseMove(e, [0, 0, 0]),
-    [rotationUpdateOnMouseMove]
+    [rotationUpdateOnMouseMove],
   );
 
   // const rotationUpdateOnMouseMoveMenuHandler = useCallback(
@@ -128,7 +128,7 @@ export function Scene() {
         menuPos,
         menuRot,
         state.isHamOpen,
-        rotationUpdateOnMouseMoveHandler
+        rotationUpdateOnMouseMoveHandler,
         // rotationUpdateOnMouseMoveMenuHandler
       );
 
@@ -164,7 +164,7 @@ export function Scene() {
         aboutPos,
         aboutRot,
         snap.targetSection,
-        rotationUpdateOnMouseMoveHandler
+        rotationUpdateOnMouseMoveHandler,
       );
     gsapOnSectionHandler();
 

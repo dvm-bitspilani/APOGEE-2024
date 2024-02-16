@@ -61,7 +61,9 @@
       font-size: 1.2rem;
       color: #c8f2f4;
       text-shadow: 0px 0px 12.236px rgba(210, 198, 255, 0.4);
-      transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+      transition:
+        color 0.2s ease-in-out,
+        text-shadow 0.2s ease-in-out;
       text-align: center;
 
       @media screen and (max-height: 700px), screen and (max-width: 700px) {
