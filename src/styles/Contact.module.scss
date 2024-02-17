@@ -285,6 +285,8 @@ h1.title {
     top: 80px;
     left: 0;
     right: 0;
+
+    pointer-events: none;
   }
 
   .container {
@@ -299,5 +301,7 @@ h1.title {
     padding-bottom: 5rem;
 
     gap: 1rem;
+
+    pointer-events: all;
   }
 }
