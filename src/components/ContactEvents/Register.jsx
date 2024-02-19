@@ -60,7 +60,6 @@ export default function Register(props) {
       onClick={handleNavigation}
       ref={groupRef}
     >
-      {/* Position the mesh 50% to the left or anchor it to the right */}
       <mesh>
         <planeGeometry attach="geometry" args={[2, 0.7]} />
         <meshBasicMaterial

@@ -9,6 +9,7 @@ import placeholder from "@assets/events/event-cat-placeholder.png";
 import { useEffect, useRef } from "react";
 
 import * as THREE from "three";
+import InfoText from "./InfoText";
 
 export default function EventContainer(props) {
   const { position } = props;
@@ -83,6 +84,7 @@ export default function EventContainer(props) {
       <Text
         color={"#9AF0F4"}
         anchorX={"left"}
+        textAlign="center"
         position={[
           viewport.width * textPosition[0] * xPercent,
           viewport.height * textPosition[1] * yPercent - 0.4,
@@ -96,6 +98,7 @@ export default function EventContainer(props) {
       <Text
         anchorX={"left"}
         // anchorY={"top"}
+        textAlign="center"
         position={[
           viewport.width * textPosition[0] * xPercent,
           // viewport.height * textPosition[1] * yPercent - 0.6,
@@ -123,6 +126,30 @@ export default function EventContainer(props) {
         url={placeholder}
         scale={[viewport.width * 0.3, viewport.height * 0.3, 1]}
         anchorX={"right"}
+      />
+      <InfoText
+        position={[
+          viewport.width * textPosition[0] * xPercent,
+          -viewport.height * textPosition[1] * yPercent,
+          0,
+        ]}
+        data={{ category: "Location", value: "LTC 5105" }}
+      />
+      <InfoText
+        position={[
+          viewport.width * textPosition[0] * xPercent + 0.1 * viewport.width,
+          -viewport.height * textPosition[1] * yPercent,
+          0,
+        ]}
+        data={{ category: "Time", value: "5th April, 6PM" }}
+      />
+      <InfoText
+        position={[
+          viewport.width * textPosition[0] * xPercent + 0.25 * viewport.width,
+          -viewport.height * textPosition[1] * yPercent,
+          0,
+        ]}
+        data={{ category: "For queries", value: "9390145617" }}
       />
       <Register
         position={[

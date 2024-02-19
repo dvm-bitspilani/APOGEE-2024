@@ -40,12 +40,12 @@ export default function OpenButton(props) {
     };
   }, [hovered]);
 
-  useEffect(() => {
-    const box = new THREE.Box3().setFromObject(groupRef.current);
-    const size = box.getSize(new THREE.Vector3());
+  // useEffect(() => {
+  //   const box = new THREE.Box3().setFromObject(groupRef.current);
+  //   const size = box.getSize(new THREE.Vector3());
 
-    // groupRef.current.position.x -= size.x / 2;
-  }, [viewport]);
+  //   groupRef.current.position.x -= size.x / 2;
+  // }, [viewport]);
 
   const handleNavigation = () => {
     navigate("/events/kernel");
