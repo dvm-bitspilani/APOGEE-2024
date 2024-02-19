@@ -80,25 +80,12 @@ export default function EventContainer(props) {
         />
       </Text>
       <Text
-        color={"#9AF0F4"}
         anchorX={"left"}
+        anchorY={"top"}
         position={[
           viewport.width * textPosition[0] * xPercent,
           viewport.height * textPosition[1] * yPercent - 0.4,
-          0,
-        ]}
-        font="/fonts/Alacrity Sans Regular.otf"
-        fontSize={Math.min(viewport.width * 0.015, 0.23)}
-      >
-        Some Club or Department
-      </Text>
-      <Text
-        anchorX={"left"}
-        // anchorY={"top"}
-        position={[
-          viewport.width * textPosition[0] * xPercent,
-          // viewport.height * textPosition[1] * yPercent - 0.6,
-          0,
+          // 0,
           0,
         ]}
         color={"#9AF0F4"}
@@ -125,7 +112,8 @@ export default function EventContainer(props) {
       />
       <OpenButton
         position={[
-          -viewport.width * textPosition[0] * xPercent,
+          // -viewport.width * textPosition[0] * xPercent,
+          0,
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
