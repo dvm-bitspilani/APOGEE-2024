@@ -2,23 +2,23 @@ import { Text } from "@react-three/drei";
 import { useLoader, useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import * as THREE from "three";
 
-export default function OpenButton(props) {
+export default function Register(props) {
   const { position } = props;
 
-  const {viewport} = useThree();
+  const { viewport } = useThree();
 
   const [hovered, setHovered] = useState(false);
 
   const meshRef = useRef();
   const groupRef = useRef();
-  
-  const navigate = useNavigate();
 
-  const registerButtonTexture = useLoader(THREE.TextureLoader, "/images/register_bg.svg");
+  const registerButtonTexture = useLoader(
+    THREE.TextureLoader,
+    "/images/register_bg.svg"
+  );
 
   useEffect(() => {
     const material = meshRef.current;
@@ -40,15 +40,16 @@ export default function OpenButton(props) {
     };
   }, [hovered]);
 
-  // useEffect(() => {
-  //   const box = new THREE.Box3().setFromObject(groupRef.current);
-  //   const size = box.getSize(new THREE.Vector3());
+  useEffect(() => {
+    const box = new THREE.Box3().setFromObject(groupRef.current);
+    const size = box.getSize(new THREE.Vector3());
 
-  //   groupRef.current.position.x -= size.x / 2;
-  // }, [viewport]);
+    groupRef.current.position.x -= size.x / 2;
+  }, [viewport]);
 
   const handleNavigation = () => {
-    navigate("/events/kernel");
+    // Navigate to some external link
+    window.open("https://www.google.com", "_blank");
   };
 
   return (
@@ -59,10 +60,14 @@ export default function OpenButton(props) {
       onClick={handleNavigation}
       ref={groupRef}
     >
-      {/* Position the mesh 50% to the left or anchor it to the right */}
-      <mesh >
+      <mesh>
         <planeGeometry attach="geometry" args={[2, 0.7]} />
-        <meshBasicMaterial attach="material" map={registerButtonTexture} transparent opacity={0.7}/>
+        <meshBasicMaterial
+          attach="material"
+          map={registerButtonTexture}
+          transparent
+          opacity={0.7}
+        />
       </mesh>
       <Text
         fontSize={0.2}
@@ -73,7 +78,7 @@ export default function OpenButton(props) {
         font="/fonts/Alacrity Sans Light.ttf"
         // anchorX={"right"}
       >
-        Open Category
+        Register
         <meshStandardMaterial
           ref={meshRef}
           attach="material"

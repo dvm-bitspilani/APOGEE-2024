@@ -13,6 +13,8 @@ const state = proxy({
   categoryOffset: 0,
 
   mascotRef: null,
+
+  isMobile: false,
 });
 
 export default state;

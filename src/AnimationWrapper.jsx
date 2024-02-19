@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 
 import App from "@routes/App.jsx";
 import Register from "@routes/Register.jsx";
@@ -12,8 +12,14 @@ import { useLocation } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import ReactGa from "react-ga4";
 
+import state from "./components/state";
+
 export default function AnimationWrapper() {
   ReactGa.initialize("G-93KSJ6NXN3");
+
+  useEffect(() => {
+    state.isMobile = window.innerWidth < 768;
+  }, []);
 
   const location = useLocation();
   return (

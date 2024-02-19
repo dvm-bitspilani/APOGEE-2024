@@ -56,7 +56,7 @@ export default function MascotModel({ mascotPos }) {
     return () => {
       gsap.to(refCurrent.rotation, {
         z: 0,
-        duration: 1,
+        duration: 0.3,
         ease: "power3.inout",
       });
       console.log("cleanup");

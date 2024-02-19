@@ -12,8 +12,11 @@ import EffectComposer from "@components/EffectComposer";
 
 // State Management
 import state from "@components/state";
+import { useSnapshot } from "valtio";
 
 function EventsPage() {
+  const snap = useSnapshot(state);
+
   useEffect(() => {
     document.title = "APOGEE '2024 | Events";
     // document.body.style.height = `${100 * state.numCategories}vh`;
@@ -34,7 +37,12 @@ function EventsPage() {
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
           <EffectComposer />
-          <ScrollControls pages={state.numCategories} damping={0.3}>
+          <ambientLight intensity={0.5} />
+          <ScrollControls
+            pages={state.numCategories}
+            damping={0.3}
+            horizontal={snap.isMobile ? true : false}
+          >
             <Experience />
           </ScrollControls>
         </Suspense>
