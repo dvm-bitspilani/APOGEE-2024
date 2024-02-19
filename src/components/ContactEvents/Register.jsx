@@ -2,7 +2,6 @@ import { Text } from "@react-three/drei";
 import { useLoader, useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import * as THREE from "three";
 
@@ -15,8 +14,6 @@ export default function Register(props) {
 
   const meshRef = useRef();
   const groupRef = useRef();
-
-  const navigate = useNavigate();
 
   const registerButtonTexture = useLoader(
     THREE.TextureLoader,
@@ -51,7 +48,8 @@ export default function Register(props) {
   }, [viewport]);
 
   const handleNavigation = () => {
-    navigate("/events/kernel");
+    // Navigate to some external link
+    window.open("https://www.google.com", "_blank");
   };
 
   return (
