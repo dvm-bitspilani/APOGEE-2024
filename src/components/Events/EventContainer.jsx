@@ -1,5 +1,5 @@
 import { useThree } from "@react-three/fiber";
-import { Text } from "@react-three/drei";
+import { Text, Image } from "@react-three/drei";
 
 import { useControls } from "leva";
 import OpenButton from "./OpenButton";
@@ -25,7 +25,7 @@ export default function EventContainer(props) {
 
   const { textPosition } = useControls("EventContainer", {
     textPosition: {
-      value: [-0.45, 0.3, 0],
+      value: [-0.45, 0.37, 0],
       step: 0.01,
     },
   });
@@ -52,7 +52,7 @@ export default function EventContainer(props) {
           0,
         ]}
         font="/fonts/Alacrity Sans Bold.ttf"
-        fontSize={0.5}
+        fontSize={Math.min(viewport.width * 0.04, 0.5)}
       >
         Kernel
         <meshStandardMaterial
@@ -63,8 +63,23 @@ export default function EventContainer(props) {
           toneMapped={false}
         />
       </Text>
+        <Text 
+        anchorX={"left"}
+        anchorY={"top"}
+        position={[
+          viewport.width * textPosition[0] * xPercent,
+          viewport.height * textPosition[1] * yPercent - 0.4,
+          0,
+        ]}
+        color={"#9AF0F4"}
+        font="/fonts/Alacrity Sans Light.ttf"
+        fontSize={Math.min(viewport.width * 0.0115, 0.2)}
+        maxWidth={viewport.width * 0.25}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut nulla id tellus mattis tempor. Sed augue odio Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut nulla id tellus mattis tempor. Sed augue
+      </Text>
       <OpenButton
-        position={[0, -viewport.height * textPosition[1] * yPercent, 0]}
+        position={[-viewport.width * textPosition[0] * xPercent, -viewport.height * textPosition[1] * yPercent, 0]}
       />
     </group>
   );
