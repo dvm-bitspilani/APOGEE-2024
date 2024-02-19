@@ -37,6 +37,7 @@ function EventsPage() {
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
           <EffectComposer />
+          <ambientLight intensity={0.5} />
           <ScrollControls
             pages={state.numCategories}
             damping={0.3}
