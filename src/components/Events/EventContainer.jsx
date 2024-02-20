@@ -45,6 +45,8 @@ export default function EventContainer(props) {
     imgRef.current.position.y -= size.y / 2;
   }, [viewport]);
 
+  //   
+
   return (
     <group position={position}>
       <mesh>
