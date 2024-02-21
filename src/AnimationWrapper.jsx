@@ -4,6 +4,7 @@ import App from "@routes/App.jsx";
 import Register from "@routes/Register.jsx";
 import Events from "@routes/Events.jsx";
 import CategoryEvents from "@routes/CategoryEvents.jsx";
+import Speakers from "./routes/Speakers";
 import ComingSoon from "@routes/ComingSoon.jsx";
 
 import { AnimatePresence } from "framer-motion";
@@ -15,7 +16,7 @@ import ReactGa from "react-ga4";
 import state from "./components/state";
 
 export default function AnimationWrapper() {
-  ReactGa.initialize("G-93KSJ6NXN3");
+  ReactGa.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID);
 
   useEffect(() => {
     state.isMobile = window.innerWidth < 768;
@@ -29,6 +30,7 @@ export default function AnimationWrapper() {
         <Route path="/register" element={<Register />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:category" element={<CategoryEvents />} />
+        <Route path="/speakers" element={<Speakers />} />
         <Route path="/*" element={<ComingSoon />} />
       </Routes>
     </AnimatePresence>
