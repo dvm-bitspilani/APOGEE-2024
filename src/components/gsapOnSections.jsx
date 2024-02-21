@@ -76,7 +76,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
+      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.lineSvg}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -219,16 +219,27 @@ export function gsapOnSection(
         {
           autoAlpha: 1,
           duration: 0.5,
+          delay:0.5,
           ease: "power2.inOut",
         },
         ">",
       )
-      .to(
-        `.${aboutStyles.container}`,
-        {
-          autoAlpha: 1,
-          duration: 0.5,
-          ease: "power2.inOut",
+      // .to(
+      //   `.${aboutStyles.container}`,
+      //   {
+      //     autoAlpha: 1,
+      //     duration: 0.5,
+      //     ease: "power2.inOut",
+      //   },
+      //   ">",
+      //   )
+        tl.to(
+          `.${aboutStyles.bgImage}`,
+          {
+            autoAlpha: 1,
+            // duration: 0.5,
+            // delay:0.5,
+            ease: "power2.inOut",
         },
         ">",
       )
@@ -237,6 +248,7 @@ export function gsapOnSection(
         {
           autoAlpha: 1,
           duration: 0.5,
+          delay:0.5,
           ease: "power2.inOut",
         },
         ">",
@@ -246,6 +258,7 @@ export function gsapOnSection(
         {
           autoAlpha: 1,
           duration: 0.5,
+          delay:0.5,
           ease: "power2.inOut",
         },
         ">",
@@ -282,7 +295,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
+      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.lineSvg}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer},.${aboutStyles.bgImage}`,
       {
         autoAlpha: 0,
         duration: 1,

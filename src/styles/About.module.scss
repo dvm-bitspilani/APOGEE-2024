@@ -52,12 +52,12 @@ h1.title {
 // }
 
 .container {
-  visibility: hidden;
+  // visibility: hidden;
 
   width: 75%;
   // aspect-ratio: 1;
   position: relative;
-  background-image: url("@assets/about/background.png");
+  // background-image: url("@assets/about/background.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,7 +68,14 @@ h1.title {
   flex-direction: column;
   gap: 1rem;
 }
-
+.bgImage{
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
 .line {
   position: absolute;
   bottom: 0;
