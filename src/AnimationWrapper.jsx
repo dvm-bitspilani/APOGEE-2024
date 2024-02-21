@@ -20,7 +20,6 @@ export default function AnimationWrapper() {
 
   useEffect(() => {
     state.isMobile = window.innerWidth < 768;
-    console.log(import.meta.env)
   }, []);
 
   const location = useLocation();
