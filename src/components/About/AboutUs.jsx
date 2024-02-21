@@ -10,7 +10,7 @@ export default function AboutUs() {
       <div className={styles.wrapper}>
         {/* <span className={styles.successText}>COMING SOON</span> */}
         <div className={styles.container}>
-          <img src="/src/assets/about/background.png" alt="" className={styles.bgImage}/>
+          <img src="/images/background.png" alt="" className={styles.bgImage}/>
           {/* <img src={line} alt="" className={styles.line} />
            */}
            <div className={styles.line}>
