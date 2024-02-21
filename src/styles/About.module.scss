@@ -71,6 +71,7 @@ h1.title {
 .bgImage{
   visibility: hidden;
   position: absolute;
+  z-index: -1;
   bottom: 0;
   left: 0;
   height: 100%;
