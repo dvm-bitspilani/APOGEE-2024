@@ -81,9 +81,17 @@ h1.title {
   position: absolute;
   bottom: 0;
   width: 100%;
-  visibility: hidden;
+  // visibility: hidden;
 }
-
+.lineSvg{
+  // visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  stroke: #3FBBCF;
+  stroke-width: 3.7931;
+  fill: none;
+}
 .carouselContainer {
   display: flex;
   flex-direction: column;
