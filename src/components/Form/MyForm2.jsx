@@ -478,6 +478,7 @@ useEffect(()=>{
     }
   })()
 }
+{/* <div className={styles.guideText}>Guide To Registration</div> */}
           </Form>
         )}
       </Formik>

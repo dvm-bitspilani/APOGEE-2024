@@ -1127,6 +1127,7 @@ const MyForm = () => {
             
           </div> */}
             {/* <button type="submit">Submit</button> */}
+            {/* <div className={styles.guideText}>Guide To Registration</div> */}
           </Form>
           // </Form>
         )}

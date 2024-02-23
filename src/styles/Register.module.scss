@@ -28,6 +28,23 @@
     height: 100dvh;
     width: auto;
   }
+  .guideText{
+    text-decoration: underline;
+    color:rgba(136, 196, 200, 0.7);
+    position: fixed;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .mobileGuideText{
+    text-decoration: underline;
+    color:rgba(136, 196, 200, 0.7);
+    position: relative;
+    z-index: 2;
+    bottom: min(40px,8vh);
+    // left: 50%;
+    // transform: translateX(-50%);
+  }
   .rightHelm {
     position: absolute;
     top: 0;
