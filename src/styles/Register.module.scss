@@ -35,6 +35,7 @@
     bottom: 2vh;
     left: 50%;
     transform: translateX(-50%);
+    font-family: Space Grotesk;
   }
   .mobileGuideText{
     text-decoration: underline;
@@ -42,6 +43,7 @@
     position: relative;
     z-index: 2;
     bottom: min(40px,8vh);
+    font-family: Space Grotesk;
     // left: 50%;
     // transform: translateX(-50%);
   }
