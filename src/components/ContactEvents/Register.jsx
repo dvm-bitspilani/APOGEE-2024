@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { useState, useRef, useEffect } from "react";
 
 import * as THREE from "three";
+import state from "../state";
 
 export default function Register(props) {
   const { position } = props;
@@ -41,6 +42,7 @@ export default function Register(props) {
   }, [hovered]);
 
   useEffect(() => {
+    if (state.isMobile) return;
     const box = new THREE.Box3().setFromObject(groupRef.current);
     const size = box.getSize(new THREE.Vector3());
 

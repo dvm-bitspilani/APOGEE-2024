@@ -134,7 +134,7 @@ export default function EventContainer(props) {
       />
       <InfoText
         position={[
-          viewport.width * textPosition[0] * xPercent,
+          viewport.width * (textPosition[0] + 0.1) * xPercent,
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
@@ -142,7 +142,7 @@ export default function EventContainer(props) {
       />
       <InfoText
         position={[
-          viewport.width * textPosition[0] * xPercent + 0.1 * viewport.width,
+          viewport.width * (textPosition[0] + 0.3) * xPercent,
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
@@ -150,7 +150,7 @@ export default function EventContainer(props) {
       />
       <InfoText
         position={[
-          viewport.width * textPosition[0] * xPercent + 0.25 * viewport.width,
+          viewport.width * (textPosition[0] + 0.5) * xPercent,
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
