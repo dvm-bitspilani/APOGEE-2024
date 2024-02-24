@@ -74,14 +74,14 @@ export default function EventContainer(props) {
         color={"#9AF0F4"}
         anchorX={"center"}
         textAlign="center"
-        position={[0, viewport.height * textPosition[1] * yPercent - 0.3, 0]}
+        position={[0, viewport.height * textPosition[1] * yPercent - 0.15, 0]}
         font="/fonts/Alacrity Sans Regular.otf"
-        fontSize={Math.min(viewport.width * 0.015, 0.23)}
+        fontSize={Math.max(viewport.width * 0.001, 0.1)}
       >
         Some Club or Department
       </Text>
       <Image
-        position={[0, viewport.height * (textPosition[1] - 0.25) * yPercent, 0]}
+        position={[0, viewport.height * (textPosition[1] - 0.2) * yPercent, 0]}
         url={placeholder}
         scale={[
           viewport.width * xPercent * 0.8,
