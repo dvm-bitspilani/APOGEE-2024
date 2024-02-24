@@ -36,7 +36,7 @@ function EventsPage() {
       <Canvas>
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
-          {/* <EffectComposer /> */}
+          <EffectComposer />
           <ambientLight intensity={1} />
           <ScrollControls
             pages={state.numCategories}

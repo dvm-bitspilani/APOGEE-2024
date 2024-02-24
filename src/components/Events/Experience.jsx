@@ -27,6 +27,14 @@ export default function Experience() {
   }, []);
 
   useEffect(() => {
+    if (viewport.width / viewport.height < 1.1) {
+      state.isMobile = true;
+    } else {
+      state.isMobile = false;
+    }
+  }, [viewport.width, viewport.height]);
+
+  useEffect(() => {
     gsapOnRender(mascotPos);
   }, [mascotPos]);
 
@@ -35,7 +43,7 @@ export default function Experience() {
   useFrame(() => {
     // console.log(scroll);
     setCategoryOffset(
-      scroll.offset * viewport.width * (state.numCategories - 1),
+      scroll.offset * viewport.width * (state.numCategories - 1)
     );
   });
 

@@ -5,6 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import Image from "./Image";
 import MascotModel from "../Models/MascotModel";
 import EventContainer from "./EventContainer";
+import MobileEventContainer from "./MobileEventContainer";
 
 import { useEffect, useState, useMemo } from "react";
 
@@ -29,6 +30,14 @@ export default function Experience() {
   }, []);
 
   useEffect(() => {
+    if (viewport.width / viewport.height < 1.1) {
+      state.isMobile = true;
+    } else {
+      state.isMobile = false;
+    }
+  }, [viewport.width, viewport.height]);
+
+  useEffect(() => {
     gsapOnRender(mascotPos);
   }, [mascotPos]);
 
@@ -37,7 +46,7 @@ export default function Experience() {
   useFrame(() => {
     // console.log(scroll);
     setCategoryOffset(
-      scroll.offset * viewport.width * (state.numCategories - 1),
+      scroll.offset * viewport.width * (state.numCategories - 1)
     );
   });
 
@@ -49,9 +58,25 @@ export default function Experience() {
     return [viewport.width * i - categoryOffset, viewport.height / 5.4, 0];
   });
 
-  const eventContainers = eventPositions.map((position, index) => (
-    <EventContainer key={index} position={position} />
-  ));
+  const mobileEventPositions = Array.from(
+    { length: snap.numCategories },
+    (v, i) => {
+      return [viewport.width * i - categoryOffset, viewport.height * 0.1, 0];
+    }
+  );
+
+  const eventContainers = eventPositions.map((position, index) => {
+    if (state.isMobile) {
+      return (
+        <MobileEventContainer
+          key={index}
+          position={mobileEventPositions[index]}
+        />
+      );
+    } else {
+      return <EventContainer key={index} position={position} />;
+    }
+  });
 
   const images = positions.map((position, index) => (
     <Image key={index} position={position} />

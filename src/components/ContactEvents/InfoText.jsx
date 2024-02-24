@@ -7,17 +7,18 @@ export default function InfoText({ position, data }) {
   return (
     <group position={position}>
       <Text
-        anchorX={"left"}
+        // anchorX={"left"}
         font="/fonts/Alacrity Sans Bold.ttf"
-        fontSize={Math.max(viewport.width * 0.01, 0.15)}
+        fontSize={Math.max(viewport.width * 0.01, 0.11)}
+        color={"#9AF0F4"}
       >
         {data.category}
       </Text>
       <Text
-        anchorX={"left"}
-        position={[0, -0.25, 0]}
+        // anchorX={"left"}
+        position={[0, -0.15, 0]}
         font="/fonts/Alacrity Sans Bold.ttf"
-        fontSize={Math.max(viewport.width * 0.012, 0.17)}
+        fontSize={Math.max(viewport.width * 0.011, 0.11)}
       >
         {data.value}
       </Text>

@@ -23,7 +23,7 @@ function Speakers() {
       document.title = "APOGEE '2024 | Celestial Epiphany";
     };
   }, []);
-
+  
   return (
     <motion.div
       className="eventsContainer"

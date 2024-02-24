@@ -1,14 +1,21 @@
 import * as THREE from "three";
 import bgImage from "/images/praneel.png";
+import mobilebgImage from "/images/praneel-mobile.png";
 
 import { useLoader, useThree } from "@react-three/fiber";
-import { Text } from "@react-three/drei";
+// import { Text } from "@react-three/drei";
+
+// State Management
+import state from "../state";
+import { useSnapshot } from "valtio";
 
 export default function Image(props) {
-  const texture = useLoader(THREE.TextureLoader, bgImage);
-  const { viewport } = useThree();
+  const snap = useSnapshot(state);
 
-  // console.log(viewport.width, viewport.height);
+  const texture = useLoader(THREE.TextureLoader, bgImage);
+  const mobileTexture = useLoader(THREE.TextureLoader, mobilebgImage);
+
+  const { viewport } = useThree();
 
   return (
     <mesh position={props.position}>
@@ -16,7 +23,11 @@ export default function Image(props) {
         attach="geometry"
         args={[viewport.width, viewport.height]}
       />
-      <meshBasicMaterial attach="material" map={texture} toneMapped={false} />
+      <meshBasicMaterial
+        attach="material"
+        map={snap.isMobile ? mobileTexture : texture}
+        toneMapped={false}
+      />
     </mesh>
   );
 }

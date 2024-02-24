@@ -13,14 +13,8 @@ import { useLocation } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import ReactGa from "react-ga4";
 
-import state from "./components/state";
-
 export default function AnimationWrapper() {
   ReactGa.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID);
-
-  useEffect(() => {
-    state.isMobile = window.innerWidth < 768;
-  }, []);
 
   const location = useLocation();
   return (
