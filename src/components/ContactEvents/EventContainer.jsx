@@ -103,7 +103,7 @@ export default function EventContainer(props) {
       <Text
         anchorX={"left"}
         // anchorY={"top"}
-        textAlign="center"
+        textAlign="left"
         position={[
           viewport.width * textPosition[0] * xPercent,
           // viewport.height * textPosition[1] * yPercent - 0.6,

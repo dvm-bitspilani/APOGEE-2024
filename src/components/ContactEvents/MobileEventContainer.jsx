@@ -37,9 +37,9 @@ export default function EventContainer(props) {
   //     },
   //   });
 
-  const xPercent = useMemo(() => 0.62, []);
+  const xPercent = useMemo(() => 0.85, []);
   const yPercent = useMemo(() => 0.7, []);
-  const textPosition = useMemo(() => [-0.35, 0.42, 0], []);
+  const textPosition = useMemo(() => [-0.35, 0.4, 0], []);
 
   return (
     <group position={position}>
@@ -51,8 +51,8 @@ export default function EventContainer(props) {
         <meshBasicMaterial
           attach="material"
           color="#314557"
-          opacity={1}
-          //   transparent
+          opacity={0}
+          transparent
         />
       </mesh>
       <Text
