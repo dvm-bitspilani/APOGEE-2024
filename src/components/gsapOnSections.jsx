@@ -237,11 +237,11 @@ export function gsapOnSection(
           `.${aboutStyles.bgImage}`,
           {
             autoAlpha: 1,
-            // duration: 0.5,
+            duration: 2,
             // delay:0.5,
             ease: "power2.inOut",
         },
-        "+=1",
+        "-=0.5",
       )
       .to(
         `.${aboutStyles.text}`,
