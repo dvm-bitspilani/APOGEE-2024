@@ -3,7 +3,7 @@ import { Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
 import Experience from "../components/Speakers/Experience";
-import { ScrollControls } from "@react-three/drei";
+import { ScrollControls, Stats } from "@react-three/drei";
 
 import { motion } from "framer-motion";
 
@@ -35,16 +35,15 @@ function Speakers() {
       <Canvas>
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
-          <EffectComposer />
-          <ambientLight intensity={1.5}>
+          {/* <EffectComposer /> */}
+          <ambientLight intensity={1.5} />
+          <Stats />
           <ScrollControls
-            pages={state.numCategories}
-            damping={0.3}
+            pages={25}
             horizontal={snap.isMobile ? true : false}
           >
             <Experience />
           </ScrollControls>
-          </ambientLight>
         </Suspense>
         {/* <Stats /> */}
         {/* <AxesHelper /> */}
