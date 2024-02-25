@@ -224,19 +224,6 @@ export function gsapOnSection(
       //   },
       //   ">",
       // )
-      .fromTo(
-        `.${aboutStyles.lineSvg}`,
-        {
-          strokeDasharray: "0% 0%",
-        },
-        {
-          strokeDasharray: "124% 100%",
-          // delay:0.5,
-          duration: 2,
-          ease: "power2.inOut",
-        },
-        ">"
-      )
       // .to(
       //   `.${aboutStyles.container}`,
       //   {
@@ -254,7 +241,7 @@ export function gsapOnSection(
             // delay:0.5,
             ease: "power2.inOut",
         },
-        "-=1.5",
+        "+=1",
       )
       .to(
         `.${aboutStyles.text}`,
