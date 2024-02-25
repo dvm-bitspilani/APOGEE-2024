@@ -241,7 +241,7 @@ export function gsapOnSection(
             // delay:0.5,
             ease: "power2.inOut",
         },
-        "-=0.5",
+        "-=0.3",
       )
       .to(
         `.${aboutStyles.text}`,
