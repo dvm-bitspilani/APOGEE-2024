@@ -137,6 +137,11 @@ h1.title {
     font-size: 0.75rem;
   }
 }
+@media only screen and (max-width: 1000px) {
+.bgImage{
+  bottom: -1%;
+}
+}
 @media only screen and (max-width: 800px) {
   .wrapper {
     left: 0;
@@ -148,5 +153,10 @@ h1.title {
     padding-inline: 8%;
     padding-bottom: 2.5rem;
     padding-top: 0;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .bgImage{
+    bottom: -2%;
   }
 }
