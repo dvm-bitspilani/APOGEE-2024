@@ -7,6 +7,7 @@ import Background from "../Landing/Background";
 import state from "../state";
 import { Spaceship } from "../Models/SpaceShip"; 
 import gsap from "gsap";
+import Card from "./Card";
 
 function Experience() {
   const scroll = useScroll();
@@ -84,6 +85,7 @@ function Experience() {
         fade
         speed={0}
       />
+      {/* <Card /> */}
          <Spaceship />
     </>
   );
