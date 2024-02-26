@@ -10,6 +10,8 @@ import { motion } from "framer-motion";
 // Effect Composer
 import EffectComposer from "@components/EffectComposer";
 
+import { Stats } from "@react-three/drei";
+
 // State Management
 import state from "@components/state";
 import { useSnapshot } from "valtio";
@@ -23,7 +25,7 @@ function Speakers() {
       document.title = "APOGEE '2024 | Celestial Epiphany";
     };
   }, []);
-  
+
   return (
     <motion.div
       className="eventsContainer"
@@ -37,16 +39,16 @@ function Speakers() {
         <Suspense fallback={null}>
           <EffectComposer />
           <ambientLight intensity={1.5}>
-          <ScrollControls
-            pages={state.numCategories}
-            damping={0.3}
-            horizontal={snap.isMobile ? true : false}
-          >
-            <Experience />
-          </ScrollControls>
+            <ScrollControls
+              pages={state.numCategories}
+              damping={0.3}
+              horizontal={snap.isMobile ? true : false}
+            >
+              <Experience />
+            </ScrollControls>
           </ambientLight>
         </Suspense>
-        {/* <Stats /> */}
+        <Stats />
         {/* <AxesHelper /> */}
       </Canvas>
     </motion.div>

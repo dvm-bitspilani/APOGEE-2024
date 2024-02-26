@@ -15,6 +15,7 @@ import state from "@components/state";
 import { useSnapshot } from "valtio";
 
 import { useParams } from "react-router-dom";
+import Instructions from "../components/ContactEvents/Instructions";
 
 function EventsPage() {
   const params = useParams();
@@ -31,7 +32,7 @@ function EventsPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1, ease: "easeInOut", delay: 0 }}
+      transition={{ duration: 1.5, ease: "easeInOut", delay: 0 }}
     >
       <Canvas>
         {/* <OrbitControls /> */}
@@ -47,6 +48,7 @@ function EventsPage() {
           </ScrollControls>
         </Suspense>
       </Canvas>
+      {snap.isMobile ? <Instructions /> : null}
     </motion.div>
   );
 }
