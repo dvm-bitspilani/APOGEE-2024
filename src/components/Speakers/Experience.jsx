@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from "react";
 import Background from "../Landing/Background";
 // import { Speed } from "../Speed";
 import state from "../state";
-import { Spaceship } from "../Models/SpaceShip"; 
+import { Spaceship } from "../Models/SpaceShip";
 import gsap from "gsap";
 import Card from "./Card";
 
@@ -18,31 +18,30 @@ function Experience() {
     state.camera = cameraRef.current;
   }, []);
 
-
   useFrame((_state, delta) => {
     if (cameraRef.current) {
       const { current: camera } = cameraRef;
-  
+
       const radius = 70; // radius of the helix
-      const speed = 5; // speed of rotation
+      const speed = 7; // speed of rotation
       const verticalSpeed = 100; // speed of vertical movement
-  
+
       // Calculate the new position
       const newPosition = [
         radius * Math.cos(scroll.offset * speed),
         -scroll.offset * verticalSpeed,
         radius * Math.sin(scroll.offset * speed),
       ];
-  
+
       // Animate the camera position
       gsap.to(camera.position, {
         x: newPosition[0],
         y: newPosition[1],
         z: newPosition[2],
-        duration: 0.5,
+        // duration: 0.5,
         ease: "power2.out",
       });
-  
+
       // Point the camera to the Spaceship
       camera.lookAt(0, camera.position.y - 1, 0);
     }
@@ -52,12 +51,12 @@ function Experience() {
     <>
       {/* <OrbitControls /> */}
       <PerspectiveCamera
-                ref={cameraRef}
-                position={[0, 125, 0]}
-                // rotation={[0, Math.PI / 2, 0]}
-                // zoom={0.5}
-                // fov={50}
-                makeDefault
+        ref={cameraRef}
+        position={[0, 125, 0]}
+        // rotation={[0, Math.PI / 2, 0]}
+        // zoom={0.5}
+        // fov={50}
+        makeDefault
       />
       <directionalLight
         position={[1, 1, -1]}
@@ -86,7 +85,7 @@ function Experience() {
         speed={0}
       />
       {/* <Card /> */}
-         <Spaceship />
+      <Spaceship />
     </>
   );
 }

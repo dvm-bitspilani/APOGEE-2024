@@ -39,8 +39,8 @@ function Speakers() {
           {/* <EffectComposer /> */}
           <ambientLight intensity={1.5}>
             <ScrollControls
-              pages={state.numCategories}
-              damping={0.3}
+              pages={10}
+              damping={0.4}
               horizontal={snap.isMobile ? true : false}
             >
               <Experience />
