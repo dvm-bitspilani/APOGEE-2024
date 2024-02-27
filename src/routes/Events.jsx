@@ -19,7 +19,17 @@ function EventsPage() {
 
   useEffect(() => {
     document.title = "APOGEE '2024 | Events";
-    // document.body.style.height = `${100 * state.numCategories}vh`;
+
+    async function fetchData() {
+      const response = await fetch(
+        "https://bits-apogee.org/2024/main/registrations/get_event_categories"
+      );
+      const data = await response.json();
+      state.numCategories = data.data.length;
+      state.categories = data.data;
+    }
+    fetchData();
+
     return () => {
       document.title = "APOGEE '2024 | Celestial Epiphany";
     };

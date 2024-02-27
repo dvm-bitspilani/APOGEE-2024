@@ -9,8 +9,12 @@ const state = proxy({
   isMoving: false,
   explosions: [],
 
-  numCategories: 10,
-  categoryOffset: 0,
+  categories: [],
+  numCategories: 1,
+  // categoryOffset: 0,
+
+  numEvents: 1,
+  events: [],
 
   mascotRef: null,
 

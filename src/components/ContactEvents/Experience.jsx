@@ -45,21 +45,19 @@ export default function Experience() {
 
   useFrame(() => {
     // console.log(scroll);
-    setCategoryOffset(
-      scroll.offset * viewport.width * (state.numCategories - 1)
-    );
+    setCategoryOffset(scroll.offset * viewport.width * (state.numEvents - 1));
   });
 
-  const positions = Array.from({ length: snap.numCategories }, (v, i) => {
+  const positions = Array.from({ length: snap.numEvents }, (v, i) => {
     return [viewport.width * i - categoryOffset, 0, 0];
   });
 
-  const eventPositions = Array.from({ length: snap.numCategories }, (v, i) => {
+  const eventPositions = Array.from({ length: snap.numEvents }, (v, i) => {
     return [viewport.width * i - categoryOffset, viewport.height / 5.4, 0];
   });
 
   const mobileEventPositions = Array.from(
-    { length: snap.numCategories },
+    { length: snap.numEvents },
     (v, i) => {
       return [viewport.width * i - categoryOffset, viewport.height * 0.1, 0];
     }

@@ -10,8 +10,6 @@ import { motion } from "framer-motion";
 // Effect Composer
 import EffectComposer from "@components/EffectComposer";
 
-import { Stats } from "@react-three/drei";
-
 // State Management
 import state from "@components/state";
 import { useSnapshot } from "valtio";
@@ -37,7 +35,7 @@ function Speakers() {
       <Canvas>
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
-          <EffectComposer />
+          {/* <EffectComposer /> */}
           <ambientLight intensity={1.5}>
             <ScrollControls
               pages={state.numCategories}
