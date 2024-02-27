@@ -26,7 +26,7 @@ const MyForm = () => {
   useEffect(() => {
     axios
       .get(
-        import.meta.env.VITE_EVENT_CATEGORIES_API,
+        "https://bits-apogee.org/2024/main/registrations/get_event_categories",
       )
       .then((response) => {
         setInterestOptions(response.data);
@@ -34,10 +34,10 @@ const MyForm = () => {
         
       .catch(error => console.error('Error fetching interests:', error));
       
-    axios.get(import.meta.env.VITE_EVENTS_API)
+    axios.get("https://bits-apogee.org/2024/main/registrations/get_event")
       .then(response => setEventsOptions(response.data))
       .catch(error => console.error('Error fetching events:', error));
-    axios.get(import.meta.env.VITE_COLLEGE_API)
+    axios.get("https://bits-apogee.org/2024/main/registrations/get_college")
       .then(response => setCollegeOptions(response.data))
       .catch(error => console.error('Error fetching colleges:', error));
   }, []);
@@ -111,7 +111,7 @@ const MyForm = () => {
       console.log('Form Values:',submitValues);
   
       const response = await axios.post(
-        import.meta.env.VITE_TEST_REGISTER_URL,{
+        'https://bits-apogee.org/2024/main/registrations/Register/',{
           ...submitValues,
         });
         if (response) {
