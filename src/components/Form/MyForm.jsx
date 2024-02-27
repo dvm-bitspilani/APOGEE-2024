@@ -111,7 +111,7 @@ const MyForm = () => {
       console.log('Form Values:',submitValues);
   
       const response = await axios.post(
-        import.meta.env.VITE_TEST_REGISTER_URL,{
+        import.meta.env.VITE_REGISTER_URL,{
           ...submitValues,
         });
         if (response) {
