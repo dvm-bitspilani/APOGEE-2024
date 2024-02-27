@@ -13,6 +13,7 @@ import EffectComposer from "@components/EffectComposer";
 // State Management
 import state from "@components/state";
 import { useSnapshot } from "valtio";
+import SpeakerHUD from "../components/Speakers/SpeakerHUD";
 
 function Speakers() {
   const snap = useSnapshot(state);
@@ -46,9 +47,10 @@ function Speakers() {
             </ScrollControls>
           </ambientLight>
         </Suspense>
-        <Stats />
+        {/* <Stats /> */}
         {/* <AxesHelper /> */}
       </Canvas>
+      {/* <SpeakerHUD /> */}
     </motion.div>
   );
 }
