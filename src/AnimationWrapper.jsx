@@ -14,7 +14,8 @@ import { Route, Routes } from "react-router-dom";
 import ReactGa from "react-ga4";
 
 export default function AnimationWrapper() {
-  ReactGa.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID);
+  // ReactGa.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID);
+  ReactGa.initialize("G-93KSJ6NXN3");
 
   const location = useLocation();
   return (
