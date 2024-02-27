@@ -48,7 +48,7 @@ export default function OpenButton(props) {
   // }, [viewport]);
 
   const handleNavigation = () => {
-    navigate("/events/kernel");
+    navigate("/events/Kernel");
   };
 
   return (

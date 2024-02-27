@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 // import { useWindowSize } from "rooks";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
@@ -15,14 +15,27 @@ import state from "@components/state";
 import { useSnapshot } from "valtio";
 
 import { useParams } from "react-router-dom";
+import Instructions from "../components/ContactEvents/Instructions";
 
 function EventsPage() {
   const params = useParams();
 
   const snap = useSnapshot(state);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     document.title = `Events | ${params.category}`;
+    async function fetchData() {
+      const response = await fetch(
+        `https://bits-apogee.org/2024/main/registrations/events/${params.category}`
+      );
+      const data = await response.json();
+      state.numEvents = data.events.length;
+      state.events = data.events;
+      setLoading(false);
+    }
+    fetchData();
   }, [params.category]);
 
   return (
@@ -31,22 +44,27 @@ function EventsPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1, ease: "easeInOut", delay: 0 }}
+      transition={{ duration: 1.5, ease: "easeInOut", delay: 0 }}
     >
-      <Canvas>
-        {/* <OrbitControls /> */}
-        <Suspense fallback={null}>
-          <EffectComposer />
-          <ambientLight intensity={0.5} />
-          <ScrollControls
-            pages={state.numCategories}
-            damping={0.3}
-            horizontal={snap.isMobile ? true : false}
-          >
-            <Experience />
-          </ScrollControls>
-        </Suspense>
-      </Canvas>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Canvas>
+          {/* <OrbitControls /> */}
+          <Suspense fallback={null}>
+            <EffectComposer />
+            <ambientLight intensity={1} />
+            <ScrollControls
+              pages={state.numEvents}
+              damping={0.3}
+              horizontal={snap.isMobile ? true : false}
+            >
+              <Experience />
+            </ScrollControls>
+          </Suspense>
+        </Canvas>
+      )}
+      {snap.isMobile ? <Instructions /> : null}
     </motion.div>
   );
 }

@@ -6,7 +6,7 @@ import { useControls } from "leva";
 import Register from "./Register";
 
 import placeholder from "@assets/events/event-cat-placeholder.png";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import * as THREE from "three";
 import InfoText from "./InfoText";
@@ -15,27 +15,32 @@ export default function EventContainer(props) {
   const { position } = props;
   const { viewport } = useThree();
 
-  const { xPercent, yPercent } = useControls("EventContainer", {
-    xPercent: {
-      value: 0.62,
-      step: 0.01,
-      min: 0,
-      max: 1,
-    },
-    yPercent: {
-      value: 0.54,
-      step: 0.01,
-      min: 0,
-      max: 1,
-    },
-  });
+  // const { xPercent, yPercent } = useControls("EventContainer", {
+  //   xPercent: {
+  //     value: 0.62,
+  //     step: 0.01,
+  //     min: 0,
+  //     max: 1,
+  //   },
+  //   yPercent: {
+  //     value: 0.54,
+  //     step: 0.01,
+  //     min: 0,
+  //     max: 1,
+  //   },
+  // });
 
-  const { textPosition } = useControls("EventContainer", {
-    textPosition: {
-      value: [-0.45, 0.37, 0],
-      step: 0.01,
-    },
-  });
+  const xPercent = useMemo(() => 0.62, []);
+  const yPercent = useMemo(() => 0.54, []);
+
+  // const { textPosition } = useControls("EventContainer", {
+  //   textPosition: {
+  //     value: [-0.45, 0.37, 0],
+  //     step: 0.01,
+  //   },
+  // });
+
+  const textPosition = useMemo(() => [-0.45, 0.37, 0], []);
 
   const imgRef = useRef();
 
@@ -98,7 +103,7 @@ export default function EventContainer(props) {
       <Text
         anchorX={"left"}
         // anchorY={"top"}
-        textAlign="center"
+        textAlign="left"
         position={[
           viewport.width * textPosition[0] * xPercent,
           // viewport.height * textPosition[1] * yPercent - 0.6,
@@ -129,7 +134,7 @@ export default function EventContainer(props) {
       />
       <InfoText
         position={[
-          viewport.width * textPosition[0] * xPercent,
+          viewport.width * (textPosition[0] + 0.1) * xPercent,
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
@@ -137,7 +142,7 @@ export default function EventContainer(props) {
       />
       <InfoText
         position={[
-          viewport.width * textPosition[0] * xPercent + 0.1 * viewport.width,
+          viewport.width * (textPosition[0] + 0.3) * xPercent,
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
@@ -145,7 +150,7 @@ export default function EventContainer(props) {
       />
       <InfoText
         position={[
-          viewport.width * textPosition[0] * xPercent + 0.25 * viewport.width,
+          viewport.width * (textPosition[0] + 0.5) * xPercent,
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}

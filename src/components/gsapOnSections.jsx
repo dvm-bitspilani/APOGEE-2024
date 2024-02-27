@@ -3,7 +3,6 @@ import * as hudStyles from "@styles/HUD.module.scss";
 import * as contactStyles from "@styles/Contact.module.scss";
 import * as aboutStyles from "@styles/About.module.scss";
 import state from "./state";
-
 export function gsapOnSection(
   camera,
   contactPos,
@@ -16,13 +15,11 @@ export function gsapOnSection(
   const navigationLinks = document.querySelectorAll(
     `.${hudStyles.navigatorWrapper} button`,
   );
-
   const cardContainers = document.querySelectorAll(
     `.${contactStyles.cardContainer}`,
   );
 
   const hamMenuButton = document.getElementById("ham-menu-button");
-
   if (targetSection === 4) {
     const tl = gsap.timeline({
       onStart: () => {
@@ -76,7 +73,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
+      `.${hudStyles.regEventsWrapper}, .${hudStyles.logo}, .${hudStyles.mobileLinks}, .${hudStyles.mobileBottom}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
       {
         autoAlpha: 0,
         duration: 1,
@@ -211,32 +208,47 @@ export function gsapOnSection(
           autoAlpha: 1,
           duration: 0.5,
           ease: "power2.inOut",
+          delay:0.5
         },
         "-=1",
       )
-      .to(
-        `.${aboutStyles.line}`,
-        {
-          autoAlpha: 1,
-          duration: 0.5,
-          ease: "power2.inOut",
+      // .to(
+      //   `.${aboutStyles.lineSvg}`,
+      //   // {
+      //   //   strokeDasharray: "50% 50%",
+      //   // }, 
+      //   {
+      //     strokeDasharray: "124%",
+      //     duration: 2,
+      //     // ease: "power2.inOut",
+      //   },
+      //   ">",
+      // )
+      // .to(
+      //   `.${aboutStyles.container}`,
+      //   {
+      //     autoAlpha: 1,
+      //     duration: 0.5,
+      //     ease: "power2.inOut",
+      //   },
+      //   ">",
+      //   )
+        tl.to(
+          `.${aboutStyles.bgImage}`,
+          {
+            autoAlpha: 1,
+            duration: 1,
+            // delay:0.5,
+            ease: "power2.inOut",
         },
-        ">",
-      )
-      .to(
-        `.${aboutStyles.container}`,
-        {
-          autoAlpha: 1,
-          duration: 0.5,
-          ease: "power2.inOut",
-        },
-        ">",
+        "-=0.3",
       )
       .to(
         `.${aboutStyles.text}`,
         {
           autoAlpha: 1,
           duration: 0.5,
+          delay:0.5,
           ease: "power2.inOut",
         },
         ">",
@@ -246,6 +258,7 @@ export function gsapOnSection(
         {
           autoAlpha: 1,
           duration: 0.5,
+          delay:0.5,
           ease: "power2.inOut",
         },
         ">",
@@ -282,7 +295,7 @@ export function gsapOnSection(
     });
 
     tl.to(
-      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.line}, .${aboutStyles.container}, .${aboutStyles.line}, .${aboutStyles.text}, .${aboutStyles.carouselContainer}`,
+      `.${contactStyles.wrapper}, .${contactStyles.title}, .${aboutStyles.wrapper}, .${aboutStyles.title}, .${aboutStyles.text}, .${aboutStyles.carouselContainer},.${aboutStyles.bgImage}`,
       {
         autoAlpha: 0,
         duration: 1,

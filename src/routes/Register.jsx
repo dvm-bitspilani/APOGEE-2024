@@ -110,9 +110,15 @@ export default function Register() {
             <MyForm />
           </div> */}
           <MyForm />
+          <a href="https://drive.google.com/file/d/1fuapp41Rr54zK7xXX-pyl_uGuIsFJ2ju/view?usp=drivesdk" target={"_blank"} className={styles.guideText}>
+      Guide To Registration
+    </a>
         </div>
         <div className={styles.mobileContent}>
           <MyForm2 />
+          <a href="https://drive.google.com/file/d/1fuapp41Rr54zK7xXX-pyl_uGuIsFJ2ju/view?usp=drivesdk" target={"_blank"} className={styles.mobileGuideText}>
+      Guide To Registration
+    </a>
         </div>
       </div>
     </motion.div>

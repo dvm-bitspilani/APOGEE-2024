@@ -21,6 +21,13 @@
 input {
   width: 100%;
 }
+.guideText{
+  text-decoration: underline;
+  color: rgba(136, 196, 200, 0.7);
+  // position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .checkboxContainer {
   display: flex;
   width: 100%;

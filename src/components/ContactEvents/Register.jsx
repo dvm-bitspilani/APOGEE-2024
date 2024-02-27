@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { useState, useRef, useEffect } from "react";
 
 import * as THREE from "three";
+import state from "../state";
 
 export default function Register(props) {
   const { position } = props;
@@ -41,6 +42,7 @@ export default function Register(props) {
   }, [hovered]);
 
   useEffect(() => {
+    if (state.isMobile) return;
     const box = new THREE.Box3().setFromObject(groupRef.current);
     const size = box.getSize(new THREE.Vector3());
 
@@ -61,7 +63,13 @@ export default function Register(props) {
       ref={groupRef}
     >
       <mesh>
-        <planeGeometry attach="geometry" args={[2, 0.7]} />
+        <planeGeometry
+          attach="geometry"
+          args={[
+            Math.max(1.2, viewport.width * 0.1),
+            Math.max(1.2, viewport.width * 0.1) / 2.2,
+          ]}
+        />
         <meshBasicMaterial
           attach="material"
           map={registerButtonTexture}
@@ -70,7 +78,7 @@ export default function Register(props) {
         />
       </mesh>
       <Text
-        fontSize={0.2}
+        fontSize={Math.max(viewport.width * 0.01, 0.1)}
         maxWidth={300}
         lineHeight={1}
         letterSpacing={0.02}
