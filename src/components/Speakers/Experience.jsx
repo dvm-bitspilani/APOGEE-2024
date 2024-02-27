@@ -1,7 +1,7 @@
 import { OrbitControls, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import Background from "../Landing/Background";
 // import { Speed } from "../Speed";
 import state from "../state";
@@ -18,13 +18,13 @@ function Experience() {
     state.camera = cameraRef.current;
   }, []);
 
+  const radius = useMemo(() => 70, []); // radius of the helix
+  const speed = useMemo(() => 7, []); // speed of the helix
+  const verticalSpeed = useMemo(() => 100, []); // speed of vertical movement
+
   useFrame((_state, delta) => {
     if (cameraRef.current) {
       const { current: camera } = cameraRef;
-
-      const radius = 70; // radius of the helix
-      const speed = 7; // speed of rotation
-      const verticalSpeed = 100; // speed of vertical movement
 
       // Calculate the new position
       const newPosition = [
