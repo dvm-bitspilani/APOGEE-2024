@@ -18,7 +18,7 @@ function Experience() {
     state.camera = cameraRef.current;
   }, []);
 
-  const radius = useMemo(() => 70, []); // radius of the helix
+  const radius = useMemo(() => 75, []); // radius of the helix
   const speed = useMemo(() => 7, []); // speed of the helix
   const verticalSpeed = useMemo(() => 100, []); // speed of vertical movement
 
@@ -84,7 +84,7 @@ function Experience() {
         fade
         speed={0}
       />
-      {/* <Card /> */}
+      <Card />
       <Spaceship />
     </>
   );
