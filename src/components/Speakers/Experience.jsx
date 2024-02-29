@@ -14,11 +14,24 @@ function Experience() {
 
   const cameraRef = useRef();
 
+  const data = 
+  [
+    {
+      cardPosition: [5, -5, 0],
+      cardRotation: [0, 0, 0],
+      textPosition: [12.5, -12.5, 0],
+      textRotation: [0, Math.PI / 2, 0],
+      video: 'https://storage.googleapis.com/activetheory-v6.appspot.com/media/chile_1.mp4',
+      text: 'Insert Text Here',
+      
+    }
+  ]
+
   useEffect(() => {
     state.camera = cameraRef.current;
   }, []);
 
-  const radius = useMemo(() => 75, []); // radius of the helix
+  const radius = useMemo(() => 105, []); // radius of the helix
   const speed = useMemo(() => 7, []); // speed of the helix
   const verticalSpeed = useMemo(() => 100, []); // speed of vertical movement
 
@@ -59,7 +72,7 @@ function Experience() {
         makeDefault
       />
       <directionalLight
-        position={[1, 1, -1]}
+        position={[1, 1, 0]}
         intensity={100}
         color={Number("#9AF0F4".replace("#", "0x"))}
       />

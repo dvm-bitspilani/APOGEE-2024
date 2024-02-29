@@ -27,7 +27,7 @@ const Background = () => {
 
   return (
     <>
-      <Sphere args={[150, 40, 40]} rotation={[2, -1, 0]}>
+      <Sphere args={[200, 40, 40]} rotation={[2, -1, 0]}>
         <meshBasicMaterial
           attach="material"
           side={THREE.BackSide}

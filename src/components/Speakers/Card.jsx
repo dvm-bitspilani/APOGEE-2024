@@ -1,18 +1,19 @@
-import React, { useRef, useEffect } from "react";
-import { TextureLoader } from "three";
-import { useLoader } from "@react-three/fiber/dist/react-three-fiber.cjs";
+import React, { useRef, useEffect, Suspense } from "react";
 import { MeshTransmissionMaterial } from "./MeshTransmissionMaterial";
+import { useVideoTexture } from '@react-three/drei'
+import { Text } from '@react-three/drei';
+import * as THREE from 'three';
 
 export default function Card(props) {
   const cube1 = useRef(null);
-  const texture = useLoader(TextureLoader, "../../../public/images/speaker-card.png");
+  const texture = useVideoTexture("/public/videos/sample.mp4")
 
   useEffect(() => {
     if (cube1.current) {
       const material = new MeshTransmissionMaterial(10);
       material.clearcoat = 1;
       material.clearcoatRoughness = 0;
-      material.transmission = 1;
+      material.transmission = 1.05;
       material.chromaticAberration = 3;
       material.anisotrophicBlur = 0.1;
       material.roughness = 0;
@@ -21,14 +22,38 @@ export default function Card(props) {
       material.distortion = 0.1;
       material.distortionScale = 0.2;
       material.temporalDistortion = 0.2;
+      material.map = texture;
+      material.transparent = true;
+      material.opacity = 0.75;
+      material.color = new THREE.Color(0x9AF0F4);
       cube1.current.material = material;
-      // cube1.current.material.map = texture;
     }
   }, []);
 
+  const handleClick = (event) => {
+    window.open('https://your-link.com', '_blank');
+  };
+
   return (
-    <mesh position={[5, -5, 0]} ref={cube1}>
-      <boxGeometry args={[1, 30, 50]} />
-    </mesh>
+    <>
+      <mesh position={[10, -5, 0]} ref={cube1} onClick={handleClick}>
+        <boxGeometry args={[1.5, 35, 60]} />
+      </mesh>
+      <Text
+        position={[15, -12.5, 0]} 
+        rotation={[0, Math.PI / 2, 0]}
+        color="white" 
+        fontSize={5} 
+        maxWidth={200} 
+        lineHeight={1} 
+        letterSpacing={0.02} 
+        textAlign={'center'} 
+        font="../../../public/fonts/Alacrity Sans Regular.otf" 
+        anchorX="center" 
+        anchorY="middle" 
+      >
+        Insert Text Here
+      </Text>
+    </>
   );
 }
