@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
 import Experience from "../components/ContactEvents/Experience";
 import { ScrollControls } from "@react-three/drei";
+import Loader from "../components/Loader";
 
 import { motion } from "framer-motion";
 
@@ -47,13 +48,24 @@ function EventsPage() {
       transition={{ duration: 1.5, ease: "easeInOut", delay: 0 }}
     >
       {loading ? (
-        <h1>Loading...</h1>
+        <h1
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          Loading...
+        </h1>
       ) : (
         <Canvas>
           {/* <OrbitControls /> */}
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loader />}>
             <EffectComposer />
             <ambientLight intensity={1} />
+            <pointLight position={[0, -0.2, 2]} intensity={5} />
+            {/* <directionalLight position={[0, 0, 5]} intensity={1} /> */}
             <ScrollControls
               pages={state.numEvents}
               damping={0.3}
