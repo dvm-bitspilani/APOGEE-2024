@@ -6,7 +6,7 @@ import * as THREE from 'three';
 
 export default function Card(props) {
   const cube1 = useRef(null);
-  const texture = useVideoTexture("/public/videos/sample.mp4")
+  const texture = useVideoTexture("https://storage.googleapis.com/activetheory-v6.appspot.com/media/chile_1.mp4")
 
   useEffect(() => {
     if (cube1.current) {
