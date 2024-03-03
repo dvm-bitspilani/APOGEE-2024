@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono&display=swap");
+
+
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100svh;
+    top: 0;
+    background-size: cover;
+    // opacity: 0;
+    pointer-events: none;
+}
+
+.tophud {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: clamp(100px, 10vw, 170px);
+    object-fit: contain;
+
+    @media screen and (max-height: 700px) {
+        height: 100px;
+    }
+}
+
+h1.title {
+    position: absolute;
+    top: 1.5vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 35px;
+    text-shadow: 0px 0px 18.12px rgba(154, 240, 244, 0.7);
+
+    @media screen and (max-height: 700px),
+    screen and (max-width: 1100px) {
+        top: 15px;
+        font-size: 1.3rem;
+    }
+}
+.hamMenuButton {
+    width: clamp(150px, 13vw, 240px);
+    aspect-ratio: 2.7;
+  
+    outline: none;
+    border: none;
+  
+    background-image: url("@assets/landing/hamMenuButton.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+    background-color: transparent;
+  
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: clamp(90px, calc(9.4vw - 7px), 154px);
+    pointer-events: all;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    transition: border-color 0.2s ease-in-out;
+  
+    // visibility: visible;
+    // opacity: 1;
+  
+    @media screen and (max-height: 700px) {
+      top: 90px;
+      width: 140px;
+    }
+  
+    & * {
+      transition: all 0.2s ease-in-out;
+    }
+  
+    span {
+      position: relative;
+      top: -2px;
+  
+      font-size: 1rem;
+      font-weight: 200;
+      text-transform: uppercase;
+      text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+      color: inherit;
+      padding-inline: 0.5rem;
+      transition: all 0.2s ease-in-out;
+  
+      @media screen and (max-height: 700px), screen and (max-width: 600px) {
+        font-size: 0.7rem;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      color: var(--hover-link);
+      text-shadow:
+        0px 0px 24.402px rgba(198, 50, 50, 0.86),
+        0px 0px 3.754px rgba(198, 50, 50, 0.8);
+  
+      div div {
+        background-color: var(--hover-link);
+      }
+  
+      span {
+        text-shadow: 0px 0px 14.815px var(--hover-link);
+      }
+    }
+  }

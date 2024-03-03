@@ -50,7 +50,7 @@ function Speakers() {
         {/* <Stats /> */}
         {/* <AxesHelper /> */}
       </Canvas>
-      {/* <SpeakerHUD /> */}
+      <SpeakerHUD />
     </motion.div>
   );
 }
