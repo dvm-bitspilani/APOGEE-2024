@@ -2,7 +2,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 // import { useControls } from "leva";
 
 // Components
-import Image from "./Image";
+import Image from "../ContactEvents/Image";
 import MascotModel from "../Models/MascotModel";
 import EventContainer from "./EventContainer";
 
