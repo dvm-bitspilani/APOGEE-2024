@@ -10,7 +10,7 @@ import customStyles1 from "../../components/Form/customStyles1";
 import customStyles2 from "../../components/Form/customStyles2";
 import statesData from "../Form/states.json";
 import ReCAPTCHA from "react-google-recaptcha";
-import { Register_bg_svg } from '../Landing/RegEventsSection';
+import { Register_bg_svg } from "../Landing/RegEventsSection";
 const MyForm2 = () => {
   const [stateOptions, setStateOptions] = useState([]);
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
@@ -31,14 +31,14 @@ const MyForm2 = () => {
     college_id: "",
     year: "",
     city: "",
-    state:"",
+    state: "",
     // token:""
   };
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0,
+    typeof window !== "undefined" ? window.innerWidth : 0
   );
   const [windowHeight, setWindowHeight] = useState(
-    typeof window !== "undefined" ? window.innerHeight : 0,
+    typeof window !== "undefined" ? window.innerHeight : 0
   );
 
   useEffect(() => {
@@ -86,9 +86,7 @@ const MyForm2 = () => {
 
   useEffect(() => {
     axios
-      .get(
-        import.meta.env.VITE_EVENT_CATEGORIES_API,
-      )
+      .get(import.meta.env.VITE_EVENT_CATEGORIES_API)
       .then((response) => setInterestOptions(response.data))
       .catch((error) => console.error("Error fetching interests:", error));
     axios
@@ -120,47 +118,54 @@ const MyForm2 = () => {
       interests: [...values.interests],
       events: [...values.events],
       college_id: values.college_id,
-      year:values.year,
+      year: values.year,
       city: values.city,
-      state:values.state,
+      state: values.state,
       // token:""
     };
-    setValuesState(finalValues)
+    setValuesState(finalValues);
   };
-useEffect(()=>{
-  const handleSubmit2 = async(valuesState) =>{
-    if(captchaToken!=""){
-    try {
-      const interestsIds = (valuesState.interests || []).map(interest => interest.value);
-      const eventsIds = (valuesState.events || []).map(event => event.value);
-      const submitValues = {
-        ...valuesState,
-        interests: interestsIds,
-        events: eventsIds,
-        token:captchaToken
-      };
-      console.log("Form Values:", submitValues);
+  useEffect(() => {
+    const handleSubmit2 = async (valuesState) => {
+      if (captchaToken != "") {
+        try {
+          const interestsIds = (valuesState.interests || []).map(
+            (interest) => interest.value
+          );
+          const eventsIds = (valuesState.events || []).map(
+            (event) => event.value
+          );
+          const submitValues = {
+            ...valuesState,
+            interests: interestsIds,
+            events: eventsIds,
+            token: captchaToken,
+          };
+          console.log("Form Values:", submitValues);
 
-    const response = await axios.post(
-      import.meta.env.VITE_REGISTER_URL,{
-        ...submitValues,
-      });
-      if (response) {
-        console.log(response);
-        console.log("Data sent successfully!");
-        setSuccessfullRegistration(1);
-      } else {
-        console.error("Error submitting the form. Server response:", response);
+          const response = await axios.post(import.meta.env.VITE_REGISTER_URL, {
+            ...submitValues,
+          });
+          if (response) {
+            console.log(response);
+            console.log("Data sent successfully!");
+            setSuccessfullRegistration(1);
+          } else {
+            console.error(
+              "Error submitting the form. Server response:",
+              response
+            );
+          }
+        } catch (error) {
+          console.error("Error submitting the form:", error);
+          setSuccessfullRegistration(2);
+          setDisplayText(error);
+        } finally {
+        }
       }
-    } catch (error) {
-      console.error('Error submitting the form:', error);
-      setSuccessfullRegistration(2);
-      setDisplayText(error)
-    } finally {
-    }}
-  }
-  handleSubmit2(valuesState);
-},[captchaToken]);
+    };
+    handleSubmit2(valuesState);
+  }, [captchaToken]);
   useEffect(() => {
     const allStates = statesData.map((state) => ({
       value: state.name,
@@ -347,7 +352,7 @@ useEffect(()=>{
                   onChange={(selectedOption) => {
                     setFieldValue(
                       "college_id",
-                      selectedOption ? selectedOption.value : "",
+                      selectedOption ? selectedOption.value : ""
                     );
                   }}
                   className={styles.mobileCollegeWrapper}
@@ -363,122 +368,143 @@ useEffect(()=>{
                 />
               </div>
 
-            <div className={styles.mobileYear}>
-              <div className={styles.checkboxContainer}>
-                {yearOfStudyOptions.map((option) => (
-                  <div key={option.value} className={styles.checkboxItem}>
-                    <div
-                      className={`${styles.customCheckbox} ${
-                        values.year === option.value
-                          ? styles.checked
-                          : ""
-                      }`}
-                      onClick={() => {
-                        setFieldValue("year", option.value);
-                      }}
-                    >
-                      {values.year === option.value && (
-                        <div className={styles.checkmark}>&#10003;</div>
-                      )}
+              <div className={styles.mobileYear}>
+                <div className={styles.checkboxContainer}>
+                  {yearOfStudyOptions.map((option) => (
+                    <div key={option.value} className={styles.checkboxItem}>
+                      <div
+                        className={`${styles.customCheckbox} ${
+                          values.year === option.value ? styles.checked : ""
+                        }`}
+                        onClick={() => {
+                          setFieldValue("year", option.value);
+                        }}
+                      >
+                        {values.year === option.value && (
+                          <div className={styles.checkmark}>&#10003;</div>
+                        )}
+                      </div>
+                      <label
+                        htmlFor={`year-${option.value}`}
+                        className={styles.yearLabel}
+                      >
+                        {option.label}
+                      </label>
                     </div>
-                    <label
-                      htmlFor={`year-${option.value}`}
-                      className={styles.yearLabel}
-                    >
-                      {option.label}
-                    </label>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="year">Year of Study</label>
               </div>
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="year">Year of Study</label>
+              <div className={styles.mobileState}>
+                <Select
+                  id="state"
+                  name="state"
+                  options={stateOptions}
+                  value={stateOptions.find(
+                    (option) => option.value === values.state
+                  )}
+                  onChange={(selectedOption) => {
+                    setFieldValue(
+                      "state",
+                      selectedOption ? selectedOption.value : ""
+                    );
+                    setFieldValue("city", "");
+                    setSelectedState(
+                      selectedOption ? selectedOption.value : ""
+                    );
+                  }}
+                  className={styles.stateWrapper}
+                  styles={customStyles2}
+                  placeholder="Your State"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="state">State</label>
+                <ErrorMessage
+                  name="state"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
+              <div className={styles.mobileCity}>
+                <Select
+                  id="city"
+                  name="city"
+                  options={cityOptions}
+                  value={cityOptions.find(
+                    (option) => option.value === values.city
+                  )}
+                  onChange={(selectedOption) => {
+                    setFieldValue(
+                      "city",
+                      selectedOption ? selectedOption.value : ""
+                    );
+                  }}
+                  isDisabled={!values.state}
+                  className={styles.mobileCityWrapper}
+                  styles={customStyles2}
+                  placeholder="Your City"
+                />
+                <img src="/images/phone.png" alt="" />
+                <label htmlFor="city">City</label>
+                <ErrorMessage
+                  name="city"
+                  component="div"
+                  className={styles.errorMessage}
+                />
+              </div>
             </div>
-            <div className={styles.mobileState}>
-              <Select
-                id="state"
-                name="state"
-              options={stateOptions}
-              value={stateOptions.find(option => option.value === values.state)}
-              onChange={(selectedOption) => {
-                setFieldValue('state', selectedOption ? selectedOption.value : '');
-                setFieldValue('city', '');
-                setSelectedState(selectedOption ? selectedOption.value : '');
-              }}
-                className={styles.stateWrapper}
-                styles={customStyles2}
-                placeholder="Your State"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="state">State</label>
-              <ErrorMessage name="state" component="div" className={styles.errorMessage}/>
-            </div>
-            <div className={styles.mobileCity}>
-              <Select
-                id="city"
-                name="city"
-                options={cityOptions}
-              value={cityOptions.find(option => option.value === values.city)}
-              onChange={(selectedOption) => {
-                setFieldValue('city', selectedOption ? selectedOption.value : '');
-              }}
-              isDisabled={!values.state}
-                className={styles.mobileCityWrapper}
-                styles={customStyles2}
-                placeholder="Your City"
-              />
-              <img src="/images/phone.png" alt="" />
-              <label htmlFor="city">City</label>
-              <ErrorMessage name="city" component="div" className={styles.errorMessage}/>
-            </div>
-          </div>
-       {showCaptcha ? (
-         
-         <div className={styles.recaptcha}>
+            {showCaptcha ? (
+              <div className={styles.recaptcha}>
                 <ReCAPTCHA
-                  sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
+                  sitekey={import.meta.env.VITE_CAPTCHA_KEY}
                   onChange={(token) => {
                     // setFieldValue("token", token);
                     setCaptchaToken(token);
                   }}
                 />
               </div>
-         ) : null}   
-          {
-  (() => {
-    switch (true) {
-      case succesfulRegistration===0:
-        return (
-          <div className={styles.regBtnWrapper}>
-          <button
-            type='submit'
-            className={styles.registerBtn}
-            disabled={isSubmitting}
-          >
-            <Register_bg_svg/>
-            <span>REGISTER</span>
-          </button>
-        </div>
-        );
-        case succesfulRegistration===1:
-        return (
-          <span className={styles.successText}  style={{
-            fontSize: windowWidth<400 ? "12px" : (windowWidth<500?"13px":"16px")
-          }}>
-            A verification mail has been sent to your email id.
-          </span>
-        );
-        case succesfulRegistration===2:
-        return (
-          <span className={styles.successText}>
-            {displayTest}
-            
-          </span>
-        );
-        default: return null;
-    }
-  })()
-}
-{/* <div className={styles.guideText}>Guide To Registration</div> */}
+            ) : null}
+            {(() => {
+              switch (true) {
+                case succesfulRegistration === 0:
+                  return (
+                    <div className={styles.regBtnWrapper}>
+                      <button
+                        type="submit"
+                        className={styles.registerBtn}
+                        disabled={isSubmitting}
+                      >
+                        <Register_bg_svg />
+                        <span>REGISTER</span>
+                      </button>
+                    </div>
+                  );
+                case succesfulRegistration === 1:
+                  return (
+                    <span
+                      className={styles.successText}
+                      style={{
+                        fontSize:
+                          windowWidth < 400
+                            ? "12px"
+                            : windowWidth < 500
+                              ? "13px"
+                              : "16px",
+                      }}
+                    >
+                      A verification mail has been sent to your email id.
+                    </span>
+                  );
+                case succesfulRegistration === 2:
+                  return (
+                    <span className={styles.successText}>{displayTest}</span>
+                  );
+                default:
+                  return null;
+              }
+            })()}
+            {/* <div className={styles.guideText}>Guide To Registration</div> */}
           </Form>
         )}
       </Formik>
