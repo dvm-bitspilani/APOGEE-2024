@@ -62,7 +62,7 @@ export default function EventContainer(props) {
         <meshBasicMaterial
           attach="material"
           color="#314557"
-          opacity={0.4}
+          opacity={0}
           transparent
         />
       </mesh>

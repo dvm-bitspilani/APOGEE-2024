@@ -5,6 +5,8 @@ import "../styles/events/events.css";
 import Experience from "../components/Events/Experience";
 import { ScrollControls } from "@react-three/drei";
 
+import Instructions from "../components/ContactEvents/Instructions";
+
 import { motion } from "framer-motion";
 
 // Effect Composer
@@ -60,6 +62,7 @@ function EventsPage() {
         {/* <Stats /> */}
         {/* <AxesHelper /> */}
       </Canvas>
+      {snap.isMobile ? <Instructions /> : null}
     </motion.div>
   );
 }
