@@ -8,8 +8,8 @@ import citiesData from "../Form/states.json";
 // import customStyles from "../../components/Form/customStyles"
 import customStyles1 from "../../components/Form/customStyles1";
 import customStyles from "../../components/Form/customStyles";
-import statesData from '../Form/states.json';
-import { Register_bg_svg } from '../Landing/RegEventsSection';
+import statesData from "../Form/states.json";
+import { Register_bg_svg } from "../Landing/RegEventsSection";
 import ReCAPTCHA from "react-google-recaptcha";
 const MyForm = () => {
   const [interestOptions, setInterestOptions] = useState([""]);
@@ -19,27 +19,27 @@ const MyForm = () => {
   const [succesfulRegistration, setSuccessfullRegistration] = useState(0);
   const [selectedState, setSelectedState] = useState("");
   const [cityOptions, setCityOptions] = useState([]);
-  const [displayTest, setDisplayText]=useState('');
+  const [displayTest, setDisplayText] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
   const [showCaptcha, setShowCaptcha] = useState(false);
   const [valuesState, setValuesState] = useState();
   useEffect(() => {
     axios
-      .get(
-        import.meta.env.VITE_EVENT_CATEGORIES_API,
-      )
+      .get(import.meta.env.VITE_EVENT_CATEGORIES_API)
       .then((response) => {
         setInterestOptions(response.data);
       })
-        
-      .catch(error => console.error('Error fetching interests:', error));
-      
-    axios.get(import.meta.env.VITE_EVENTS_API)
-      .then(response => setEventsOptions(response.data))
-      .catch(error => console.error('Error fetching events:', error));
-    axios.get(import.meta.env.VITE_COLLEGE_API)
-      .then(response => setCollegeOptions(response.data))
-      .catch(error => console.error('Error fetching colleges:', error));
+
+      .catch((error) => console.error("Error fetching interests:", error));
+
+    axios
+      .get(import.meta.env.VITE_EVENTS_API)
+      .then((response) => setEventsOptions(response.data))
+      .catch((error) => console.error("Error fetching events:", error));
+    axios
+      .get(import.meta.env.VITE_COLLEGE_API)
+      .then((response) => setCollegeOptions(response.data))
+      .catch((error) => console.error("Error fetching colleges:", error));
   }, []);
 
   const initialValues = {
@@ -55,7 +55,7 @@ const MyForm = () => {
     state: "",
   };
 
-  const [formData, setFormData] = useState(initialValues)
+  const [formData, setFormData] = useState(initialValues);
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -89,48 +89,55 @@ const MyForm = () => {
       interests: [...values.interests],
       events: [...values.events],
       college_id: values.college_id,
-      year:values.year,
+      year: values.year,
       city: values.city,
-      state:values.state,
+      state: values.state,
       // token:""
     };
-    setValuesState(finalValues)
+    setValuesState(finalValues);
   };
-  useEffect(()=>{
-    const handleSubmit2 = async(valuesState) =>{
-      if(captchaToken!=""){
-      try {
-        const interestsIds = (valuesState.interests || []).map(interest => interest.value);
-        const eventsIds = (valuesState.events || []).map(event => event.value);
-        const submitValues = {
-          ...valuesState,
-          interests: interestsIds,
-          events: eventsIds,
-          token:captchaToken
-        };
-      console.log('Form Values:',submitValues);
-  
-      const response = await axios.post(
-        import.meta.env.VITE_REGISTER_URL,{
-          ...submitValues,
-        });
-        if (response) {
-          console.log(response)
-          console.log('Data sent successfully!');
-          setSuccessfullRegistration(1);
-        } else {
-          console.error('Error submitting the form. Server response:', response);
+  useEffect(() => {
+    const handleSubmit2 = async (valuesState) => {
+      if (captchaToken != "") {
+        try {
+          const interestsIds = (valuesState.interests || []).map(
+            (interest) => interest.value
+          );
+          const eventsIds = (valuesState.events || []).map(
+            (event) => event.value
+          );
+          const submitValues = {
+            ...valuesState,
+            interests: interestsIds,
+            events: eventsIds,
+            token: captchaToken,
+          };
+          console.log("Form Values:", submitValues);
+
+          const response = await axios.post(import.meta.env.VITE_REGISTER_URL, {
+            ...submitValues,
+          });
+          if (response) {
+            console.log(response);
+            console.log("Data sent successfully!");
+            setSuccessfullRegistration(1);
+          } else {
+            console.error(
+              "Error submitting the form. Server response:",
+              response
+            );
+          }
+        } catch (error) {
+          console.error("Error submitting the form:", error);
+          setSuccessfullRegistration(2);
+          setDisplayText(error);
+        } finally {
         }
-      } catch (error) {
-        console.error('Error submitting the form:', error);
-        setSuccessfullRegistration(2);
-        setDisplayText(error)
-      } finally {
-      }}
-    }
+      }
+    };
     handleSubmit2(valuesState);
-  },[captchaToken]);
-  
+  }, [captchaToken]);
+
   const genderOptions = [
     { value: "M", label: "MALE", label1: "M" },
     { value: "F", label: "FEMALE", label1: "F" },
@@ -168,10 +175,10 @@ const MyForm = () => {
     setCityOptions(selectedStateCities);
   }, [selectedState]);
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0,
+    typeof window !== "undefined" ? window.innerWidth : 0
   );
   const [windowHeight, setWindowHeight] = useState(
-    typeof window !== "undefined" ? window.innerHeight : 0,
+    typeof window !== "undefined" ? window.innerHeight : 0
   );
 
   useEffect(() => {
@@ -180,7 +187,7 @@ const MyForm = () => {
       setWindowHeight(typeof window !== "undefined" ? window.innerHeight : 0);
     };
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -935,7 +942,7 @@ const MyForm = () => {
                   onChange={(selectedOption) => {
                     setFieldValue(
                       "college_id",
-                      selectedOption ? selectedOption.value : "",
+                      selectedOption ? selectedOption.value : ""
                     );
                   }}
                   className={styles.collegeWrapper}
@@ -1008,16 +1015,16 @@ const MyForm = () => {
                   name="state"
                   options={stateOptions}
                   value={stateOptions.find(
-                    (option) => option.value === values.state,
+                    (option) => option.value === values.state
                   )}
                   onChange={(selectedOption) => {
                     setFieldValue(
                       "state",
-                      selectedOption ? selectedOption.value : "",
+                      selectedOption ? selectedOption.value : ""
                     );
                     setFieldValue("city", ""); // Clear the city when the state changes
                     setSelectedState(
-                      selectedOption ? selectedOption.value : "",
+                      selectedOption ? selectedOption.value : ""
                     );
                   }}
                   className={styles.stateWrapper}
@@ -1048,12 +1055,12 @@ const MyForm = () => {
                   name="city"
                   options={cityOptions}
                   value={cityOptions.find(
-                    (option) => option.value === values.city,
+                    (option) => option.value === values.city
                   )}
                   onChange={(selectedOption) => {
                     setFieldValue(
                       "city",
-                      selectedOption ? selectedOption.value : "",
+                      selectedOption ? selectedOption.value : ""
                     );
                   }}
                   isDisabled={!selectedState} // Disable city selection if no state is selected
@@ -1081,48 +1088,43 @@ const MyForm = () => {
               </div>
             </div>
             {showCaptcha ? (
-         
-         <div className={styles.recaptcha}>
+              <div className={styles.recaptcha}>
                 <ReCAPTCHA
-                  sitekey="6LcJ62UpAAAAAGEuWKrGxJH-Cw66FSCgUf4OevxF"
+                  sitekey={import.meta.env.VITE_CAPTCHA_KEY}
                   onChange={(token) => {
                     // setFieldValue("token", token);
                     setCaptchaToken(token);
                   }}
                 />
               </div>
-         ) : null}   
-  {
-  (() => {
-    switch (true) {
-      case succesfulRegistration===0:
-        return (
-          <div>
-            <button
-              type='submit'
-              className={styles.registerBtn}
-              disabled={isSubmitting}
-            >
-              <Register_bg_svg/>
-              <span>REGISTER</span>
-            </button>
-          </div>
-        );
-        case succesfulRegistration===1:
-        return (
-          <span className={styles.successText}>
-            A verification mail has been sent to your email id.
-          </span>
-        );
-        case succesfulRegistration===2:
-        return (
-          <span className={styles.successText}>
-            {displayTest}
-          </span>
-        );
-    }
-  })()
-}
+            ) : null}
+            {(() => {
+              switch (true) {
+                case succesfulRegistration === 0:
+                  return (
+                    <div>
+                      <button
+                        type="submit"
+                        className={styles.registerBtn}
+                        disabled={isSubmitting}
+                      >
+                        <Register_bg_svg />
+                        <span>REGISTER</span>
+                      </button>
+                    </div>
+                  );
+                case succesfulRegistration === 1:
+                  return (
+                    <span className={styles.successText}>
+                      A verification mail has been sent to your email id.
+                    </span>
+                  );
+                case succesfulRegistration === 2:
+                  return (
+                    <span className={styles.successText}>{displayTest}</span>
+                  );
+              }
+            })()}
             {/* <div className={styles.mobileForm}>
             
           </div> */}

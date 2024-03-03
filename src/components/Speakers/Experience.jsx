@@ -1,11 +1,11 @@
 import { OrbitControls, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import Background from "../Landing/Background";
 // import { Speed } from "../Speed";
 import state from "../state";
-import { Spaceship } from "../Models/SpaceShip"; 
+import { Spaceship } from "../Models/SpaceShip";
 import gsap from "gsap";
 import Card from "./Card";
 
@@ -14,35 +14,47 @@ function Experience() {
 
   const cameraRef = useRef();
 
+  const data = 
+  [
+    {
+      cardPosition: [5, -5, 0],
+      cardRotation: [0, 0, 0],
+      textPosition: [12.5, -12.5, 0],
+      textRotation: [0, Math.PI / 2, 0],
+      video: 'https://storage.googleapis.com/activetheory-v6.appspot.com/media/chile_1.mp4',
+      text: 'Insert Text Here',
+      
+    }
+  ]
+
   useEffect(() => {
     state.camera = cameraRef.current;
   }, []);
 
+  const radius = useMemo(() => 105, []); // radius of the helix
+  const speed = useMemo(() => 7, []); // speed of the helix
+  const verticalSpeed = useMemo(() => 100, []); // speed of vertical movement
 
   useFrame((_state, delta) => {
     if (cameraRef.current) {
       const { current: camera } = cameraRef;
-  
-      const radius = 70; // radius of the helix
-      const speed = 5; // speed of rotation
-      const verticalSpeed = 100; // speed of vertical movement
-  
+
       // Calculate the new position
       const newPosition = [
         radius * Math.cos(scroll.offset * speed),
         -scroll.offset * verticalSpeed,
         radius * Math.sin(scroll.offset * speed),
       ];
-  
+
       // Animate the camera position
       gsap.to(camera.position, {
         x: newPosition[0],
         y: newPosition[1],
         z: newPosition[2],
-        duration: 0.5,
+        // duration: 0.5,
         ease: "power2.out",
       });
-  
+
       // Point the camera to the Spaceship
       camera.lookAt(0, camera.position.y - 1, 0);
     }
@@ -52,15 +64,15 @@ function Experience() {
     <>
       {/* <OrbitControls /> */}
       <PerspectiveCamera
-                ref={cameraRef}
-                position={[0, 125, 0]}
-                // rotation={[0, Math.PI / 2, 0]}
-                // zoom={0.5}
-                // fov={50}
-                makeDefault
+        ref={cameraRef}
+        position={[0, 125, 0]}
+        // rotation={[0, Math.PI / 2, 0]}
+        // zoom={0.5}
+        // fov={50}
+        makeDefault
       />
       <directionalLight
-        position={[1, 1, -1]}
+        position={[1, 1, 0]}
         intensity={100}
         color={Number("#9AF0F4".replace("#", "0x"))}
       />
@@ -85,8 +97,8 @@ function Experience() {
         fade
         speed={0}
       />
-      {/* <Card /> */}
-         <Spaceship />
+      <Card />
+      <Spaceship />
     </>
   );
 }

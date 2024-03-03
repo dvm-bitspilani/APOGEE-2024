@@ -2,7 +2,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 // import { useControls } from "leva";
 
 // Components
-import Image from "./Image";
+import Image from "../ContactEvents/Image";
 import MascotModel from "../Models/MascotModel";
 import EventContainer from "./EventContainer";
 
@@ -23,7 +23,7 @@ export default function Experience() {
   const snap = useSnapshot(state);
 
   const mascotPos = useMemo(() => {
-    return [0, -2, 0.6];
+    return [-0.3, -2.5, 0.6];
   }, []);
 
   useEffect(() => {
