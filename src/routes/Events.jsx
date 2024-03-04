@@ -62,7 +62,7 @@ function EventsPage() {
         {/* <Stats /> */}
         {/* <AxesHelper /> */}
       </Canvas>
-      {snap.isMobile ? <Instructions /> : null}
+      <Instructions />
     </motion.div>
   );
 }

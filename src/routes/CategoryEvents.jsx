@@ -76,7 +76,7 @@ function EventsPage() {
           </Suspense>
         </Canvas>
       )}
-      {snap.isMobile ? <Instructions /> : null}
+      <Instructions />
     </motion.div>
   );
 }
