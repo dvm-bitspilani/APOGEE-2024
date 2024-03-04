@@ -12,22 +12,30 @@ export default function Instructions() {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      wrapperRef.current,
-      {
-        autoAlpha: 0,
-      },
-      {
-        autoAlpha: 1,
-        duration: 1,
-        delay: 2,
-      }
-    );
-  });
+    if (!state.isMobile) {
+      gsap.fromTo(
+        wrapperRef.current,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          delay: 2,
+        }
+      );
+    }
+  }, []);
 
   function handleButton() {
-    gsap.to(wrapperRef.current, {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        wrapperRef.current.style.display = "none";
+      },
+    });
+    tl.to(wrapperRef.current, {
       autoAlpha: 0,
+      duration: 1,
     });
   }
 
