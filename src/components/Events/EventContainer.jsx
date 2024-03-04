@@ -37,17 +37,17 @@ export default function EventContainer(props) {
 
   const xPercent = useMemo(() => 0.62, []);
   const yPercent = useMemo(() => 0.54, []);
-  const textPosition = useMemo(() => [-0.45, 0.37, 0], []);
+  const textPosition = useMemo(() => [-0.4, 0.38, 0], []);
 
   const imgRef = useRef();
 
-  useEffect(() => {
-    const box = new THREE.Box3().setFromObject(imgRef.current);
-    const size = box.getSize(new THREE.Vector3());
+  // useEffect(() => {
+  //   const box = new THREE.Box3().setFromObject(imgRef.current);
+  //   const size = box.getSize(new THREE.Vector3());
 
-    imgRef.current.position.x -= size.x / 2;
-    imgRef.current.position.y -= size.y / 2;
-  }, [viewport]);
+  //   imgRef.current.position.x -= size.x / 2;
+  //   imgRef.current.position.y -= size.y / 2;
+  // }, [viewport]);
 
   return (
     <group position={position}>
@@ -71,7 +71,7 @@ export default function EventContainer(props) {
           0,
         ]}
         font="/fonts/Alacrity Sans Bold.ttf"
-        fontSize={Math.min(viewport.width * 0.04, 0.5)}
+        fontSize={Math.min(viewport.width * 0.03, 0.4)}
         maxWidth={viewport.width * 0.23}
       >
         Kernel
@@ -83,36 +83,15 @@ export default function EventContainer(props) {
           toneMapped={false}
         />
       </Text>
-      <Text
-        anchorX={"left"}
-        anchorY={"top"}
-        position={[
-          viewport.width * textPosition[0] * xPercent,
-          viewport.height * textPosition[1] * yPercent - 0.4,
-          // 0,
-          0,
-        ]}
-        color={"#9AF0F4"}
-        font="/fonts/Alacrity Sans Light.ttf"
-        fontSize={Math.min(viewport.width * 0.0115, 0.2)}
-        maxWidth={viewport.width * 0.23}
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut
-        nulla id tellus mattis tempor. Sed augue odio Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Quisque ut nulla id tellus mattis tempor.
-        Sed augue
-      </Text>
       <Image
         ref={imgRef}
-        position={[
-          -viewport.width * textPosition[0] * xPercent,
-          viewport.height * textPosition[1] * yPercent,
-          0,
-        ]}
+        position={[0, viewport.height * (textPosition[1] - 0.35) * yPercent, 0]}
         url={placeholder}
-        scale={[viewport.width * 0.3, viewport.height * 0.3, 1]}
-        anchorX={"right"}
+        scale={[
+          viewport.width * xPercent * 0.8,
+          viewport.height * yPercent * 0.55,
+          1,
+        ]}
       />
       <OpenButton
         position={[

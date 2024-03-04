@@ -15,6 +15,7 @@ import EffectComposer from "@components/EffectComposer";
 // State Management
 import state from "@components/state";
 import { useSnapshot } from "valtio";
+import Controller from "../components/ContactEvents/Controller";
 
 function EventsPage() {
   const snap = useSnapshot(state);
@@ -64,7 +65,7 @@ function EventsPage() {
           <Canvas>
             {/* <OrbitControls /> */}
             <Suspense fallback={null}>
-              <EffectComposer />
+              {/* <EffectComposer /> */}
               <ambientLight intensity={1} />
               <pointLight position={[0, -0.2, 2]} intensity={5} />
               <ScrollControls
@@ -78,7 +79,8 @@ function EventsPage() {
             {/* <Stats /> */}
             {/* <AxesHelper /> */}
           </Canvas>
-          <Instructions />
+          <Controller route="/" text="HOME" />
+          <Instructions text="Scroll to start the visit, click on any Category to see events" />
         </>
       )}
     </motion.div>

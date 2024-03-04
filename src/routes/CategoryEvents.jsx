@@ -17,6 +17,7 @@ import { useSnapshot } from "valtio";
 
 import { useParams } from "react-router-dom";
 import Instructions from "../components/ContactEvents/Instructions";
+import Controller from "../components/ContactEvents/Controller";
 
 function EventsPage() {
   const params = useParams();
@@ -63,7 +64,7 @@ function EventsPage() {
           <Canvas>
             {/* <OrbitControls /> */}
             <Suspense fallback={<Loader />}>
-              <EffectComposer />
+              {/* <EffectComposer /> */}
               <ambientLight intensity={1} />
               <pointLight position={[0, -0.2, 2]} intensity={5} />
               {/* <directionalLight position={[0, 0, 5]} intensity={1} /> */}
@@ -76,7 +77,8 @@ function EventsPage() {
               </ScrollControls>
             </Suspense>
           </Canvas>
-          <Instructions />
+          <Controller route="/events" text="CATEGORIES" />
+          <Instructions text="Scroll to start the visit, click on any events register button to see details" />
         </>
       )}
     </motion.div>

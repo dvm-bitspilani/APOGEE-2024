@@ -6,7 +6,7 @@ import { useSnapshot } from "valtio";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function Instructions() {
+export default function Instructions({ text }) {
   const snap = useSnapshot(state);
 
   const wrapperRef = useRef(null);
@@ -48,10 +48,8 @@ export default function Instructions() {
           <div className={styles.boxContainer}>
             <div>
               <h2>WELCOME ABOARD!</h2>
-              <p>
-                Scroll to start the visit, click on any Category to see events
-              </p>
-            </div>
+              <p>{text}</p>
+          </div>
             <button onClick={handleButton}>OK THANKS</button>
           </div>
         </main>

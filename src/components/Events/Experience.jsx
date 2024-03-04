@@ -41,7 +41,9 @@ export default function Experience() {
   const scroll = useScroll();
 
   useFrame(() => {
-    // console.log(scroll);
+    state.currentCategory = Math.round(
+      scroll.offset * (state.numCategories - 1) + 1
+    );
     setCategoryOffset(
       scroll.offset * viewport.width * (state.numCategories - 1)
     );
