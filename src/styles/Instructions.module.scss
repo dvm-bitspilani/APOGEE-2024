@@ -25,6 +25,7 @@
 
   * {
     font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
   }
 
   .boxContainer {
@@ -75,6 +76,14 @@
       padding: 1rem 2rem;
 
       cursor: pointer;
+
+      color: white;
+
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: var(--primary);
+      }
     }
   }
 }

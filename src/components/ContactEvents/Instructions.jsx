@@ -3,15 +3,32 @@ import * as styles from "@styles/Instructions.module.scss";
 // State Management
 import state from "../state";
 import { useSnapshot } from "valtio";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function Instructions() {
   const snap = useSnapshot(state);
 
   const wrapperRef = useRef(null);
 
+  useEffect(() => {
+    gsap.fromTo(
+      wrapperRef.current,
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        duration: 1,
+        delay: 2,
+      }
+    );
+  });
+
   function handleButton() {
-    wrapperRef.current.style.display = "none";
+    gsap.to(wrapperRef.current, {
+      autoAlpha: 0,
+    });
   }
 
   return (

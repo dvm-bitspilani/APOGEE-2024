@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 // import { useWindowSize } from "rooks";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
@@ -19,6 +19,8 @@ import { useSnapshot } from "valtio";
 function EventsPage() {
   const snap = useSnapshot(state);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     document.title = "APOGEE '2024 | Events";
 
@@ -29,6 +31,7 @@ function EventsPage() {
       const data = await response.json();
       state.numCategories = data.data.length;
       state.categories = data.data;
+      setLoading(false);
     }
     fetchData();
 
@@ -45,24 +48,39 @@ function EventsPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 1.5, ease: "easeInOut", delay: 0 }}
     >
-      <Canvas>
-        {/* <OrbitControls /> */}
-        <Suspense fallback={null}>
-          <EffectComposer />
-          <ambientLight intensity={1} />
-          <pointLight position={[0, -0.2, 2]} intensity={5} />
-          <ScrollControls
-            pages={state.numCategories}
-            damping={0.3}
-            horizontal={snap.isMobile ? true : false}
-          >
-            <Experience />
-          </ScrollControls>
-        </Suspense>
-        {/* <Stats /> */}
-        {/* <AxesHelper /> */}
-      </Canvas>
-      <Instructions />
+      {loading ? (
+        <h1
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          Loading...
+        </h1>
+      ) : (
+        <>
+          <Canvas>
+            {/* <OrbitControls /> */}
+            <Suspense fallback={null}>
+              <EffectComposer />
+              <ambientLight intensity={1} />
+              <pointLight position={[0, -0.2, 2]} intensity={5} />
+              <ScrollControls
+                pages={state.numCategories}
+                damping={0.3}
+                horizontal={snap.isMobile ? true : false}
+              >
+                <Experience />
+              </ScrollControls>
+            </Suspense>
+            {/* <Stats /> */}
+            {/* <AxesHelper /> */}
+          </Canvas>
+          <Instructions />
+        </>
+      )}
     </motion.div>
   );
 }

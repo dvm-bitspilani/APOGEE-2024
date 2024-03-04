@@ -59,24 +59,26 @@ function EventsPage() {
           Loading...
         </h1>
       ) : (
-        <Canvas>
-          {/* <OrbitControls /> */}
-          <Suspense fallback={<Loader />}>
-            <EffectComposer />
-            <ambientLight intensity={1} />
-            <pointLight position={[0, -0.2, 2]} intensity={5} />
-            {/* <directionalLight position={[0, 0, 5]} intensity={1} /> */}
-            <ScrollControls
-              pages={state.numEvents}
-              damping={0.3}
-              horizontal={snap.isMobile ? true : false}
-            >
-              <Experience />
-            </ScrollControls>
-          </Suspense>
-        </Canvas>
+        <>
+          <Canvas>
+            {/* <OrbitControls /> */}
+            <Suspense fallback={<Loader />}>
+              <EffectComposer />
+              <ambientLight intensity={1} />
+              <pointLight position={[0, -0.2, 2]} intensity={5} />
+              {/* <directionalLight position={[0, 0, 5]} intensity={1} /> */}
+              <ScrollControls
+                pages={state.numEvents}
+                damping={0.3}
+                horizontal={snap.isMobile ? true : false}
+              >
+                <Experience />
+              </ScrollControls>
+            </Suspense>
+          </Canvas>
+          <Instructions />
+        </>
       )}
-      <Instructions />
     </motion.div>
   );
 }
