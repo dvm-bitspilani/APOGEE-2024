@@ -80,7 +80,7 @@ const Armageddon = () => {
                                         draggable={false}
                                         className={styles.images}
                                     />
-                                    <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi}/>
+                                    <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi} draggable={false}/>
                                     <div className={styles.regBtn}>Register</div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ const Armageddon = () => {
                                         draggable={false}
                                         className={styles.images}
                                     />
-                                                                        <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi}/>
+                                                                        <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi} draggable={false}/>
                                     <div className={styles.regBtn}>Register</div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@ const Armageddon = () => {
                                         draggable={false}
                                         className={styles.frame}
                                     />
-                                                                        <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi}/>
+                                                                        <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi} draggable={false}/>
                                     <img
                                         src="/images/fifaNew.png"
                                         alt="BGMI"
@@ -128,7 +128,7 @@ const Armageddon = () => {
                                         draggable={false}
                                         className={styles.frame}
                                     />
-                                    <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi}/>
+                                    <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi} draggable={false}/>
                                     <img
                                         src="/images/bgmiNew.png"
                                         alt="BGMI"
@@ -147,7 +147,7 @@ const Armageddon = () => {
                                         className={styles.frame}
                                     />
                                     {/* <div className={styles.kuchBhi}></div> */}
-                                    <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi}/>
+                                    <img src="/images/kuchBhi.png" alt="" className={styles.kuchBhi} draggable={false}/>
                                     <img
                                         src="/images/miniMilitiaNew.png"
                                         alt="BGMI"
