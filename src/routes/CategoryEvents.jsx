@@ -78,7 +78,7 @@ function EventsPage() {
               </ScrollControls>
             </Suspense>
           </Canvas>
-          <Controller route="/events" text="CATEGORIES" />
+          <Controller route="/events" text="BACK" />
           <Instructions text="Scroll to start the visit, click on any events register button to see details" />
         </>
       )}
