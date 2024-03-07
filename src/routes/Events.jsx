@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 // import { useWindowSize } from "rooks";
 import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
@@ -15,9 +15,12 @@ import EffectComposer from "@components/EffectComposer";
 // State Management
 import state from "@components/state";
 import { useSnapshot } from "valtio";
+import Controller from "../components/ContactEvents/Controller";
 
 function EventsPage() {
   const snap = useSnapshot(state);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     document.title = "APOGEE '2024 | Events";
@@ -27,8 +30,10 @@ function EventsPage() {
         "https://bits-apogee.org/2024/main/registrations/get_event_categories"
       );
       const data = await response.json();
+      state.currentCategory = 1;
       state.numCategories = data.data.length;
       state.categories = data.data;
+      setLoading(false);
     }
     fetchData();
 
@@ -45,24 +50,40 @@ function EventsPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 1.5, ease: "easeInOut", delay: 0 }}
     >
-      <Canvas>
-        {/* <OrbitControls /> */}
-        <Suspense fallback={null}>
-          <EffectComposer />
-          <ambientLight intensity={1} />
-          <pointLight position={[0, -0.2, 2]} intensity={5} />
-          <ScrollControls
-            pages={state.numCategories}
-            damping={0.3}
-            horizontal={snap.isMobile ? true : false}
-          >
-            <Experience />
-          </ScrollControls>
-        </Suspense>
-        {/* <Stats /> */}
-        {/* <AxesHelper /> */}
-      </Canvas>
-      {snap.isMobile ? <Instructions /> : null}
+      {loading ? (
+        <h1
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          Loading...
+        </h1>
+      ) : (
+        <>
+          <Canvas>
+            {/* <OrbitControls /> */}
+            <Suspense fallback={null}>
+              {/* <EffectComposer /> */}
+              <ambientLight intensity={1} />
+              <pointLight position={[0, -0.2, 2]} intensity={5} />
+              <ScrollControls
+                pages={state.numCategories}
+                damping={0.3}
+                horizontal={snap.isMobile ? true : false}
+              >
+                <Experience />
+              </ScrollControls>
+            </Suspense>
+            {/* <Stats /> */}
+            {/* <AxesHelper /> */}
+          </Canvas>
+          <Controller route="/" text="HOME" />
+          <Instructions text="Scroll to start the visit, click on any Category to see events" />
+        </>
+      )}
     </motion.div>
   );
 }

@@ -41,7 +41,11 @@ export default function Experience() {
   const scroll = useScroll();
 
   useFrame(() => {
-    // console.log(scroll);
+    if (scroll.delta > 0) {
+      state.currentCategory = Math.round(
+        scroll.offset * (state.numCategories - 1) + 1
+      );
+    }
     setCategoryOffset(
       scroll.offset * viewport.width * (state.numCategories - 1)
     );
@@ -56,7 +60,11 @@ export default function Experience() {
   });
 
   const eventContainers = eventPositions.map((position, index) => (
-    <EventContainer key={index} position={position} />
+    <EventContainer
+      key={index}
+      position={position}
+      data={state.categories[index]}
+    />
   ));
 
   const images = positions.map((position, index) => (

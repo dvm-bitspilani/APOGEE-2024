@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 
 import * as THREE from "three";
 import state from "../state";
+import { useNavigate } from "react-router-dom";
 
 export default function Register(props) {
   const { position } = props;
@@ -15,6 +16,8 @@ export default function Register(props) {
 
   const meshRef = useRef();
   const groupRef = useRef();
+
+  const navigate = useNavigate();
 
   const registerButtonTexture = useLoader(
     THREE.TextureLoader,
@@ -51,7 +54,8 @@ export default function Register(props) {
 
   const handleNavigation = () => {
     // Navigate to some external link
-    window.open("https://www.google.com", "_blank");
+    if (!props.link) navigate(`/${props.link}`);
+    window.open(`${props.link}`, "_blank");
   };
 
   return (

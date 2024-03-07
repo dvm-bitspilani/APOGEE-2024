@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 
 import { Route, Routes } from "react-router-dom";
 import ReactGa from "react-ga4";
+import Armageddon from "./routes/Armageddon";
 
 export default function AnimationWrapper() {
   // ReactGa.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID);
@@ -23,9 +24,10 @@ export default function AnimationWrapper() {
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<App />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/events" element={<Events />} /> */}
-        {/* <Route path="/events/:category" element={<CategoryEvents />} /> */}
-        {/* <Route path="/speakers" element={<Speakers />} /> */}
+        <Route path="/events" element={<Events />} />
+        <Route path="/events/:category" element={<CategoryEvents />} />
+        <Route path="/speakers" element={<Speakers />} />
+        {/* <Route path="/armageddon" element={<Armageddon />} /> */}
         <Route path="/*" element={<ComingSoon />} />
       </Routes>
     </AnimatePresence>

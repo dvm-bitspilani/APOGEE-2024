@@ -17,6 +17,7 @@ import { useSnapshot } from "valtio";
 
 import { useParams } from "react-router-dom";
 import Instructions from "../components/ContactEvents/Instructions";
+import Controller from "../components/ContactEvents/Controller";
 
 function EventsPage() {
   const params = useParams();
@@ -32,6 +33,7 @@ function EventsPage() {
         `https://bits-apogee.org/2024/main/registrations/events/${params.category}`
       );
       const data = await response.json();
+      state.currentEvent = 1;
       state.numEvents = data.data.events.length;
       state.events = data.data.events;
       setLoading(false);
@@ -59,24 +61,27 @@ function EventsPage() {
           Loading...
         </h1>
       ) : (
-        <Canvas>
-          {/* <OrbitControls /> */}
-          <Suspense fallback={<Loader />}>
-            <EffectComposer />
-            <ambientLight intensity={1} />
-            <pointLight position={[0, -0.2, 2]} intensity={5} />
-            {/* <directionalLight position={[0, 0, 5]} intensity={1} /> */}
-            <ScrollControls
-              pages={state.numEvents}
-              damping={0.3}
-              horizontal={snap.isMobile ? true : false}
-            >
-              <Experience />
-            </ScrollControls>
-          </Suspense>
-        </Canvas>
+        <>
+          <Canvas>
+            {/* <OrbitControls /> */}
+            <Suspense fallback={<Loader />}>
+              {/* <EffectComposer /> */}
+              <ambientLight intensity={1} />
+              <pointLight position={[0, -0.2, 2]} intensity={5} />
+              {/* <directionalLight position={[0, 0, 5]} intensity={1} /> */}
+              <ScrollControls
+                pages={state.numEvents}
+                damping={0.3}
+                horizontal={snap.isMobile ? true : false}
+              >
+                <Experience />
+              </ScrollControls>
+            </Suspense>
+          </Canvas>
+          <Controller route="/events" text="CATEGORIES" />
+          <Instructions text="Scroll to start the visit, click on any events register button to see details" />
+        </>
       )}
-      {snap.isMobile ? <Instructions /> : null}
     </motion.div>
   );
 }

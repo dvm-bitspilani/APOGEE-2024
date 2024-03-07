@@ -1,0 +1,90 @@
+.mobileSwipe {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.3rem;
+  text-shadow: 2px 2px 4px #000000;
+  font-family: Alacrity Sans;
+}
+
+.desktopWrapper {
+  z-index: 2;
+  position: absolute;
+  bottom: 7px;
+  left: 7px;
+
+  width: clamp(350px, 20vw, 450px);
+  aspect-ratio: 8.2/7;
+
+  //   border: 2px solid green;
+  background-image: url("/images/Background Instruction.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  * {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .boxContainer {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    // border: 2px solid yellow;
+
+    & > div {
+      position: absolute;
+      top: 15%;
+      right: 35%;
+      left: 5%;
+      //   border: 2px solid brown;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 1rem;
+
+      h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: white;
+        text-align: center;
+      }
+      p {
+        font-size: 1rem;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;
+        color: white;
+      }
+    }
+    button {
+      position: absolute;
+      bottom: 10%;
+      right: 8%;
+      background-image: url("/images/ok-btn-bg.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+      padding: 1rem 2rem;
+
+      cursor: pointer;
+
+      color: white;
+
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}

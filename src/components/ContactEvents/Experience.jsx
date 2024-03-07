@@ -44,7 +44,11 @@ export default function Experience() {
   const scroll = useScroll();
 
   useFrame(() => {
-    // console.log(scroll);
+    if (scroll.delta > 0) {
+      state.currentEvent = Math.round(
+        scroll.offset * (state.numEvents - 1) + 1
+      );
+    }
     setCategoryOffset(scroll.offset * viewport.width * (state.numEvents - 1));
   });
 
@@ -69,10 +73,17 @@ export default function Experience() {
         <MobileEventContainer
           key={index}
           position={mobileEventPositions[index]}
+          data={state.events[index]}
         />
       );
     } else {
-      return <EventContainer key={index} position={position} />;
+      return (
+        <EventContainer
+          key={index}
+          position={position}
+          data={state.events[index]}
+        />
+      );
     }
   });
 

@@ -1,19 +1,59 @@
-export default function Instructions() {
+import * as styles from "@styles/Instructions.module.scss";
+
+// State Management
+import state from "../state";
+import { useSnapshot } from "valtio";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
+export default function Instructions({ text }) {
+  const snap = useSnapshot(state);
+
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    if (!state.isMobile) {
+      gsap.fromTo(
+        wrapperRef.current,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          delay: 2,
+        }
+      );
+    }
+  }, []);
+
+  function handleButton() {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        wrapperRef.current.style.display = "none";
+      },
+    });
+    tl.to(wrapperRef.current, {
+      autoAlpha: 0,
+      duration: 1,
+    });
+  }
+
   return (
-    <h1
-      style={{
-        position: "absolute",
-        bottom: "5px",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        color: "white",
-        fontSize: "1.5rem",
-        fontWeight: "bold",
-        textShadow: "2px 2px 4px #000000",
-        fontFamily: "Alacrity Sans",
-      }}
-    >
-      {"<< Swipe >>"}
-    </h1>
+    <>
+      {snap.isMobile ? (
+        <h1 className={styles.mobileSwipe}>{"<< Swipe >>"}</h1>
+      ) : (
+        <main className={styles.desktopWrapper} ref={wrapperRef}>
+          <div className={styles.boxContainer}>
+            <div>
+              <h2>WELCOME ABOARD!</h2>
+              <p>{text}</p>
+          </div>
+            <button onClick={handleButton}>OK THANKS</button>
+          </div>
+        </main>
+      )}
+    </>
   );
 }

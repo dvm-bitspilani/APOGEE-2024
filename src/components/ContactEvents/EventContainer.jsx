@@ -12,7 +12,7 @@ import * as THREE from "three";
 import InfoText from "./InfoText";
 
 export default function EventContainer(props) {
-  const { position } = props;
+  const { position, data } = props;
   const { viewport } = useThree();
 
   // const { xPercent, yPercent } = useControls("EventContainer", {
@@ -74,10 +74,10 @@ export default function EventContainer(props) {
           0,
         ]}
         font="/fonts/Alacrity Sans Bold.ttf"
-        fontSize={Math.min(viewport.width * 0.03, 0.4)}
-        // maxWidth={viewport.width * 0.23}
+        fontSize={Math.min(viewport.width * 0.02, 0.25)}
+        maxWidth={viewport.width * xPercent * 0.3}
       >
-        QUANTACULUS
+        {data.name}
         <meshStandardMaterial
           attach="material"
           color={"#9AF0F4"}
@@ -98,7 +98,7 @@ export default function EventContainer(props) {
         font="/fonts/Alacrity Sans Regular.otf"
         fontSize={Math.min(viewport.width * 0.015, 0.23)}
       >
-        Some Club or Department
+        {data.club_dept}
       </Text>
       <Text
         anchorX={"left"}
@@ -115,11 +115,7 @@ export default function EventContainer(props) {
         fontSize={Math.min(viewport.width * 0.0115, 0.2)}
         maxWidth={viewport.width * 0.23}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut
-        nulla id tellus mattis tempor. Sed augue odio Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Quisque ut nulla id tellus mattis tempor.
-        Sed augue
+        {data.description}
       </Text>
       <Image
         ref={imgRef}
@@ -138,7 +134,7 @@ export default function EventContainer(props) {
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
-        data={{ category: "Location", value: "LTC 5105" }}
+        data={{ category: "Location", value: "TBA" }}
       />
       <InfoText
         position={[
@@ -146,7 +142,7 @@ export default function EventContainer(props) {
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
-        data={{ category: "Time", value: "5th April, 6PM" }}
+        data={{ category: "Time", value: "TBA" }}
       />
       <InfoText
         position={[
@@ -154,7 +150,7 @@ export default function EventContainer(props) {
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
-        data={{ category: "For queries", value: "9390145617" }}
+        data={{ category: "For queries", value: `${data.contact}` }}
       />
       <Register
         position={[
@@ -162,6 +158,7 @@ export default function EventContainer(props) {
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
+        link={data.link}
       />
     </group>
   );
