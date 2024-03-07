@@ -10,7 +10,7 @@ import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 export default function EventContainer(props) {
-  const { position } = props;
+  const { position, data } = props;
   const { viewport } = useThree();
 
   // const { xPercent, yPercent } = useControls("EventContainer", {
@@ -72,9 +72,9 @@ export default function EventContainer(props) {
         ]}
         font="/fonts/Alacrity Sans Bold.ttf"
         fontSize={Math.min(viewport.width * 0.03, 0.4)}
-        maxWidth={viewport.width * 0.23}
+        maxWidth={viewport.width * xPercent}
       >
-        Kernel
+        {data.name}
         <meshStandardMaterial
           attach="material"
           color={"#9AF0F4"}
@@ -100,6 +100,7 @@ export default function EventContainer(props) {
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
+        link={data.name}
       />
     </group>
   );

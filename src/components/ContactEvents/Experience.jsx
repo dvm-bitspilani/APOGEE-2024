@@ -73,10 +73,17 @@ export default function Experience() {
         <MobileEventContainer
           key={index}
           position={mobileEventPositions[index]}
+          data={state.events[index]}
         />
       );
     } else {
-      return <EventContainer key={index} position={position} />;
+      return (
+        <EventContainer
+          key={index}
+          position={position}
+          data={state.events[index]}
+        />
+      );
     }
   });
 

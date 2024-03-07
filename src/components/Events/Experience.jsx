@@ -60,7 +60,11 @@ export default function Experience() {
   });
 
   const eventContainers = eventPositions.map((position, index) => (
-    <EventContainer key={index} position={position} />
+    <EventContainer
+      key={index}
+      position={position}
+      data={state.categories[index]}
+    />
   ));
 
   const images = positions.map((position, index) => (

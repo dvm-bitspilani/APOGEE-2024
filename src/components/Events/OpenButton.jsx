@@ -51,7 +51,7 @@ export default function OpenButton(props) {
   // }, [viewport]);
 
   const handleNavigation = () => {
-    navigate("/events/Kernel");
+    navigate(`/events/${props.link}`);
   };
 
   return (
