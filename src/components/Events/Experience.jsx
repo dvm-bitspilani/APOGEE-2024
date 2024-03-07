@@ -59,13 +59,16 @@ export default function Experience() {
     return [viewport.width * i - categoryOffset, viewport.height / 5.4, 0];
   });
 
-  const eventContainers = eventPositions.map((position, index) => (
-    <EventContainer
-      key={index}
-      position={position}
-      data={state.categories[index]}
-    />
-  ));
+  const eventContainers = eventPositions.map((position, index) => {
+    if (state.categories[index].name === "api") return;
+    return (
+      <EventContainer
+        key={index}
+        position={position}
+        data={state.categories[index]}
+      />
+    );
+  });
 
   const images = positions.map((position, index) => (
     <Image key={index} position={position} />
