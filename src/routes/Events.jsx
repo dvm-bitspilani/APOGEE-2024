@@ -30,6 +30,7 @@ function EventsPage() {
         "https://bits-apogee.org/2024/main/registrations/get_event_categories"
       );
       const data = await response.json();
+      state.currentCategory = 0;
       state.numCategories = data.data.length;
       state.categories = data.data;
       setLoading(false);

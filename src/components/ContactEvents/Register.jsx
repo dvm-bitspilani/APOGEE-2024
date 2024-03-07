@@ -51,7 +51,7 @@ export default function Register(props) {
 
   const handleNavigation = () => {
     // Navigate to some external link
-    window.open("https://www.google.com", "_blank");
+    window.open(`${props.link}`, "_blank");
   };
 
   return (

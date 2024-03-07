@@ -98,7 +98,7 @@ export default function EventContainer(props) {
         font="/fonts/Alacrity Sans Regular.otf"
         fontSize={Math.min(viewport.width * 0.015, 0.23)}
       >
-        Some Club or Department
+        {data.club_dept}
       </Text>
       <Text
         anchorX={"left"}
@@ -158,6 +158,7 @@ export default function EventContainer(props) {
           -viewport.height * textPosition[1] * yPercent,
           0,
         ]}
+        link={data.link}
       />
     </group>
   );
