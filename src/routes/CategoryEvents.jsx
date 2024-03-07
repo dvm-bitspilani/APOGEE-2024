@@ -33,7 +33,7 @@ function EventsPage() {
         `https://bits-apogee.org/2024/main/registrations/events/${params.category}`
       );
       const data = await response.json();
-      state.currentEvent = 0;
+      state.currentEvent = 1;
       state.numEvents = data.data.events.length;
       state.events = data.data.events;
       setLoading(false);
