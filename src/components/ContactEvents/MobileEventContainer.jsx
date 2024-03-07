@@ -12,7 +12,7 @@ import * as THREE from "three";
 import InfoText from "./InfoText";
 
 export default function EventContainer(props) {
-  const { position } = props;
+  const { position, data } = props;
   const { viewport } = useThree();
 
   //   const { xPercent, yPercent } = useControls("EventContainer", {
@@ -61,7 +61,7 @@ export default function EventContainer(props) {
         fontSize={Math.min(viewport.width * 0.03, 0.4)}
         // maxWidth={viewport.width * 0.23}
       >
-        Paper Presentation Event
+        {data.name}
         <meshStandardMaterial
           attach="material"
           color={"#9AF0F4"}
@@ -91,15 +91,15 @@ export default function EventContainer(props) {
       />
       <InfoText
         position={[viewport.width * textPosition[0] * xPercent, 0, 0]}
-        data={{ category: "Location", value: "LTC 5105" }}
+        data={{ category: "Location", value: "TBA" }}
       />
       <InfoText
         position={[0, 0, 0]}
-        data={{ category: "Time", value: "5th April, 6PM" }}
+        data={{ category: "Time", value: "TBA" }}
       />
       <InfoText
         position={[-viewport.width * textPosition[0] * xPercent, 0, 0]}
-        data={{ category: "For queries", value: "9390145617" }}
+        data={{ category: "For queries", value: `${data.contact}` }}
       />
       <Text
         anchorY={"top"}
@@ -110,15 +110,12 @@ export default function EventContainer(props) {
         fontSize={Math.min(viewport.width * 0.05, 0.13)}
         maxWidth={viewport.width * xPercent * 0.8}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut
-        nulla id tellus mattis tempor. Sed augue odio Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Quisque ut nulla id tellus mattis tempor.
-        Sed augue
+        {data.description}
       </Text>
 
       <Register
         position={[0, -viewport.height * textPosition[1] * yPercent, 0]}
+        link={data.link}
       />
     </group>
   );
