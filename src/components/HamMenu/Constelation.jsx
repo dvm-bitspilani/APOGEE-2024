@@ -17,6 +17,14 @@ export default function Constelation() {
     navigate(`/${e.target.innerText.toLowerCase()}`);
   }
 
+  function navigateToLogin() {
+    // Navigate to the https://bits-apogee.org/2024/main/registrations/login/ using window
+    window.open(
+      "https://bits-apogee.org/2024/main/registrations/login/",
+      "_blank"
+    );
+  }
+
   return (
     <div className={`${styles.constelationWrapper} ${hamStyles.menu}`}>
       <Constelation_SVG />
@@ -24,7 +32,7 @@ export default function Constelation() {
         <StarSVG />
         <span>HOME</span>
       </div>
-      <div className={styles.login} onClick={navigateToSoon}>
+      <div className={styles.login} onClick={navigateToLogin}>
         <span>LOGIN</span>
         <StarSVG />
       </div>
