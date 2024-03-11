@@ -177,8 +177,7 @@
     padding-inline: 0.5rem;
     transition: all 0.2s ease-in-out;
 
-    @media screen and (max-height: 700px),
-    screen and (max-width: 600px) {
+    @media screen and (max-height: 700px), screen and (max-width: 600px) {
       font-size: 0.7rem;
     }
   }
@@ -247,6 +246,11 @@
   align-items: center;
   transform-style: preserve-3d;
   perspective: 1000px;
+
+  @media screen and (max-height: 790px) {
+    position: relative;
+    top: 20px;
+  }
 }
 
 .cardWrapper {
@@ -288,7 +292,7 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  mask-image: url('../../public/images/frame.png');
+  mask-image: url("../../public/images/frame.png");
   mask-size: cover;
 }
 
@@ -302,6 +306,10 @@
   opacity: 1;
   transition: opacity 0.5s ease-out;
   z-index: 2;
+
+  @media screen and (max-width: 810px) {
+    opacity: 0;
+  }
 }
 
 .kuchBhi:hover {
@@ -315,7 +323,6 @@
 }
 
 @media only screen and (max-width: 810px) {
-
   .hud {
     display: none;
   }
@@ -336,7 +343,6 @@
     .homeBtn {
       display: none;
     }
-
   }
 
   .heading {
@@ -355,8 +361,6 @@
   .scrollBar {
     display: block;
   }
-
-
 
   .cardContainer {
     width: 97%;
@@ -394,5 +398,4 @@
     height: auto;
     transform: none;
   }
-
 }
