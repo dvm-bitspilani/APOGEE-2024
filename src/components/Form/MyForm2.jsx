@@ -143,7 +143,7 @@ const MyForm2 = () => {
           };
           console.log("Form Values:", submitValues);
 
-          const response = await axios.post(import.meta.env.VITE_TEST_REGISTER_URL, {
+          const response = await axios.post(import.meta.env.VITE_REGISTER_URL, {
             ...submitValues,
           });
           if (response) {
