@@ -190,7 +190,7 @@ const Armageddon = () => {
                     draggable={false}
                   />
                   <img
-                    src="/images/miniMilitiaNew.png"
+                    src="/images/wwe.png"
                     alt="BGMI"
                     draggable={false}
                     className={styles.images}
