@@ -31,7 +31,7 @@ function EventsPage() {
       );
       const data = await response.json();
       state.currentCategory = 1;
-      state.numCategories = data.data.length - 1;
+      state.numCategories = data.data.length;
       state.categories = data.data.filter((category) => {
         if (category.name === "api") return;
         return category;

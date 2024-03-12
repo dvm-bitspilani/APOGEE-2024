@@ -79,7 +79,7 @@ const MyForm = () => {
   }
 
   const handleSubmit = async (values, { resetForm }) => {
-    console.log("Register button clicked");
+    // console.log("Register button clicked");
     setShowCaptcha(true);
     const finalValues = {
       name: values.name,
@@ -112,14 +112,14 @@ const MyForm = () => {
             events: eventsIds,
             token: captchaToken,
           };
-          console.log("Form Values:", submitValues);
+          // console.log("Form Values:", submitValues);
 
           const response = await axios.post(import.meta.env.VITE_REGISTER_URL, {
             ...submitValues,
           });
           if (response) {
-            console.log(response);
-            console.log("Data sent successfully!");
+            // console.log(response);
+            // console.log("Data sent successfully!");
             setSuccessfullRegistration(1);
           } else {
             console.error(
