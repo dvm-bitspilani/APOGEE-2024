@@ -90,7 +90,10 @@ const Armageddon = () => {
                     className={styles.kuchBhi}
                     draggable={false}
                   />
-                  <div className={styles.regBtn}>Register</div>
+                  <a href="https://forms.gle/ERKSKbM5J3fYF4eF9" target="_blank">
+                    {" "}
+                    <div className={styles.regBtn}>Register</div>
+                  </a>{" "}
                 </div>
               </div>
               <div className={styles.cardWrapper}>
@@ -113,7 +116,10 @@ const Armageddon = () => {
                     className={styles.kuchBhi}
                     draggable={false}
                   />
-                  <div className={styles.regBtn}>Register</div>
+                  <a href="https://forms.gle/ALWdXUGJkSg9Y5Uh7" target="_blank">
+                    {" "}
+                    <div className={styles.regBtn}>Register</div>
+                  </a>{" "}
                 </div>
               </div>
               <div className={styles.cardWrapper}>
@@ -136,7 +142,10 @@ const Armageddon = () => {
                     draggable={false}
                     className={styles.images}
                   />
-                  <div className={styles.regBtn}>Register</div>
+                  <a href="https://forms.gle/K6C5MTrum6qTXCEi7" target="_blank">
+                    {" "}
+                    <div className={styles.regBtn}>Register</div>
+                  </a>
                 </div>
               </div>
               <div className={styles.cardWrapper}>
@@ -159,7 +168,10 @@ const Armageddon = () => {
                     draggable={false}
                     className={styles.images}
                   />
-                  <div className={styles.regBtn}>Register</div>
+                  <a href="https://forms.gle/W4v3VxinYLt3Vw2w7" target="_blank">
+                    {" "}
+                    <div className={styles.regBtn}>Register</div>
+                  </a>{" "}
                 </div>
               </div>
               <div className={styles.cardWrapper}>
@@ -183,7 +195,10 @@ const Armageddon = () => {
                     draggable={false}
                     className={styles.images}
                   />
-                  <div className={styles.regBtn}>Register</div>
+                  <a href="https://forms.gle/MKujMFPMve6nK7Bk7" target="_blank">
+                    {" "}
+                    <div className={styles.regBtn}>Register</div>
+                  </a>{" "}
                 </div>
               </div>
             </div>
