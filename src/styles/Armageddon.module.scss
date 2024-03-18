@@ -330,6 +330,7 @@
   text-transform: uppercase;
   width: 80%;
   font-size: 1.2rem;
+  min-width: max-content;
 }
 @media only screen and (max-width: 810px) {
   .hud {
