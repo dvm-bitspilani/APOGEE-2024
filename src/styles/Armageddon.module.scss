@@ -321,7 +321,16 @@
   object-fit: cover;
   width: 100% !important;
 }
-
+.gameName{
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  text-transform: uppercase;
+  width: 80%;
+  font-size: 1.2rem;
+}
 @media only screen and (max-width: 810px) {
   .hud {
     display: none;
