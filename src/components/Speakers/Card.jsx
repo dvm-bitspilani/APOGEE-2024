@@ -14,11 +14,11 @@ export default function Card(props) {
       material.clearcoat = 1;
       material.clearcoatRoughness = 0;
       material.transmission = 1.025;
-      material.chromaticAberration = 1;
-      material.anisotrophicBlur = 0.01;
+      material.chromaticAberration = 50;
+      material.anisotrophicBlur = 0;
       material.roughness = 0;
       material.thickness = 4.5;
-      material.ior = 0.5;
+      material.ior = 0;
       material.distortion = 0.1;
       material.distortionScale = 0.2;
       material.temporalDistortion = 0.2;
