@@ -37,7 +37,7 @@ function Speakers() {
         {/* <OrbitControls /> */}
         <Suspense fallback={null}>
           {/* <EffectComposer /> */}
-          <ambientLight intensity={1.5}>
+          {/* <ambientLight intensity={25}> */}
             <ScrollControls
               pages={10}
               damping={0.4}
@@ -45,7 +45,7 @@ function Speakers() {
             >
               <Experience />
             </ScrollControls>
-          </ambientLight>
+          {/* </ambientLight> */}
         </Suspense>
         {/* <Stats /> */}
         {/* <AxesHelper /> */}
