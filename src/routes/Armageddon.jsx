@@ -72,6 +72,7 @@ const Armageddon = () => {
             <div className={styles.cardContainer}>
               <div className={styles.cardWrapper}>
                 <div className={styles.imgWrapper}>
+                <div className={styles.gameName}>CLASH ROYALE</div>
                   <img
                     src="/images/frame.png"
                     alt="BGMI"
@@ -98,6 +99,7 @@ const Armageddon = () => {
               </div>
               <div className={styles.cardWrapper}>
                 <div className={styles.imgWrapper}>
+                <div className={styles.gameName}>VALORANT</div>
                   <img
                     src="/images/frame.png"
                     alt="BGMI"
@@ -124,6 +126,7 @@ const Armageddon = () => {
               </div>
               <div className={styles.cardWrapper}>
                 <div className={styles.imgWrapper}>
+                <div className={styles.gameName}>FC 24</div>
                   <img
                     src="/images/frame.png"
                     alt="BGMI"
@@ -150,6 +153,7 @@ const Armageddon = () => {
               </div>
               <div className={styles.cardWrapper}>
                 <div className={styles.imgWrapper}>
+                <div className={styles.gameName}>BGMI</div>
                   <img
                     src="/images/frame.png"
                     alt="BGMI"
@@ -176,6 +180,7 @@ const Armageddon = () => {
               </div>
               <div className={styles.cardWrapper}>
                 <div className={styles.imgWrapper}>
+                <div className={styles.gameName}>WWE</div>
                   <img
                     src="/images/frame.png"
                     alt="BGMI"
