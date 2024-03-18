@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import "../styles/events/events.css";
 import Experience from "../components/Speakers/Experience";
 import { ScrollControls, Stats } from "@react-three/drei";
+import Loader from "../components/Loader";
 
 import { motion } from "framer-motion";
 
@@ -35,7 +36,7 @@ function Speakers() {
     >
       <Canvas>
         {/* <OrbitControls /> */}
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           {/* <EffectComposer /> */}
           {/* <ambientLight intensity={25}> */}
             <ScrollControls

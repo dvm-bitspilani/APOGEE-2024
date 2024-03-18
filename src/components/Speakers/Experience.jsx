@@ -21,7 +21,7 @@ function Experience() {
         cardRotation: [0, 0, 0],
         textPosition: [22.5, -12.5, 0],
         textRotation: [0, Math.PI / 2, 0],
-        video: "../../../public/videos/akbar.mp4",
+        video: "../../../videos/akbar.mp4",
         text: "",
         driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bMzV3N1R1WFViUUU/view?usp=drivesdk&resourcekey=0-LE316yW4KBSuSZ2rGwn4ZQ"
       },
@@ -30,7 +30,7 @@ function Experience() {
         cardRotation: [0, (Math.PI * -150) / 180, 0],
         textPosition: [-27.5, -62.5, 0],
         textRotation: [0, (Math.PI * -70) / 180, 0],
-        video: "../../../public/videos/elenla.mp4",
+        video: "../../../videos/elenla.mp4",
         text: "",
         driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bQ09TVGszOHJ6MGc/view?usp=drivesdk&resourcekey=0-AfUPNcfuFta6Tp9ZCh_x_w"
       },
@@ -39,7 +39,7 @@ function Experience() {
         cardRotation: [0, (Math.PI * 70) / 180, 0],
         textPosition: [-27.5, -62.5, 0],
         textRotation: [0, (Math.PI * -70) / 180, 0],
-        video: "../../../public/videos/shivshankar.mp4",
+        video: "../../../videos/shivshankar.mp4",
         text: "",
         driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4baHZRQU1aM0ZxSkU/view?usp=drivesdk&resourcekey=0-M7KBycRoqsY9l0EjiMIkjA"
       },
