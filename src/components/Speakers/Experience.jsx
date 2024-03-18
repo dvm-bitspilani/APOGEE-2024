@@ -26,7 +26,7 @@ function Experience() {
         driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bMzV3N1R1WFViUUU/view?usp=drivesdk&resourcekey=0-LE316yW4KBSuSZ2rGwn4ZQ"
       },
       {
-        cardPosition: [-20, -45, 7.5],
+        cardPosition: [-20, -60, 7.5],
         cardRotation: [0, (Math.PI * -150) / 180, 0],
         textPosition: [-27.5, -62.5, 0],
         textRotation: [0, (Math.PI * -70) / 180, 0],
@@ -35,7 +35,7 @@ function Experience() {
         driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bQ09TVGszOHJ6MGc/view?usp=drivesdk&resourcekey=0-AfUPNcfuFta6Tp9ZCh_x_w"
       },
       {
-        cardPosition: [0, -85, -20],
+        cardPosition: [10, -105, -20],
         cardRotation: [0, (Math.PI * 70) / 180, 0],
         textPosition: [-27.5, -62.5, 0],
         textRotation: [0, (Math.PI * -70) / 180, 0],
@@ -51,8 +51,8 @@ function Experience() {
     state.camera = cameraRef.current;
   }, []);
 
-  const radius = useMemo(() => 105, []); // radius of the helix
-  const speed = useMemo(() => 7, []); // speed of the helix
+  const radius = useMemo(() => 100, []); // radius of the helix
+  const speed = useMemo(() => 5, []); // speed of the helix
   const verticalSpeed = useMemo(() => 100, []); // speed of vertical movement
 
   useFrame((_state, delta) => {
