@@ -1,12 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
+.tophud {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: clamp(100px, 10vw, 170px);
+    object-fit: contain;
+
+    // visibility: visible;
+    // opacity: 1;
+
+    @media screen and (max-height: 700px) {
+        height: 100px;
+    }
+}
+
 .logo {
-    position: absolute;
-    top: 1.5vw;
+    position: fixed;
+    top: 0.3vw;
     left: 50%;
     transform: translateX(-50%);
     width: auto;
     height: 70px;
+    // height: 5vw;
     object-fit: contain;
 
     @media screen and (max-height: 700px),
@@ -30,7 +48,7 @@
 
     background-color: transparent;
 
-    position: absolute;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
     top: clamp(90px, calc(9.4vw - 7px), 154px);
@@ -101,20 +119,29 @@
     overflow-x: hidden;
 }
 
-.pageWrapper {
+.sponsorContainer {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
-    gap: 40px;
+    gap: 100px;
     grid-template-columns: 100vw;
     width: 100vw;
     height: calc(100dvh - 200px);
     justify-content: center;
-    margin-top: 190px;
+    // margin-top: 190px;
+    // margin-top: 10rem;
+    margin-top: clamp(210px, 15vw, 300px);
+
+    @media screen and (max-height: 700px) {
+        margin-top: 190px;
+    }
 }
 
 .firstRow,
 .secondRow,
 .remainingRows {
+    display: flex;
+    justify-content: center;
+
     a {
         div {
             text-align: center;
@@ -123,7 +150,6 @@
 }
 
 .remainingRows {
-    display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-evenly;

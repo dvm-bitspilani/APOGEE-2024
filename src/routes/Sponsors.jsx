@@ -113,7 +113,7 @@ export default function Sponsors() {
       {/* <TopHUD /> */}
       <img
         draggable={false}
-        className={styles.tophud}
+        className={sponsorStyles.tophud}
         src="/images/Top HUD-v1.png"
         alt="top hud"
       />
@@ -130,7 +130,7 @@ export default function Sponsors() {
       >
         <span>HOME</span>
       </button>
-      <div className={sponsorStyles.pageWrapper}>
+      <div className={sponsorStyles.sponsorContainer}>
         <div className={sponsorStyles.firstRow}>{sponsorCards[0]}</div>
         <div className={sponsorStyles.secondRow}>{sponsorCards[1]}</div>
         <div className={sponsorStyles.remainingRows}>{sponsorCards.splice(2, sponsorCards.length - 2)}</div>
