@@ -14,25 +14,45 @@ function Experience() {
 
   const cameraRef = useRef();
 
-  const data = 
-  [
-    {
-      cardPosition: [5, -5, 0],
-      cardRotation: [0, 0, 0],
-      textPosition: [12.5, -12.5, 0],
-      textRotation: [0, Math.PI / 2, 0],
-      video: 'https://storage.googleapis.com/activetheory-v6.appspot.com/media/chile_1.mp4',
-      text: 'Insert Text Here',
-      
-    }
-  ]
+  const data = useMemo(
+    () => [
+      {
+        cardPosition: [15, -5, 0],
+        cardRotation: [0, 0, 0],
+        textPosition: [22.5, -12.5, 0],
+        textRotation: [0, Math.PI / 2, 0],
+        video: "../../../videos/akbar.mp4",
+        text: "",
+        driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bMzV3N1R1WFViUUU/view?usp=drivesdk&resourcekey=0-LE316yW4KBSuSZ2rGwn4ZQ"
+      },
+      {
+        cardPosition: [-20, -60, 7.5],
+        cardRotation: [0, (Math.PI * -150) / 180, 0],
+        textPosition: [-27.5, -62.5, 0],
+        textRotation: [0, (Math.PI * -70) / 180, 0],
+        video: "../../../videos/elenla.mp4",
+        text: "",
+        driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bQ09TVGszOHJ6MGc/view?usp=drivesdk&resourcekey=0-AfUPNcfuFta6Tp9ZCh_x_w"
+      },
+      {
+        cardPosition: [10, -105, -20],
+        cardRotation: [0, (Math.PI * 70) / 180, 0],
+        textPosition: [-27.5, -62.5, 0],
+        textRotation: [0, (Math.PI * -70) / 180, 0],
+        video: "../../../videos/shivshankar.mp4",
+        text: "",
+        driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4baHZRQU1aM0ZxSkU/view?usp=drivesdk&resourcekey=0-M7KBycRoqsY9l0EjiMIkjA"
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
     state.camera = cameraRef.current;
   }, []);
 
-  const radius = useMemo(() => 105, []); // radius of the helix
-  const speed = useMemo(() => 7, []); // speed of the helix
+  const radius = useMemo(() => 100, []); // radius of the helix
+  const speed = useMemo(() => 5, []); // speed of the helix
   const verticalSpeed = useMemo(() => 100, []); // speed of vertical movement
 
   useFrame((_state, delta) => {
@@ -60,6 +80,20 @@ function Experience() {
     }
   });
 
+  function calculateLightPosition(cardPosition, cardRotation, index) {
+    // Calculate the position of the light based on the card's position and rotation
+    // This is a simple example, you may need to adjust the calculation to fit your needs
+    const direction = index === 2 ? 10 : -10;
+
+    const lightPosition = [
+      cardPosition[0] + Math.sin(cardRotation[1]) * -10,
+      cardPosition[1] + 10,
+      cardPosition[2] + Math.cos(cardRotation[1]) * -10,
+    ];
+
+    return lightPosition;
+  }
+
   return (
     <>
       {/* <OrbitControls /> */}
@@ -70,21 +104,6 @@ function Experience() {
         // zoom={0.5}
         // fov={50}
         makeDefault
-      />
-      <directionalLight
-        position={[1, 1, 0]}
-        intensity={100}
-        color={Number("#9AF0F4".replace("#", "0x"))}
-      />
-      <directionalLight
-        position={[1, 1, 1]}
-        intensity={100}
-        color={Number("#9AF0F4".replace("#", "0x"))}
-      />
-      <directionalLight
-        position={[0, -2, 1]}
-        intensity={100}
-        color={Number("#9AF0F4".replace("#", "0x"))}
       />
       <Background />
       {/* <Speed /> */}
@@ -97,7 +116,32 @@ function Experience() {
         fade
         speed={0}
       />
-      <Card />
+      {data.map((item, index) => {
+        const lightPosition = calculateLightPosition(
+          item.cardPosition,
+          item.cardRotation,
+          index
+        );
+        return (
+          <React.Fragment key={index}>
+            <Card
+              cardPosition={item.cardPosition}
+              cardRotation={item.cardRotation}
+              textPosition={item.textPosition}
+              textRotation={item.textRotation}
+              video={item.video}
+              text={item.text}
+              driveLink={item.driveLink}
+            />
+            <directionalLight
+              position={lightPosition}
+              intensity={100}
+              color={Number("#9AF0F4".replace("#", "0x"))}
+            />
+          </React.Fragment>
+        );
+      })}
+
       <Spaceship />
     </>
   );

@@ -89,12 +89,13 @@ export default function EventContainer(props) {
       <Text
         color={"#9AF0F4"}
         anchorX={"left"}
-        textAlign="center"
+        // textAlign="center"
         position={[
           viewport.width * textPosition[0] * xPercent,
-          viewport.height * textPosition[1] * yPercent - 0.4,
+          viewport.height * textPosition[1] * yPercent - 0.5,
           0,
         ]}
+        maxWidth={viewport.width * xPercent * 0.3}
         font="/fonts/Alacrity Sans Regular.otf"
         fontSize={Math.min(viewport.width * 0.015, 0.23)}
       >
