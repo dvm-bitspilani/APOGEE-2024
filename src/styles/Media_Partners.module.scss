@@ -403,9 +403,6 @@
   display: none;
 }
 
-
-
-
 .scrollBar {
   position: fixed;
   left: 10px;
@@ -420,8 +417,6 @@
   // top: 0;
   top: 68%;
 }
-
-
 
 @media only screen and (max-width: 920px) {
   .eventsWrapper {
@@ -455,7 +450,7 @@
   .hud {
     display: none;
   }
-  .headinghud{
+  .headinghud {
     display: none;
   }
   .leftHelm {
@@ -566,8 +561,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
-
+  text-decoration: none;
 }
 
 .card h2 {
@@ -578,7 +572,6 @@
   transition: color 150ms ease;
 }
 
-.card:hover h2{
+.card:hover h2 {
   color: #78bbf0;
 }
-

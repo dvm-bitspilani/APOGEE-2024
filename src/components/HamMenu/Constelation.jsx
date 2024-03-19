@@ -25,6 +25,10 @@ export default function Constelation() {
     );
   }
 
+  function navigateToMedia() {
+    navigate("/media_partners");
+  }
+
   return (
     <div className={`${styles.constelationWrapper} ${hamStyles.menu}`}>
       <Constelation_SVG />
@@ -48,7 +52,7 @@ export default function Constelation() {
         <StarSVG />
         <span>SPONSORS</span>
       </div>
-      <div className={styles.mediaPartners} onClick={navigateToSoon}>
+      <div className={styles.mediaPartners} onClick={navigateToMedia}>
         <StarSVG />
         <span>MEDIA PARTNERS</span>
       </div>
