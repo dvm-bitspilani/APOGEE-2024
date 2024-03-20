@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 .tophud {
-    position: absolute;
+    // position: absolute;
+    position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -18,7 +19,8 @@
 }
 
 .logo {
-    position: absolute;
+    // position: absolute;
+    position: fixed;
     top: 0.3vw;
     left: 50%;
     transform: translateX(-50%);
@@ -48,7 +50,8 @@
 
     background-color: transparent;
 
-    position: absolute;
+    // position: absolute;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
     top: clamp(90px, calc(9.4vw - 7px), 154px);
@@ -165,7 +168,8 @@
 .remainingRows {
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    padding-bottom: 100px;
 
     .card {
 
@@ -177,57 +181,79 @@
 }
 
 .card {
+    width: 300px;
+    min-height: 200px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    font-size: 28px;
+    margin-bottom: 50px;
     // font-family: 'Space Grotesk' !important;
 
     img {
-        width: 147px;
+        width: 300px;
+        max-height: 100px;
+        height: auto;
+        object-fit: contain;
     }
 }
 
-.firstRow {
-    .card {
-        img {
-            height: 68px;
-            width: auto;
-            // width: 335px;
-        }
-    }
+.imageContainer {
+    min-height: 45%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.secondRow {
-    .card {
-        img {
-            height: 57px;
-            width: auto;
-            // width: 335px;
-        }
-    }
-}
+// .firstRow {
+//     .card {
+//         img {
+//             height: 68px;
+//             width: auto;
+//             // width: 335px;
+//         }
+//     }
+// }
 
-.remainingRows {
-    .card:last-of-type {
-        img {
-            height: 122px;
-            width: auto;
-        }
-    }
+// .secondRow {
+//     .card {
+//         img {
+//             height: 57px;
+//             width: auto;
+//             // width: 335px;
+//         }
+//     }
+// }
 
-    .card:first-of-type {
-        img {
-            height: 124px;
-            width: auto;
-        }
-    }
+// .remainingRows {
+//     .card:last-of-type {
+//         img {
+//             height: 122px;
+//             width: auto;
+//         }
+//     }
 
-    .card:nth-of-type(2) {
-        img {
-            height: 147px;
-            width: auto;
-        }
-    }
-}
+//     .card:first-of-type {
+//         img {
+//             height: 124px;
+//             width: auto;
+//         }
+//     }
+
+//     .card:nth-of-type(2) {
+//         img {
+//             height: 147px;
+//             width: auto;
+//         }
+//     }
+// }
 
 .scrollBar {
     position: fixed;
