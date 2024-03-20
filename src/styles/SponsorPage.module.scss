@@ -1,5 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
+.lefthelm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100svh;
+    object-fit: contain;
+
+    pointer-events: none;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+}
+
+.righthelm {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100svh;
+    object-fit: contain;
+
+    pointer-events: none;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+}
+
 .tophud {
     // position: absolute;
     position: fixed;
@@ -138,7 +166,7 @@
 .sponsorContainer {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
-    gap: 100px;
+    gap: 50px;
     grid-template-columns: 70vw;
     width: 100vw;
     height: calc(100dvh - 200px);
@@ -190,7 +218,6 @@
     align-items: center;
     text-decoration: none;
     margin-bottom: 50px;
-    // font-family: 'Space Grotesk' !important;
 
     img {
         width: 300px;
@@ -212,54 +239,16 @@
     background-position: center;
 }
 
-// .firstRow {
-//     .card {
-//         img {
-//             height: 68px;
-//             width: auto;
-//             // width: 335px;
-//         }
-//     }
-// }
-
-// .secondRow {
-//     .card {
-//         img {
-//             height: 57px;
-//             width: auto;
-//             // width: 335px;
-//         }
-//     }
-// }
-
-// .remainingRows {
-//     .card:last-of-type {
-//         img {
-//             height: 122px;
-//             width: auto;
-//         }
-//     }
-
-//     .card:first-of-type {
-//         img {
-//             height: 124px;
-//             width: auto;
-//         }
-//     }
-
-//     .card:nth-of-type(2) {
-//         img {
-//             height: 147px;
-//             width: auto;
-//         }
-//     }
-// }
-
 .scrollBar {
     position: fixed;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
     overflow-y: hidden;
-    display: none;
+}
+
+.inScroll {
+    position: absolute;
+    left: 1px;
+    top: 68%;
 }

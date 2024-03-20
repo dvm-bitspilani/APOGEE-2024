@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import * as styles from "@styles/HUD.module.scss";
-import * as sponsorStyles from "../styles/SponsorPage.module.scss"
+import * as styles from "../styles/SponsorPage.module.scss"
 import sponserTitle from "/images/sponsorTitleText.png"
 
 export default function Sponsors() {
@@ -14,23 +13,27 @@ export default function Sponsors() {
     navigate(`/`);
   };
 
+  const contentRef = useRef(null);
+
   const [data, setData] = useState([])
+  const [scrollPosition, setScrollPosition] = useState(0);
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(
-        "https://bits-apogee.org/2024/main/wallet/spons_list/"
-      )
-      const json = await res.json()
-      // setTimeout(() => {
-      //   setIsLoading(false)
-      // }, 1000)
-      setData(json.sponsors)
+    fetch('https://bits-apogee.org/2024/main/wallet/spons_list/')
+      .then(res => res.json())
+      .then(spons => setData(spons.sponsors))
+
+    function scrollHandler() {
+      const content = contentRef.current
+      const scrollPercentage = (content.scrollTop / (content.scrollHeight - content.clientHeight)) * 68;
+      setScrollPosition(scrollPercentage);
     }
-    fetchData()
+
+    contentRef.current.addEventListener("scroll", scrollHandler);
   }, [])
 
-  console.log(data)
+
   const sponsorCards = data.map((sponsor) => {
     return (
       <SponsorCard
@@ -52,8 +55,21 @@ export default function Sponsors() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 1, ease: "easeInOut" } }}
       transition={{ duration: 2, ease: "easeInOut" }}
-      className={sponsorStyles.pageContainer}
+      className={styles.pageContainer}
     >
+      <div className={styles.scrollBar}>
+        <img
+          draggable={false}
+          src="/images/outScroll.svg"
+          alt=""
+        />
+        <img
+          src="/images/insideScroll.svg"
+          alt=""
+          className={styles.inScroll}
+          style={{ top: `${scrollPosition}%` }}
+        />
+      </div>
       <img
         draggable={false}
         className={styles.lefthelm}
@@ -71,7 +87,7 @@ export default function Sponsors() {
       {/* <TopHUD /> */}
       <img
         draggable={false}
-        className={sponsorStyles.tophud}
+        className={styles.tophud}
         src="/images/Top HUD-v1.png"
         alt="top hud"
       />
@@ -79,20 +95,20 @@ export default function Sponsors() {
         src={sponserTitle}
         alt="sponsor"
         draggable={false}
-        className={sponsorStyles.logo}
+        className={styles.logo}
       />
       <button
         id="ham-menu-button"
-        className={sponsorStyles.hamMenuButton}
+        className={styles.hamMenuButton}
         onClick={handleClick}
       >
         <span>HOME</span>
       </button>
-      <div className={sponsorStyles.contentContainer}>
-        <div className={sponsorStyles.sponsorContainer}>
-          <div className={sponsorStyles.firstRow}>{sponsorCards[0]}</div>
-          <div className={sponsorStyles.secondRow}>{sponsorCards[1]}</div>
-          <div className={sponsorStyles.remainingRows}>{sponsorCards.splice(2, sponsorCards.length - 2)}</div>
+      <div className={styles.contentContainer} ref={contentRef}>
+        <div className={styles.sponsorContainer}>
+          <div className={styles.firstRow}>{sponsorCards[0]}</div>
+          <div className={styles.secondRow}>{sponsorCards[1]}</div>
+          <div className={styles.remainingRows}>{sponsorCards.splice(2, sponsorCards.length - 2)}</div>
         </div>
       </div>
     </motion.div>
@@ -102,13 +118,13 @@ export default function Sponsors() {
 export function SponsorCard({ props }) {
   const { name, image, web_url, description } = props;
   return (
-    <a href={web_url} className={sponsorStyles.card}>
-      <div className={sponsorStyles.imageContainer}>
+    <a href={web_url} className={styles.card}>
+      <div className={styles.imageContainer}>
         <img src={image} alt="sponsorLogo" />
       </div>
-      <div className={sponsorStyles.cardContent}>
-        <h2 style={{ fontSize: '28px', color: '#ffffff', fontFamily: 'Space Grotesk, Alacrity Sans', fontWeight: '500' }}>{name}</h2>
-        <p style={{ fontSize: '28px', color: '#ffffff', fontFamily: 'Space Grotesk, Alacrity Sans', fontWeight: '400' }}>{description}</p>
+      <div className={styles.cardContent}>
+        <h2 style={{ fontSize: '28px', color: '#ffffff', fontFamily: 'Space Grotesk, Alacrity Sans', fontWeight: '600' }}>{name}</h2>
+        <p style={{ fontSize: '28px', color: '#ffffff', fontFamily: 'Space Grotesk, Alacrity Sans', fontWeight: '300' }}>{description}</p>
       </div>
     </a>
   )
