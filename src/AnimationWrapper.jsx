@@ -28,7 +28,7 @@ export default function AnimationWrapper() {
         <Route path="/register" element={<Register />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:category" element={<CategoryEvents />} />
-        {/* <Route path="/speakers" element={<Speakers />} /> */}
+        <Route path="/speakers" element={<Speakers />} />
         <Route path="/armageddon" element={<Armageddon />} />
         <Route path="/media_partners" element={<Media_Partners />} />
         <Route path="/sponsors" element={<Sponsors />} />
