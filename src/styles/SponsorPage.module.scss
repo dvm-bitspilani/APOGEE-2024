@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 .tophud {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -18,7 +18,7 @@
 }
 
 .logo {
-    position: fixed;
+    position: absolute;
     top: 0.3vw;
     left: 50%;
     transform: translateX(-50%);
@@ -48,7 +48,7 @@
 
     background-color: transparent;
 
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: clamp(90px, calc(9.4vw - 7px), 154px);
@@ -107,6 +107,19 @@
     }
 }
 
+.contentContainer {
+    width: 100vw;
+    height: 70vh;
+    // margin-top: 30vh;
+    margin-top: clamp(210px, 15vw, 300px);
+
+    @media screen and (max-height: 700px) {
+        margin-top: 190px;
+    }
+
+    overflow: scroll;
+}
+
 .pageContainer {
     width: 100lvw;
     height: 100dvh;
@@ -123,17 +136,17 @@
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     gap: 100px;
-    grid-template-columns: 100vw;
+    grid-template-columns: 70vw;
     width: 100vw;
     height: calc(100dvh - 200px);
     justify-content: center;
     // margin-top: 190px;
     // margin-top: 10rem;
-    margin-top: clamp(210px, 15vw, 300px);
+    // margin-top: clamp(210px, 15vw, 300px);
 
-    @media screen and (max-height: 700px) {
-        margin-top: 190px;
-    }
+    // @media screen and (max-height: 700px) {
+    //     margin-top: 190px;
+    // }
 }
 
 .firstRow,
@@ -152,7 +165,7 @@
 .remainingRows {
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     .card {
 
@@ -214,4 +227,13 @@
             width: auto;
         }
     }
+}
+
+.scrollBar {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow-y: hidden;
+    display: none;
 }

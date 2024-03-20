@@ -4,9 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import * as styles from "@styles/HUD.module.scss";
 import * as sponsorStyles from "../styles/SponsorPage.module.scss"
-import sponserTitle from "../../public/images/sponsorTitleText.png"
+import sponserTitle from "/images/sponsorTitleText.png"
 
 export default function Sponsors() {
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -16,60 +17,17 @@ export default function Sponsors() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   const res = await fetch(
-    //     "sponsors.json"
-    //   )
-    //   const json = await res.json()
-    //   // setTimeout(() => {
-    //   //   setIsLoading(false)
-    //   // }, 1000)
-    //   setData(json)
-    // }
-    // fetchData()
-    // fetch('http://localhost:5173/sponsors.json', {
-    //   headers: {
-    //     "Content-type": "application/json",
-    //     "Accept": "application/json"
-    //   }
-    // }).then(res => res.json()).then(sponsorsData => setData(sponsorsData))
-    setData([
-      {
-        "id": "eightfold",
-        "name": "eightfold.ai",
-        "category": "Title Sponsor",
-        "url": "https://www.gartner.com/imagesrv/peer-insights/vendors/logos/eightfold.png",
-        "web_url": "https://eightfold.ai/"
-      },
-      {
-        "id": "cisco",
-        "name": "Cisco",
-        "category": "Powered by Sponsor",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/2560px-Cisco_logo_blue_2016.svg.png",
-        "web_url": "https://www.cisco.com/site/in/en/index.html"
-      },
-      {
-        "id": "mpower",
-        "name": "MPower",
-        "category": "Mental Health Parnter",
-        "url": "https://www.ayushmanbharatconclave.com/wp-content/uploads/2015/11/Mpower-Logo-With-services.png",
-        "web_url": "#"
-      },
-      {
-        "id": "horus",
-        "name": "Horus Music",
-        "category": "Music Parnter",
-        "url": "https://www.horusmusic.global/wp-content/uploads/2024/01/Horus-Music-Global-02-e1705497079381.png",
-        "web_url": "#"
-      },
-      {
-        "id": "musicDiaries",
-        "name": "The Indian Music Diaries",
-        "category": "Official Media Parnter",
-        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqeRuD81LpJdKMsOK58lfEKxGZiSKYOYtiB2Tr7PHPw&s",
-        "web_url": "#"
-      }
-    ])
+    const fetchData = async () => {
+      const res = await fetch(
+        "https://bits-apogee.org/2024/main/wallet/spons_list/"
+      )
+      const json = await res.json()
+      // setTimeout(() => {
+      //   setIsLoading(false)
+      // }, 1000)
+      setData(json.sponsors)
+    }
+    fetchData()
   }, [])
 
   console.log(data)
@@ -130,10 +88,12 @@ export default function Sponsors() {
       >
         <span>HOME</span>
       </button>
-      <div className={sponsorStyles.sponsorContainer}>
-        <div className={sponsorStyles.firstRow}>{sponsorCards[0]}</div>
-        <div className={sponsorStyles.secondRow}>{sponsorCards[1]}</div>
-        <div className={sponsorStyles.remainingRows}>{sponsorCards.splice(2, sponsorCards.length - 2)}</div>
+      <div className={sponsorStyles.contentContainer}>
+        <div className={sponsorStyles.sponsorContainer}>
+          <div className={sponsorStyles.firstRow}>{sponsorCards[0]}</div>
+          <div className={sponsorStyles.secondRow}>{sponsorCards[1]}</div>
+          <div className={sponsorStyles.remainingRows}>{sponsorCards.splice(2, sponsorCards.length - 2)}</div>
+        </div>
       </div>
     </motion.div>
   )
