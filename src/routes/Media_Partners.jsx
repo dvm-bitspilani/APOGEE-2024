@@ -5,36 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function Media_Partners() {
   const navigate = useNavigate();
+
   const handleHomeClick = () => {
     navigate("/");
   };
+
   const [scrollPosition, setScrollPosition] = useState(0);
-  const ContentRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const mobileContent = ContentRef.current;
-      if (mobileContent) {
-        const scrollPercentage =
-          (mobileContent.scrollTop /
-            (mobileContent.scrollHeight - mobileContent.clientHeight)) *
-          68;
-        setScrollPosition(scrollPercentage);
-      }
-    };
-
-    const mobileContent = ContentRef.current;
-    if (mobileContent) {
-      mobileContent.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (mobileContent) {
-        mobileContent.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, []);
-
+  const contentRef = useRef(null);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -49,6 +26,16 @@ export default function Media_Partners() {
       setData(json);
     };
     fetchData();
+
+    function scrollHandler() {
+      const content = contentRef.current;
+      const scrollPercentage =
+        (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
+        68;
+      setScrollPosition(scrollPercentage);
+    }
+
+    contentRef.current.addEventListener("scroll", scrollHandler);
   }, []);
 
   // map the data to the influencer cards where category is "influencer"
@@ -86,7 +73,7 @@ export default function Media_Partners() {
       exit={{ opacity: 0 }}
       transition={{ duration: 1, ease: "easeInOut", delay: 0 }}
       className={styles.pageContainer}
-      ref={ContentRef}
+      // ref={contentRef}
     >
       <div className={styles.scrollBar}>
         <img
@@ -114,16 +101,8 @@ export default function Media_Partners() {
         alt=""
         className={styles.rightHelm}
       />
-      <div className={styles.topContainer}>
-        <img src="/images/Top HUD-v1.png" alt="" className={styles.middleTop} />
-        <img
-          src="/images/media partners heading.png"
-          alt=""
-          className={styles.headingmiddelTop}
-        />
-        <div className={styles.homeBtn} onClick={handleHomeClick}>
-          <span>HOME</span>
-        </div>
+      <div className={styles.homeBtn} onClick={handleHomeClick}>
+        <span>HOME</span>
       </div>
       <div className={styles.pageWrapper}>
         <img src="/images/Top HUD-v1.png" alt="" className={styles.hud} />
@@ -132,39 +111,17 @@ export default function Media_Partners() {
           alt=""
           className={styles.headinghud}
         />
-        <div className={styles.content}>
-          <div className={styles.homeBtn} onClick={handleHomeClick}>
-            <span>HOME</span>
-          </div>
-          <div className={styles.scrollBar}>
-            <img
-              draggable={false}
-              src="/images/outScroll.svg"
-              alt=""
-              className={styles.outScroll}
-            />
-            <img
-              src="/images/insideScroll.svg"
-              alt=""
-              className={styles.inScroll}
-              style={{ top: `${scrollPosition}%` }}
-            />
-          </div>
-          <div className={styles.sponsorsContentContainer}>
+        <div
+          className={styles.content}
+          // ref={contentRef}
+        >
+          <div className={styles.sponsorsContentContainer} ref={contentRef}>
             <div className={styles.cardsContainer}>
               <h1>Publications</h1>
               {publicationCards}
               <h1>Influencers</h1>
               {influencerCards}
             </div>
-          </div>
-        </div>
-        <div className={styles.mobileContent}>
-          <div className={styles.cardsContainer}>
-            <h1>Publications</h1>
-            {publicationCards}
-            <h1>Influencers</h1>
-            {influencerCards}
           </div>
         </div>
       </div>
