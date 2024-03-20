@@ -73,7 +73,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) ;
   width: auto;
   height: clamp(100px, 10vw, 170px);
   object-fit: contain;
@@ -90,14 +90,14 @@
   position: absolute;
   top: 1.5vw;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-45%);
   width: auto;
-  height: 35px;
+  height: 150px;
   object-fit: contain;
 
   @media screen and (max-height: 700px), screen and (max-width: 1100px) {
     top: 15px;
-    height: 25px;
+    height: 100px;
   }
 }
 
