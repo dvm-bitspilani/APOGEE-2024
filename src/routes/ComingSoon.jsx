@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 
 import * as styles from "@styles/HUD.module.scss";
 import * as registerStyles from "@styles/Register.module.scss";
-import apogee from "@assets/landing/apogee_logo.png";
+import apogee from "../../public/images/logo-new.png";
 import { useNavigate } from "react-router-dom";
+
 
 export default function ComingSoon() {
   const navigate = useNavigate();
