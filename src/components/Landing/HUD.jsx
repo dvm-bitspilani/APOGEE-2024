@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { Register_bg_svg } from "./RegEventsSection";
 
 import apogee from "@assets/landing/apogee_logo.png";
+import apogeeNew from "../../../public/images/logo-new.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
 // import ContactHUD from "../Contact/ContactHUD";
@@ -48,7 +49,7 @@ export function Hud() {
         />
         {/* <TopHUD /> */}
         <img
-          src={apogee}
+          src={apogeeNew}
           alt="apogee"
           draggable={false}
           className={styles.logo}
