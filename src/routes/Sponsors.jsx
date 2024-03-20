@@ -20,17 +20,9 @@ export default function Sponsors() {
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(
-        "https://bits-apogee.org/2024/main/wallet/spons_list/"
-      )
-      const json = await res.json()
-      // setTimeout(() => {
-      //   setIsLoading(false)
-      // }, 1000)
-      setData(json.sponsors)
-    }
-    fetchData()
+    fetch('https://bits-apogee.org/2024/main/wallet/spons_list/')
+      .then(res => res.json())
+      .then(spons => setData(spons.sponsors))
 
     function scrollHandler() {
       const content = contentRef.current
