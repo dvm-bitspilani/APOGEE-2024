@@ -225,6 +225,25 @@
         height: auto;
         object-fit: contain;
     }
+
+    .cardContent {
+
+        p,
+        h2 {
+            color: #FFFFFF !important;
+        }
+    }
+
+    &:hover {
+        .cardContent {
+
+            p,
+            h2 {
+                color: #9AF0F4 !important;
+            }
+        }
+
+    }
 }
 
 .imageContainer {
@@ -241,10 +260,15 @@
 
 .scrollBar {
     position: fixed;
-    left: 10px;
+    left: 30px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(2);
     overflow-y: hidden;
+
+    @media screen and (max-width: 600px) {
+        left: 10px;
+        transform: translateY(-50%) scale(1);
+    }
 }
 
 .inScroll {

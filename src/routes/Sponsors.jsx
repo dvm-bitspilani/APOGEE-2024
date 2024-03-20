@@ -64,6 +64,7 @@ export default function Sponsors() {
           alt=""
         />
         <img
+          draggable={false}
           src="/images/insideScroll.svg"
           alt=""
           className={styles.inScroll}
@@ -84,7 +85,6 @@ export default function Sponsors() {
         alt="right helm"
         style={{ position: "fixed" }}
       />
-      {/* <TopHUD /> */}
       <img
         draggable={false}
         className={styles.tophud}
@@ -117,14 +117,15 @@ export default function Sponsors() {
 
 export function SponsorCard({ props }) {
   const { name, image, web_url, description } = props;
+  const fontStyling = { fontSize: '28px', fontFamily: 'Space Grotesk, Alacrity Sans' }
   return (
     <a href={web_url} className={styles.card}>
       <div className={styles.imageContainer}>
         <img src={image} alt="sponsorLogo" />
       </div>
       <div className={styles.cardContent}>
-        <h2 style={{ fontSize: '28px', color: '#ffffff', fontFamily: 'Space Grotesk, Alacrity Sans', fontWeight: '600' }}>{name}</h2>
-        <p style={{ fontSize: '28px', color: '#ffffff', fontFamily: 'Space Grotesk, Alacrity Sans', fontWeight: '300' }}>{description}</p>
+        <h2 style={{ ...fontStyling, fontWeight: '600' }}>{name}</h2>
+        <p style={{ ...fontStyling, fontWeight: '300' }}>{description}</p>
       </div>
     </a>
   )
