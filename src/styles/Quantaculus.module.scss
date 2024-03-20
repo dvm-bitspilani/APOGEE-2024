@@ -15,6 +15,7 @@
         background-image: url(/images/starsAsset.png);
 
     }
+
     @media screen and (max-width: 568px) {
         overflow-y: scroll;
     }
@@ -289,6 +290,7 @@
     @media screen and (max-width: 768px) {
         scale: 1;
     }
+
     @media screen and (max-width: 408px) {
         scale: .7;
     }
@@ -324,9 +326,11 @@
             @media screen and (min-height: 878px) {
                 max-height: 48vh;
             }
+
             @media screen and (max-height: 812px) {
                 max-height: 57vh;
             }
+
             @media screen and (max-height: 680px) {
                 max-height: 65vh;
             }
@@ -361,9 +365,60 @@
             text-align: center;
             cursor: pointer;
             border-radius: 3px;
+
             @media screen and (max-width: 768px) {
-               margin-top: 5rem;
-               margin-left: 0;
+                margin-top: 5rem;
+                margin-left: 0;
+            }
+        }
+
+        .questionIndex {
+            margin-top: 2rem;
+            font-family: Alacrity Sans;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 42.77px;
+            color: #9AF0F4;
+            text-shadow: 0px 0px 22.223052978515625px 0px #9AF0F4B2;
+            width: 100%;
+
+            span {
+                font-size: 1.5rem;
+            }
+        }
+
+        .problem {
+            margin-top: 3rem;
+            font-family: Space Grotesk;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 25.52px;
+            text-align: left;
+            color: #9AF0F4;
+        }
+
+        .answer {
+            width: 100%;
+
+            .option {
+                margin-left: -2rem;
+                display: flex;
+                margin-top: 2rem;
+                font-family: Space Grotesk;
+                font-size: 1.25rem;
+                font-weight: 300;
+                line-height: 25.52px;
+                text-align: left;
+                color: #9AF0F4;
+
+                input {
+                    width: 10%;
+                }
+
+                input[type="radio"] {
+                    accent-color: #9AF0F4;
+                    background: #36788a;
+                }
             }
         }
     }

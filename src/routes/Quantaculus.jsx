@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Login from "../components/Quantaculus/Login";
 import Instructions from "../components/Quantaculus/Instructions";
+import Quiz from "../components/Quantaculus/Quiz";
 import contentBox from "../../public/images/content-box.png";
 import contentBoxMobile from "../../public/images/content-box-mobile.png";
 
@@ -51,7 +52,7 @@ const Quantaculus = () => {
           ) : (
             ""
           )}
-          <Instructions />
+          <Quiz />
         </div>
       </motion.div>
     </>
