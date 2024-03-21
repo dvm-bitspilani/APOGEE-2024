@@ -1,0 +1,513 @@
+.pageContainer {
+    width: 100lvw;
+    height: 100dvh;
+    position: relative;
+    background-image: url(/images/quiz.png);
+    background-size: 100lvw 100dvh;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 800px) {
+        background-image: url(/images/starsAsset.png);
+
+    }
+
+    @media screen and (max-width: 568px) {
+        overflow-y: scroll;
+    }
+
+    .leftHelm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100dvh;
+        width: auto;
+
+        @media screen and (max-width: 800px) {
+            display: none;
+        }
+    }
+
+    .rightHelm {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        width: auto;
+
+        @media screen and (max-width: 800px) {
+            display: none;
+        }
+    }
+
+    .pageWrapper {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        scale: .8;
+
+        .hud {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-80%);
+            width: auto;
+            height: clamp(100px, 10vw, 170px);
+            object-fit: contain;
+
+            @media screen and (max-width: 768px) {
+                height: 100px;
+                transform: translateX(-50%) translateY(-100%);
+            }
+        }
+    }
+}
+
+.homeBtn {
+    width: clamp(150px, 13vw, 240px);
+    aspect-ratio: 2.7;
+
+    outline: none;
+    border: none;
+
+    background-image: url("@assets/landing/hamMenuButton.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-color: transparent;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-75%);
+    top: clamp(90px, calc(9.4vw - 7px), 154px);
+    pointer-events: all;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: border-color 0.2s ease-in-out;
+
+    // visibility: visible;
+    // opacity: 1;
+    z-index: 1;
+
+    @media screen and (max-height: 700px) {
+        top: 90px;
+        width: 140px;
+    }
+
+    & * {
+        transition: all 0.2s ease-in-out;
+    }
+
+    span {
+        position: relative;
+        top: -2px;
+
+        font-size: 1rem;
+        font-weight: 200;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+        color: inherit;
+        padding-inline: 0.5rem;
+        transition: all 0.2s ease-in-out;
+
+        @media screen and (max-height: 700px),
+        screen and (max-width: 600px) {
+            font-size: 0.7rem;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: var(--hover-link);
+        text-shadow:
+            0px 0px 24.402px rgba(198, 50, 50, 0.86),
+            0px 0px 3.754px rgba(198, 50, 50, 0.8);
+
+        div div {
+            background-color: var(--hover-link);
+        }
+
+        span {
+            text-shadow: 0px 0px 14.815px var(--hover-link);
+        }
+    }
+}
+
+.loginBox {
+    // background-image: url("/images/quiz-login.png");
+    margin-top: -2rem;
+    height: 70vh;
+    width: 40vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .loginFrame{
+        position: absolute;
+        top: 0;
+        @media screen and (max-width: 1300px) {
+            margin-top: -2rem;
+            scale: .95;
+        }
+
+        @media screen and (max-width: 408px) {
+            margin-top: 1rem;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        // width: 50vw;
+    }
+
+    @media screen and (max-width: 1000px) {
+        width: 70vw;
+        // scale: .7;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 90vw;
+        scale: .7;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 95vw;
+        scale: .7;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 120vw;
+        height: 90vh;
+        // scale: .6;
+        // background-size: contain;
+        // scale: 1;
+    }
+
+    .heading {
+        position: absolute;
+        top: 7.5rem;
+        text-align: center;
+        font-family: Alacrity Sans;
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 54.24px;
+
+        @media screen and (max-width: 1000px) {
+            top: 6.5rem;
+        }
+
+        @media screen and (max-width: 1000px) and (min-height: 950px) {
+            top: 7rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            top: 5.5rem;
+        }
+
+        @media screen and (max-width: 500px) {
+            top: 7rem;
+        }
+
+        @media screen and (max-width: 400px) {
+            top: 10rem;
+
+        }
+
+    }
+
+    .loginForm {
+        position: absolute;
+        bottom: 2rem;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media screen and (max-height: 800px) and (max-width: 1600px) {
+            bottom: -3rem;
+        }
+
+        @media screen and (max-width: 1000px) {
+            bottom: 1rem;
+        }
+
+        @media screen and (max-width: 1000px) and (min-height: 950px) {
+            bottom: 7rem;
+        }
+
+        @media screen and (max-width: 500px) {
+            bottom: 15rem;
+            width: 80%;
+        }
+
+        @media screen and (max-width: 400px) {
+            bottom: 5rem;
+            width: 90%;
+        }
+        @media screen and (max-width: 400px) and (min-height: 840px) {
+            bottom: 9rem;
+            width: 90%;
+        }
+        @media screen and (max-width: 400px) and (max-height: 680px) {
+            bottom: 0rem;
+            width: 90%;
+        }
+        @media screen and (max-height: 800px) and (max-width: 500px) {
+            bottom: 8rem;
+        }
+    
+
+
+        .label {
+            font-family: Space Grotesk;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 35.73px;
+            width: 100%;
+        }
+
+        input {
+            background-color: #394D52;
+            margin-bottom: 1.5rem;
+            margin-top: .5rem;
+            padding: .75rem 1.5rem;
+            border-radius: 5px;
+
+            @media screen and (max-width: 600px) {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .submit {
+            background: #367F9A66;
+            text-shadow: 0px 0px 21.139001846313477px 0px #9AF0F4B2;
+            font-family: Alacrity Sans;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 27.12px;
+            text-align: center;
+            color: #9AF0F4;
+            width: 30%;
+            padding: .75rem .75rem;
+        }
+    }
+}
+
+.contentBox {
+    position: relative;
+    margin-top: 2rem;
+    scale: .9;
+
+    @media screen and (max-width: 1200px) {
+        scale: .7;
+    }
+
+    @media screen and (max-width: 900px) {
+        scale: .6;
+    }
+
+    @media screen and (max-width: 768px) {
+        scale: 1;
+    }
+
+    @media screen and (max-width: 408px) {
+        scale: .7;
+    }
+
+    .instructions {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 7rem 12rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media screen and (max-width: 768px) {
+            padding: 5rem 2rem;
+        }
+
+        h1 {
+            text-shadow: 0px 0px 22.223052978515625px 0px #9AF0F4B2;
+            text-align: center;
+            font-size: 2rem;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.5rem;
+            }
+        }
+
+        ul {
+            margin-top: 2.5rem;
+            max-height: 52vh;
+            overflow-y: scroll;
+
+            @media screen and (min-height: 878px) {
+                max-height: 48vh;
+            }
+
+            @media screen and (max-height: 812px) {
+                max-height: 57vh;
+            }
+
+            @media screen and (max-height: 680px) {
+                max-height: 65vh;
+            }
+
+            // list-style-type: circle;
+
+            li {
+                margin-left: 2rem;
+                font-family: "Space Grotesk";
+                font-size: 1.5rem;
+                font-weight: 300;
+                line-height: 30.62px;
+                text-align: left;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 1rem;
+                }
+            }
+
+        }
+
+        button {
+            margin-top: 8rem;
+            margin-left: 1.25rem;
+            background: #367F9A66;
+            padding: 1rem 2rem;
+            border: 1px solid #7DEEF3B2;
+            font-family: Alacrity Sans;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 27.12px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 3px;
+
+            @media screen and (max-width: 768px) {
+                margin-top: 5rem;
+                margin-left: 0;
+            }
+        }
+        // button:hover{
+        //     background: #9AF0F4;
+        //     color: #367F9A66;
+        // }
+
+        .questionIndex {
+            margin-top: 2rem;
+            font-family: Alacrity Sans;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 42.77px;
+            color: #9AF0F4;
+            text-shadow: 0px 0px 22.223052978515625px 0px #9AF0F4B2;
+            width: 100%;
+
+            @media screen and (max-width: 768px) {
+                margin-top: 0;
+                margin-left: 3rem;
+                font-size: 2rem;
+            }
+
+            span {
+                font-size: 1.25rem;
+            }
+        }
+
+        .problem {
+            margin-top: 3rem;
+            font-family: Space Grotesk;
+            font-size: 1.25rem;
+            font-weight: 400;
+            text-align: left;
+            color: #9AF0F4;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1rem;
+                margin-left: 1.5rem;
+                margin-top: .75rem;
+                padding-right: .5rem;
+                
+            }
+
+        }
+
+        .answer {
+            width: 100%;
+            @media screen and (max-width: 768px) {
+                margin-top: 1rem;
+                margin-left: 3rem;
+                padding-right: 2.5rem;
+                max-height: 35vh;
+                overflow-y: scroll;
+            }
+
+            .option {
+                // margin-left: -2rem;
+                display: flex;
+                margin-top: 2rem;
+                font-family: Space Grotesk;
+                font-size: 1.25rem;
+                font-weight: 300;
+                text-align: left;
+                color: #9AF0F4;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                @media screen and (max-width: 768px) {
+                    font-size: .75rem;
+                    margin-top: 1rem;
+                }
+
+                label{
+                    cursor: pointer;
+                }
+
+                input {
+                    width: 10%;
+                    cursor: pointer;
+                }
+
+                input[type="radio"] {
+                    -webkit-appearance: none;
+                    width: 16px;
+                    height: 16px;
+                    border: 1px solid #9AF0F4;
+                    border-radius: 50%;
+                    outline: none;
+                    background: #132123;
+                    box-shadow: 0 0 1px #9AF0F4;
+                    @media screen and (max-width: 768px) {
+                        width: 35px;
+                    }
+                }
+
+                input[type="radio"]:checked {
+                    background: #9AF0F4;
+                }
+            }
+        }
+        .navButtons{
+            display: flex;
+            gap: 2rem;
+
+            button{
+                @media screen and (max-width: 768px) {
+                    padding: .75rem 1.5rem;
+                    font-size: 1rem;
+                }
+            }
+
+            
+        }
+    }
+}
