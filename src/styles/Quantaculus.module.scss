@@ -371,6 +371,10 @@
                 margin-left: 0;
             }
         }
+        button:hover{
+            background: #9AF0F4;
+            color: #367F9A66;
+        }
 
         .questionIndex {
             margin-top: 2rem;
@@ -382,8 +386,14 @@
             text-shadow: 0px 0px 22.223052978515625px 0px #9AF0F4B2;
             width: 100%;
 
+            @media screen and (max-width: 768px) {
+                margin-top: 0;
+                margin-left: 3rem;
+                font-size: 2rem;
+            }
+
             span {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
         }
 
@@ -392,34 +402,83 @@
             font-family: Space Grotesk;
             font-size: 1.25rem;
             font-weight: 400;
-            line-height: 25.52px;
             text-align: left;
             color: #9AF0F4;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1rem;
+                margin-left: 1.5rem;
+                margin-top: .75rem;
+                padding-right: .5rem;
+                
+            }
+
         }
 
         .answer {
             width: 100%;
+            @media screen and (max-width: 768px) {
+                margin-left: 3rem;
+                padding-right: 2.5rem;
+            }
 
             .option {
-                margin-left: -2rem;
+                // margin-left: -2rem;
                 display: flex;
                 margin-top: 2rem;
                 font-family: Space Grotesk;
                 font-size: 1.25rem;
                 font-weight: 300;
-                line-height: 25.52px;
                 text-align: left;
                 color: #9AF0F4;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                @media screen and (max-width: 768px) {
+                    font-size: .85rem;
+                    margin-top: 1rem;
+                }
+
+                label{
+                    cursor: pointer;
+                }
 
                 input {
                     width: 10%;
+                    cursor: pointer;
                 }
 
                 input[type="radio"] {
-                    accent-color: #9AF0F4;
-                    background: #36788a;
+                    -webkit-appearance: none;
+                    width: 16px;
+                    height: 16px;
+                    border: 1px solid #9AF0F4;
+                    border-radius: 50%;
+                    outline: none;
+                    background: #132123;
+                    box-shadow: 0 0 1px #9AF0F4;
+                    @media screen and (max-width: 768px) {
+                        width: 35px;
+                    }
+                }
+
+                input[type="radio"]:checked {
+                    background: #9AF0F4;
                 }
             }
+        }
+        .navButtons{
+            display: flex;
+            gap: 2rem;
+
+            button{
+                @media screen and (max-width: 768px) {
+                    padding: .75rem 1.5rem;
+                    font-size: 1rem;
+                }
+            }
+
+            
         }
     }
 }

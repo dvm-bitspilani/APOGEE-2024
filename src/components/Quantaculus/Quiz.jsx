@@ -18,19 +18,19 @@ const Quiz = () => {
       <form action="" className={styles.answer}>
         <div className={styles.option}>
           <input type="radio" name="option" id="option1" />
-          <label htmlFor="option1">Option 1</label>
+          <label htmlFor="option1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dui tortor</label>
         </div>
         <div className={styles.option}>
           <input type="radio" name="option" id="option2" />
-          <label htmlFor="option2">Option 2</label>
+          <label htmlFor="option2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dui tortor</label>
         </div>
         <div className={styles.option}>
           <input type="radio" name="option" id="option3" />
-          <label htmlFor="option3">Option 3</label>
+          <label htmlFor="option3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dui tortor</label>
         </div>
         <div className={styles.option}>
           <input type="radio" name="option" id="option4" />
-          <label htmlFor="option4">Option 4</label>
+          <label htmlFor="option4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dui tortor</label>
         </div>
       </form>
       <div className={styles.navButtons}>
