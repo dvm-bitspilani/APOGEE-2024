@@ -158,13 +158,22 @@
 }
 .imgContainer {
   position: absolute;
-  top: 50%;
+  top: 0;
   transform: translateY(-40%);
   margin-inline: auto;
-  width: 100%;
+  background-repeat: no-repeat;
+  // width: 100%;
+  // height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.cardImg {
+  width: 100%;
+}
+.cardFlex {
+  display: flex;
+  flex-direction: column;
 }
 .heading {
   position: absolute;
@@ -230,7 +239,6 @@
 }
 
 @media only screen and (max-width: 810px) {
-
   .leftHelm {
     display: none;
   }
@@ -280,9 +288,8 @@
   height: 100%;
   width: 100%;
   margin-right: 5vw;
-  padding: 0px 100px;
+  padding: 0px 100px 300px 100px;
   margin-top: clamp(150px, 15vw, 10000px);
-
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -337,5 +344,7 @@
 }
 
 .card:hover h2 {
+  display: flex;
+  justify-content: space-between;
   color: #78bbf0;
 }
