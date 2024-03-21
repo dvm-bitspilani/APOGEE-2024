@@ -159,7 +159,7 @@ const MyForm2 = () => {
         } catch (error) {
           console.error("Error submitting the form:", error);
           setSuccessfullRegistration(2);
-          setDisplayText(error);
+          setDisplayText(error.response.data.message);
         } finally {
         }
       }
