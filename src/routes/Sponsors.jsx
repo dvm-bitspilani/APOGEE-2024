@@ -119,7 +119,7 @@ export function SponsorCard({ props }) {
   const { name, image, web_url, description } = props;
   const fontStyling = { fontSize: '28px', fontFamily: 'Space Grotesk, Alacrity Sans' }
   return (
-    <a href={web_url} className={styles.card}>
+    <a href={web_url} className={styles.card} target="_blank">
       <div className={styles.imageContainer}>
         <img src={image} alt="sponsorLogo" />
       </div>
