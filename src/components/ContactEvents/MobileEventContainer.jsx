@@ -82,8 +82,8 @@ export default function EventContainer(props) {
       </Text>
       <Image
         position={[0, viewport.height * (textPosition[1] - 0.2) * yPercent, 0]}
-        // url={data.image_url !== "NA" ? data.image_url : placeholder}
-        url={placeholder}
+        url={data.image_url !== "NA" ? data.image_url : placeholder}
+        // url={placeholder}
         scale={[
           viewport.width * xPercent * 0.8,
           viewport.height * yPercent * 0.3,
