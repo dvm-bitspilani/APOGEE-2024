@@ -41,8 +41,8 @@ const Quantaculus = () => {
             <span>Home</span>
           </div> */}
         </div>
-        {/* <Login /> */}
-        <div className={styles.contentBox}>
+        <Login />
+        {/* <div className={styles.contentBox}>
           {typeof window !== "undefined" ? (
             window.innerWidth > 768 ? (
               <img src={contentBox} alt="" />
@@ -53,7 +53,7 @@ const Quantaculus = () => {
             ""
           )}
           <Quiz />
-        </div>
+        </div> */}
       </motion.div>
     </>
   );
