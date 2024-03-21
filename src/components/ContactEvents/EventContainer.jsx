@@ -125,7 +125,7 @@ export default function EventContainer(props) {
           viewport.height * textPosition[1] * yPercent,
           0,
         ]}
-        url={placeholder}
+        url={data.image_url !== "NA" ? data.image_url : placeholder}
         scale={[viewport.width * 0.3, viewport.height * 0.3, 1]}
         anchorX={"right"}
       />

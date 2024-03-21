@@ -78,11 +78,11 @@ export default function EventContainer(props) {
         font="/fonts/Alacrity Sans Regular.otf"
         fontSize={Math.max(viewport.width * 0.001, 0.1)}
       >
-        Some Club or Department
+        {data.club_dept}
       </Text>
       <Image
         position={[0, viewport.height * (textPosition[1] - 0.2) * yPercent, 0]}
-        url={placeholder}
+        url={data.image_url !== "NA" ? data.image_url : placeholder}
         scale={[
           viewport.width * xPercent * 0.8,
           viewport.height * yPercent * 0.3,

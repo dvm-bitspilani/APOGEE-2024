@@ -2,11 +2,10 @@ import { motion } from "framer-motion";
 
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import * as styles from "../styles/SponsorPage.module.scss"
-import sponserTitle from "/images/sponsorTitleText.png"
+import * as styles from "../styles/SponsorPage.module.scss";
+import sponserTitle from "/images/sponsorTitleText.png";
 
 export default function Sponsors() {
-
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -15,24 +14,24 @@ export default function Sponsors() {
 
   const contentRef = useRef(null);
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-
   useEffect(() => {
-    fetch('https://bits-apogee.org/2024/main/wallet/spons_list/')
-      .then(res => res.json())
-      .then(spons => setData(spons.sponsors))
+    fetch("https://bits-apogee.org/2024/main/wallet/spons_list/")
+      .then((res) => res.json())
+      .then((spons) => setData(spons.sponsors));
 
     function scrollHandler() {
-      const content = contentRef.current
-      const scrollPercentage = (content.scrollTop / (content.scrollHeight - content.clientHeight)) * 68;
+      const content = contentRef.current;
+      const scrollPercentage =
+        (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
+        68;
       setScrollPosition(scrollPercentage);
     }
 
     contentRef.current.addEventListener("scroll", scrollHandler);
-  }, [])
-
+  }, []);
 
   const sponsorCards = data.map((sponsor) => {
     return (
@@ -46,8 +45,8 @@ export default function Sponsors() {
           web_url: sponsor.web_url,
         }}
       />
-    )
-  })
+    );
+  });
 
   return (
     <motion.div
@@ -58,11 +57,7 @@ export default function Sponsors() {
       className={styles.pageContainer}
     >
       <div className={styles.scrollBar}>
-        <img
-          draggable={false}
-          src="/images/outScroll.svg"
-          alt=""
-        />
+        <img draggable={false} src="/images/outScroll.svg" alt="" />
         <img
           draggable={false}
           src="/images/insideScroll.svg"
@@ -108,25 +103,30 @@ export default function Sponsors() {
         <div className={styles.sponsorContainer}>
           <div className={styles.firstRow}>{sponsorCards[0]}</div>
           <div className={styles.secondRow}>{sponsorCards[1]}</div>
-          <div className={styles.remainingRows}>{sponsorCards.splice(2, sponsorCards.length - 2)}</div>
+          <div className={styles.remainingRows}>
+            {sponsorCards.splice(2, sponsorCards.length - 2)}
+          </div>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 export function SponsorCard({ props }) {
   const { name, image, web_url, description } = props;
-  const fontStyling = { fontSize: '28px', fontFamily: 'Space Grotesk, Alacrity Sans' }
+  const fontStyling = {
+    fontSize: "28px",
+    fontFamily: "Space Grotesk, Alacrity Sans",
+  };
   return (
     <a href={web_url} className={styles.card}>
       <div className={styles.imageContainer}>
         <img src={image} alt="sponsorLogo" />
       </div>
       <div className={styles.cardContent}>
-        <h2 style={{ ...fontStyling, fontWeight: '600' }}>{name}</h2>
-        <p style={{ ...fontStyling, fontWeight: '300' }}>{description}</p>
+        <h2 style={{ ...fontStyling, fontWeight: "600" }}>{name}</h2>
+        <p style={{ ...fontStyling, fontWeight: "300" }}>{description}</p>
       </div>
     </a>
-  )
+  );
 }

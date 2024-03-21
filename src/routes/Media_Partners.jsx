@@ -20,9 +20,9 @@ export default function Media_Partners() {
         "https://bits-oasis.org/2023/main/registrations/media_partners/"
       );
       const json = await res.json();
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
+      // setTimeout(() => {
+      //   setIsLoading(false);
+      // }, 2000);
       setData(json);
     };
     fetchData();
