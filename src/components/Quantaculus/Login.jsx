@@ -36,7 +36,7 @@ const Login = ({ onLoginSuccess, onLoginError }) => {
         return;
       }
 
-      const response = await fetch('https://test.bits-apogee.org/2024/main/quanta/login/', {
+      const response = await fetch('https://bits-apogee.org/2024/main/quanta/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
