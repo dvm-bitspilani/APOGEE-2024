@@ -19,7 +19,7 @@ const Quiz = () => {
         throw new Error('Missing JWT token');
       }
 
-      const response = await fetch("https://test.bits-apogee.org/2024/main/quanta/question-paper/", {
+      const response = await fetch("https://bits-apogee.org/2024/main/quanta/question-paper/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -102,7 +102,7 @@ const Quiz = () => {
         throw new Error('Missing JWT token');
       }
 
-      const response = await fetch("https://test.bits-apogee.org/2024/main/quanta/answers/", {
+      const response = await fetch("https://bits-apogee.org/2024/main/quanta/answers/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
