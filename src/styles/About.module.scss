@@ -145,6 +145,7 @@ h1.title {
 @media only screen and (max-width: 800px) {
   .wrapper {
     left: 0;
+    transform: translateY(7.5%);
   }
   .container {
     background-position: bottom;
