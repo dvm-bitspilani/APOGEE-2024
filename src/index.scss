@@ -53,3 +53,11 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: #fff !important;
 }
+
+#username{
+  text-transform: none;
+}
+
+#password{
+  text-transform: none;
+}
