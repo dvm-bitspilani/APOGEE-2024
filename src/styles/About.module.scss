@@ -20,7 +20,7 @@ h1.title {
   position: absolute;
   top: 1.5vw;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(50%);
   width: auto;
   height: 35px;
   text-shadow: 0px 0px 18.12px rgba(154, 240, 244, 0.7);
