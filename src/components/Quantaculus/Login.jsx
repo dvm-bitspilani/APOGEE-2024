@@ -7,47 +7,55 @@ const Login = ({ onLoginSuccess, onLoginError }) => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false); // State for show/hide password feature
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const checkLoggedIn = async () => {
-      try {
-        const response = await fetch('https://bits-apogee.org/2024/main/quanta/login/', {
-          method: 'GET',
-        });
-        if (response.ok) {
-          onLoginSuccess();
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    checkLoggedIn();
+    // Check for existing token on component mount
+    const storedToken = localStorage.getItem('jwtToken');
+    if (storedToken) {
+      setToken(storedToken);
+      onLoginSuccess();
+    }
+  }, []);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('jwtToken');
+    if (storedToken) {
+      setToken(storedToken);
+      // (e.g., call an API to validate the token or refresh it)
+      onLoginSuccess();
+    }
   }, []);
 
   const handleSubmit = async (event) => {
-    console.log(username, password);
     event.preventDefault();
 
-    if (!username || !password) {
-      setErrorMessage('Please enter username and password.');
-      return;
-    }
-
     try {
-      const response = await fetch('https://bits-apogee.org/2024/main/quanta/login/', {
+      if (!username || !password) {
+        setErrorMessage('Please enter both username and password.');
+        return;
+      }
+
+      const response = await fetch('https://test.bits-apogee.org/2024/main/quanta/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
+
       if (!response.ok) {
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'Invalid credentials');
-        onLoginError(error);
+        onLoginError(errorData);
       } else {
+        const data = await response.json();
+        setToken(data.token);
+        localStorage.setItem('jwtToken', data.token);
+        // console.log('tkn added')
         onLoginSuccess();
       }
     } catch (error) {
-      // setErrorMessage(error);
+      setErrorMessage(error);
+      onLoginError(error);
     }
   };
 
@@ -70,20 +78,19 @@ const Login = ({ onLoginSuccess, onLoginError }) => {
           <input
             type="checkbox"
             id="showPassword"
-            checked={showPassword} // Set checkbox checked state
-            onChange={() => setShowPassword(!showPassword)} // Toggle showPassword state on change
+            checked={showPassword}
+            onChange={() => setShowPassword(!showPassword)} 
           />
           <label htmlFor="showPassword">Show Password</label>
         </div>
         </label>
         <input
-          type={showPassword ? "text" : "password"} // Toggle input type based on state
+          type={showPassword ? "text" : "password"}
           placeholder=""
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        
         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
         <input type="submit" value="Login" className={styles.submit} />
       </form>

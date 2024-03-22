@@ -73,7 +73,7 @@ const Quantaculus = () => {
               ""
             )}
             
-                <p className={styles.submit}>Submitted Successfully!</p>
+                <p className={styles.submitted}>Submitted Successfully!</p>
           </div>
 
       </motion.div>
