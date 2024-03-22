@@ -134,6 +134,9 @@
   // visibility: visible;
   // opacity: 1;
   
+  @media screen and (min-width: 1400px) {
+    top: clamp(90px, calc(8.4vw - 7px), 154px);
+  }
 
   @media screen and (max-height: 700px) {
     top: 80px;
