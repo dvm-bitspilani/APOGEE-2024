@@ -16,6 +16,7 @@ import { Route, Routes } from "react-router-dom";
 import ReactGa from "react-ga4";
 import Armageddon from "./routes/Armageddon";
 import Quantaculus from "./routes/Quantaculus";
+import QuantaculusSubmitted from "./routes/QuantaculusSubmitted";
 
 export default function AnimationWrapper() {
   // ReactGa.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID);
@@ -34,6 +35,7 @@ export default function AnimationWrapper() {
         <Route path="/media_partners" element={<Media_Partners />} />
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/quantaculus" element={<Quantaculus />} />
+        <Route path="/quantaculus/submitted" element={<QuantaculusSubmitted />} />
         <Route path="/*" element={<ComingSoon />} />
       </Routes>
     </AnimatePresence>

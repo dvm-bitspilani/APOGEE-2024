@@ -402,6 +402,12 @@
         //     color: #367F9A66;
         // }
 
+        .header{
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
         .questionIndex {
             margin-top: 2rem;
             font-family: Alacrity Sans;
@@ -423,6 +429,9 @@
             }
         }
 
+        .questionIndex:nth-child(2){
+            text-align: right;
+        }
         .problem {
             margin-top: 3rem;
             font-family: Space Grotesk;

@@ -62,12 +62,6 @@ const Quantaculus = () => {
             <span>Home</span>
           </div>
         </div>
-        {!isLoggedIn ? (
-          <Login
-            onLoginSuccess={handleLoginSuccess}
-            onLoginError={handleLoginError}
-          />) : ('')}
-        {isLoggedIn ? (
           <div className={styles.contentBox}>
             {typeof window !== "undefined" ? (
               window.innerWidth > 768 ? (
@@ -78,16 +72,9 @@ const Quantaculus = () => {
             ) : (
               ""
             )}
-            {!isQuizOpen ? (
-              <Instructions
-                onQuizOpen = {handleQuizOpen}
-              />
-            ) : (
-              <Quiz />
-            )}
-
+            
+                Submitted Successfully!
           </div>
-        ) : ('')}
 
       </motion.div>
     </>
