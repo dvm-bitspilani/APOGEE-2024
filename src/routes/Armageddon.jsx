@@ -126,7 +126,7 @@ const Armageddon = () => {
               </div>
               <div className={styles.cardWrapper}>
                 <div className={styles.imgWrapper}>
-                <div className={styles.gameName}>FC 24</div>
+                <div className={styles.gameName}>FIFA</div>
                   <img
                     src="/images/frame.png"
                     alt="BGMI"
