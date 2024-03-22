@@ -28,7 +28,7 @@ const Quiz = () => {
   const fetchQuestions = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("https://test.bits-apogee.org/2024/main/quanta/question-paper/");
+      const response = await fetch("https://bits-apogee.org/2024/main/quanta/question-paper/");
       const data = await response.json();
       setQuestions(data);
       // console.log('yes')
@@ -86,7 +86,7 @@ const Quiz = () => {
     }));
 
     try {
-      const response = await fetch("https://test.bits-apogee.org/2024/main/quanta/answers/", {
+      const response = await fetch("https://bits-apogee.org/2024/main/quanta/answers/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formattedData),
