@@ -92,7 +92,7 @@
     justify-content: center;
 
     transition: border-color 0.2s ease-in-out;
-
+    display: none;
     // visibility: visible;
     // opacity: 1;
     z-index: 1;
@@ -143,7 +143,7 @@
 
 .loginBox {
     // background-image: url("/images/quiz-login.png");
-    margin-top: -2rem;
+    margin-top: -8rem;
     height: 70vh;
     width: 40vw;
     position: relative;
@@ -151,9 +151,10 @@
     align-items: center;
     flex-direction: column;
 
-    .loginFrame{
+    .loginFrame {
         position: absolute;
         top: 0;
+
         @media screen and (max-width: 1300px) {
             margin-top: -2rem;
             scale: .95;
@@ -230,8 +231,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
         @media screen and (max-height: 800px) and (max-width: 1600px) {
             bottom: -3rem;
+        }
+
+        @media screen and (max-width: 1300px) {
+            bottom: 3rem;
+        }
+
+        @media screen and (max-height: 850px) {
+            bottom: 0rem;
+        }
+        @media screen and (max-width: 1300px) and (max-height: 750px) {
+            bottom: -4rem;
         }
 
         @media screen and (max-width: 1000px) {
@@ -244,25 +257,28 @@
 
         @media screen and (max-width: 500px) {
             bottom: 15rem;
-            width: 80%;
+            width: 70%;
         }
 
         @media screen and (max-width: 400px) {
             bottom: 5rem;
             width: 90%;
         }
+
         @media screen and (max-width: 400px) and (min-height: 840px) {
             bottom: 9rem;
             width: 90%;
         }
+
         @media screen and (max-width: 400px) and (max-height: 680px) {
             bottom: 0rem;
             width: 90%;
         }
+
         @media screen and (max-height: 800px) and (max-width: 500px) {
             bottom: 8rem;
         }
-    
+
 
 
         .label {
@@ -300,18 +316,35 @@
     }
 }
 
-.submit{
-    position: absolute;
-    font-size: 2rem;
+.showPassword {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    font-size: 1rem;
+
+    input{
+        width: 2rem;
+        margin: auto;
+        text-align: center;
+    }
+
+    label{
+        text-wrap: nowrap;
+    }
+}
+
+.passlabel{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .contentBox {
     position: relative;
     margin-top: 2rem;
     scale: .9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     @media screen and (max-width: 1200px) {
         scale: .7;
@@ -405,12 +438,14 @@
                 margin-left: 0;
             }
         }
-        // button:hover{
-        //     background: #9AF0F4;
-        //     color: #367F9A66;
-        // }
 
-        .header{
+        button:hover {
+            background: #DC747733;
+            border: 1.45px solid #F37D7DB2;
+            color: #D8575B;
+        }
+
+        .header {
             width: 100%;
             display: flex;
             align-items: center;
@@ -437,9 +472,10 @@
             }
         }
 
-        .questionIndex:nth-child(2){
+        .questionIndex:nth-child(2) {
             text-align: right;
         }
+
         .problem {
             margin-top: 3rem;
             font-family: Space Grotesk;
@@ -453,13 +489,14 @@
                 margin-left: 1.5rem;
                 margin-top: .75rem;
                 padding-right: .5rem;
-                
+
             }
 
         }
 
         .answer {
             width: 100%;
+
             @media screen and (max-width: 768px) {
                 margin-top: 1rem;
                 margin-left: 3rem;
@@ -480,12 +517,13 @@
                 display: flex;
                 align-items: center;
                 gap: 1rem;
+
                 @media screen and (max-width: 768px) {
                     font-size: .75rem;
                     margin-top: 1rem;
                 }
 
-                label{
+                label {
                     cursor: pointer;
                 }
 
@@ -503,6 +541,7 @@
                     outline: none;
                     background: #132123;
                     box-shadow: 0 0 1px #9AF0F4;
+
                     @media screen and (max-width: 768px) {
                         width: 35px;
                     }
@@ -513,18 +552,19 @@
                 }
             }
         }
-        .navButtons{
+
+        .navButtons {
             display: flex;
             gap: 2rem;
 
-            button{
+            button {
                 @media screen and (max-width: 768px) {
                     padding: .75rem 1.5rem;
                     font-size: 1rem;
                 }
             }
 
-            
+
         }
     }
 }

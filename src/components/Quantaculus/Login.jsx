@@ -6,6 +6,7 @@ const Login = ({ onLoginSuccess, onLoginError }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State for show/hide password feature
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -17,14 +18,14 @@ const Login = ({ onLoginSuccess, onLoginError }) => {
           onLoginSuccess();
         }
       } catch (error) {
-        console.error('Error checking login status:', error);
+        console.error(error);
       }
     };
     checkLoggedIn();
   }, []);
 
   const handleSubmit = async (event) => {
-    console.log(username, password)
+    console.log(username, password);
     event.preventDefault();
 
     if (!username || !password) {
@@ -41,20 +42,14 @@ const Login = ({ onLoginSuccess, onLoginError }) => {
       if (!response.ok) {
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'Invalid credentials');
-         onLoginError(error);
+        onLoginError(error);
       } else {
         onLoginSuccess();
       }
     } catch (error) {
-      console.error('Login error:', error);
-      setErrorMessage('An error occurred. Please try again later.');
+      // setErrorMessage(error);
     }
   };
-
-  // const handleSubmit = async (event) => {
-  //   onLoginSuccess();
-  //   event.preventDefault();
-  // }
 
   return (
     <div className={styles.loginBox}>
@@ -69,14 +64,26 @@ const Login = ({ onLoginSuccess, onLoginError }) => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="password" className={styles.label}>Password</label>
+        <label htmlFor="password" className={styles.passlabel}>
+          <div className={styles.label}>Password</div>
+        <div className={styles.showPassword}>
+          <input
+            type="checkbox"
+            id="showPassword"
+            checked={showPassword} // Set checkbox checked state
+            onChange={() => setShowPassword(!showPassword)} // Toggle showPassword state on change
+          />
+          <label htmlFor="showPassword">Show Password</label>
+        </div>
+        </label>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"} // Toggle input type based on state
           placeholder=""
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        
         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
         <input type="submit" value="Login" className={styles.submit} />
       </form>
