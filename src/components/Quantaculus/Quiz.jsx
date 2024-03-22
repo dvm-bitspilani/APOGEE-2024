@@ -1,43 +1,47 @@
+
 import React, { useState, useEffect } from "react";
 import * as styles from "../../styles/Quantaculus.module.scss";
+import Countdown from 'react-countdown';
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(15 * 60);
+  const [startTime, setStartTime] = useState(0)
   const [isLoading, setIsLoading] = useState(true);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
 
-  // console.log(selectedAnswers)
-  // console.log(questions.question_paper.length)
-
-  const decrementTime = () => {
-    if (timeLeft > 0) {
-      setTimeLeft(timeLeft - 1);
-    } else {
-      handleSubmit();
-    }
-  };
-
-  const formattedTime = (timeLeft) => {
-    const minutes = `${Math.floor(timeLeft / 60)}`.padStart(2, "0");
-    const seconds = `${timeLeft % 60}`.padStart(2, "0");
-    return `${minutes}:${seconds}`;
-  };
-
   const fetchQuestions = async () => {
     setIsLoading(true);
+
     try {
-      const response = await fetch("https://test.bits-apogee.org/2024/main/quanta/question-paper/");
+      const token = localStorage.getItem('jwtToken');
+
+      if (!token) {
+        throw new Error('Missing JWT token');
+      }
+
+      const response = await fetch("https://bits-apogee.org/2024/main/quanta/question-paper/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error fetching questions');
+      }
+
       const data = await response.json();
       setQuestions(data);
-      // console.log('yes')
+      localStorage.setItem('startTime', data.start_time);
+      setStartTime(parseInt(data.start_time) * 1000);
     } catch (error) {
       console.error("Error fetching questions:", error);
     } finally {
       setIsLoading(false);
     }
   };
+
 
 
   const handlePrev = () => {
@@ -64,13 +68,11 @@ const Quiz = () => {
         updatedAnswers[existingIndex] = {
           question_id: currentQuestion + 1,
           option_id: optionId,
-          time_spent: timeLeft,
         };
       } else {
         updatedAnswers.push({
           question_id: currentQuestion + 1,
           option_id: optionId,
-          time_spent: timeLeft,
         });
       }
 
@@ -78,36 +80,49 @@ const Quiz = () => {
     });
   };
 
-  const handleSubmit = async () => {
-    const formattedData = selectedAnswers.map((answer) => ({
-      question_id: answer.question_id,
-      option_id: answer.option_id,
-      time_spent: Math.floor((15 * 60 - timeLeft) / 1000),
-    }));
-
-    try {
-      const response = await fetch("https://test.bits-apogee.org/2024/main/quanta/answers/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formattedData),
-      });
-      if (response.ok) {
-        console.log("Answers submitted successfully!");
-      } else {
-        console.error("Error submitting answers:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error submitting answers:", error);
+  const setCountdownRef = (countdown) => {
+    if (countdown) {
+      countdownApi = countdown.getApi();
     }
   };
 
-  useEffect(() => {
-    if (!isLoading) {
-      const timer = setInterval(decrementTime, 1000);
-      return () => clearInterval(timer);
-    }
-  }, [timeLeft, isLoading]);
+  const handleSubmit = async () => {
+    const shouldSubmit = window.confirm("Are you sure you want to submit your answers?");
+    if (!shouldSubmit) return; // Exit if user cancels confirmation
 
+    const formattedData = selectedAnswers.map((answer) => ({
+      option_id: answer.option_id,
+    }));
+
+    const finalData = { start_time: startTime, answers: formattedData };
+
+    try {
+      const token = localStorage.getItem('jwtToken');
+
+      if (!token) {
+        throw new Error('Missing JWT token');
+      }
+
+      const response = await fetch("https://bits-apogee.org/2024/main/quanta/answers/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(finalData),
+      });
+
+      if (response.ok) {
+        console.log("Answers submitted successfully!");
+        window.location.href = "/quantaculus/submitted"; // Redirect to submitted page
+      } else {
+        const errorData = await response.json();
+        alert(errorData.message || 'Error submitting answers');
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
   useEffect(() => {
     fetchQuestions();
   }, []);
@@ -120,7 +135,9 @@ const Quiz = () => {
             <div className={styles.questionIndex}>
               Q{currentQuestion + 1} <span> / {questions.question_paper.length}</span>
             </div>
-            <div className={styles.questionIndex}>{formattedTime(timeLeft)}</div>
+            <div className={styles.questionIndex}>
+              <Countdown autoStart="true" date={startTime + 15 * 60 * 1000} onComplete={handleSubmit}/>
+            </div>
           </div>
 
           <div className={styles.problem}>
@@ -132,17 +149,16 @@ const Quiz = () => {
                 <div key={index} className={styles.option}>
                   <input
                     type="radio"
-                    name={`option-${currentQuestion}`} // Unique name for each question's options
+                    name={`option-${currentQuestion}`}
                     id={`option-${currentQuestion}-${index}`}
                     checked={
-                      // Check if the current option matches the selected answer for this question
                       selectedAnswers.some(
                         (answer) =>
                           answer.question_id === currentQuestion + 1 &&
                           answer.option_id === option.id
                       )
                     }
-                    onChange={() => handleSelect(option.id)} // Call handleSelect on change
+                    onChange={() => handleSelect(option.id)}
                   />
                   <label htmlFor={`option-${currentQuestion}-${index}`}>
                     {option.text}
@@ -157,7 +173,7 @@ const Quiz = () => {
               PREV
             </button>
 
-            <button onClick={handleSubmit} id={styles.submitBtn}>
+            <button onClick={handleSubmit} className={styles.submitBtn}>
               SUBMIT
             </button>
             <button
@@ -167,6 +183,9 @@ const Quiz = () => {
               NEXT
             </button>
           </div>
+          <button onClick={handleSubmit} className={styles.submitBtnMobile}>
+            SUBMIT
+          </button>
         </>
       ) : (
         <p>Loading questions...</p>
