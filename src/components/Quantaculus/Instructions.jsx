@@ -1,7 +1,13 @@
 import React from 'react'
 import * as styles from '../../styles/Quantaculus.module.scss'
 
-const Instructions = () => {
+const Instructions = ({onQuizOpen}) => {
+
+  const handleSubmit = async (event) => {
+    onQuizOpen();
+    event.preventDefault();
+  }
+
   return (
     <div className={styles.instructions}>
         <h1>INSTRUCTIONS</h1>
@@ -16,7 +22,7 @@ const Instructions = () => {
             <li>Time taken to answer all the correct questions is to be considered in case of tiebreaker.</li>
         </ul>
 
-        <button>NEXT</button>
+        <button onClick={handleSubmit}>NEXT</button>
     </div>
   )
 }
