@@ -70,19 +70,19 @@
 }
 
 .tophud {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 50%;
   transform: translateX(-50%) ;
   width: auto;
-  height: clamp(100px, 10vw, 170px);
+  height: clamp(100px, 20vw, 210px);
   object-fit: contain;
 
   // visibility: visible;
   // opacity: 1;
 
   @media screen and (max-height: 700px) {
-    height: 100px;
+    height: 150px;
   }
 }
 
@@ -90,7 +90,7 @@
   position: absolute;
   top: 1.5vw;
   left: 50%;
-  transform: translateX(-45%) translateY(-40%) scale(1.3);
+  transform: translateX(-45%) translateY(-30%) scale(1.65);
   width: auto;
   height: 150px;
   object-fit: contain;
@@ -117,8 +117,8 @@
 
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: clamp(90px, calc(9.4vw - 7px), 154px);
+  transform: translateX(-50%) translateY(100%);
+  top: clamp(90px, calc(10.4vw - 7px), 154px);
   pointer-events: all;
 
   display: flex;
@@ -131,7 +131,7 @@
   // opacity: 1;
 
   @media screen and (max-height: 700px) {
-    top: 90px;
+    top: 80px;
     width: 140px;
   }
 
