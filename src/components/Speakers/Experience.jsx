@@ -21,9 +21,9 @@ function Experience() {
         cardRotation: [0, 0, 0],
         textPosition: [22.5, -12.5, 0],
         textRotation: [0, Math.PI / 2, 0],
-        video: "../../../videos/akbar.mp4",
+        video: "../../../videos/shivshankar.mp4",
         text: "",
-        driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bMzV3N1R1WFViUUU/view?usp=drivesdk&resourcekey=0-LE316yW4KBSuSZ2rGwn4ZQ"
+        driveLink: "https://drive.google.com/file/d/17iaq28mVFlX8GE7qC6YoLA3DXzt1ZEYl/view?usp=drive_link"
       },
       {
         cardPosition: [-20, -60, 7.5],
@@ -39,9 +39,9 @@ function Experience() {
         cardRotation: [0, (Math.PI * 70) / 180, 0],
         textPosition: [-27.5, -62.5, 0],
         textRotation: [0, (Math.PI * -70) / 180, 0],
-        video: "../../../videos/shivshankar.mp4",
+        video: "../../../videos/akbar.mp4",
         text: "",
-        driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4baHZRQU1aM0ZxSkU/view?usp=drivesdk&resourcekey=0-M7KBycRoqsY9l0EjiMIkjA"
+        driveLink: "https://drive.google.com/file/d/0B8qjV3FXLM4bMzV3N1R1WFViUUU/view?usp=drivesdk&resourcekey=0-LE316yW4KBSuSZ2rGwn4ZQ"
       },
     ],
     []
