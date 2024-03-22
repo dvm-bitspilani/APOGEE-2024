@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: translateY(5%) translateX(10%);
 }
 
 h1.title {
@@ -145,6 +146,7 @@ h1.title {
 @media only screen and (max-width: 800px) {
   .wrapper {
     left: 0;
+    transform: translateY(7.5%);
   }
   .container {
     background-position: bottom;
