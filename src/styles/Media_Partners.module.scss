@@ -59,9 +59,9 @@
       width: auto;
       height: clamp(40px, 4vw, 170px);
       object-fit: contain;
-      @media screen and (max-height: 700px) {
-        height: 100px;
-      }
+      // @media screen and (max-height: 700px) {
+      //   height: 100px;
+      // }
     }
   }
 }
