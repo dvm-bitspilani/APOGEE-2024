@@ -58,7 +58,7 @@ export default function EventContainer(props) {
       <Text
         position={[0, viewport.height * textPosition[1] * yPercent, 0]}
         font="/fonts/Alacrity Sans Bold.ttf"
-        fontSize={Math.min(viewport.width * 0.03, 0.4)}
+        fontSize={Math.min(viewport.width * 0.025, 0.3)}
         // maxWidth={viewport.width * 0.23}
       >
         {data.name}
