@@ -75,7 +75,7 @@ export default function EventContainer(props) {
         ]}
         font="/fonts/Alacrity Sans Bold.ttf"
         fontSize={Math.min(viewport.width * 0.02, 0.25)}
-        maxWidth={viewport.width * xPercent * 0.3}
+        maxWidth={viewport.width * xPercent * 0.4}
       >
         {data.name}
         <meshStandardMaterial
