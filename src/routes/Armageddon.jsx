@@ -5,10 +5,50 @@ import { motion } from "framer-motion";
 
 const Armageddon = () => {
   const navigate = useNavigate();
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
+  const cardContainerRef = useRef(null);
+
+  const preloadAssets = () => {
+    const images = [
+      "/images/frame.png",
+      "/images/Left helm.png",
+      "/images/Right helm.png",
+      "/images/regTop HUD.png",
+      "/images/crNew.png",
+      "/images/valoNew.png",
+      "/images/fifaNew.png",
+      "/images/bgmiNew.png",
+      "/images/wwe.png",
+      "/images/kuchBhi.png",
+      "/images/starsAsset.png",
+      "@assets/landing/hamMenuButton.png",
+    ];
+
+    const promises = [];
+
+    images.forEach((src) => {
+      const img = new Image();
+      promises.push(
+        new Promise((resolve) => {
+          img.onload = img.onerror = resolve;
+        })
+      );
+      img.src = src;
+    });
+
+    return Promise.all(promises);
+  };
+
+  useEffect(() => {
+    preloadAssets().then(() => {
+      setAssetsLoaded(true);
+    });
+  }, []);
+
   const handleHomeClick = () => {
     navigate("/");
   };
-  const cardContainerRef = useRef(null);
+
   const handleMouseMove = (e) => {
     const container = cardContainerRef.current;
     const containerRect = container.getBoundingClientRect();
@@ -29,46 +69,59 @@ const Armageddon = () => {
     container.style.setProperty("--tilt-x", "0deg");
     container.style.setProperty("--tilt-y", "0deg");
   };
+
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 1, ease: "easeInOut", delay: 0 }}
-        className={styles.pageContainer}
-        ref={cardContainerRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        <img
-          draggable={false}
-          src="/images/Left helm.png"
-          alt=""
-          className={styles.leftHelm}
-        />
-        <img
-          draggable={false}
-          src="/images/Right helm.png"
-          alt=""
-          className={styles.rightHelm}
-        />
-        <div className={styles.topContainer}>
+      {!assetsLoaded ? (
+        <div style={{
+          position:"absolute",
+          top:"50%",
+          left:"50%",
+          transform:"translateX(-50%) translateY(-50%)",
+          fontSize:"2rem",
+          // textTransform:"uppercase",
+          fontWeight:"500",
+          fontFamily:"Space Grotesk"
+        }}>Loading...</div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "easeInOut", delay: 0 }}
+          className={styles.pageContainer}
+          ref={cardContainerRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
           <img
-            src="/images/regTop HUD.png"
+            draggable={false}
+            src="/images/Left helm.png"
             alt=""
-            className={styles.middleTop}
+            className={styles.leftHelm}
           />
-          <div className={styles.homeBtn} onClick={handleHomeClick}>
-            <span>Home</span>
+          <img
+            draggable={false}
+            src="/images/Right helm.png"
+            alt=""
+            className={styles.rightHelm}
+          />
+          <div className={styles.topContainer}>
+            <img
+              src="/images/regTop HUD.png"
+              alt=""
+              className={styles.middleTop}
+            />
+            <div className={styles.homeBtn} onClick={handleHomeClick}>
+              <span>Home</span>
+            </div>
           </div>
-        </div>
-        <div className={styles.pageWrapper}>
-          <img src="/images/regTop HUD.png" alt="" className={styles.hud} />
-          <div className={styles.homeBtn} onClick={handleHomeClick}>
-            <span>Home</span>
-          </div>
-          <div className={styles.content}>
+          <div className={styles.pageWrapper}>
+            <img src="/images/regTop HUD.png" alt="" className={styles.hud} />
+            <div className={styles.homeBtn} onClick={handleHomeClick}>
+              <span>Home</span>
+            </div>
+            <div className={styles.content}>
             <div className={styles.cardContainer}>
               <div className={styles.cardWrapper}>
                 <div className={styles.imgWrapper}>
@@ -208,10 +261,17 @@ const Armageddon = () => {
               </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      )}
     </>
   );
 };
 
 export default Armageddon;
+
+
+
+
+
+
