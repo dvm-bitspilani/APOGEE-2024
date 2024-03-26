@@ -73,8 +73,6 @@ export function EventsCarousel({ index, setIndex, events }) {
     setIndex((index + 1) % events.length);
   }
 
-  console.log(events);
-
   return (
     <>
       <div className={styles.eventsCarousel}>
