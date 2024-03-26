@@ -78,17 +78,24 @@
     text-shadow: 0px 0px 6.4px rgba(154, 240, 244, 0.7);
   }
 
-  &::after {
+  .progressBar {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-image: url("/images/Underline.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: rgba(118, 194, 197, 1);
     height: 5px;
+
+    .progress {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(154, 240, 244, 1);
+      height: 5px;
+      transition: width 0.6s ease-in-out;
+    }
   }
 
   @media (max-width: 768px) {
