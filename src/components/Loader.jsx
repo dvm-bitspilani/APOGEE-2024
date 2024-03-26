@@ -1,21 +1,35 @@
+import { useEffect, useState } from "react";
 import { Html, useProgress } from "@react-three/drei";
 
 export default function Loader() {
   const { progress } = useProgress();
-  const displayProgess = Math.ceil(progress)
-  // console.log(progress);
+  const displayProgress = Math.ceil(progress);
+
+  const [bars, setBars] = useState([]);
+
+  useEffect(() => {
+    const newBars = [];
+    for (let i = 1; i <= 20; i++) {
+      if (i <= displayProgress / 5 + 1) {
+        newBars.push(
+          <div
+            key={`bar-${i}`}
+            className="bar"
+            style={{ backgroundColor: "#9AF0F4" }}
+          ></div>
+        );
+      }
+    }
+    setBars(newBars);
+  }, [displayProgress]);
+
   return (
     <Html fullscreen>
-      <div style={{
-        // width:"100%",
-        // height:"100%",
-        position:"absolute",
-        top:"50%",
-        left:"50%",
-        transform:"translateY(-50%) translateX(-50%)",
-        fontSize:"1.5rem"
-      }}>
-      {displayProgess} % Loaded
+      <div className="loader">
+        <div className="loaderWrapper">
+          <span className="loading">Loading...</span>
+          <div className="progressBar">{bars}</div>
+        </div>
       </div>
     </Html>
   );
