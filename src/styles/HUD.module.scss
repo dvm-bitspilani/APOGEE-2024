@@ -92,7 +92,7 @@
 
 .logo {
   position: absolute;
-  top: 1.5vw;
+  top: 0.8vw;
   left: 50%;
   transform: translateX(-45%) translateY(-30%) scale(1.65);
   width: auto;
@@ -100,7 +100,7 @@
   object-fit: contain;
 
   @media screen and (max-height: 700px), screen and (max-width: 1100px) {
-    top: 15px;
+    top: 12px;
     height: 100px;
   }
 }
