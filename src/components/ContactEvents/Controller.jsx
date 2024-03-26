@@ -40,6 +40,14 @@ export default function Controller({ route, text }) {
       </button>
       <div className={styles.pageNumber}>
         <span>{`${currentNumPage}/${totalNumPages}`}</span>
+        <div className={styles.progressBar}>
+          <div
+            className={styles.progress}
+            style={{
+              width: `${(currentNumPage / totalNumPages) * 100}%`,
+            }}
+          ></div>
+        </div>
       </div>
     </>
   );
