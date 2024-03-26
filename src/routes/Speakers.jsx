@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from "react";
 // import { useWindowSize } from "rooks";
 import { Canvas } from "@react-three/fiber";
-import "../styles/events/events.css";
+// import "../styles/events/events.css";
 import Experience from "../components/Speakers/Experience";
 import { ScrollControls, Stats } from "@react-three/drei";
 import Loader from "../components/Loader";
