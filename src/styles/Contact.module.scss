@@ -28,6 +28,7 @@ h1.title {
   left: calc(10% + 300px);
   right: 2%;
   z-index: 1;
+  scale: 0.8;
 
   @media screen and (max-height: 700px) {
     top: 15%;
@@ -44,7 +45,6 @@ h1.title {
   align-items: start;
   width: 100%;
   // height: 60%;
-  scale: 0.8;
   transform: translateY(3%);
 
 
