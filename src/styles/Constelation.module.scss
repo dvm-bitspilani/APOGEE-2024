@@ -2,7 +2,7 @@
   width: 500px;
   aspect-ratio: 1/1;
   position: absolute;
-  top: 25%;
+  top: 30%;
   left: 50%;
 
   transform: translateX(-50%);
@@ -16,24 +16,29 @@
     pointer-events: none;
   }
 
-  @media screen and (max-height: 760px) {
-    top: 23%;
+  @media screen and (max-height: 700px) {
+    top: 25%;
     width: 400px;
   }
 
+  @media screen and (max-height: 600px) {
+    // scale: 0.8;
+    top: 28%;
+  }
+
   @media screen and (max-width: 700px) {
-    top: 23%;
+    top: 25%;
     width: 400px;
     left: 52%;
   }
 
   @media screen and (max-width: 515px) {
-    top: 23%;
+    top: 25%;
     width: 300px;
   }
 
-  @media screen and (max-width: 430px) {
-    top: 23%;
+  @media screen and (max-width: 530px) {
+    top: 27%;
     transform-origin: center;
     transform: scale(0.8) translate(-65%, 0);
   }
