@@ -75,7 +75,7 @@
   left: 50%;
   transform: translateX(-50%) ;
   width: auto;
-  height: clamp(100px, 20vw, 210px);
+  height: clamp(150px, 20vw, 210px);
   object-fit: contain;
 
   // visibility: visible;
@@ -92,21 +92,21 @@
 
 .logo {
   position: absolute;
-  top: 0.8vw;
+  top: 10px;
   left: 50%;
-  transform: translateX(-45%) translateY(-30%) scale(1.65);
+  transform: translateX(-45%) translateY(-30%) scale(1.65) scaleX(1.25);
   width: auto;
   height: 150px;
   object-fit: contain;
 
   @media screen and (max-height: 700px), screen and (max-width: 1100px) {
-    top: 12px;
+    top: 15px;
     height: 100px;
   }
 }
 
 .hamMenuButton {
-  width: clamp(150px, 13vw, 240px);
+  width: clamp(150px, 20vw, 210px);
   aspect-ratio: 2.7;
 
   outline: none;
@@ -121,8 +121,8 @@
 
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  top: clamp(90px, calc(10.4vw - 7px), 154px);
+  transform: translateX(-50%);
+  top: clamp(139px, calc(19.3vw - 7px), 196px);
   pointer-events: all;
 
   display: flex;
@@ -134,9 +134,9 @@
   // visibility: visible;
   // opacity: 1;
   
-  @media screen and (min-width: 1400px) {
-    top: clamp(90px, calc(8.4vw - 7px), 154px);
-  }
+  // @media screen and (min-width: 1400px) {
+  //   top: clamp(90px, calc(8.4vw - 7px), 154px);
+  // }
 
   @media screen and (max-height: 700px) {
     top: 80px;
