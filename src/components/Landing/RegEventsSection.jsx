@@ -10,37 +10,24 @@ import { Line } from "./NavigateSection";
 
 import { useGlitch } from "react-powerglitch";
 
-import kernel_events from "@assets/events/kernel_events";
+// import kernel_events from "@assets/events/kernel_events";
 
 import robowars from "@assets/events/robowars.jpg";
 import drone from "@assets/events/drone.jpg";
 
 export default function RegEventsSection() {
-  const aic = "aic.jpg";
-  const armageddon = "armageddon.jpg";
-  const sms = "sms.jpg";
-  const oht = "oht.jpg";
-  const quantuculus = "quantuculus.jpg";
-  const icl = "icl.jpg";
-  const bitmun = "bitmun.jpg";
-  const finance = "finance.jpg";
-  const paper = "paper.jpg";
-  const projects = "projects.jpg";
 
-  const images = [
-    aic,
-    armageddon,
-    sms,
-    oht,
-    quantuculus,
-    robowars,
-    drone,
-    icl,
-    bitmun,
-    finance,
-    paper,
-    projects,
-  ];
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    async function fetchEvents() {
+      const response = await fetch("https://bits-apogee.org/2024/main/registrations/events/Kernel");
+      const data = await response.json();
+      setEvents(data.data.events);
+    }
+    fetchEvents();
+  }, []);
+
 
   const [index, setIndex] = useState(0);
   return (
@@ -52,14 +39,14 @@ export default function RegEventsSection() {
       <h1>EVENTS FOR YOU</h1>
       <Line />
       <div className={styles.eventsWrapper}>
-        <EventsCarousel index={index} setIndex={setIndex} images={images} />
+        <EventsCarousel index={index} setIndex={setIndex} events={events} />
       </div>
       <Line />
     </div>
   );
 }
 
-export function EventsCarousel({ index, setIndex, images }) {
+export function EventsCarousel({ index, setIndex, events }) {
   const { ref, startGlitch, stopGlitch } = useGlitch({
     playMode: "manual",
     hideOverflow: true,
@@ -78,13 +65,15 @@ export function EventsCarousel({ index, setIndex, images }) {
 
   function carouselPrev() {
     glitchEffect();
-    setIndex((index - 1 + kernel_events.length) % kernel_events.length);
+    setIndex((index - 1 + events.length) % events.length);
   }
 
   function carouselNext() {
     glitchEffect();
-    setIndex((index + 1) % kernel_events.length);
+    setIndex((index + 1) % events.length);
   }
+
+  console.log(events);
 
   return (
     <>
@@ -93,7 +82,7 @@ export function EventsCarousel({ index, setIndex, images }) {
         <div className={styles.carouselWindow}>
           <img
             ref={ref}
-            src={images[index]}
+            src={events[index] ? events[index].image_url : placeholder}
             alt={placeholder}
             onError={(e) => (e.target.src = placeholder)}
           />
@@ -102,8 +91,8 @@ export function EventsCarousel({ index, setIndex, images }) {
       </div>
       <img src={eventsSep} alt="separator" />
       <div className={styles.eventsInfo}>
-        <h2>{kernel_events[index].name}</h2>
-        <Link to="/events/kernel">{kernel_events[index].category}</Link>
+        <h2>{events[index] ? events[index].name : null}</h2>
+        <Link to="/events/Kernel">Kernel</Link>
       </div>
     </>
   );
