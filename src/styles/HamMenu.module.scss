@@ -269,3 +269,67 @@ p:hover{
     right: 50%;
   }
 }
+@media screen and (max-width: 600px) {
+.constellationDetected{
+
+  display: flex;
+  // transform: unset;
+  transform: translateX(-50%);
+  width: 50%;
+  max-height: 150px;
+  left: 50%;
+  top: 67%;
+  justify-content: space-around;
+  padding-inline: 35px;
+}
+.apogeeLogo{
+  height: 40%;
+  aspect-ratio: 1/1;
+  width: 30%;
+}
+.textContainer{
+  width: 70%;
+}
+}
+@media screen and (max-width: 515px) {
+.constellationDetected{
+  display: flex;
+  transform: unset;
+  transform: translateX(-50%);
+  max-height: unset;
+  width: 60%;
+  left: 50%;
+  top: 60%;
+  justify-content: space-evenly;
+  padding-inline: 15px;
+
+  // height: 80%;
+  .apogeeLogo img{
+    height: 30px;
+  }
+  .apogeeLogo{
+    height: 30%;
+  aspect-ratio: 1/1;
+  width: 25%;
+  }
+  .textContainer{
+    width: unset;
+    line-height: 1.75rem;
+  }
+}
+}
+@media screen and (max-width: 400px) {
+  .constellationDetected{
+    padding-inline: 20px;
+  }
+  .textContainer{
+    width: unset;
+    line-height: 1.3rem;
+  }
+  .textContainer h1{
+    font-size: 0.8rem;
+  }
+  .textContainer p{
+    font-size:1rem ;
+  }
+}
