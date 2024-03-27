@@ -49,29 +49,47 @@ const Countdown = ({ mobile = false }) => {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days, hrs, mins]);
 
+  // useEffect(() => {
+  //   setHrs(Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24);
+
+  //   setMins(
+  //     Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60,
+  //   );
+
+  //   hrs < 10 && setHrs((prevHrs) => "0" + prevHrs);
+  //   mins < 10 && setMins((prevMins) => "0" + prevMins);
+  //   days < 10 && setDays((prevDays) => "0" + prevDays);
+  //   document.getElementById("days").style.animation =
+  //     prevDay !== days ? "card-flip 0.6s" : "none";
+  //   document.getElementById("hours").style.animation =
+  //     prevHr !== hrs ? "card-flip 0.6s" : "none";
+  //   document.getElementById("min").style.animation =
+  //     prevMin !== mins ? "card-flip 0.6s" : "none";
+
+  //   setPrevDay(days);
+  //   setPrevHr(hrs);
+  //   setPrevMin(mins);
+
+  //   //eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [curr, mins, APOGEE]);
   useEffect(() => {
-    setHrs(Math.floor((APOGEE - curr) / (1000 * 60 * 60)) - days * 24);
-
-    setMins(
-      Math.floor((APOGEE - curr) / (1000 * 60)) - days * 24 * 60 - hrs * 60,
-    );
-
-    hrs < 10 && setHrs((prevHrs) => "0" + prevHrs);
-    mins < 10 && setMins((prevMins) => "0" + prevMins);
-    days < 10 && setDays((prevDays) => "0" + prevDays);
-    document.getElementById("days").style.animation =
-      prevDay !== days ? "card-flip 0.6s" : "none";
-    document.getElementById("hours").style.animation =
-      prevHr !== hrs ? "card-flip 0.6s" : "none";
-    document.getElementById("min").style.animation =
-      prevMin !== mins ? "card-flip 0.6s" : "none";
-
-    setPrevDay(days);
-    setPrevHr(hrs);
-    setPrevMin(mins);
-
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [curr, mins, APOGEE]);
+    const remainingTime = APOGEE - curr;
+  
+    if (remainingTime <= 0) {
+      setDays("00");
+      setHrs("00");
+      setMins("00");
+    } else {
+      const remainingDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+      const remainingHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const remainingMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+  
+      setDays(remainingDays < 10 ? "0" + remainingDays : remainingDays.toString());
+      setHrs(remainingHours < 10 ? "0" + remainingHours : remainingHours.toString());
+      setMins(remainingMinutes < 10 ? "0" + remainingMinutes : remainingMinutes.toString());
+    }
+  }, [APOGEE, curr]);
+  
 
   return (
     <div
