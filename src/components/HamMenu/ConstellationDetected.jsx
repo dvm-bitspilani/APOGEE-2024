@@ -30,7 +30,7 @@ export default function ConstellationDetected() {
         <img src={apogeeLogo} alt="apogee logo"  onClick={logoClicked}/>
       </div>
       <div className={styles.textContainer}>
-        <h1>Route to Pilani</h1>
+        <h1  onClick={logoClicked}>Route to Pilani</h1>
         <p onClick={faqsClicked}>FAQs</p>
       </div>
     </div>

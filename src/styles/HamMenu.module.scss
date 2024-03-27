@@ -65,6 +65,9 @@
     width: max-content;
     font-size: 1rem;
     text-transform: uppercase;
+    text-shadow: 1px 0px 8.815px #C8F2F4;
+    pointer-events: all;
+    transition: all 0.2s ease-in-out;
   }
   p {
     font-size: 0.8rem;
@@ -75,8 +78,13 @@
     text-shadow: 1px 0px 8.815px var(--primary-link);
     font-size: 1.1rem;
     pointer-events: all;
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
   }
+}
+h1:hover{
+  color: var(--hover-link);
+  text-shadow: 1px 0px 8.815px var(--hover-link);
+  cursor: pointer;
 }
 p:hover{
   color: var(--hover-link);
