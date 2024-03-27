@@ -33,10 +33,13 @@ const Quiz = () => {
 
       const data = await response.json();
       setQuestions(data);
-      localStorage.setItem('startTime', data.start_time);
+      // localStorage.setItem('startTime', data.start_time);
       setStartTime(parseInt(data.start_time) * 1000);
     } catch (error) {
-      console.error("Error fetching questions:", error);
+      // alert(error);
+      if (confirm(error)) {
+        window.location.reload();
+      }
     } finally {
       setIsLoading(false);
     }
@@ -86,9 +89,11 @@ const Quiz = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    const shouldSubmit = window.confirm("Are you sure you want to submit your answers?");
-    if (!shouldSubmit) return; // Exit if user cancels confirmation
+  const handleSubmit = async (isAutomatic = false) => {
+    if (!isAutomatic) {
+      const shouldSubmit = window.confirm("Are you sure you want to submit your answers?");
+      if (!shouldSubmit) return; // Exit if user cancels confirmation
+    }
 
     const formattedData = selectedAnswers.map((answer) => ({
       option_id: answer.option_id,
@@ -113,7 +118,7 @@ const Quiz = () => {
       });
 
       if (response.ok) {
-        console.log("Answers submitted successfully!");
+        alert("Answers submitted successfully!");
         window.location.href = "/quantaculus/submitted"; // Redirect to submitted page
       } else {
         const errorData = await response.json();
@@ -127,6 +132,14 @@ const Quiz = () => {
     fetchQuestions();
   }, []);
 
+  const renderer = ({ minutes, seconds }) => {
+    return (
+      <span>
+        {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
+      </span>
+    );
+  };
+
   return (
     <div className={styles.instructions}>
       {!isLoading ? (
@@ -136,7 +149,7 @@ const Quiz = () => {
               Q{currentQuestion + 1} <span> / {questions.question_paper.length}</span>
             </div>
             <div className={styles.questionIndex}>
-              <Countdown autoStart="true" date={startTime + 15 * 60 * 1000} onComplete={handleSubmit}/>
+              <Countdown renderer={renderer} zeroPadTime={2} autoStart="true" date={startTime + 15 * 60 * 1000} onComplete={() => handleSubmit(true)}/>
             </div>
           </div>
 
@@ -173,17 +186,15 @@ const Quiz = () => {
               PREV
             </button>
 
-            <button onClick={handleSubmit} className={styles.submitBtn}>
+            <button onClick={() => handleSubmit(false)} className={styles.submitBtn}>
               SUBMIT
             </button>
-            <button
-              disabled={currentQuestion === questions.question_paper.length - 1}
-              onClick={handleNext}
-            >
+
+            <button disabled={currentQuestion === questions.question_paper.length - 1} onClick={handleNext}>
               NEXT
             </button>
           </div>
-          <button onClick={handleSubmit} className={styles.submitBtnMobile}>
+          <button onClick={() => handleSubmit(false)} className={styles.submitBtnMobile}>
             SUBMIT
           </button>
         </>
