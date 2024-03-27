@@ -1,5 +1,5 @@
 import { Constelation_SVG } from "./Constelation_SVG";
-
+import rulebook from "../../assets/rulebook.pdf"
 import * as styles from "@styles/Constelation.module.scss";
 import * as hamStyles from "@styles/HamMenu.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -29,6 +29,9 @@ export default function Constelation() {
     navigate("/media_partners");
   }
 
+    function handleRulebookClick(){
+      window.open(rulebook, "_blank")
+    }
   return (
     <div className={`${styles.constelationWrapper} ${hamStyles.menu}`}>
       <Constelation_SVG />
@@ -44,7 +47,7 @@ export default function Constelation() {
         <StarSVG />
         <span>ARMAGEDDON</span>
       </div>
-      <div className={styles.eventsRule} onClick={navigateToSoon}>
+      <div className={styles.eventsRule} onClick={handleRulebookClick}>
         <StarSVG />
         <span>EVENTS RULEBOOK</span>
       </div>
