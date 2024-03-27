@@ -149,7 +149,7 @@ const Quiz = () => {
               Q{currentQuestion + 1} <span> / {questions.question_paper.length}</span>
             </div>
             <div className={styles.questionIndex}>
-              <Countdown renderer={renderer} zeroPadTime={2} autoStart="true" date={startTime + 60 * 60 * 1000} onComplete={handleSubmit(true)}/>
+              <Countdown renderer={renderer} zeroPadTime={2} autoStart="true" date={startTime + 15 * 60 * 1000} onComplete={handleSubmit(true)}/>
             </div>
           </div>
 
