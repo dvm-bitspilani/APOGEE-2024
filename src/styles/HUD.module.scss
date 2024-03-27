@@ -138,11 +138,6 @@
   //   top: clamp(90px, calc(8.4vw - 7px), 154px);
   // }
 
-  @media screen and (max-height: 700px) {
-    top: 80px;
-    width: 140px;
-  }
-
   & * {
     transition: all 0.2s ease-in-out;
   }
