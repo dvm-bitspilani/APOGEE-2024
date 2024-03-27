@@ -35,12 +35,12 @@
   .apogeeLogo {
     height: 40%;
     aspect-ratio: 1/1;
-
+    width: 30%;
     background-image: url("@assets/hamMenu/apogee_bg.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-
+    pointer-events: all;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,20 +58,31 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  width: 60%;
 
   h1 {
+    color: #C8F2F4;
+    width: max-content;
     font-size: 1rem;
     text-transform: uppercase;
   }
   p {
     font-size: 0.8rem;
-    color: var(--primary-grey);
+    color: #9AF0F4;
     text-align: left;
     text-transform: uppercase;
+    width: min-content;
+    text-shadow: 1px 0px 8.815px var(--primary-link);
+    font-size: 1.1rem;
+    pointer-events: all;
+    transition: all 0.2s;
   }
 }
-
+p:hover{
+  color: var(--hover-link);
+  text-shadow: 1px 0px 8.815px var(--hover-link);
+  cursor: pointer;
+}
 .socials {
   display: flex;
   justify-content: space-around;
