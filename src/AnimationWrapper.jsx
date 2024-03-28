@@ -8,6 +8,7 @@ import Speakers from "./routes/Speakers";
 import ComingSoon from "@routes/ComingSoon.jsx";
 import Media_Partners from "@routes/Media_Partners.jsx";
 import Sponsors from "@routes/Sponsors.jsx";
+import Developers from "@routes/Developers.jsx";
 
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
@@ -34,6 +35,7 @@ export default function AnimationWrapper() {
         <Route path="/armageddon" element={<Armageddon />} />
         <Route path="/media_partners" element={<Media_Partners />} />
         <Route path="/sponsors" element={<Sponsors />} />
+        <Route path="/developers" element={<Developers />} />
         <Route path="/quantaculus" element={<Quantaculus />} />
         <Route path="/quantaculus/submitted" element={<QuantaculusSubmitted />} />
         <Route path="/*" element={<ComingSoon />} />
