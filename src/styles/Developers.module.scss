@@ -174,3 +174,89 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+.arcGrid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-45%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: calc(1.743478260869565 * 35vw);
+    height: 35vw;
+
+    @media screen and (min-height: 700px) {
+        width: calc(1.743478260869565 * 30vw);
+        height: 30vw;
+    }
+}
+
+.firstCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    div {
+        width: 100%;
+    }
+}
+
+.secondCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thirdCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    div {
+        width: 100%;
+    }
+}
+
+.arcReactor {
+    object-fit: contain;
+    height: auto;
+    width: 85%;
+    // width: clamp(150px, 20vw, 270px);
+}
+
+.folder {
+    width: 100%;
+    height: auto;
+    // object-fit: contain;
+}
+
+.topLeft,
+.topRight,
+.botLeft,
+.botRight {
+    position: absolute;
+    width: 10%;
+    height: auto;
+}
+
+.topLeft,
+.botLeft {
+    left: 33%;
+}
+
+.topRight,
+.botRight {
+    right: 33%;
+}
+
+.topLeft,
+.topRight {
+    top: 26%;
+}
+
+.botLeft,
+.botRight {
+    bottom: 26%;
+}
