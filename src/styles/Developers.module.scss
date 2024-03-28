@@ -150,6 +150,19 @@
     }
 }
 
+.devPageCodes {
+    width: 100lvw;
+    // height: 100dvh;
+    // top: 50vh;
+    height: auto;
+    object-fit: contain;
+
+    @media screen and (max-width: 1100px) {
+        height: 100dvh;
+        width: auto;
+    }
+}
+
 .pageContainer {
     width: 100lvw;
     height: 100dvh;

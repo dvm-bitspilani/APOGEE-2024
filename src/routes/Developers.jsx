@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as styles from "../styles/Developers.module.scss";
-import devTitle from "/images/DevelopersTitleText.png";
 
 export default function Developers() {
     const navigate = useNavigate();
@@ -19,6 +18,13 @@ export default function Developers() {
             transition={{ duration: 2, ease: "easeInOut" }}
             className={styles.pageContainer}
         >
+            <img
+                draggable={false}
+                className={styles.devPageCodes}
+                src="/images/DevPage-Codes.png"
+                alt="dev page codes"
+                style={{ position: "fixed" }}
+            />
             <img
                 draggable={false}
                 className={styles.lefthelm}
