@@ -61,7 +61,7 @@ export default function Developers() {
                 >
                     <div>
                         <svg className={styles.folder} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 402 274" fill="none">
-                            <path d="M400 236.5V185.605V45L384 29.5H264L237.5 2H18L2 16V255L17 272H366.5L400 236.5Z" stroke="#4DE5FD" stroke-width="3.36963" />
+                            <path d="M400 45.0376L399.601 236.677L366.9 272L16.3567 271.188L2 255.353V16.6165L17.9519 2H237.291L263.611 29.609H384.048L400 45.0376Z" stroke="#4DE5FD" stroke-width="3.36963" />
                         </svg>
                     </div>
                     <div>
@@ -85,12 +85,34 @@ export default function Developers() {
                         <path d="M118.059 -0.000274658L103.255 10.7326V91.599L48.666 133.605L0.368164 99.0009V116.211L48.666 151L118.059 96.9654V-0.000274658Z" />
                     </svg>
 
-                    <img
+                    {/* <img
                         draggable={false}
                         className={styles.arcReactor}
                         src="/images/arcReactorNoLogo.png"
                         alt="arc reactor"
-                    />
+                    /> */}
+                    <div
+                        className={styles.arcReacter}
+                    >
+                        <img
+                            draggable={false}
+                            className={styles.inner}
+                            src="/images/innerRing.png"
+                            alt="arc reactor"
+                        />
+                        <img
+                            draggable={false}
+                            className={styles.mid}
+                            src="/images/midRing.png"
+                            alt="arc reactor"
+                        />
+                        <img
+                            draggable={false}
+                            className={styles.outer}
+                            src="/images/outerRing.png"
+                            alt="arc reactor"
+                        />
+                    </div>
 
                     <svg className={styles.botLeft} viewBox="0 0 136 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M134 1.5L109.5 53.5H0" stroke="#4DE5FD" stroke-width="3" />
