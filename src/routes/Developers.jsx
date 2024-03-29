@@ -54,6 +54,7 @@ export default function Developers() {
                 <span>HOME</span>
             </button>
             <div
+                style={{ display: (window.innerWidth > 700) ? 'grid' : 'none' }}
                 className={styles.arcGrid}
             >
                 <div
@@ -136,6 +137,11 @@ export default function Developers() {
                         </svg>
                     </div>
                 </div>
+            </div>
+            <div
+                style={{ display: (window.innerWidth <= 700) ? 'flex' : 'none' }}
+                className={styles.mobileContent}
+            >
             </div>
             <img
                 draggable={false}
