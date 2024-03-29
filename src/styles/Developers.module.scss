@@ -183,12 +183,12 @@
     transform: translateX(-50%) translateY(-45%);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: calc(1.743478260869565 * 35vw);
-    height: 35vw;
+    width: calc(1.743478260869565 * clamp(325px, 35vw, 530px));
+    height: clamp(325px, 35vw, 530px);
 
     @media screen and (min-height: 700px) {
-        width: calc(1.743478260869565 * 30vw);
-        height: 30vw;
+        width: calc(1.743478260869565 * 65vh);
+        height: 65vh;
     }
 }
 
@@ -232,10 +232,9 @@
 .folder {
     width: 100%;
     height: auto;
-    stroke-dasharray: 1280;
-    // stroke-dashoffset: 1145;
+    stroke-dasharray: 1273;
     // stroke-dashoffset: -135;
-    stroke-dashoffset: 1280;
+    stroke-dashoffset: 1273;
     animation: folder 2s 3400ms linear forwards;
 }
 
@@ -244,7 +243,7 @@
 .botLeft,
 .botRight {
     position: absolute;
-    width: 10%;
+    width: 11%;
     height: auto;
     stroke-dasharray: 170;
     stroke-dashoffset: 170;
@@ -252,31 +251,19 @@
 }
 
 @keyframes reactor {
-    0% {
-        transform: rotateZ(-180deg);
-    }
-
-    100% {
+    to {
         transform: rotateZ(0deg);
     }
 }
 
 @keyframes connectors {
-    0% {
-        stroke-dashoffset: 170;
-    }
-
-    100% {
+    to {
         stroke-dashoffset: 0;
     }
 }
 
 @keyframes folder {
-    0% {
-        stroke-dashoffset: 1280;
-    }
-
-    100% {
+    to {
         stroke-dashoffset: 0;
     }
 
@@ -294,10 +281,10 @@
 
 .topLeft,
 .topRight {
-    top: 26%;
+    top: 25%;
 }
 
 .botLeft,
 .botRight {
-    bottom: 26%;
+    bottom: 24%;
 }
