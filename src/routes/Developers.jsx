@@ -80,6 +80,11 @@ export default function Developers() {
                         <path d="M2 54L26.5 2H136" stroke="#4DE5FD" stroke-width="3" />
                     </svg>
 
+                    <svg className={styles.dvmLogo} viewBox="0 0 119 151" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M93.4498 15.5435L48.6679 50.5178L24.4265 33.4932V48.1121L48.6679 66.2469L81.4216 40.7102V78.8303L48.6679 103.627L14.2488 78.8303V25.9062L0 15.5435V85.307L48.6679 119.726L93.4498 85.307V15.5435Z" />
+                        <path d="M118.059 -0.000274658L103.255 10.7326V91.599L48.666 133.605L0.368164 99.0009V116.211L48.666 151L118.059 96.9654V-0.000274658Z" />
+                    </svg>
+
                     <img
                         draggable={false}
                         className={styles.arcReactor}

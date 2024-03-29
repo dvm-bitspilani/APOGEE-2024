@@ -229,6 +229,20 @@
     animation: reactor 2s 1s ease-in-out forwards;
 }
 
+.dvmLogo {
+    z-index: 2;
+    position: absolute;
+    width: 8%;
+    height: auto;
+    fill: rgba(95, 219, 255, 0);
+    // fill: #5FDBFF;
+    stroke: #5FDBFF;
+    stroke-width: 1;
+    stroke-dashoffset: 621;
+    stroke-dasharray: 621;
+    animation: logoIn 2400ms 3s linear forwards;
+}
+
 .folder {
     width: 100%;
     height: auto;
@@ -266,7 +280,23 @@
     to {
         stroke-dashoffset: 0;
     }
+}
 
+@keyframes logoIn {
+    0% {
+        fill: rgba(95, 219, 255, 0);
+        stroke-dashoffset: 621;
+    }
+
+    75% {
+        fill: rgba(95, 219, 255, 0);
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        fill: rgba(95, 219, 255, 1);
+        stroke-dashoffset: 0;
+    }
 }
 
 .topLeft,
