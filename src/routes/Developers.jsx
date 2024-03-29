@@ -12,11 +12,12 @@ export default function Developers() {
         "createContainers": true,
         "hideOverflow": false,
         "timing": {
+            "delay": 3200,
             "duration": 2000,
             "easing": "ease-in-out"
         },
         "glitchTimeSpan": {
-            "start": 0.5,
+            "start": 0.4,
             "end": 0.7
         },
         "shake": {
@@ -25,7 +26,7 @@ export default function Developers() {
             "amplitudeY": 0.01
         },
         "slice": {
-            "count": 4,
+            "count": 6,
             "velocity": 15,
             "minHeight": 0.01,
             "maxHeight": 0.05,
