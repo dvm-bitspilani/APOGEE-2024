@@ -226,7 +226,7 @@
     width: 85%;
     // width: clamp(150px, 20vw, 270px);
     transform: rotateZ(-180deg);
-    animation: reactor 2s 1s ease-in-out forwards;
+    animation: reactor 1500ms 500ms ease-in-out forwards;
 }
 
 .dvmLogo {
@@ -240,7 +240,7 @@
     stroke-width: 1;
     stroke-dashoffset: 621;
     stroke-dasharray: 621;
-    animation: logoIn 2400ms 3s linear forwards;
+    animation: logoIn 2133ms 1000ms linear forwards;
 }
 
 .folder {
@@ -249,7 +249,7 @@
     stroke-dasharray: 1273;
     // stroke-dashoffset: -135;
     stroke-dashoffset: 1273;
-    animation: folder 2s 3400ms linear forwards;
+    animation: folder 1200ms 1400ms linear forwards;
 }
 
 .topLeft,
@@ -261,7 +261,7 @@
     height: auto;
     stroke-dasharray: 170;
     stroke-dashoffset: 170;
-    animation: connectors 400ms 3s linear forwards;
+    animation: connectors 400ms 1000ms linear forwards;
 }
 
 @keyframes reactor {

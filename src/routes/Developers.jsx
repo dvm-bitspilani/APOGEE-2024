@@ -61,7 +61,7 @@ export default function Developers() {
                 >
                     <div>
                         <svg className={styles.folder} viewBox="0 0 402 274" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M400 45.0376L399.601 236.677L366.9 272L16.3567 271.188L2 255.353V16.6165L17.9519 2H237.291L263.611 29.609H384.048L400 45.0376Z" stroke="#4DE5FD" stroke-width="3.36963" />
+                            <path d="M400 236.5V185.605V45L384 29.5H264L237.5 2H18L2 16V255L17 272H366.5L400 236.5Z" stroke="#4DE5FD" stroke-width="3.36963" />
                         </svg>
                     </div>
                     <div>
