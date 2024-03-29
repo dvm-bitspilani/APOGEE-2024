@@ -77,6 +77,7 @@
 }
 
 .hamMenuButton {
+    z-index: 100;
     width: clamp(150px, 13vw, 240px);
     aspect-ratio: 2.7;
 
@@ -224,12 +225,18 @@
     height: auto;
     width: 85%;
     // width: clamp(150px, 20vw, 270px);
+    transform: rotateZ(-180deg);
+    animation: reactor 2s 1s ease-in-out forwards;
 }
 
 .folder {
     width: 100%;
     height: auto;
-    // object-fit: contain;
+    stroke-dasharray: 1280;
+    // stroke-dashoffset: 1145;
+    // stroke-dashoffset: -135;
+    stroke-dashoffset: 1280;
+    animation: folder 2s 3400ms linear forwards;
 }
 
 .topLeft,
@@ -239,6 +246,40 @@
     position: absolute;
     width: 10%;
     height: auto;
+    stroke-dasharray: 170;
+    stroke-dashoffset: 170;
+    animation: connectors 400ms 3s linear forwards;
+}
+
+@keyframes reactor {
+    0% {
+        transform: rotateZ(-180deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes connectors {
+    0% {
+        stroke-dashoffset: 170;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes folder {
+    0% {
+        stroke-dashoffset: 1280;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+
 }
 
 .topLeft,
