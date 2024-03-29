@@ -199,6 +199,26 @@
 
     div {
         width: 100%;
+
+        img {
+            position: absolute;
+            left: 0.65%;
+            width: 32%;
+            opacity: 0;
+            animation: folderFadeIn 533.25ms linear 2600ms 1 normal forwards;
+        }
+    }
+
+    div:first-of-type {
+        img {
+            top: 1.5%;
+        }
+    }
+
+    div:last-of-type {
+        img {
+            bottom: 2%;
+        }
     }
 }
 
@@ -216,6 +236,34 @@
 
     div {
         width: 100%;
+
+        img {
+            position: absolute;
+            // right: 6px;
+            right: 0.65%;
+            width: 32%;
+            opacity: 0;
+            animation: folderFadeIn 1ms linear 3133ms 1 normal forwards;
+            animation: folderFadeIn 533.25ms linear 2600ms 1 normal forwards;
+        }
+    }
+
+    div:first-of-type {
+        img {
+            top: 1.5%;
+        }
+    }
+
+    div:last-of-type {
+        img {
+            bottom: 2%;
+        }
+    }
+}
+
+@keyframes folderFadeIn {
+    to {
+        opacity: 1;
     }
 }
 
