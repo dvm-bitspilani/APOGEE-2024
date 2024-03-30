@@ -1,3 +1,7 @@
+.hideObject {
+  display: none !important;
+}
+
 .lefthelm {
   position: absolute;
   top: 0;
@@ -185,6 +189,7 @@
   }
   .verticalHeading {
     width: 30%;
+    text-transform: uppercase;
     text-align: center;
     display: span;
     position: relative;
@@ -210,7 +215,6 @@
     top: -95%;
     left: 7%;
   }
-  
 }
 
 .arcGrid {
