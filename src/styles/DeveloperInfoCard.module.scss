@@ -16,9 +16,14 @@
     }
   }
   .developerName {
+    display: flex;
+    align-items: center;
     flex: 1;
     font-size: 2px;
-    font-size: 2vh;
+    font-size: 1.75vh;
+    text-transform: uppercase;
+    width: 10.9vh;
+    white-space: nowrap;
     overflow: hidden;
   }
   .developerSocialMedia {
