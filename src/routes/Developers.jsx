@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useGlitch } from "react-powerglitch";
 
 import * as styles from "../styles/Developers.module.scss";
+import DeveloperInfoCard from "../components/Developers/DeveloperInfoCard";
 
 export default function Developers() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -264,15 +265,26 @@ export default function Developers() {
         </div>
 
         <div className={styles.developerDialog}>
-          <div className={styles.developerFolderContainer}>
-            <img
-              src="./images/developersFolderBackground.svg"
-              alt="FolderBackground"
-              className={styles.folderBackground}
-            />
+          <img
+            src="./images/developersFolderBackground.svg"
+            alt="FolderBackground"
+            className={styles.folderBackground}
+          />
+          <p className={styles.verticalHeading}>FRONTEND</p>
+          <p className={styles.backButton}>&lt; BACK</p>
+          <div className={styles.developerInfoCardContainer}>
+            {[
+              <DeveloperInfoCard />,
+              <DeveloperInfoCard />,
+              <DeveloperInfoCard />,
+              <DeveloperInfoCard />,
+              <DeveloperInfoCard />,
+              <DeveloperInfoCard />,
+              <DeveloperInfoCard />,
+              <DeveloperInfoCard />,
+            ]}
           </div>
         </div>
-
         <div className={styles.scrollBar}>
           <img draggable={false} src="/images/outScroll.svg" alt="" />
           <img
