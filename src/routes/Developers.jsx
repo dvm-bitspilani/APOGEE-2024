@@ -101,7 +101,6 @@ export default function Developers() {
                     <span>HOME</span>
                 </button>
                 <div
-                    style={{ display: (window.innerWidth > 700) ? 'grid' : 'none' }}
                     className={styles.arcGrid}
                 >
                     <div
@@ -215,7 +214,6 @@ export default function Developers() {
                 </div>
                 <div
                     ref={contentRef}
-                    style={{ display: (window.innerWidth <= 700) ? 'flex' : 'none' }}
                     className={styles.mobileContent}
                 >
                     <img
