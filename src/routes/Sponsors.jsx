@@ -119,7 +119,7 @@ export function SponsorCard({ props }) {
     fontFamily: "Space Grotesk, Alacrity Sans",
   };
   return (
-    <a href={web_url} className={styles.card}>
+    <a href={web_url} className={styles.card} target="_blank">
       <div className={styles.imageContainer}>
         <img src={image} alt="sponsorLogo" />
       </div>
