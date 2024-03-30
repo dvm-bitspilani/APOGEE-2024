@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import gsap from "gsap";
 
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,10 @@ export default function Developers() {
     const [scrollPosition, setScrollPosition] = useState(0);
 
     const contentRef = useRef(null);
+
+    const innerRingRef = useRef(null);
+    const middleRingRef = useRef(null);
+    const outerRingRef = useRef(null);
 
     const [vertical, setVertical] = useState("frontend");
     const [showDialog, setshowDialog] = useState(false);
@@ -44,22 +49,6 @@ export default function Developers() {
         "pulse": false
     })
 
-    function glitchEffect() {
-        glitchIn.startGlitch();
-    }
-
-    useEffect(() => {
-        function scrollHandler() {
-            const content = contentRef.current;
-            const scrollPercentage =
-                (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
-                68;
-            setScrollPosition(scrollPercentage);
-        }
-
-        contentRef.current.addEventListener("scroll", scrollHandler);
-    }, []);
-
     const glitch = useGlitch({
         "playMode": "always",
         "createContainers": true,
@@ -88,15 +77,51 @@ export default function Developers() {
         "pulse": false,
     });
 
+    useEffect(() => {
+        if (window.innerWidth >= 700) {
+            gsap.fromTo(outerRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: 180 }, { rotateZ: 0, duration: 1.5, delay: 0.5 })
+            gsap.fromTo(middleRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: 120 }, { rotateZ: 0, duration: 1.5, delay: 0.5 })
+            gsap.fromTo(innerRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: 0 }, { rotateZ: 60, duration: 1.5, delay: 0.5 })
+        }
+
+        function scrollHandler() {
+            const content = contentRef.current;
+            const scrollPercentage =
+                (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
+                68;
+            setScrollPosition(scrollPercentage);
+        }
+
+        contentRef.current.addEventListener("scroll", scrollHandler);
+    }, []);
+
+    let outerRingAngle = 0
+    let middleRingAngle = 0
+    let innerRingAngle = 60
+
+    const spin = () => {
+        gsap.fromTo(outerRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: outerRingAngle }, { rotateZ: outerRingAngle + 180, duration: 1.5 })
+        gsap.fromTo(middleRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: middleRingAngle }, { rotateZ: middleRingAngle + 120, duration: 1.5 })
+        gsap.fromTo(innerRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: innerRingAngle }, { rotateZ: innerRingAngle - 60, duration: 1.5 })
+        outerRingAngle += 180
+        middleRingAngle += 120
+        innerRingAngle -= 60
+    }
+
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate(`/`);
     };
+
+    const toPortfolio = () => {
+        window.open('https://bits-dvm.org/index.html', "_blank")
+    }
+
     const handleVerticalCardClick = (vertical) => {
         setshowDialog(!showDialog);
         setVertical(vertical);
-        glitchEffect();
+        glitchIn.startGlitch()
     };
     const handleVerticalBackButtonClick = () => {
         setshowDialog(!showDialog);
@@ -233,19 +258,24 @@ export default function Developers() {
                             <img
                                 draggable={false}
                                 className={styles.inner}
+                                ref={innerRingRef}
                                 src="/images/innerRing.png"
                                 alt="arc reactor"
                             />
                             <img
                                 draggable={false}
-                                className={styles.mid}
-                                src="/images/midRing.png"
+                                className={styles.outer}
+                                ref={outerRingRef}
+                                src="/images/outerRing.png"
                                 alt="arc reactor"
                             />
                             <img
                                 draggable={false}
-                                className={styles.outer}
-                                src="/images/outerRing.png"
+                                className={styles.mid}
+                                ref={middleRingRef}
+                                onClick={toPortfolio}
+                                onMouseEnter={spin}
+                                src="/images/midRing.png"
                                 alt="arc reactor"
                             />
                         </div>
