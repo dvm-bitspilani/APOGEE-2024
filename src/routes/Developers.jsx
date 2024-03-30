@@ -6,11 +6,30 @@ import { useGlitch } from "react-powerglitch";
 
 import * as styles from "../styles/Developers.module.scss";
 import DeveloperInfoCard from "../components/Developers/DeveloperInfoCard";
+import developers_info from "../assets/developers/developersInfo";
 
 export default function Developers() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const contentRef = useRef(null);
     const [vertical, setVertical] = useState("frontend");
+    const [showDialog, setshowDialog] = useState(false);
+    console.log(vertical);
+
+    const glitchIn = useGlitch({
+        playMode: "manual",
+        hideOverflow: true,
+        glitchMode: "scanline",
+        slice: {
+            count: 6,
+        },
+    });
+
+    function glitchEffect() {
+        glitchIn.startGlitch();
+        setTimeout(() => {
+            glitchIn.stopGlitch();
+        }, 1000);
+    }
 
     useEffect(() => {
         function scrollHandler() {
@@ -58,7 +77,11 @@ export default function Developers() {
         navigate(`/`);
     };
     const handleVerticalCardClick = (vertical) => {
+        setshowDialog(!showDialog);
         setVertical(vertical);
+    };
+    const handleVerticalBackButtonClick = () => {
+        setshowDialog(!showDialog);
     };
 
     return (
@@ -106,9 +129,16 @@ export default function Developers() {
                     <span>HOME</span>
                 </button>
 
-                <div className={styles.arcGrid} style={{ opacity: '0' }}>
+                <div
+                    className={styles.arcGrid}
+                    style={showDialog == true ? { opacity: 0 } : {}}
+                >
                     <div className={styles.firstCol}>
-                        <div>
+                        <div
+                            onClick={() => {
+                                handleVerticalCardClick("design");
+                            }}
+                        >
                             <img
                                 draggable={false}
                                 className={styles.folderContent}
@@ -128,7 +158,11 @@ export default function Developers() {
                                 />
                             </svg>
                         </div>
-                        <div>
+                        <div
+                            onClick={() => {
+                                handleVerticalCardClick("backend");
+                            }}
+                        >
                             <img
                                 draggable={false}
                                 className={styles.folderContent}
@@ -225,7 +259,11 @@ export default function Developers() {
                     </div>
 
                     <div className={styles.thirdCol}>
-                        <div>
+                        <div
+                            onClick={() => {
+                                handleVerticalCardClick("frontend");
+                            }}
+                        >
                             <img
                                 draggable={false}
                                 className={styles.folderContent}
@@ -245,7 +283,11 @@ export default function Developers() {
                                 />
                             </svg>
                         </div>
-                        <div>
+                        <div
+                            onClick={() => {
+                                handleVerticalCardClick("video");
+                            }}
+                        >
                             <img
                                 draggable={false}
                                 className={styles.folderContent}
@@ -268,14 +310,22 @@ export default function Developers() {
                     </div>
                 </div>
 
-                <div className={styles.developerDialog}>
+                <div
+                    className={styles.developerDialog}
+                    style={showDialog == true ? {} : { display: "none" }}
+                >
                     <img
                         src="./images/developersFolderBackground.svg"
                         alt="FolderBackground"
                         className={styles.folderBackground}
                     />
-                    <p className={styles.verticalHeading}>FRONTEND</p>
-                    <p className={styles.backButton}>&lt; BACK</p>
+                    <p className={styles.verticalHeading}>{vertical}</p>
+                    <p
+                        className={styles.backButton}
+                        onClick={handleVerticalBackButtonClick}
+                    >
+                        &lt; BACK
+                    </p>
                     <div className={styles.developerInfoCardContainer}>
                         {[
                             <DeveloperInfoCard />,
