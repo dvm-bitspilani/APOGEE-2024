@@ -1,0 +1,30 @@
+.developerInfoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  .developerPhoto {
+    flex: 5;
+    position: relative;
+    img {
+      position: absolute;
+      width: 100%;
+    }
+    img:nth-child(1) {
+      width: 92%;
+      top: 4%;
+      left: 4%;
+    }
+  }
+  .developerName {
+    flex: 1;
+    font-size: 2px;
+    font-size: 2vh;
+    overflow: hidden;
+  }
+  .developerSocialMedia {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 1px;
+  }
+}
