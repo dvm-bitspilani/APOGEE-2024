@@ -1,12 +1,27 @@
 import { motion } from "framer-motion";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlitch } from "react-powerglitch";
 
 import * as styles from "../styles/Developers.module.scss";
 
 export default function Developers() {
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const contentRef = useRef(null);
+
+    useEffect(() => {
+        function scrollHandler() {
+            const content = contentRef.current;
+            const scrollPercentage =
+                (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
+                68;
+            setScrollPosition(scrollPercentage);
+        }
+
+        contentRef.current.addEventListener("scroll", scrollHandler);
+    }, [])
+
     const glitch = useGlitch({
         "playMode": "always",
         "createContainers": true,
@@ -34,6 +49,7 @@ export default function Developers() {
         },
         "pulse": false
     });
+
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -193,10 +209,41 @@ export default function Developers() {
                         </div>
                     </div>
                 </div>
+                <div className={styles.scrollBar}>
+                    <img draggable={false} src="/images/outScroll.svg" alt="" />
+                    <img
+                        draggable={false}
+                        src="/images/insideScroll.svg"
+                        alt=""
+                        className={styles.inScroll}
+                        style={{ top: `${scrollPosition}%` }}
+                    />
+                </div>
                 <div
+                    ref={contentRef}
                     style={{ display: (window.innerWidth <= 700) ? 'flex' : 'none' }}
                     className={styles.mobileContent}
                 >
+                    <img
+                        draggable={false}
+                        src="/images/designMobile.png"
+                        alt="design"
+                    />
+                    <img
+                        draggable={false}
+                        src="/images/frontMobile.png"
+                        alt="frontend"
+                    />
+                    <img
+                        draggable={false}
+                        src="/images/backMobile.png"
+                        alt="backend"
+                    />
+                    <img
+                        draggable={false}
+                        src="/images/videoMobile.png"
+                        alt="video"
+                    />
                 </div>
                 <img
                     draggable={false}

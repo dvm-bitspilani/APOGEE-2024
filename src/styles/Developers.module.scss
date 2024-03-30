@@ -239,7 +239,6 @@
 
         img {
             position: absolute;
-            // right: 6px;
             right: 0.65%;
             width: 32%;
             opacity: 0;
@@ -314,7 +313,7 @@
 }
 
 .dvmLogo {
-    z-index: 2;
+    z-index: 100;
     position: absolute;
     width: 8%;
     height: auto;
@@ -405,14 +404,44 @@
 .mobileContent {
     position: fixed;
     top: 165px;
+    bottom: 53px;
     left: 50%;
     transform: translateX(-50%);
     flex-direction: column;
-    // justify-content: space-between;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     width: 80vw;
-    height: 70vh;
+    height: auto;
+    // height: 70vh;
+    gap: 20px;
     overflow-x: hidden;
     overflow-y: scroll;
+
+    img {
+        width: clamp(120px, 100%, 250px);
+        height: auto;
+        object-fit: contain;
+    }
+
+    @media screen and (max-height: 700px) {
+        top: 150px;
+    }
+}
+
+.scrollBar {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    overflow-y: hidden;
+
+    @media screen and (min-width: 700px) {
+        display: none;
+    }
+}
+
+.inScroll {
+    position: absolute;
+    left: 1px;
+    top: 68%;
 }
