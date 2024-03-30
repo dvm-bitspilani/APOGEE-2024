@@ -9,53 +9,69 @@ import DeveloperInfoCard from "../components/Developers/DeveloperInfoCard";
 import developers_info from "../assets/developers/developersInfo";
 
 export default function Developers() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const contentRef = useRef(null);
-  const [vertical, setVertical] = useState("frontend");
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const contentRef = useRef(null);
+    const [vertical, setVertical] = useState("frontend");
   const [showDialog, setshowDialog] = useState(false);
   console.log(vertical);
 
-  useEffect(() => {
-    function scrollHandler() {
-      const content = contentRef.current;
-      const scrollPercentage =
-        (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
-        68;
-      setScrollPosition(scrollPercentage);
+    const glitchIn = useGlitch({
+        playMode: "manual",
+        hideOverflow: true,
+        glitchMode: "scanline",
+        slice: {
+            count: 6,
+        },
+    });
+
+    function glitchEffect() {
+        glitchIn.startGlitch();
+        setTimeout(() => {
+            glitchIn.stopGlitch();
+        }, 1000);
     }
 
-    contentRef.current.addEventListener("scroll", scrollHandler);
-  }, []);
+    useEffect(() => {
+        function scrollHandler() {
+            const content = contentRef.current;
+            const scrollPercentage =
+                (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
+                68;
+            setScrollPosition(scrollPercentage);
+        }
 
-  const glitch = useGlitch({
-    playMode: "always",
-    createContainers: true,
-    hideOverflow: false,
-    timing: {
-      delay: 2000,
-      duration: 3500,
-      easing: "ease-in-out",
-    },
-    glitchTimeSpan: {
-      start: 0.4,
-      end: 0.7,
-    },
-    shake: {
-      velocity: 15,
-      amplitudeX: 0.01,
-      amplitudeY: 0.01,
-    },
-    slice: {
-      count: 6,
-      velocity: 15,
-      minHeight: 0.01,
-      maxHeight: 0.05,
-      hueRotate: true,
-    },
-    pulse: false,
-  });
+        contentRef.current.addEventListener("scroll", scrollHandler);
+    }, []);
 
-  const navigate = useNavigate();
+    const glitch = useGlitch({
+        playMode: "always",
+        createContainers: true,
+        hideOverflow: false,
+        timing: {
+            delay: 2000,
+            duration: 3500,
+            easing: "ease-in-out",
+        },
+        glitchTimeSpan: {
+            start: 0.4,
+            end: 0.7,
+        },
+        shake: {
+            velocity: 15,
+            amplitudeX: 0.01,
+            amplitudeY: 0.01,
+        },
+        slice: {
+            count: 6,
+            velocity: 15,
+            minHeight: 0.01,
+            maxHeight: 0.05,
+            hueRotate: true,
+        },
+        pulse: false,
+    });
+
+    const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`/`);
@@ -68,50 +84,50 @@ export default function Developers() {
     setshowDialog(!showDialog);
   };
 
-  return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: { duration: 1, ease: "easeInOut" } }}
-        transition={{ duration: 2, ease: "easeInOut" }}
-        className={styles.pageContainer}
-      >
-        <img
-          draggable={false}
-          className={styles.devPageCodes}
-          ref={glitch.ref}
-          src="/images/DevPage-Codes.png"
-          alt="dev page codes"
-          style={{ position: "fixed" }}
-        />
-        <img
-          draggable={false}
-          className={styles.lefthelm}
-          src="/images/Left helm.png"
-          alt="left helm"
-          style={{ position: "fixed" }}
-        />
-        <img
-          draggable={false}
-          className={styles.righthelm}
-          src="/images/Right helm.png"
-          alt="right helm"
-          style={{ position: "fixed" }}
-        />
-        <img
-          draggable={false}
-          className={styles.tophud}
-          src="/images/devPageTopHUD.png"
-          alt="top hud"
-        />
-        <button
-          id="ham-menu-button"
-          className={styles.hamMenuButton}
-          onClick={handleClick}
-        >
-          <span>HOME</span>
-        </button>
+    return (
+        <>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { duration: 1, ease: "easeInOut" } }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+                className={styles.pageContainer}
+            >
+                <img
+                    draggable={false}
+                    className={styles.devPageCodes}
+                    ref={glitch.ref}
+                    src="/images/DevPage-Codes.png"
+                    alt="dev page codes"
+                    style={{ position: "fixed" }}
+                />
+                <img
+                    draggable={false}
+                    className={styles.lefthelm}
+                    src="/images/Left helm.png"
+                    alt="left helm"
+                    style={{ position: "fixed" }}
+                />
+                <img
+                    draggable={false}
+                    className={styles.righthelm}
+                    src="/images/Right helm.png"
+                    alt="right helm"
+                    style={{ position: "fixed" }}
+                />
+                <img
+                    draggable={false}
+                    className={styles.tophud}
+                    src="/images/devPageTopHUD.png"
+                    alt="top hud"
+                />
+                <button
+                    id="ham-menu-button"
+                    className={styles.hamMenuButton}
+                    onClick={handleClick}
+                >
+                    <span>HOME</span>
+                </button>
 
         <div
           className={styles.arcGrid}
@@ -185,62 +201,62 @@ export default function Developers() {
               <path d="M2 54L26.5 2H136" stroke="#4DE5FD" strokeWidth="3" />
             </svg>
 
-            <svg
-              className={styles.dvmLogo}
-              viewBox="0 0 119 151"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M93.4498 15.5435L48.6679 50.5178L24.4265 33.4932V48.1121L48.6679 66.2469L81.4216 40.7102V78.8303L48.6679 103.627L14.2488 78.8303V25.9062L0 15.5435V85.307L48.6679 119.726L93.4498 85.307V15.5435Z" />
-              <path d="M118.059 -0.000274658L103.255 10.7326V91.599L48.666 133.605L0.368164 99.0009V116.211L48.666 151L118.059 96.9654V-0.000274658Z" />
-            </svg>
+                        <svg
+                            className={styles.dvmLogo}
+                            viewBox="0 0 119 151"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M93.4498 15.5435L48.6679 50.5178L24.4265 33.4932V48.1121L48.6679 66.2469L81.4216 40.7102V78.8303L48.6679 103.627L14.2488 78.8303V25.9062L0 15.5435V85.307L48.6679 119.726L93.4498 85.307V15.5435Z" />
+                            <path d="M118.059 -0.000274658L103.255 10.7326V91.599L48.666 133.605L0.368164 99.0009V116.211L48.666 151L118.059 96.9654V-0.000274658Z" />
+                        </svg>
 
-            <div className={styles.arcReacter}>
-              <img
-                draggable={false}
-                className={styles.inner}
-                src="/images/innerRing.png"
-                alt="arc reactor"
-              />
-              <img
-                draggable={false}
-                className={styles.mid}
-                src="/images/midRing.png"
-                alt="arc reactor"
-              />
-              <img
-                draggable={false}
-                className={styles.outer}
-                src="/images/outerRing.png"
-                alt="arc reactor"
-              />
-            </div>
+                        <div className={styles.arcReacter}>
+                            <img
+                                draggable={false}
+                                className={styles.inner}
+                                src="/images/innerRing.png"
+                                alt="arc reactor"
+                            />
+                            <img
+                                draggable={false}
+                                className={styles.mid}
+                                src="/images/midRing.png"
+                                alt="arc reactor"
+                            />
+                            <img
+                                draggable={false}
+                                className={styles.outer}
+                                src="/images/outerRing.png"
+                                alt="arc reactor"
+                            />
+                        </div>
 
-            <svg
-              className={styles.botLeft}
-              viewBox="0 0 136 55"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M134 1.5L109.5 53.5H0"
-                stroke="#4DE5FD"
-                strokeWidth="3"
-              />
-            </svg>
-            <svg
-              className={styles.botRight}
-              viewBox="0 0 136 55"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.5 1.5L26 53.5H135.5"
-                stroke="#4DE5FD"
-                strokeWidth="3"
-              />
-            </svg>
-          </div>
+                        <svg
+                            className={styles.botLeft}
+                            viewBox="0 0 136 55"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M134 1.5L109.5 53.5H0"
+                                stroke="#4DE5FD"
+                                strokeWidth="3"
+                            />
+                        </svg>
+                        <svg
+                            className={styles.botRight}
+                            viewBox="0 0 136 55"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M1.5 1.5L26 53.5H135.5"
+                                stroke="#4DE5FD"
+                                strokeWidth="3"
+                            />
+                        </svg>
+                    </div>
 
           <div className={styles.thirdCol}>
             <div
