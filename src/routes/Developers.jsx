@@ -12,22 +12,6 @@ export default function Developers() {
     const contentRef = useRef(null);
     const [vertical, setVertical] = useState("frontend");
 
-    const glitchIn = useGlitch({
-        playMode: "manual",
-        hideOverflow: true,
-        glitchMode: "scanline",
-        slice: {
-            count: 6,
-        },
-    });
-
-    function glitchEffect() {
-        glitchIn.startGlitch();
-        setTimeout(() => {
-            glitchIn.stopGlitch();
-        }, 1000);
-    }
-
     useEffect(() => {
         function scrollHandler() {
             const content = contentRef.current;
@@ -122,7 +106,7 @@ export default function Developers() {
                     <span>HOME</span>
                 </button>
 
-                <div className={styles.arcGrid}>
+                <div className={styles.arcGrid} style={{ opacity: '0' }}>
                     <div className={styles.firstCol}>
                         <div>
                             <img
@@ -288,7 +272,6 @@ export default function Developers() {
                     <img
                         src="./images/developersFolderBackground.svg"
                         alt="FolderBackground"
-                        ref={glitchIn.ref}
                         className={styles.folderBackground}
                     />
                     <p className={styles.verticalHeading}>FRONTEND</p>
