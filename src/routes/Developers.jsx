@@ -203,6 +203,7 @@ export default function Developers() {
             </svg>
 
             <svg
+              onClick={() => window.open("http://bits-dvm.org/", "_blank")}
               className={styles.dvmLogo}
               viewBox="0 0 119 151"
               fill="none"
@@ -341,7 +342,10 @@ export default function Developers() {
             ]}
           </div>
         </div>
-        <div className={styles.scrollBar}>
+        <div
+          className={styles.scrollBar}
+          style={showDialog == true ? { display: "none" } : {}}
+        >
           <img draggable={false} src="/images/outScroll.svg" alt="" />
           <img
             draggable={false}
@@ -356,10 +360,34 @@ export default function Developers() {
           className={styles.mobileContent}
           style={showDialog == true ? { display: "none" } : {}}
         >
-          <img draggable={false} src="/images/designMobile.png" alt="design" />
-          <img draggable={false} src="/images/frontMobile.png" alt="frontend" />
-          <img draggable={false} src="/images/backMobile.png" alt="backend" />
           <img
+            onClick={() => {
+              handleVerticalCardClick("design");
+            }}
+            draggable={false}
+            src="/images/designMobile.png"
+            alt="design"
+          />
+          <img
+            onClick={() => {
+              handleVerticalCardClick("frontend");
+            }}
+            draggable={false}
+            src="/images/frontMobile.png"
+            alt="frontend"
+          />
+          <img
+            onClick={() => {
+              handleVerticalCardClick("backend");
+            }}
+            draggable={false}
+            src="/images/backMobile.png"
+            alt="backend"
+          />
+          <img
+            onClick={() => {
+              handleVerticalCardClick("video");
+            }}
             draggable={false}
             style={{ marginBottom: "10px" }}
             src="/images/videoMobile.png"
