@@ -27,8 +27,8 @@ export default function Developers() {
         "createContainers": true,
         "hideOverflow": false,
         "timing": {
-            "delay": 3200,
-            "duration": 2000,
+            "delay": 2000,
+            "duration": 3500,
             "easing": "ease-in-out"
         },
         "glitchTimeSpan": {
