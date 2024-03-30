@@ -11,8 +11,9 @@ export default function ConstellationDetected() {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      const destination = "BITS Pilani, Pilani, Rajasthan";
-      const url = `https://www.google.com/maps/dir/${lat},${lng}/${destination}`;
+      const destination = "4rggt3, Gandhi Marg, Birla Institute of Technology and Science Area, BITS Pilani Campus, Rajasthan, 333031 ";
+      // const destination = "BITS Pilani Campus, Rajasthan";
+      const url = `https://maps.mapmyindia.com/@${lat},${lng},15z/${destination}`;
       // const newWindow = window.open(url, "_blank");
       // if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
       //   alert("Please allow popup windows to proceed to the maps.");
