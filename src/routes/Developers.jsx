@@ -312,36 +312,39 @@ export default function Developers() {
           </div>
         </div>
 
-        <div
-          className={styles.developerDialog}
-          style={showDialog == true ? {} : { display: "none" }}
-          ref={glitchIn.ref}
-        >
-          <img
-            src="./images/developersFolderBackground.svg"
-            alt="FolderBackground"
-            className={styles.folderBackground}
-          />
-          <p className={styles.verticalHeading}>{vertical}</p>
-          <p
-            className={styles.backButton}
-            onClick={handleVerticalBackButtonClick}
+        <div className={styles.developerDialogContainer}>
+          <div
+            className={styles.developerDialog}
+            style={showDialog == true ? {} : { display: "none" }}
+            // ref={glitchIn.ref}
           >
-            &lt; BACK
-          </p>
-          <div className={styles.developerInfoCardContainer}>
-            {[
-              <DeveloperInfoCard />,
-              <DeveloperInfoCard />,
-              <DeveloperInfoCard />,
-              <DeveloperInfoCard />,
-              <DeveloperInfoCard />,
-              <DeveloperInfoCard />,
-              <DeveloperInfoCard />,
-              <DeveloperInfoCard />,
-            ]}
+            <img
+              src="./images/developersFolderBackground.svg"
+              alt="FolderBackground"
+              className={styles.folderBackground}
+            />
+            <p className={styles.verticalHeading}>{vertical}</p>
+            <p
+              className={styles.backButton}
+              onClick={handleVerticalBackButtonClick}
+            >
+              &lt; BACK
+            </p>
+            <div className={styles.developerInfoCardContainer}>
+              {[
+                <DeveloperInfoCard />,
+                <DeveloperInfoCard />,
+                <DeveloperInfoCard />,
+                <DeveloperInfoCard />,
+                <DeveloperInfoCard />,
+                <DeveloperInfoCard />,
+                <DeveloperInfoCard />,
+                <DeveloperInfoCard />,
+              ]}
+            </div>
           </div>
         </div>
+
         <div
           className={styles.scrollBar}
           style={showDialog == true ? { display: "none" } : {}}

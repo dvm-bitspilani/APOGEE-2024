@@ -178,46 +178,51 @@
   overflow-x: hidden;
 }
 
-.developerDialog {
-  position: absolute;
-  height: 56%;
-  top: 58%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+.developerDialogContainer {
+  .developerDialog {
+    position: absolute;
+    height: 56%;
+    top: 58%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 
-  .folderBackground {
-    height: 100%;
-  }
+    .folderBackground {
+      height: 100%;
+      @media screen and (max-width: 700px) {
+        // display: none;
+      }
+    }
 
-  .verticalHeading {
-    width: 30%;
-    text-transform: uppercase;
-    text-align: center;
-    display: span;
-    position: relative;
-    top: -99%;
-    left: 66%;
-    font-size: 4vh;
-  }
+    .verticalHeading {
+      width: 30%;
+      text-transform: uppercase;
+      text-align: center;
+      display: span;
+      position: relative;
+      top: -99%;
+      left: 66%;
+      font-size: 4vh;
+    }
 
-  .backButton {
-    width: 10%;
-    position: relative;
-    top: -98%;
-    left: 7%;
-    font-size: 2vh;
-  }
+    .backButton {
+      width: 10%;
+      position: relative;
+      top: -98%;
+      left: 7%;
+      font-size: 2vh;
+    }
 
-  .developerInfoCardContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 12%;
-    position: relative;
-    width: 86.5%;
-    height: 68%;
-    top: -95%;
-    left: 7%;
+    .developerInfoCardContainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12%;
+      position: relative;
+      width: 86.5%;
+      height: 68%;
+      top: -95%;
+      left: 7%;
+    }
   }
 }
 
