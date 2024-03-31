@@ -295,7 +295,7 @@ p:hover{
 .constellationDetected{
   display: flex;
   transform: unset;
-  transform: translateX(-50%);
+  transform: translateX(-65%) scale(.65);
   max-height: unset;
   width: 60%;
   left: 50%;

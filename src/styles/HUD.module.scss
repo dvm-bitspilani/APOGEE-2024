@@ -78,6 +78,11 @@
   height: clamp(150px, 20vw, 210px);
   object-fit: contain;
 
+  @media screen and (max-height: 700px),
+  screen and (max-width: 1100px) {
+    height: 150px;
+  }
+
   // visibility: visible;
   // opacity: 1;
 
@@ -95,7 +100,7 @@
   position: absolute;
   top: 10px;
   left: 50%;
-  transform: translateX(-45%) translateY(-30%) scale(1.65) scaleX(1.25);
+  transform: translateX(-45%) translateY(-30%) scale(1.95);
   width: auto;
   height: 150px;
   object-fit: contain;
@@ -139,6 +144,11 @@
   // @media screen and (min-width: 1400px) {
   //   top: clamp(90px, calc(8.4vw - 7px), 154px);
   // }
+  @media screen and (max-height: 700px),
+  screen and (max-width: 1100px) {
+    top: 140px;
+    width: 150px;
+  }
 
   @media screen and (max-height: 700px) {
     top: 140px;
