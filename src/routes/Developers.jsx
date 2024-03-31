@@ -95,17 +95,17 @@ export default function Developers() {
         contentRef.current.addEventListener("scroll", scrollHandler);
     }, []);
 
-    let outerRingAngle = 0
-    let middleRingAngle = 0
-    let innerRingAngle = 60
 
-    const spin = () => {
-        gsap.fromTo(outerRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: outerRingAngle }, { rotateZ: outerRingAngle + 180, duration: 1.5 })
-        gsap.fromTo(middleRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: middleRingAngle }, { rotateZ: middleRingAngle + 120, duration: 1.5 })
-        gsap.fromTo(innerRingRef.current, { xPercent: -50, yPercent: -50, rotateZ: innerRingAngle }, { rotateZ: innerRingAngle - 60, duration: 1.5 })
-        outerRingAngle += 180
-        middleRingAngle += 120
-        innerRingAngle -= 60
+    const spinForward = () => {
+        gsap.to(outerRingRef.current, { rotateZ: 180, duration: 1.5 })
+        gsap.to(middleRingRef.current, { rotateZ: 120, duration: 1.5 })
+        gsap.to(innerRingRef.current, { rotateZ: 0, duration: 1.5 })
+    }
+
+    const spinBackward = () => {
+        gsap.to(outerRingRef.current, { rotateZ: 0, duration: 1.5 })
+        gsap.to(middleRingRef.current, { rotateZ: 0, duration: 1.5 })
+        gsap.to(innerRingRef.current, { rotateZ: 60, duration: 1.5 })
     }
 
     const navigate = useNavigate();
@@ -274,7 +274,8 @@ export default function Developers() {
                                 className={styles.mid}
                                 ref={middleRingRef}
                                 onClick={toPortfolio}
-                                onMouseEnter={spin}
+                                onMouseEnter={spinForward}
+                                onMouseLeave={spinBackward}
                                 src="/images/midRing.png"
                                 alt="arc reactor"
                             />
