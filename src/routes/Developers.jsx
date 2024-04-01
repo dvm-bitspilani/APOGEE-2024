@@ -393,6 +393,7 @@ export default function Developers() {
         >
           <div className={styles.glitchContainer}></div>
           <img
+            draggable={false}
             src="./images/Developers/LongFolderBackground.png"
             alt="FolderBackground"
             className={styles.folderBackground}
