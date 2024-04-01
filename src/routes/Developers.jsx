@@ -17,6 +17,7 @@ export default function Developers() {
   const innerRingRef = useRef(null);
   const middleRingRef = useRef(null);
   const outerRingRef = useRef(null);
+  const glowRef = useRef(null);
 
   const [vertical, setVertical] = useState("frontend");
   const [showDialog, setshowDialog] = useState(false);
@@ -110,24 +111,32 @@ export default function Developers() {
     gsap.to(outerRingRef.current, {
       rotateZ: 180,
       duration: 1,
-      ease: "power1.in",
+      // ease: "power1.out",
     });
     gsap.to(middleRingRef.current, {
-      rotateZ: 120,
-      duration: 1,
-      ease: "power1.in",
-    });
-    gsap.to(innerRingRef.current, {
       rotateZ: 0,
       duration: 1,
-      ease: "power1.in",
+      // ease: "power1.out",
+    });
+    gsap.to(innerRingRef.current, {
+      rotateZ: 120,
+      duration: 1,
+      // ease: "power1.out",
+    });
+    gsap.to(glowRef.current, {
+      opacity: 0.3,
+      duration: 0.5,
     });
   };
 
   const spinBackward = () => {
     gsap.to(outerRingRef.current, { rotateZ: 0, duration: 1 });
-    gsap.to(middleRingRef.current, { rotateZ: 0, duration: 1 });
-    gsap.to(innerRingRef.current, { rotateZ: 60, duration: 1 });
+    gsap.to(middleRingRef.current, { rotateZ: 150, duration: 1 });
+    gsap.to(innerRingRef.current, { rotateZ: 0, duration: 1 });
+    gsap.to(glowRef.current, {
+      opacity: 0,
+      duration: 0.5,
+    });
   };
 
   const navigate = useNavigate();
@@ -277,6 +286,7 @@ export default function Developers() {
             </svg>
 
             <div className={styles.arcReacter}>
+              <div className={styles.glowContainer} ref={glowRef}></div>
               <img
                 draggable={false}
                 className={styles.inner}

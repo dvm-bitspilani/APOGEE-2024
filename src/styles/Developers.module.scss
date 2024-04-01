@@ -351,6 +351,19 @@
     left: 50%;
     top: 50%;
   }
+  .glowContainer {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0px 0px 100px 110px #4fcbe3;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+  }
 
   .outer {
     width: 27%;
