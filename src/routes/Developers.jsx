@@ -400,7 +400,6 @@ export default function Developers() {
           }
           ref={glitchIn.ref}
         >
-          <div className={styles.glitchContainer}></div>
           <img
             draggable={false}
             src="./images/Developers/LongFolderBackground.png"

@@ -24,7 +24,6 @@
     display: flex;
     align-items: center;
     flex: 1;
-    font-size: 2px;
     font-size: 1.75vh;
     text-transform: uppercase;
     white-space: nowrap;
@@ -35,5 +34,11 @@
     justify-content: center;
     padding: 0px 1px;
     gap: 20px;
+  }
+  @media screen and (max-width: 800px) {
+    height: 200px;
+    .developerName {
+      font-size: 20px;
+    }
   }
 }
