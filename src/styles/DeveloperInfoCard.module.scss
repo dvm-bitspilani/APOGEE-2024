@@ -3,15 +3,18 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+
   .developerPhoto {
     flex: 5;
     position: relative;
+
     img {
       position: absolute;
       height: 100%;
       left: 50%;
       transform: translateX(-50%);
     }
+
     img:nth-child(1) {
       height: 92%;
       top: 4%;
@@ -20,6 +23,7 @@
       transform: translateX(-50%);
     }
   }
+
   .developerName {
     display: flex;
     align-items: center;
@@ -28,6 +32,7 @@
     text-transform: uppercase;
     white-space: nowrap;
   }
+
   .developerSocialMedia {
     flex: 1;
     display: flex;
@@ -35,8 +40,10 @@
     padding: 0px 1px;
     gap: 20px;
   }
+
   @media screen and (max-width: 800px) {
     height: 200px;
+
     .developerName {
       font-size: 20px;
     }
