@@ -124,8 +124,10 @@ export default function Developers() {
       // ease: "power1.out",
     });
     gsap.to(glowRef.current, {
-      opacity: 0.3,
-      duration: 0.5,
+      // opacity: 0.3,
+      // duration: 0.5,
+      filter: 'drop-shadow(0 0 5px #4fcbe3)',
+      duration: 0.5
     });
   };
 
@@ -134,8 +136,10 @@ export default function Developers() {
     gsap.to(middleRingRef.current, { rotateZ: 150, duration: 1 });
     gsap.to(innerRingRef.current, { rotateZ: 0, duration: 1 });
     gsap.to(glowRef.current, {
-      opacity: 0,
-      duration: 0.5,
+      // opacity: 0,
+      // duration: 0.5,
+      filter: 'drop-shadow(0 0 0px #4fcbe3)',
+      duration: 0.5
     });
   };
 
@@ -277,6 +281,7 @@ export default function Developers() {
 
             <svg
               className={styles.dvmLogo}
+              ref={glowRef}
               viewBox="0 0 119 151"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -286,7 +291,7 @@ export default function Developers() {
             </svg>
 
             <div className={styles.arcReacter}>
-              <div className={styles.glowContainer} ref={glowRef}></div>
+              {/* <div className={styles.glowContainer} ref={glowRef}></div> */}
               <img
                 draggable={false}
                 className={styles.inner}
