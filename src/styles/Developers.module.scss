@@ -73,8 +73,7 @@
   // height: 5vw;
   object-fit: contain;
 
-  @media screen and (max-height: 700px),
-  screen and (max-width: 1100px) {
+  @media screen and (max-height: 700px), screen and (max-width: 1100px) {
     top: 6px;
     height: 40px;
   }
@@ -132,8 +131,7 @@
     padding-inline: 0.5rem;
     transition: all 0.2s ease-in-out;
 
-    @media screen and (max-height: 700px),
-    screen and (max-width: 600px) {
+    @media screen and (max-height: 700px), screen and (max-width: 600px) {
       font-size: 0.7rem;
     }
   }
@@ -183,11 +181,11 @@
 .developerDialog {
   position: absolute;
   height: 56%;
-  // top: 58%;
-  // left: 50%;
-  // transform: translateX(-50%) translateY(-50%);
-  top: 28%;
-  left: 31%;
+  top: 58%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  // top: 28%;
+  // left: 31%;
 
   .folderBackground {
     height: 100%;
