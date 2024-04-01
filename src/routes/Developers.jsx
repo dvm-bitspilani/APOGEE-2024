@@ -55,12 +55,12 @@ export default function Developers() {
     hideOverflow: false,
     timing: {
       delay: 2000,
-      duration: 3500,
+      duration: 9000,
       easing: "ease-in-out",
     },
     glitchTimeSpan: {
-      start: 0.4,
-      end: 0.7,
+      start: 0.1,
+      end: 0.2,
     },
     shake: {
       velocity: 15,
