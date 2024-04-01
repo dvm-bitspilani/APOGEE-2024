@@ -180,46 +180,52 @@
 
 .developerDialog {
   position: absolute;
-  height: 56%;
-  top: 58%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  height: 50vh;
+  width: 50vw;
+  top: 33vh;
+  left: 25vw;
+  border: solid red 2px;
+  // transform: translateX(-50%) translateY(-50%);
   // top: 28%;
   // left: 31%;
+  @media screen and (max-width: 1700px) {
+    width: 60vw;
+    left: 20vw;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 90vw;
+    left: 5vw;
+  }
 
   .folderBackground {
+    position: absolute;
     height: 100%;
+    width: 100%;
   }
 
   .verticalHeading {
-    width: 30%;
-    text-transform: uppercase;
-    text-align: center;
-    display: span;
-    position: relative;
-    top: -99%;
-    left: 66%;
+    position: absolute;
+    width: 40%;
+    right: 0;
+    top: 5px;
     font-size: 4vh;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   .backButton {
+    position: absolute;
+    top: 10%;
+    left: 60px;
     width: 10%;
-    position: relative;
-    top: -98%;
-    left: 7%;
     font-size: 2vh;
   }
 
   .developerInfoCardContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 12%;
-    position: relative;
-    width: 86.5%;
-    height: 68%;
-    top: -95%;
-    left: 7%;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    display: none;
   }
 }
 

@@ -108,15 +108,27 @@ export default function Developers() {
   }, []);
 
   const spinForward = () => {
-    gsap.to(outerRingRef.current, { rotateZ: 180, duration: 1.5 });
-    gsap.to(middleRingRef.current, { rotateZ: 120, duration: 1.5 });
-    gsap.to(innerRingRef.current, { rotateZ: 0, duration: 1.5 });
+    gsap.to(outerRingRef.current, {
+      rotateZ: 180,
+      duration: 1,
+      ease: "power1.in",
+    });
+    gsap.to(middleRingRef.current, {
+      rotateZ: 120,
+      duration: 1,
+      ease: "power1.in",
+    });
+    gsap.to(innerRingRef.current, {
+      rotateZ: 0,
+      duration: 1,
+      ease: "power1.in",
+    });
   };
 
   const spinBackward = () => {
-    gsap.to(outerRingRef.current, { rotateZ: 0, duration: 1.5 });
-    gsap.to(middleRingRef.current, { rotateZ: 0, duration: 1.5 });
-    gsap.to(innerRingRef.current, { rotateZ: 60, duration: 1.5 });
+    gsap.to(outerRingRef.current, { rotateZ: 0, duration: 1 });
+    gsap.to(middleRingRef.current, { rotateZ: 0, duration: 1 });
+    gsap.to(innerRingRef.current, { rotateZ: 60, duration: 1 });
   };
 
   const navigate = useNavigate();
@@ -132,7 +144,7 @@ export default function Developers() {
   const handleVerticalCardClick = (vertical) => {
     setshowDialog(!showDialog);
     setVertical(vertical);
-    // glitchIn.startGlitch();
+    glitchIn.startGlitch();
   };
   const handleVerticalBackButtonClick = () => {
     setshowDialog(!showDialog);
@@ -377,10 +389,11 @@ export default function Developers() {
               ? { zIndex: "2", opacity: "1" }
               : { zIndex: "0", opacity: "0" }
           }
-          //   ref={glitchIn.ref}
+          ref={glitchIn.ref}
         >
+          <div className={styles.glitchContainer}></div>
           <img
-            src="./images/developersFolderBackground.svg"
+            src="./images/Developers/LongFolderBackground.png"
             alt="FolderBackground"
             className={styles.folderBackground}
           />
@@ -391,10 +404,7 @@ export default function Developers() {
           >
             &lt; BACK
           </p>
-          <div
-            className={styles.developerInfoCardContainer}
-            style={{ display: "none" }}
-          >
+          <div className={styles.developerInfoCardContainer}>
             {[
               <DeveloperInfoCard key={1} />,
               <DeveloperInfoCard key={2} />,
@@ -407,7 +417,10 @@ export default function Developers() {
             ]}
           </div>
         </div>
-        <div className={styles.scrollBar}>
+        <div
+          className={styles.scrollBar}
+          style={showDialog == true ? { display: "none" } : {}}
+        >
           <img draggable={false} src="/images/outScroll.svg" alt="" />
           <img
             draggable={false}
