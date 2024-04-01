@@ -3,13 +3,9 @@ const developers_info = {
     {
       img: "",
       name: "",
-      socials: {
-        
-      }
+      socials: {},
     },
-    {
-
-    }
+    {},
   ],
   backend: [],
   design: [],
