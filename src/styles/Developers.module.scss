@@ -216,16 +216,22 @@
   .backButton {
     position: absolute;
     top: 10%;
-    left: 60px;
+    left: 5%;
     width: 10%;
     font-size: 2vh;
   }
 
   .developerInfoCardContainer {
+    justify-content: center;
     display: flex;
-    flex-wrap: wrap;
+    gap: 20px;
     position: absolute;
-    display: none;
+    border: red solid 2px;
+    top: 17%;
+    left: 4.5%;
+    height: 75%;
+    width: 88%;
+    flex-wrap: wrap;
   }
 }
 

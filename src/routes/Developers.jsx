@@ -20,14 +20,13 @@ export default function Developers() {
 
   const [vertical, setVertical] = useState("frontend");
   const [showDialog, setshowDialog] = useState(false);
-  console.log(vertical);
 
   const glitchIn = useGlitch({
     playMode: "manual",
     createContainers: true,
     hideOverflow: false,
     timing: {
-      duration: 500,
+      duration: 300,
       iterations: 1,
     },
     glitchTimeSpan: {

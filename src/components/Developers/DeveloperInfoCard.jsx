@@ -10,7 +10,7 @@ const DeveloperInfoCard = () => {
           alt="DevelopersPhotoBorder"
         />
       </div>
-      <p className={styles.developerName}>Ankit Khatua</p>
+      <p className={styles.developerName}>bit long dummy name</p>
       <div className={styles.developerSocialMedia}>
         <img src="./images/Developers/Behance.svg" alt="Behance" />
         <img src="./images/Developers/Behance.svg" alt="Behance" />
