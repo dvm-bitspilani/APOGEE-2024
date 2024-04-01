@@ -184,10 +184,6 @@
   width: 50vw;
   top: 33vh;
   left: 25vw;
-  border: solid red 2px;
-  // transform: translateX(-50%) translateY(-50%);
-  // top: 28%;
-  // left: 31%;
   @media screen and (max-width: 1700px) {
     width: 60vw;
     left: 20vw;
@@ -226,7 +222,6 @@
     display: flex;
     gap: 20px;
     position: absolute;
-    border: red solid 2px;
     top: 17%;
     left: 4.5%;
     height: 75%;
@@ -244,6 +239,7 @@
     .verticalHeading {
       top: 145px;
       left: 50%;
+      width: 100%;
       transform: translateX(-50%);
     }
     .backButton {
