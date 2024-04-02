@@ -103,9 +103,8 @@ export default function Sponsors() {
         <div className={styles.sponsorContainer}>
           <div className={styles.firstRow}>{sponsorCards[0]}</div>
           <div className={styles.secondRow}>{sponsorCards[1]}</div>
-          <div className={styles.remainingRows}>
-            {sponsorCards.splice(2, sponsorCards.length - 2)}
-          </div>
+          <div className={styles.thirdRow}>{[sponsorCards[2], sponsorCards[3]]}</div>
+          <div className={styles.remainingRows}>{sponsorCards.splice(4, sponsorCards.length - 2)}</div>
         </div>
       </div>
     </motion.div>

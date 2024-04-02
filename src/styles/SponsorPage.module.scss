@@ -182,6 +182,7 @@
 
 .firstRow,
 .secondRow,
+.thirdRow,
 .remainingRows {
     display: flex;
     justify-content: center;
@@ -191,6 +192,12 @@
             text-align: center;
         }
     }
+}
+
+.thirdRow {
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .remainingRows {
