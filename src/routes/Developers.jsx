@@ -18,6 +18,7 @@ export default function Developers() {
   const middleRingRef = useRef(null);
   const outerRingRef = useRef(null);
   const glowRef = useRef(null);
+  const homeRef = useRef(null);
 
   const [vertical, setVertical] = useState("frontend");
   const [showDialog, setshowDialog] = useState(false);
@@ -146,20 +147,55 @@ export default function Developers() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/`);
+    showDialog ? handleVerticalBackButtonClick() : navigate(`/`);
   };
 
   const toPortfolio = () => {
     window.open("https://bits-dvm.org/index.html", "_blank");
   };
 
+  function glitchText(newText) {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    let interval = null;
+
+    let i = 0;
+
+    clearInterval(interval)
+
+    interval = setInterval(() => {
+      homeRef.current.innerText = homeRef.current.innerText.split("").map((letter, index) => {
+        if (index < i) {
+          return newText[index];
+        }
+
+        return letters[Math.floor(Math.random() * 26)]
+      }).join("")
+
+      if (i >= newText.length) {
+        clearInterval(interval)
+      }
+
+      i += 1 / 3;
+    }, 30)
+  }
+
   const handleVerticalCardClick = (vertical) => {
     setshowDialog(!showDialog);
     setVertical(vertical);
     glitchIn.startGlitch();
+
+    if (window.innerWidth < 800) {
+      glitchText("BACK")
+    }
   };
+
   const handleVerticalBackButtonClick = () => {
     setshowDialog(!showDialog);
+
+    if (window.innerWidth < 800) {
+      glitchText("HOME")
+    }
   };
 
   return (
@@ -204,7 +240,7 @@ export default function Developers() {
           className={styles.hamMenuButton}
           onClick={handleClick}
         >
-          <span>HOME</span>
+          <span ref={homeRef} valueData={showDialog && window.innerWidth < 800 ? "BACK" : "HOME"}>{showDialog && window.innerWidth < 800 ? "BACK" : "HOME"}</span>
         </button>
 
         <div
@@ -412,12 +448,6 @@ export default function Developers() {
             className={styles.folderBackground}
           />
           <p className={styles.verticalHeading}>{vertical}</p>
-          <p
-            className={styles.backButton}
-            onClick={handleVerticalBackButtonClick}
-          >
-            &lt; BACK
-          </p>
           <div className={styles.developerInfoCardContainer}>
             {[
               <DeveloperInfoCard key={1} />,
