@@ -448,6 +448,13 @@ export default function Developers() {
             className={styles.folderBackground}
           />
           <p className={styles.verticalHeading}>{vertical}</p>
+          <p
+            className={styles.backButton}
+            onClick={handleVerticalBackButtonClick}
+            style={window.innerWidth > 800 ? {} : { display: 'none' }}
+          >
+            &lt; BACK
+          </p>
           <div className={styles.developerInfoCardContainer}>
             {[
               <DeveloperInfoCard key={1} />,
