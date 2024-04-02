@@ -26,7 +26,7 @@ export default function Constelation() {
   }
 
   function navigateToMedia() {
-    navigate("/media_partners");
+    navigate("/media-partners");
   }
 
     function handleRulebookClick(){
