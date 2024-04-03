@@ -75,7 +75,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: auto;
-  height: clamp(150px, 20vw, 210px);
+  height: clamp(230px, 26vw, 245px);
   object-fit: contain;
 
   @media screen and (max-height: 700px),
@@ -100,14 +100,14 @@
   position: absolute;
   top: 10px;
   left: 50%;
-  transform: translateX(-45%) translateY(-30%) scale(1.95);
+  transform: translateX(-45%) translateY(-20%) scale(1.85) scaleX(1.2);
   width: auto;
   height: 150px;
   object-fit: contain;
 
   @media screen and (max-height: 700px),
   screen and (max-width: 1100px) {
-    top: 15px;
+    top: 5px;
     height: 100px;
   }
 }
@@ -129,7 +129,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: clamp(139px, calc(19.3vw - 7px), 196px);
+  top: clamp(139px, calc(19.3vw - 7px), 220px);
   pointer-events: all;
 
   display: flex;
