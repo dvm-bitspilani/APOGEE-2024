@@ -16,6 +16,9 @@ import rahul from "./Dev Assets/rahul.jpg";
 import manish from "./Dev Assets/manish.jpg";
 import srinivasa from "./Dev Assets/srinivasa.jpeg";
 import tarun from "./Dev Assets/tarun.jpeg";
+import shiva from "./Dev Assets/shiva.jpg";
+import sundar from "./Dev Assets/sundar.jpeg";
+import satyam from "./Dev Assets/satyam.jpg"
 
 const developers_info = {
   frontend: [
@@ -32,7 +35,7 @@ const developers_info = {
       id: 3,
       name: "Bharat Raj Singal",
       image: bharat,
-      linkedin: "https://www.linkedin.com/in/bharatrajsingal000/",
+      linkedin: "https://github.com/evilmortysmith",
       github: "https://github.com/GeekWolf007",
       instagram: "https://www.instagram.com/bharatrajsingal/",
       behance: "",
@@ -191,6 +194,35 @@ const developers_info = {
         "https://www.linkedin.com/in/tarun-s-055967261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       github: "",
       instagram: "https://www.instagram.com/natrunyx/",
+      behance: "",
+    },
+    {
+      id: 6,
+      name: "Shiva Adithya",
+      image: shiva,
+      linkedin:
+        "https://www.linkedin.com/in/shiva-adithya-555205254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      github: "",
+      instagram: "",
+      behance: "",
+    },
+    {
+      id: 7,
+      name: "Sundar Matu",
+      image: sundar,
+      linkedin: "",
+      github: "https://github.com/radnus321",
+      instagram: "https://www.instagram.com/s.u.n.d.a.rrrr/",
+      behance: "",
+    },
+    {
+      id: 8,
+      name: "Satyam",
+      image: satyam,
+      linkedin: "www.linkedin.com/in/satyam-811543275",
+      github: "https://github.com/Satyamk33",
+      instagram:
+        "https://www.instagram.com/satyam_1664._?igsh=MXY5NmpiNDFpZnZ0NA==",
       behance: "",
     },
   ],
