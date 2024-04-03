@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { Register_bg_svg } from "./RegEventsSection";
 
 import apogee from "@assets/landing/apogee_logo.png";
-import apogeeNew from "../../../public/images/logo-new.png";
+import apogeeNew from "../../../public/images/APOGEE-new.png";
 import Countdown from "./Countdown";
 import { CrossHairCursor } from "./CrossHairCursor";
 // import ContactHUD from "../Contact/ContactHUD";
@@ -24,6 +24,7 @@ import { useSnapshot } from "valtio";
 import { useNavigate } from "react-router-dom";
 
 export function Hud() {
+  const snap = useSnapshot(state);
   return (
     <>
       <img
@@ -46,6 +47,11 @@ export function Hud() {
           className={styles.tophud}
           src="/images/top-hud-new.png"
           alt="top hud"
+          style={
+            snap.targetSection === 1 || snap.targetSection === 4
+              ? { transform: "translateY(-20%) translateX(-50%)" }
+              : { transform: "translateY(0) translateX(-50%)" }
+          }
         />
         {/* <TopHUD /> */}
         <img

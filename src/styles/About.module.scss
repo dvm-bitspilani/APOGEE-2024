@@ -18,7 +18,7 @@
 
 h1.title {
   position: absolute;
-  top: 1.5vw;
+  top: 1vw;
   left: 50%;
   transform: translateX(-50%) translateY(50%);
   width: auto;
@@ -29,7 +29,7 @@ h1.title {
   opacity: 0;
 
   @media screen and (max-height: 700px), screen and (max-width: 1100px) {
-    top: 15px;
+    top: 0px;
     font-size: 1.3rem;
   }
 }
