@@ -20,6 +20,11 @@ export function HamMenuButton() {
       id="ham-menu-button"
       className={styles.hamMenuButton}
       onClick={handleClick}
+      style={
+        snap.targetSection === 1 || snap.targetSection === 4
+          ? { transform: "translateY(-55%) translateX(-50%)" }
+          : { transform: "translateY(0) translateX(-50%)" }
+      }
     >
       {/* <HamIcon /> */}
       <span>Menu</span>
