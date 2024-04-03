@@ -6,8 +6,9 @@ import Events from "@routes/Events.jsx";
 import CategoryEvents from "@routes/CategoryEvents.jsx";
 import Speakers from "./routes/Speakers";
 import ComingSoon from "@routes/ComingSoon.jsx";
-import Media_Partners from "@routes/Media_Partners.jsx";
+import MediaPartners from "@routes/Media-Partners.jsx";
 import Sponsors from "@routes/Sponsors.jsx";
+import Developers from "@routes/Developers.jsx";
 
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
@@ -32,8 +33,9 @@ export default function AnimationWrapper() {
         <Route path="/events/:category" element={<CategoryEvents />} />
         <Route path="/speakers" element={<Speakers />} />
         <Route path="/armageddon" element={<Armageddon />} />
-        <Route path="/media_partners" element={<Media_Partners />} />
+        <Route path="/media-partners" element={<MediaPartners />} />
         <Route path="/sponsors" element={<Sponsors />} />
+        <Route path="/developers" element={<Developers />} />
         <Route path="/quantaculus" element={<Quantaculus />} />
         <Route path="/quantaculus/submitted" element={<QuantaculusSubmitted />} />
         <Route path="/*" element={<ComingSoon />} />
