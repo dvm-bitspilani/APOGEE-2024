@@ -127,8 +127,8 @@ export default function Developers() {
     gsap.to(glowRef.current, {
       // opacity: 0.3,
       // duration: 0.5,
-      filter: 'drop-shadow(0 0 5px #4fcbe3)',
-      duration: 0.5
+      filter: "drop-shadow(0 0 5px #4fcbe3)",
+      duration: 0.5,
     });
   };
 
@@ -139,8 +139,8 @@ export default function Developers() {
     gsap.to(glowRef.current, {
       // opacity: 0,
       // duration: 0.5,
-      filter: 'drop-shadow(0 0 0px #4fcbe3)',
-      duration: 0.5
+      filter: "drop-shadow(0 0 0px #4fcbe3)",
+      duration: 0.5,
     });
   };
 
@@ -161,23 +161,26 @@ export default function Developers() {
 
     let i = 0;
 
-    clearInterval(interval)
+    clearInterval(interval);
 
     interval = setInterval(() => {
-      homeRef.current.innerText = homeRef.current.innerText.split("").map((letter, index) => {
-        if (index < i) {
-          return newText[index];
-        }
+      homeRef.current.innerText = homeRef.current.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < i) {
+            return newText[index];
+          }
 
-        return letters[Math.floor(Math.random() * 26)]
-      }).join("")
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
 
       if (i >= newText.length) {
-        clearInterval(interval)
+        clearInterval(interval);
       }
 
       i += 1 / 3;
-    }, 30)
+    }, 30);
   }
 
   const handleVerticalCardClick = (vertical) => {
@@ -186,7 +189,7 @@ export default function Developers() {
     glitchIn.startGlitch();
 
     if (window.innerWidth < 800) {
-      glitchText("BACK")
+      glitchText("BACK");
     }
   };
 
@@ -194,7 +197,7 @@ export default function Developers() {
     setshowDialog(!showDialog);
 
     if (window.innerWidth < 800) {
-      glitchText("HOME")
+      glitchText("HOME");
     }
   };
 
@@ -240,7 +243,12 @@ export default function Developers() {
           className={styles.hamMenuButton}
           onClick={handleClick}
         >
-          <span ref={homeRef} valueData={showDialog && window.innerWidth < 800 ? "BACK" : "HOME"}>{showDialog && window.innerWidth < 800 ? "BACK" : "HOME"}</span>
+          <span
+            ref={homeRef}
+            valueData={showDialog && window.innerWidth < 800 ? "BACK" : "HOME"}
+          >
+            {showDialog && window.innerWidth < 800 ? "BACK" : "HOME"}
+          </span>
         </button>
 
         <div
@@ -451,21 +459,19 @@ export default function Developers() {
           <p
             className={styles.backButton}
             onClick={handleVerticalBackButtonClick}
-            style={window.innerWidth > 800 ? {} : { display: 'none' }}
+            style={window.innerWidth > 800 ? {} : { display: "none" }}
           >
             &lt; BACK
           </p>
           <div className={styles.developerInfoCardContainer}>
-            {[
-              <DeveloperInfoCard key={1} />,
-              <DeveloperInfoCard key={2} />,
-              <DeveloperInfoCard key={3} />,
-              <DeveloperInfoCard key={4} />,
-              <DeveloperInfoCard key={5} />,
-              <DeveloperInfoCard key={6} />,
-              <DeveloperInfoCard key={7} />,
-              <DeveloperInfoCard key={8} />,
-            ]}
+            {developers_info[vertical].map((person) => {
+              return (
+                <DeveloperInfoCard
+                  key={person.id}
+                  {...person}
+                ></DeveloperInfoCard>
+              );
+            })}
           </div>
         </div>
         <div
