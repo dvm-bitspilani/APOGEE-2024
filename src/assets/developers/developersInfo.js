@@ -1,8 +1,21 @@
-import ritik from "./Dev Assets/ritikDev.jpg";
+import ritik from "./Dev Assets/ritik.png";
 import luv from "./Dev Assets/luv.jpg";
 import bharat from "./Dev Assets/bharat.jpg";
 import shreyas from "./Dev Assets/shreyas.jpg";
 import akshit from "./Dev Assets/akshitDVM.jpg";
+import himanshu from "./Dev Assets/himanshu.jpeg";
+import gurekas from "./Dev Assets/gurekas.jpg";
+import raj from "./Dev Assets/clerk.jpg";
+import rakshit from "./Dev Assets/sakhuja.jpg";
+import praneel from "./Dev Assets/praneelDVM.jpg";
+import sunpreet from "./Dev Assets/sunpreet.jpeg";
+import nabisha from "./Dev Assets/nabisha.jpg";
+import trehan from "./Dev Assets/trehan.jpg";
+import dhruv from "./Dev Assets/dhruv.jpg";
+import rahul from "./Dev Assets/rahul.jpg";
+import manish from "./Dev Assets/manish.jpg";
+import srinivasa from "./Dev Assets/srinivasa.jpeg";
+import tarun from "./Dev Assets/tarun.jpeg";
 
 const developers_info = {
   frontend: [
@@ -52,136 +65,135 @@ const developers_info = {
       behance: "",
     },
   ],
-  // backend: [
-  //   {
-  //     id: 1,
-  //     name: "Gurekas Singh Sahney",
-  //     image: gurekas,
-  //     linkedin: "https://www.linkedin.com/in/gurekas/",
-  //     github: "https://github.com/string-eureka",
-  //     instagram: "https://www.instagram.com/singh.eureka/",
-  //     behance: "",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Himanshu Kumar",
-  //     image: himanshu,
-  //     linkedin: "https://www.linkedin.com/in/himanshu-kumar-679ab31b0",
-  //     github: "https://github.com/Zendovo",
-  //     instagram: "https://instagram.com/himanshuuuk",
-  //     behance: "",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "RaCl",
-  //     image: raj,
-  //     linkedin: "https://www.linkedin.com/in/rajclerk",
-  //     github: "https://www.github.com/itsRaCl",
-  //     instagram: "https://www.instagram.com/its_RaCl/",
-  //     behance: "",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Rakshit Sakhuja",
-  //     image: rakshit,
-  //     linkedin: "https://www.linkedin.com/in/rakshit-sakhuja-61ab00138",
-  //     github: "https://github.com/Rakshit2622",
-  //     instagram: "https://instagram.com/rakshit2622?igshid=OGQ5ZDc2ODk2ZA==",
-  //     behance: "",
-  //   },
-  // ],
-  // design: [
-  //   {
-  //     id: 1,
-  //     name: "Praneel Maddula",
-  //     image: praneel,
-  //     linkedin: "https://www.linkedin.com/in/praneel-maddula-409421261/",
-  //     github: "",
-  //     instagram: "https://instagram.com/praneel710?igshid=MmU2YjMzNjRlOQ==",
-  //     behance: "https://www.behance.net/praneelmaddula",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Arnav Trehan",
-  //     image: trehan,
-  //     linkedin: "https://www.linkedin.com/in/arnavtrehan/",
-  //     github: "",
-  //     instagram: "https://www.instagram.com/arnavtrehan3370/",
-  //     behance: "https://www.behance.net/arnavtrehan",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Nabisha Obaid",
-  //     image: nabisha,
-  //     linkedin: "https://www.linkedin.com/in/nabisha-obaid-19175a264",
-  //     github: "",
-  //     instagram: "https://instagram.com/ ?igshid=OGQ5ZDc2ODk2ZA==",
-  //     behance: "https://www.behance.net/nabishaobaid2",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Sunpreet Brar",
-  //     image: sunpreet,
-  //     linkedin: "https://www.linkedin.com/in/sunpreet-brar-a7806a251",
-  //     github: "",
-  //     instagram:
-  //       "https://instagram.com/sunpreetbrar?utm_source=qr&igshid=OGIxMTE0OTdkZA==",
-  //     behance: "https://dribbble.com/sunpreetbrar",
-  //   },
-  // ],
-  // video: [
-  //   {
-  //     id: 1,
-  //     name: "Dhruv Verma",
-  //     image: dhruv,
-  //     linkedin:
-  //       "https://www.linkedin.com/in/dhruv-verma-70582a249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-  //     github: "",
-  //     instagram: "https://instagram.com/dverma._?igshid=YTQwZjQ0NmI0OA==",
-  //     behance: "",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Rahul Gupta",
-  //     image: rahul,
-  //     linkedin: "https://www.linkedin.com/in/rahul-gupta-234446208",
-  //     github: "",
-  //     instagram: "https://instagram.com/rahulg7888?igshid=MzMyNGUyNmU2YQ==",
-  //     behance: "",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Manish goyal",
-  //     image: manish,
-  //     linkedin:
-  //       "https://www.linkedin.com/in/manish-goyal-30b884240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-  //     github: "",
-  //     instagram: "https://instagram.com/manishgoyal.__?igshid=YTQwZjQ0NmI0OA==",
-  //     behance: "",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Srinivasa",
-  //     image: srinivasa,
-  //     linkedin:
-  //       "https://www.linkedin.com/in/srinivasa-shankar-b1662524b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-  //     github: "",
-  //     instagram:
-  //       "https://instagram.com/sri_ni_vas16?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr",
-  //     behance: "",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Tarun S",
-  //     image: tarun,
-  //     linkedin:
-  //       "https://www.linkedin.com/in/tarun-s-055967261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-  //     github: "",
-  //     instagram: "https://www.instagram.com/natrunyx/",
-  //     behance: "",
-  //   },
-  // ],
+  backend: [
+    {
+      id: 1,
+      name: "Gurekas Singh Sahney",
+      image: gurekas,
+      linkedin: "https://www.linkedin.com/in/gurekas/",
+      github: "https://github.com/string-eureka",
+      instagram: "https://www.instagram.com/singh.eureka/",
+      behance: "",
+    },
+    {
+      id: 2,
+      name: "Himanshu Kumar",
+      image: himanshu,
+      linkedin: "https://www.linkedin.com/in/himanshu-kumar-679ab31b0",
+      github: "https://github.com/Zendovo",
+      instagram: "https://instagram.com/himanshuuuk",
+      behance: "",
+    },
+    {
+      id: 3,
+      name: "RaCl",
+      image: raj,
+      linkedin: "https://www.linkedin.com/in/rajclerk",
+      github: "https://www.github.com/itsRaCl",
+      instagram: "https://www.instagram.com/its_RaCl/",
+      behance: "",
+    },
+    {
+      id: 4,
+      name: "Rakshit Sakhuja",
+      image: rakshit,
+      linkedin: "https://www.linkedin.com/in/rakshit-sakhuja-61ab00138",
+      github: "https://github.com/Rakshit2622",
+      instagram: "https://instagram.com/rakshit2622?igshid=OGQ5ZDc2ODk2ZA==",
+      behance: "",
+    },
+  ],
+  design: [
+    {
+      id: 1,
+      name: "Praneel Maddula",
+      image: praneel,
+      linkedin: "https://www.linkedin.com/in/praneel-maddula-409421261/",
+      github: "",
+      instagram: "https://instagram.com/praneel710?igshid=MmU2YjMzNjRlOQ==",
+      behance: "https://www.behance.net/praneelmaddula",
+    },
+    {
+      id: 2,
+      name: "Arnav Trehan",
+      image: trehan,
+      linkedin: "https://www.linkedin.com/in/arnavtrehan/",
+      github: "",
+      instagram: "https://www.instagram.com/arnavtrehan3370/",
+      behance: "https://www.behance.net/arnavtrehan",
+    },
+    {
+      id: 3,
+      name: "Nabisha Obaid",
+      image: nabisha,
+      linkedin: "https://www.linkedin.com/in/nabisha-obaid-19175a264",
+      github: "",
+      instagram: "https://instagram.com/ ?igshid=OGQ5ZDc2ODk2ZA==",
+      behance: "https://www.behance.net/nabishaobaid2",
+    },
+    {
+      id: 4,
+      name: "Sunpreet Brar",
+      image: sunpreet,
+      linkedin: "https://www.linkedin.com/in/sunpreet-brar-a7806a251",
+      github: "",
+      instagram:
+        "https://instagram.com/sunpreetbrar?utm_source=qr&igshid=OGIxMTE0OTdkZA==",
+      behance: "https://dribbble.com/sunpreetbrar",
+    },
+  ],
+  video: [
+    {
+      id: 1,
+      name: "Dhruv Verma",
+      image: dhruv,
+      linkedin:
+        "https://www.linkedin.com/in/dhruv-verma-70582a249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      github: "",
+      instagram: "https://instagram.com/dverma._?igshid=YTQwZjQ0NmI0OA==",
+      behance: "",
+    },
+    {
+      id: 2,
+      name: "Rahul Gupta",
+      image: rahul,
+      linkedin: "https://www.linkedin.com/in/rahul-gupta-234446208",
+      github: "",
+      instagram: "https://instagram.com/rahulg7888?igshid=MzMyNGUyNmU2YQ==",
+      behance: "",
+    },
+    {
+      id: 3,
+      name: "Manish goyal",
+      image: manish,
+      linkedin:
+        "https://www.linkedin.com/in/manish-goyal-30b884240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      github: "",
+      instagram: "https://instagram.com/manishgoyal.__?igshid=YTQwZjQ0NmI0OA==",
+      behance: "",
+    },
+    {
+      id: 4,
+      name: "Srinivasa",
+      image: srinivasa,
+      linkedin:
+        "https://www.linkedin.com/in/srinivasa-shankar-b1662524b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      github: "",
+      instagram:
+        "https://instagram.com/sri_ni_vas16?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr",
+      behance: "",
+    },
+    {
+      id: 5,
+      name: "Tarun S",
+      image: tarun,
+      linkedin:
+        "https://www.linkedin.com/in/tarun-s-055967261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      github: "",
+      instagram: "https://www.instagram.com/natrunyx/",
+      behance: "",
+    },
+  ],
 };
-// const developers_info = {};
 
 export default developers_info;
