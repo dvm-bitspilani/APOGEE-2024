@@ -69,8 +69,7 @@
   // height: 5vw;
   object-fit: contain;
 
-  @media screen and (max-height: 700px),
-  screen and (max-width: 1100px) {
+  @media screen and (max-height: 700px), screen and (max-width: 1100px) {
     top: 6px;
     height: 40px;
   }
@@ -128,8 +127,7 @@
     padding-inline: 0.5rem;
     transition: all 0.2s ease-in-out;
 
-    @media screen and (max-height: 700px),
-    screen and (max-width: 600px) {
+    @media screen and (max-height: 700px), screen and (max-width: 600px) {
       font-size: 0.7rem;
     }
   }
@@ -219,14 +217,16 @@
 
   .developerInfoCardContainer {
     justify-content: center;
+    align-items: center;
     display: flex;
-    gap: 20px;
+    gap: 40px;
     position: absolute;
     top: 17%;
     left: 4.5%;
     height: 75%;
     width: 88%;
     flex-wrap: wrap;
+    overflow: scroll;
   }
 
   @media screen and (max-width: 800px) {

@@ -1,5 +1,5 @@
 .developerInfoCard {
-  height: calc(50% - 10px);
+  height: calc(70% - 10px);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -25,10 +25,10 @@
   }
 
   .developerName {
-    display: flex;
-    align-items: center;
     flex: 1;
     font-size: 1.75vh;
+    width: 100%;
+    text-align: center;
     text-transform: uppercase;
     white-space: nowrap;
   }
