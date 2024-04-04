@@ -8,9 +8,17 @@ import { useGlitch } from "react-powerglitch";
 import * as styles from "../styles/Developers.module.scss";
 import DeveloperInfoCard from "../components/Developers/DeveloperInfoCard";
 import developers_info from "../assets/developers/developersInfo";
+import innerRing from "../../public/images/innerRing.png"
+import midRing from "../../public/images/midRing.png"
+import outerRing from "../../public/images/outerRing.png"
+import front from "../../public/images/frontendTR.png"
+import back from "../../public/images/backBL.png"
+import design from "../../public/images/designTL.png"
+import video from "../../public/images/videoBR.png"
 
 export default function Developers() {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const contentRef = useRef(null);
 
@@ -106,6 +114,29 @@ export default function Developers() {
     }
 
     contentRef.current.addEventListener("scroll", scrollHandler);
+
+    const assets = [innerRing, outerRing, midRing, front, back, design, video]
+    const loadAssets = async () => {
+      try {
+        await Promise.all(
+          assets.map(
+            (asset) =>
+              new Promise((resolve) => {
+                const img = new Image();
+                img.src = asset;
+                img.onload = resolve;
+                img.onerror = resolve; // Handling error case if the image fails to load
+              })
+          )
+        );
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error loading assets:", error);
+        setIsLoading(false); // Set isLoading to false to prevent indefinite loading in case of an error
+      }
+    };
+
+    loadAssets();
   }, []);
 
   const spinForward = () => {
@@ -203,6 +234,16 @@ export default function Developers() {
 
   return (
     <>
+      {isLoading && <div style={{
+        zIndex: '10000',
+        width: '100vw',
+        height: '100dvh',
+        fontFamily: 'Space Grotesk, sans-serif',
+        fontSize: '30rem',
+        color: '#9AF0F4',
+        textAlign: 'center',
+        filter: 'drop-shadow(0 0 2px #9AF0F4)'
+      }}>LOADING...</div>}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -264,7 +305,7 @@ export default function Developers() {
               <img
                 draggable={false}
                 className={styles.folderContent}
-                src="/images/designTL.png"
+                src={design}
                 alt="design"
               />
               <svg
@@ -288,7 +329,7 @@ export default function Developers() {
               <img
                 draggable={false}
                 className={styles.folderContent}
-                src="/images/backBL.png"
+                src={back}
                 alt="backend"
               />
               <svg
@@ -340,14 +381,14 @@ export default function Developers() {
                 draggable={false}
                 className={styles.inner}
                 ref={innerRingRef}
-                src="/images/innerRing.png"
+                src={innerRing}
                 alt="arc reactor"
               />
               <img
                 draggable={false}
                 className={styles.outer}
                 ref={outerRingRef}
-                src="/images/outerRing.png"
+                src={outerRing}
                 alt="arc reactor"
               />
               <img
@@ -357,7 +398,7 @@ export default function Developers() {
                 onClick={toPortfolio}
                 onMouseEnter={spinForward}
                 onMouseLeave={spinBackward}
-                src="/images/midRing.png"
+                src={midRing}
                 alt="arc reactor"
               />
             </div>
@@ -397,7 +438,7 @@ export default function Developers() {
               <img
                 draggable={false}
                 className={styles.folderContent}
-                src="/images/frontendTR.png"
+                src={front}
                 alt="frontend"
               />
               <svg
@@ -421,7 +462,7 @@ export default function Developers() {
               <img
                 draggable={false}
                 className={styles.folderContent}
-                src="/images/videoBR.png"
+                src={video}
                 alt="video"
               />
               <svg
