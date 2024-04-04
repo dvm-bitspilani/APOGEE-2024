@@ -45,9 +45,11 @@ export default function ContactCard({ image, dept, name, phone, email }) {
       <div className={styles.dept}>{dept}</div>
       <div className={styles.name}>{name}</div>
       <div className={styles.buttons}>
-        <button className={styles.phone} onClick={handlePhoneClick}>
-          <img src={phoneIcon} alt="" draggable="false" />
-        </button>
+        {phone && (
+          <button className={styles.phone} onClick={handlePhoneClick}>
+            <img src={phoneIcon} alt="" draggable="false" />
+          </button>
+        )}
         <button id="icon" className={styles.mail} onClick={handleEmailClick}>
           <img src={mailIcon} alt="" draggable="false" />
         </button>
