@@ -20,9 +20,6 @@ export default function Media_Partners() {
         "https://bits-apogee.org/2024/main/wallet/media_partners/"
       );
       const json = await res.json();
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
       setData(json["media_partners"]);
     };
     fetchData();
@@ -127,7 +124,7 @@ export default function Media_Partners() {
 }
 
 export function PartnerCard(props) {
-  console.log(props.icon);
+  // console.log(props.icon);
   return (
     // <a className={styles.card} href={props.link}>
     //   {props.icon && (
