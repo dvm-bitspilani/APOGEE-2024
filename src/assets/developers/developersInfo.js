@@ -105,6 +105,15 @@ const developers_info = {
       instagram: "https://instagram.com/rakshit2622?igshid=OGQ5ZDc2ODk2ZA==",
       behance: "",
     },
+    {
+      id: 5,
+      name: "Rudradatt Dave",
+      image: rakshit,
+      linkedin: "https://www.linkedin.com/in/rudradatt-dave-65896b268",
+      github: "https://github.com/xFBIx",
+      instagram: "https://instagram.com/rudradatt_2608?igshid=OGQ5ZDc2ODk2ZA==",
+      behance: "",
+    },
   ],
   design: [
     {
