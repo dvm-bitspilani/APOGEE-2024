@@ -8,7 +8,6 @@ const DeveloperInfoCard = ({
   instagram,
   behance,
 }) => {
-  console.log("hello");
   return (
     <div className={styles.developerInfoCard}>
       <div className={styles.developerPhoto}>

@@ -23,22 +23,14 @@ import rudra from "./Dev Assets/rudra.png"
 
 const developers_info = {
   frontend: [
+
     {
       id: 1,
-      name: "Ritik Chandra",
-      image: ritik,
-      linkedin: "https://www.linkedin.com/in/ritik-chandra-016ba9187/",
-      github: "https://github.com/Ritikchandra",
-      instagram: "https://instagram.com/rritikcchandra?igshid=OGQ5ZDc2ODk2ZA",
-      behance: "",
-    },
-    {
-      id: 3,
-      name: "Bharat Raj Singal",
-      image: bharat,
-      linkedin: "https://github.com/evilmortysmith",
-      github: "https://github.com/GeekWolf007",
-      instagram: "https://www.instagram.com/bharatrajsingal/",
+      name: "Shreyas Gantayet",
+      image: shreyas,
+      linkedin: "https://www.linkedin.com/in/shreyas-gantayet-4b5993280/",
+      github: "https://github.com/Y0shicon",
+      instagram: "https://www.instagram.com/shreyyas.04/",
       behance: "",
     },
     {
@@ -51,21 +43,31 @@ const developers_info = {
       behance: "",
     },
     {
-      id: 4,
-      name: "Shreyas Gantayet",
-      image: shreyas,
-      linkedin: "https://www.linkedin.com/in/shreyas-gantayet-4b5993280/",
-      github: "https://github.com/Y0shicon",
-      instagram: "https://www.instagram.com/shreyyas.04/",
+      id: 3,
+      name: "Ritik Chandra",
+      image: ritik,
+      linkedin: "https://www.linkedin.com/in/ritik-chandra-016ba9187/",
+      github: "https://github.com/Ritikchandra",
+      instagram: "https://instagram.com/rritikcchandra?igshid=OGQ5ZDc2ODk2ZA",
       behance: "",
     },
     {
-      id: 5,
+      id: 4,
       name: "Akshit Garg",
       image: akshit,
       linkedin: "https://www.linkedin.com/in/agx09",
       github: "https://github.com/AgX09",
       instagram: "https://instagram.com/_akshit__garg_?igshid=OGQ5ZDc2ODk2ZA==",
+      behance: "",
+    },
+
+    {
+      id: 5,
+      name: "Bharat Raj Singal",
+      image: bharat,
+      linkedin: "https://github.com/evilmortysmith",
+      github: "https://github.com/GeekWolf007",
+      instagram: "https://www.instagram.com/bharatrajsingal/",
       behance: "",
     },
   ],
