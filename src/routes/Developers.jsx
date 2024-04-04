@@ -488,7 +488,7 @@ export default function Developers() {
               ? { zIndex: "2", opacity: "1" }
               : { zIndex: "0", opacity: "0" }
           }
-          ref={glitchIn.ref}
+          ref={window.innerWidth > 800 && glitchIn.ref}
         >
           <img
             draggable={false}
