@@ -69,8 +69,7 @@
   // height: 5vw;
   object-fit: contain;
 
-  @media screen and (max-height: 700px),
-  screen and (max-width: 1100px) {
+  @media screen and (max-height: 700px), screen and (max-width: 1100px) {
     top: 6px;
     height: 40px;
   }
@@ -128,8 +127,7 @@
     padding-inline: 0.5rem;
     transition: all 0.2s ease-in-out;
 
-    @media screen and (max-height: 700px),
-    screen and (max-width: 600px) {
+    @media screen and (max-height: 700px), screen and (max-width: 600px) {
       font-size: 0.7rem;
     }
   }
@@ -207,6 +205,11 @@
     font-size: 4vh;
     text-align: center;
     text-transform: uppercase;
+    text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+    &:hover {
+      color: var(--primary);
+      cursor: default;
+    }
   }
 
   .backButton {
@@ -215,18 +218,25 @@
     left: 5%;
     width: 10%;
     font-size: 2vh;
+    text-shadow: 0px 0px 14.815px rgba(154, 240, 244, 0.7);
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      text-shadow: 0px 0px 14.815px var(--hover-link);
+    }
   }
 
   .developerInfoCardContainer {
     justify-content: center;
+    align-items: center;
     display: flex;
-    gap: 20px;
+    gap: 70px;
     position: absolute;
     top: 17%;
     left: 4.5%;
     height: 75%;
     width: 88%;
     flex-wrap: wrap;
+    overflow: scroll;
   }
 
   @media screen and (max-width: 800px) {
@@ -256,7 +266,9 @@
       height: auto;
       bottom: 70px;
       justify-content: space-around;
-      gap: 40px;
+      gap: 40px; 
+      left: 2%;
+      width: 95%;
     }
   }
 }
