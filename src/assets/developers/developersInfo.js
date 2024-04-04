@@ -19,6 +19,7 @@ import tarun from "./Dev Assets/tarun.png";
 import shiva from "./Dev Assets/shiva.png";
 import sundar from "./Dev Assets/sundar.png";
 import satyam from "./Dev Assets/satyam.png";
+import rudra from "./Dev Assets/rudra.png"
 
 const developers_info = {
   frontend: [
@@ -108,7 +109,7 @@ const developers_info = {
     {
       id: 5,
       name: "Rudradatt Dave",
-      image: rakshit,
+      image: rudra,
       linkedin: "https://www.linkedin.com/in/rudradatt-dave-65896b268",
       github: "https://github.com/xFBIx",
       instagram: "https://instagram.com/rudradatt_2608?igshid=OGQ5ZDc2ODk2ZA==",
