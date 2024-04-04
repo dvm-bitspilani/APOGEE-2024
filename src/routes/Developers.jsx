@@ -217,7 +217,9 @@ export default function Developers() {
   const handleVerticalCardClick = (vertical) => {
     setshowDialog(!showDialog);
     setVertical(vertical);
-    glitchIn.startGlitch();
+    if (window.innerWidth > 800) {
+      glitchIn.startGlitch();
+    }
 
     if (window.innerWidth < 800) {
       glitchText("BACK");
@@ -488,7 +490,7 @@ export default function Developers() {
               ? { zIndex: "2", opacity: "1" }
               : { zIndex: "0", opacity: "0" }
           }
-          ref={window.innerWidth > 800 && glitchIn.ref}
+          ref={glitchIn.ref}
         >
           <img
             draggable={false}
