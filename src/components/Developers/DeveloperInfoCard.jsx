@@ -20,15 +20,6 @@ const DeveloperInfoCard = ({
       </div>
       <p className={styles.developerName}>{name}</p>
       <div className={styles.developerSocialMedia}>
-        {/* <a href="">
-          <img src="./images/Developers/Behance.svg" alt="Behance" />
-        </a>
-        <a href="">
-          <img src="./images/Developers/Behance.svg" alt="Behance" />
-        </a>
-        <a href="">
-          <img src="./images/Developers/Behance.svg" alt="Behance" />
-        </a> */}
         {linkedin == "" ? null : (
           <a href={linkedin} target="_blank">
             <img src="./images/Developers/Linkedin.svg" alt="LinkedIn" />

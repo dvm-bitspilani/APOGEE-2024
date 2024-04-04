@@ -1,24 +1,24 @@
 import ritik from "./Dev Assets/ritik.png";
-import luv from "./Dev Assets/luv.jpg";
-import bharat from "./Dev Assets/bharat.jpg";
-import shreyas from "./Dev Assets/shreyas.jpg";
-import akshit from "./Dev Assets/akshitDVM.jpg";
-import himanshu from "./Dev Assets/himanshu.jpeg";
-import gurekas from "./Dev Assets/gurekas.jpg";
-import raj from "./Dev Assets/clerk.jpg";
-import rakshit from "./Dev Assets/sakhuja.jpg";
-import praneel from "./Dev Assets/praneelDVM.jpg";
-import sunpreet from "./Dev Assets/sunpreet.jpeg";
-import nabisha from "./Dev Assets/nabisha.jpg";
-import trehan from "./Dev Assets/trehan.jpg";
-import dhruv from "./Dev Assets/dhruv.jpg";
-import rahul from "./Dev Assets/rahul.jpg";
-import manish from "./Dev Assets/manish.jpg";
-import srinivasa from "./Dev Assets/srinivasa.jpeg";
-import tarun from "./Dev Assets/tarun.jpeg";
-import shiva from "./Dev Assets/shiva.jpg";
-import sundar from "./Dev Assets/sundar.jpeg";
-import satyam from "./Dev Assets/satyam.jpg"
+import luv from "./Dev Assets/luv.png";
+import bharat from "./Dev Assets/bharat.png";
+import shreyas from "./Dev Assets/shreyas.png";
+import akshit from "./Dev Assets/akshit.png";
+import himanshu from "./Dev Assets/hima.png";
+import gurekas from "./Dev Assets/gurekas.png";
+import raj from "./Dev Assets/raj.png";
+import rakshit from "./Dev Assets/rakshit.png";
+import praneel from "./Dev Assets/praneel.png";
+import sunpreet from "./Dev Assets/sunpreet.png";
+import nabisha from "./Dev Assets/nabisha.png";
+import trehan from "./Dev Assets/trehan.png";
+import dhruv from "./Dev Assets/dhruv.png";
+import rahul from "./Dev Assets/rahul.png";
+import manish from "./Dev Assets/manish.png";
+import srinivasa from "./Dev Assets/srinivasa.png";
+import tarun from "./Dev Assets/tarun.png";
+import shiva from "./Dev Assets/shiva.png";
+import sundar from "./Dev Assets/sundar.png";
+import satyam from "./Dev Assets/satyam.png";
 
 const developers_info = {
   frontend: [
